@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
-#import "CPDirectoryTVC.h"
+#import "CADirectoryTVC.h"
 
 #define NUMBER_OF_SECTIONS 1;
 
-@interface CPDirectoryTVC ()
+@interface CADirectoryTVC ()
 
 @end
 
-@implementation CPDirectoryTVC
+@implementation CADirectoryTVC
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -51,7 +51,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"DirectoryCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...

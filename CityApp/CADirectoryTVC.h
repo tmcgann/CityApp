@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CPDirectoryTVC : UITableViewController
+@interface CADirectoryTVC : UITableViewController
 
 @end

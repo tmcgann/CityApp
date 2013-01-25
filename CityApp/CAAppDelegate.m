@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
-#import "CPAppDelegate.h"
+#import "CAAppDelegate.h"
 
-@implementation CPAppDelegate
+@implementation CAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

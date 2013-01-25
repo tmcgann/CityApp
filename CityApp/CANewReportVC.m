@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
-#import "CPNewReportVC.h"
+#import "CANewReportVC.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface CPNewReportVC ()
+@interface CANewReportVC ()
 
 @end
 
-@implementation CPNewReportVC
+@implementation CANewReportVC
 
 @synthesize cancelButton = _cancelButton;
 @synthesize submitButton = _submitButton;
@@ -120,6 +120,7 @@
             [library writeImageToSavedPhotosAlbum:originalImage.CGImage metadata:mediaMetadata completionBlock:nil];
             
             // Rotate image if portrait
+            // TODO: Rotate the image if it's portrait so that it looks right in in the preview
 //            if (mediaMetadata objectForKey:<#(id)#>)
         }
         

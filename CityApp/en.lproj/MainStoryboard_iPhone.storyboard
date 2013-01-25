@@ -218,7 +218,7 @@
         <!--New ReportVC - New Report-->
         <scene sceneID="c3u-Yl-WHV">
             <objects>
-                <viewController title="New Report" id="fxD-qc-5zg" customClass="CPNewReportVC" sceneMemberID="viewController">
+                <viewController title="New Report" id="fxD-qc-5zg" customClass="CANewReportVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3AX-u4-x4L">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -294,7 +294,7 @@
         <!--DirectoryTVC - Directory-->
         <scene sceneID="MgB-Fl-7HD">
             <objects>
-                <tableViewController title="Directory" id="QvZ-AM-hmz" customClass="CPDirectoryTVC" sceneMemberID="viewController">
+                <tableViewController title="Directory" id="QvZ-AM-hmz" customClass="CADirectoryTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Qzz-si-HKy">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -353,12 +353,15 @@
         <image name="TakePhoto@2x.png" width="640" height="640"/>
     </resources>
     <classes>
-        <class className="CPDirectoryTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPDirectoryTVC.h"/>
+        <class className="CADirectoryTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CADirectoryTVC.h"/>
         </class>
-        <class className="CPNewReportVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPNewReportVC.h"/>
+        <class className="CANewReportVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportVC.h"/>
             <relationships>
+                <relationship kind="action" name="cancelPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="submitPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="takePhotoPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="submitButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="takePhotoButton" candidateClass="UIButton"/>

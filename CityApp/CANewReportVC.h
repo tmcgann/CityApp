@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CPNewReportVC : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface CANewReportVC : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *submitButton;
