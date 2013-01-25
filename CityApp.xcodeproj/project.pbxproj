@@ -13,6 +13,13 @@
 		3402719016ACE5B300DDFCC6 /* TakePhoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3402718F16ACE5B300DDFCC6 /* TakePhoto@2x.png */; };
 		3402719F16AD009200DDFCC6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3402719E16AD009200DDFCC6 /* MobileCoreServices.framework */; };
 		340271A516AD11D200DDFCC6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340271A416AD11D200DDFCC6 /* AssetsLibrary.framework */; };
+		340FE6D216B24516002FD035 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6C916B24297002FD035 /* libRestKit.a */; };
+		340FE6D816B24551002FD035 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6D416B24551002FD035 /* CFNetwork.framework */; };
+		340FE6D916B24551002FD035 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6D516B24551002FD035 /* CoreData.framework */; };
+		340FE6DA16B24551002FD035 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6D616B24551002FD035 /* Security.framework */; };
+		340FE6DB16B24551002FD035 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6D716B24551002FD035 /* SystemConfiguration.framework */; };
+		340FE6DD16B2470D002FD035 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6DC16B2470D002FD035 /* QuartzCore.framework */; };
+		340FE6DF16B24738002FD035 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6DE16B24738002FD035 /* libxml2.dylib */; };
 		34F97AEE16A514F900568523 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AED16A514F900568523 /* UIKit.framework */; };
 		34F97AF016A514F900568523 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AEF16A514F900568523 /* Foundation.framework */; };
 		34F97AF216A514F900568523 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AF116A514F900568523 /* CoreGraphics.framework */; };
@@ -21,6 +28,44 @@
 		34F97AFE16A514F900568523 /* CAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F97AFD16A514F900568523 /* CAAppDelegate.m */; };
 		34F97B0716A514FA00568523 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34F97B0516A514FA00568523 /* MainStoryboard_iPhone.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		340FE6C816B24297002FD035 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 340FE6BE16B24296002FD035 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D1614564E810060A5C5;
+			remoteInfo = RestKit;
+		};
+		340FE6CA16B24297002FD035 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 340FE6BE16B24296002FD035 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D2614564E820060A5C5;
+			remoteInfo = RestKitTests;
+		};
+		340FE6CC16B24297002FD035 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 340FE6BE16B24296002FD035 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E62145651060060A5C5;
+			remoteInfo = RestKitFramework;
+		};
+		340FE6CE16B24297002FD035 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 340FE6BE16B24296002FD035 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E78145651060060A5C5;
+			remoteInfo = RestKitFrameworkTests;
+		};
+		340FE6D016B2448B002FD035 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 340FE6BE16B24296002FD035 /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 25160D1514564E810060A5C5;
+			remoteInfo = RestKit;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3402718416ACC8E600DDFCC6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -31,6 +76,13 @@
 		3402718F16ACE5B300DDFCC6 /* TakePhoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TakePhoto@2x.png"; sourceTree = "<group>"; };
 		3402719E16AD009200DDFCC6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		340271A416AD11D200DDFCC6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		340FE6BE16B24296002FD035 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		340FE6D416B24551002FD035 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		340FE6D516B24551002FD035 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		340FE6D616B24551002FD035 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		340FE6D716B24551002FD035 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		340FE6DC16B2470D002FD035 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		340FE6DE16B24738002FD035 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		34F97AE916A514F900568523 /* CityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F97AED16A514F900568523 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34F97AEF16A514F900568523 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,6 +101,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				340FE6DF16B24738002FD035 /* libxml2.dylib in Frameworks */,
+				340FE6DD16B2470D002FD035 /* QuartzCore.framework in Frameworks */,
+				340FE6D816B24551002FD035 /* CFNetwork.framework in Frameworks */,
+				340FE6D916B24551002FD035 /* CoreData.framework in Frameworks */,
+				340FE6DA16B24551002FD035 /* Security.framework in Frameworks */,
+				340FE6DB16B24551002FD035 /* SystemConfiguration.framework in Frameworks */,
+				340FE6D216B24516002FD035 /* libRestKit.a in Frameworks */,
 				340271A516AD11D200DDFCC6 /* AssetsLibrary.framework in Frameworks */,
 				3402719F16AD009200DDFCC6 /* MobileCoreServices.framework in Frameworks */,
 				34F97AEE16A514F900568523 /* UIKit.framework in Frameworks */,
@@ -60,6 +119,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		340FE6BF16B24296002FD035 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				340FE6C916B24297002FD035 /* libRestKit.a */,
+				340FE6CB16B24297002FD035 /* RestKitTests.octest */,
+				340FE6CD16B24297002FD035 /* RestKit.framework */,
+				340FE6CF16B24297002FD035 /* RestKitFrameworkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		34869B6C16A87C7F009FF9EF /* Media */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +146,7 @@
 				34869B6C16A87C7F009FF9EF /* Media */,
 				34F97AEC16A514F900568523 /* Frameworks */,
 				34F97AEA16A514F900568523 /* Products */,
+				340FE6BE16B24296002FD035 /* RestKit.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +161,12 @@
 		34F97AEC16A514F900568523 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				340FE6DE16B24738002FD035 /* libxml2.dylib */,
+				340FE6DC16B2470D002FD035 /* QuartzCore.framework */,
+				340FE6D416B24551002FD035 /* CFNetwork.framework */,
+				340FE6D516B24551002FD035 /* CoreData.framework */,
+				340FE6D616B24551002FD035 /* Security.framework */,
+				340FE6D716B24551002FD035 /* SystemConfiguration.framework */,
 				340271A416AD11D200DDFCC6 /* AssetsLibrary.framework */,
 				3402719E16AD009200DDFCC6 /* MobileCoreServices.framework */,
 				34F97AED16A514F900568523 /* UIKit.framework */,
@@ -139,6 +216,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				340FE6D116B2448B002FD035 /* PBXTargetDependency */,
 			);
 			name = CityApp;
 			productName = CityApp;
@@ -165,12 +243,49 @@
 			mainGroup = 34F97ADE16A514F900568523;
 			productRefGroup = 34F97AEA16A514F900568523 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 340FE6BF16B24296002FD035 /* Products */;
+					ProjectRef = 340FE6BE16B24296002FD035 /* RestKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				34F97AE816A514F900568523 /* CityApp */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		340FE6C916B24297002FD035 /* libRestKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKit.a;
+			remoteRef = 340FE6C816B24297002FD035 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		340FE6CB16B24297002FD035 /* RestKitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitTests.octest;
+			remoteRef = 340FE6CA16B24297002FD035 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		340FE6CD16B24297002FD035 /* RestKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RestKit.framework;
+			remoteRef = 340FE6CC16B24297002FD035 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		340FE6CF16B24297002FD035 /* RestKitFrameworkTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitFrameworkTests.octest;
+			remoteRef = 340FE6CE16B24297002FD035 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		34F97AE716A514F900568523 /* Resources */ = {
@@ -199,6 +314,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		340FE6D116B2448B002FD035 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = 340FE6D016B2448B002FD035 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		34F97AF616A514F900568523 /* InfoPlist.strings */ = {
@@ -276,7 +399,12 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CityApp/CityApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "CityApp/CityApp-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -288,7 +416,12 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CityApp/CityApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "CityApp/CityApp-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

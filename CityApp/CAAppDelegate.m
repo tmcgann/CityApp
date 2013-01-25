@@ -7,6 +7,7 @@
 //
 
 #import "CAAppDelegate.h"
+#import <RestKit/RestKit.h>
 
 @implementation CAAppDelegate
 
