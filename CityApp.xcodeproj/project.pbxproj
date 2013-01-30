@@ -20,6 +20,9 @@
 		340FE6DB16B24551002FD035 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6D716B24551002FD035 /* SystemConfiguration.framework */; };
 		340FE6DD16B2470D002FD035 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6DC16B2470D002FD035 /* QuartzCore.framework */; };
 		340FE6DF16B24738002FD035 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6DE16B24738002FD035 /* libxml2.dylib */; };
+		340FE6E316B24AD6002FD035 /* CAContactCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 340FE6E216B24AD6002FD035 /* CAContactCategory.m */; };
+		340FE6E816B37BB7002FD035 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 340FE6E716B37BB7002FD035 /* Localizable.strings */; };
+		340FE6EB16B38CE3002FD035 /* CAContactEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 340FE6EA16B38CE2002FD035 /* CAContactEntry.m */; };
 		34F97AEE16A514F900568523 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AED16A514F900568523 /* UIKit.framework */; };
 		34F97AF016A514F900568523 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AEF16A514F900568523 /* Foundation.framework */; };
 		34F97AF216A514F900568523 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AF116A514F900568523 /* CoreGraphics.framework */; };
@@ -83,6 +86,12 @@
 		340FE6D716B24551002FD035 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		340FE6DC16B2470D002FD035 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		340FE6DE16B24738002FD035 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		340FE6E116B24AD6002FD035 /* CAContactCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAContactCategory.h; sourceTree = "<group>"; };
+		340FE6E216B24AD6002FD035 /* CAContactCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAContactCategory.m; sourceTree = "<group>"; };
+		340FE6E416B2531C002FD035 /* CAModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAModels.h; sourceTree = "<group>"; };
+		340FE6E716B37BB7002FD035 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		340FE6E916B38CE2002FD035 /* CAContactEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAContactEntry.h; sourceTree = "<group>"; };
+		340FE6EA16B38CE2002FD035 /* CAContactEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAContactEntry.m; sourceTree = "<group>"; };
 		34F97AE916A514F900568523 /* CityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F97AED16A514F900568523 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34F97AEF16A514F900568523 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -128,6 +137,18 @@
 				340FE6CF16B24297002FD035 /* RestKitFrameworkTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		340FE6E016B24844002FD035 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				340FE6E416B2531C002FD035 /* CAModels.h */,
+				340FE6E116B24AD6002FD035 /* CAContactCategory.h */,
+				340FE6E216B24AD6002FD035 /* CAContactCategory.m */,
+				340FE6E916B38CE2002FD035 /* CAContactEntry.h */,
+				340FE6EA16B38CE2002FD035 /* CAContactEntry.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		34869B6C16A87C7F009FF9EF /* Media */ = {
@@ -186,6 +207,7 @@
 				3402718A16ACDA7F00DDFCC6 /* CADirectoryTVC.m */,
 				3402718C16ACE2B900DDFCC6 /* CANewReportVC.h */,
 				3402718D16ACE2B900DDFCC6 /* CANewReportVC.m */,
+				340FE6E016B24844002FD035 /* Models */,
 				34F97AF416A514F900568523 /* Supporting Files */,
 			);
 			path = CityApp;
@@ -194,6 +216,7 @@
 		34F97AF416A514F900568523 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				340FE6E716B37BB7002FD035 /* Localizable.strings */,
 				34F97AF516A514F900568523 /* CityApp-Info.plist */,
 				34F97AF616A514F900568523 /* InfoPlist.strings */,
 				34F97AF916A514F900568523 /* main.m */,
@@ -296,6 +319,7 @@
 				34F97B0716A514FA00568523 /* MainStoryboard_iPhone.storyboard in Resources */,
 				3402718516ACC8E600DDFCC6 /* Default-568h@2x.png in Resources */,
 				3402719016ACE5B300DDFCC6 /* TakePhoto@2x.png in Resources */,
+				340FE6E816B37BB7002FD035 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +334,8 @@
 				34F97AFE16A514F900568523 /* CAAppDelegate.m in Sources */,
 				3402718B16ACDA7F00DDFCC6 /* CADirectoryTVC.m in Sources */,
 				3402718E16ACE2B900DDFCC6 /* CANewReportVC.m in Sources */,
+				340FE6E316B24AD6002FD035 /* CAContactCategory.m in Sources */,
+				340FE6EB16B38CE3002FD035 /* CAContactEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

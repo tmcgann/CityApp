@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  CityApp
+ 
+  Collection of static strings used throughout the app.
+  Allows for a single point of control in maintaining strings.
+ 
+  Created by Taylor McGann on 1/25/13.
+  Copyright (c) 2013 Taylor McGann. All rights reserved.
+*/
+
+// RestKit
+"SERVER_URL" = "http://taumu.com";
+"TESTING_URL" = "http://localhost:3000";
