@@ -7,6 +7,5 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CAContactCategories.h"
 #import "CAContactCategory.h"
 #import "CAContactEntry.h"

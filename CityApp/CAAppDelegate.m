@@ -7,11 +7,76 @@
 //
 
 #import "CAAppDelegate.h"
+#import <RestKit/RestKit.h>
+#import <RestKit/CoreData.h>
+#import "CAModels.h"
 
 @implementation CAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//    // RestKit debug output
+//    //RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
+//    //RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+//    
+//    // setup base url
+//    NSURL *baseURL = [NSURL URLWithString:NSLocalizedString(@"SERVER_URL", nil)];
+//    
+//    // object manager
+//    RKObjectManager* objectManager = [RKObjectManager managerWithBaseURL:baseURL];
+//    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"CityApp" ofType:@"momd"]];
+//    // NOTE: Due to an iOS 5 bug, the managed object model returned is immutable.
+//    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
+//    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+//    objectManager.managedObjectStore = managedObjectStore;
+//    
+//    // Object mappings
+//    RKObjectMapping *contactEntryMapping = [RKObjectMapping mappingForClass:[CAContactEntry class]];
+//    [contactEntryMapping addAttributeMappingsFromDictionary:@{
+//         @"id" : @"contactEntryId",
+//         @"name" : @"name",
+//         @"phone_number" : @"phoneNumber",
+//         @"email" : @"email",
+//         @"address_one" : @"addressOne",
+//         @"address_two" : @"addressTwo",
+//         @"city" : @"city",
+//         @"state" : @"state",
+//         @"zip" : @"zip",
+//         @"type" : @"type",
+//         @"icon" : @"icon",
+//         @"description" : @"description",
+//         @"fax" : @"fax",
+//         @"hours" : @"hours",
+//         @"url" : @"url",
+//         @"contact_category_id" : @"contactCategoryId",
+//         @"modified" : @"modified"
+//     }];
+//    
+//    RKObjectMapping *contactCategoryMapping = [RKObjectMapping mappingForClass:[CAContactCategory class]];
+//    [contactCategoryMapping addAttributeMappingsFromDictionary:@{
+//         @"id" : @"contactCategoryId",
+//         @"name" : @"name",
+//         @"icon" : @"icon",
+//         @"description" : @"description",
+//         @"rank" : @"rank",
+//         @"modified" : @"modified"
+//     }];
+//    
+//    [contactCategoryMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"contact_entries" toKeyPath:@"contactEntries" withMapping:contactEntryMapping]];
+//    
+//    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:contactCategoryMapping pathPattern:nil keyPath:@"contact_categories" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+//    
+//    NSURL *URL = [NSURL URLWithString:@"http://taumu.com/contact_categories.json"];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+//    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[ responseDescriptor ]];
+//    [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+//        RKLogInfo(@"Load collection of Contact Categories: %@", mappingResult.array);
+//    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+//        RKLogError(@"Operation failed with error: %@", error);
+//    }];
+//    
+//    [objectRequestOperation start];
+    
     return YES;
 }
 							

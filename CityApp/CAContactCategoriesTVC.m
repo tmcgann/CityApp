@@ -6,18 +6,21 @@
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
-#import "CADirectoryTVC.h"
+#import "CAContactCategoriesTVC.h"
 #import <RestKit/RestKit.h>
 #import "CAContactCategory.h"
 #import "CAContactEntry.h"
+#import "CAContactEntriesVC.h"
 
 #define NUMBER_OF_SECTIONS 1;
 
-@interface CADirectoryTVC ()
-@property NSArray *contactCategories;
+@interface CAContactCategoriesTVC ()
+
 @end
 
-@implementation CADirectoryTVC
+@implementation CAContactCategoriesTVC
+
+@synthesize contactCategories = _contactCategories;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,6 +36,10 @@
     [super viewDidLoad];
     
     [self pullContactCategories];
+    
+    // Set the back button title
+//    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:nil action:nil];
+//    [self.navigationItem setBackBarButtonItem:backButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,9 +103,15 @@
     [objectRequestOperation start];
 }
 
-- (void)sortContactCategories
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    if ([segue.identifier isEqualToString:@"pushToContactEntries"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        CAContactEntriesVC *contactEntriesVC = segue.destinationViewController;
+        CAContactCategory *cc = [self.contactCategories objectAtIndex:(NSUInteger)indexPath.row];
+        contactEntriesVC.contactEntries = cc.contactEntries;
+        contactEntriesVC.contactCategory = cc.name;
+    }
 }
 
 #pragma mark - Table view data source
@@ -116,7 +129,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Configure the cell
-    static NSString *CellIdentifier = @"DirectoryCell";
+    static NSString *CellIdentifier = @"CategoryCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     CAContactCategory *cc = [self.contactCategories objectAtIndex:(NSUInteger)indexPath.row];
@@ -129,13 +142,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+//    NSString *cellIdentifier = [tableView cellForRowAtIndexPath:indexPath].reuseIdentifier;
+//    
+//    if ([cellIdentifier isEqualToString:@"CategoryCell"]) {
+//        [self performSegueWithIdentifier:@"pushToContactEntries" sender:self];
+//    }
+//    
+//    // Must do this last so that prepareForSegue:sender: can access indexPath
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

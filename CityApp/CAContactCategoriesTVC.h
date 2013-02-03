@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CADirectoryTVC : UITableViewController
+@interface CAContactCategoriesTVC : UITableViewController
+
+@property (nonatomic, strong) NSArray *contactCategories;
 
 @end

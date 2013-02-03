@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3402718516ACC8E600DDFCC6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3402718416ACC8E600DDFCC6 /* Default-568h@2x.png */; };
-		3402718B16ACDA7F00DDFCC6 /* CADirectoryTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3402718A16ACDA7F00DDFCC6 /* CADirectoryTVC.m */; };
+		3402718B16ACDA7F00DDFCC6 /* CAContactCategoriesTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3402718A16ACDA7F00DDFCC6 /* CAContactCategoriesTVC.m */; };
 		3402718E16ACE2B900DDFCC6 /* CANewReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3402718D16ACE2B900DDFCC6 /* CANewReportVC.m */; };
 		3402719016ACE5B300DDFCC6 /* TakePhoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3402718F16ACE5B300DDFCC6 /* TakePhoto@2x.png */; };
 		3402719F16AD009200DDFCC6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3402719E16AD009200DDFCC6 /* MobileCoreServices.framework */; };
@@ -23,6 +23,9 @@
 		340FE6E316B24AD6002FD035 /* CAContactCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 340FE6E216B24AD6002FD035 /* CAContactCategory.m */; };
 		340FE6E816B37BB7002FD035 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 340FE6E716B37BB7002FD035 /* Localizable.strings */; };
 		340FE6EB16B38CE3002FD035 /* CAContactEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 340FE6EA16B38CE2002FD035 /* CAContactEntry.m */; };
+		344DB95516BE156100412C22 /* CAContactEntriesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 344DB95416BE156100412C22 /* CAContactEntriesVC.m */; };
+		3482C63116BE4B6100BC6DDE /* CAContactEntryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3482C63016BE4B6100BC6DDE /* CAContactEntryVC.m */; };
+		3482C63616BE563A00BC6DDE /* Taylor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3482C63516BE563A00BC6DDE /* Taylor.jpg */; };
 		34F97AEE16A514F900568523 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AED16A514F900568523 /* UIKit.framework */; };
 		34F97AF016A514F900568523 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AEF16A514F900568523 /* Foundation.framework */; };
 		34F97AF216A514F900568523 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AF116A514F900568523 /* CoreGraphics.framework */; };
@@ -72,8 +75,8 @@
 
 /* Begin PBXFileReference section */
 		3402718416ACC8E600DDFCC6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		3402718916ACDA7F00DDFCC6 /* CADirectoryTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADirectoryTVC.h; sourceTree = "<group>"; };
-		3402718A16ACDA7F00DDFCC6 /* CADirectoryTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CADirectoryTVC.m; sourceTree = "<group>"; };
+		3402718916ACDA7F00DDFCC6 /* CAContactCategoriesTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAContactCategoriesTVC.h; sourceTree = "<group>"; };
+		3402718A16ACDA7F00DDFCC6 /* CAContactCategoriesTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAContactCategoriesTVC.m; sourceTree = "<group>"; };
 		3402718C16ACE2B900DDFCC6 /* CANewReportVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CANewReportVC.h; sourceTree = "<group>"; };
 		3402718D16ACE2B900DDFCC6 /* CANewReportVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CANewReportVC.m; sourceTree = "<group>"; };
 		3402718F16ACE5B300DDFCC6 /* TakePhoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TakePhoto@2x.png"; sourceTree = "<group>"; };
@@ -92,6 +95,11 @@
 		340FE6E716B37BB7002FD035 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		340FE6E916B38CE2002FD035 /* CAContactEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAContactEntry.h; sourceTree = "<group>"; };
 		340FE6EA16B38CE2002FD035 /* CAContactEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAContactEntry.m; sourceTree = "<group>"; };
+		344DB95316BE156100412C22 /* CAContactEntriesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAContactEntriesVC.h; sourceTree = "<group>"; };
+		344DB95416BE156100412C22 /* CAContactEntriesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAContactEntriesVC.m; sourceTree = "<group>"; };
+		3482C62F16BE4B6100BC6DDE /* CAContactEntryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAContactEntryVC.h; sourceTree = "<group>"; };
+		3482C63016BE4B6100BC6DDE /* CAContactEntryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAContactEntryVC.m; sourceTree = "<group>"; };
+		3482C63516BE563A00BC6DDE /* Taylor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Taylor.jpg; sourceTree = "<group>"; };
 		34F97AE916A514F900568523 /* CityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F97AED16A514F900568523 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34F97AEF16A514F900568523 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -151,9 +159,25 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		344DB94F16BE0EFA00412C22 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3402718916ACDA7F00DDFCC6 /* CAContactCategoriesTVC.h */,
+				3402718A16ACDA7F00DDFCC6 /* CAContactCategoriesTVC.m */,
+				344DB95316BE156100412C22 /* CAContactEntriesVC.h */,
+				344DB95416BE156100412C22 /* CAContactEntriesVC.m */,
+				3482C62F16BE4B6100BC6DDE /* CAContactEntryVC.h */,
+				3482C63016BE4B6100BC6DDE /* CAContactEntryVC.m */,
+				3402718C16ACE2B900DDFCC6 /* CANewReportVC.h */,
+				3402718D16ACE2B900DDFCC6 /* CANewReportVC.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		34869B6C16A87C7F009FF9EF /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				3482C63516BE563A00BC6DDE /* Taylor.jpg */,
 				3402718F16ACE5B300DDFCC6 /* TakePhoto@2x.png */,
 				3402718416ACC8E600DDFCC6 /* Default-568h@2x.png */,
 			);
@@ -203,10 +227,7 @@
 				34F97AFC16A514F900568523 /* CAAppDelegate.h */,
 				34F97AFD16A514F900568523 /* CAAppDelegate.m */,
 				34F97B0516A514FA00568523 /* MainStoryboard_iPhone.storyboard */,
-				3402718916ACDA7F00DDFCC6 /* CADirectoryTVC.h */,
-				3402718A16ACDA7F00DDFCC6 /* CADirectoryTVC.m */,
-				3402718C16ACE2B900DDFCC6 /* CANewReportVC.h */,
-				3402718D16ACE2B900DDFCC6 /* CANewReportVC.m */,
+				344DB94F16BE0EFA00412C22 /* Controllers */,
 				340FE6E016B24844002FD035 /* Models */,
 				34F97AF416A514F900568523 /* Supporting Files */,
 			);
@@ -320,6 +341,7 @@
 				3402718516ACC8E600DDFCC6 /* Default-568h@2x.png in Resources */,
 				3402719016ACE5B300DDFCC6 /* TakePhoto@2x.png in Resources */,
 				340FE6E816B37BB7002FD035 /* Localizable.strings in Resources */,
+				3482C63616BE563A00BC6DDE /* Taylor.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,10 +354,12 @@
 			files = (
 				34F97AFA16A514F900568523 /* main.m in Sources */,
 				34F97AFE16A514F900568523 /* CAAppDelegate.m in Sources */,
-				3402718B16ACDA7F00DDFCC6 /* CADirectoryTVC.m in Sources */,
+				3402718B16ACDA7F00DDFCC6 /* CAContactCategoriesTVC.m in Sources */,
 				3402718E16ACE2B900DDFCC6 /* CANewReportVC.m in Sources */,
 				340FE6E316B24AD6002FD035 /* CAContactCategory.m in Sources */,
 				340FE6EB16B38CE3002FD035 /* CAContactEntry.m in Sources */,
+				344DB95516BE156100412C22 /* CAContactEntriesVC.m in Sources */,
+				3482C63116BE4B6100BC6DDE /* CAContactEntryVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
