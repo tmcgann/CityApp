@@ -36,7 +36,19 @@
 {
     [super viewDidLoad];
     
+    // Set title in nav bar to Contact Category name
     [self.navigationItem setTitle:self.contactCategory];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Deselect table view cell after return from segue
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    if(indexPath) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -12,5 +12,6 @@
 @interface CAContactEntryVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) CAContactEntry *contactEntry;
+@property (weak, nonatomic) IBOutlet UILabel *contactNameLabel;
 
 @end
