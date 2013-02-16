@@ -20,6 +20,7 @@
 
 @implementation CAContactCategoriesTVC
 
+@synthesize contactCategoriesDatabase = _contactCategoriesDatabase;
 @synthesize contactCategories = _contactCategories;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -42,10 +43,56 @@
 //    [self.navigationItem setBackBarButtonItem:backButton];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (!self.contactCategoriesDatabase) {
+        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        url = [url URLByAppendingPathComponent:@"Default CA Database"];
+        self.contactCategoriesDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setContactCategoriesDatabase:(UIManagedDocument *)contactCategoriesDatabase
+{
+    if (_contactCategoriesDatabase != contactCategoriesDatabase) {
+        _contactCategoriesDatabase = contactCategoriesDatabase;
+        [self useDocument];
+    }
+}
+
+- (void)useDocument
+{
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.contactCategoriesDatabase.fileURL path]]) {
+        [self.contactCategoriesDatabase saveToURL:self.contactCategoriesDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+            [self setupFetchedResultsController];
+            [self fetchDirectoryDataIntoDocument:self.contactCategoriesDatabase];
+        }];
+    } else if (self.contactCategoriesDatabase.documentState == UIDocumentStateClosed) {
+        [self.contactCategoriesDatabase openWithCompletionHandler:^(BOOL success) {
+            [self setupFetchedResultsController];
+        }];
+    } else if (self.contactCategoriesDatabase.documentState == UIDocumentStateNormal) {
+        [self setupFetchedResultsController];
+    }
+}
+
+- (void)setupFetchedResultsController
+{
+    // self.fetchedResultsController = ...
+}
+
+- (void)fetchDirectoryDataIntoDocument:(UIManagedDocument *)document
+{
+    dispatch_queue_t fetchQ = dispatch_queue_create("Directory Fetcher", NULL);
+    dispatch_async(fetchQ, ^{
+        
+    });
 }
 
 - (void)pullContactCategories
@@ -68,7 +115,7 @@
      @"zip" : @"zip",
      @"type" : @"type",
      @"icon" : @"icon",
-     @"description" : @"description",
+     @"description" : @"descriptor",
      @"fax" : @"fax",
      @"hours" : @"hours",
      @"url" : @"url",
@@ -81,7 +128,7 @@
      @"id" : @"contactCategoryId",
      @"name" : @"name",
      @"icon" : @"icon",
-     @"description" : @"description",
+     @"description" : @"descriptor",
      @"rank" : @"rank",
      @"modified" : @"modified"
      }];
@@ -95,7 +142,7 @@
     RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[ responseDescriptor ]];
     [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         RKLogInfo(@"Load collection of Contact Categories: %@", mappingResult.array);
-        self.contactCategories = mappingResult.array;
+        self.contactCategories = [NSOrderedSet orderedSetWithArray:mappingResult.array];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         RKLogError(@"Operation failed with error: %@", error);
     }];

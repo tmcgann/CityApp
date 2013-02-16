@@ -2,31 +2,34 @@
 //  CAContactEntry.h
 //  CityApp
 //
-//  Created by Taylor McGann on 1/25/13.
+//  Created by Taylor McGann on 2/10/13.
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface CAContactEntry : NSObject
+@class CAContactCategory;
 
-@property (strong, nonatomic) NSString *contactEntryId;
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *phoneNumber;
-@property (strong, nonatomic) NSString *email;
-@property (strong, nonatomic) NSString *addressOne;
-@property (strong, nonatomic) NSString *addressTwo;
-@property (strong, nonatomic) NSString *city;
-@property (strong, nonatomic) NSString *state;
-@property (strong, nonatomic) NSString *zip;
-@property (strong, nonatomic) NSString *type;
-@property (strong, nonatomic) NSString *icon;
-@property (strong, nonatomic) NSString *description;
-@property (strong, nonatomic) NSString *fax;
-@property (strong, nonatomic) NSString *hours;
-@property (strong, nonatomic) NSString *url;
-@property (strong, nonatomic) NSString *contactCategoryId;
-@property (strong, nonatomic) NSDate *modified;
+@interface CAContactEntry : NSManagedObject
 
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * phoneNumber;
+@property (nonatomic, retain) NSString * email;
+@property (nonatomic, retain) NSString * addressOne;
+@property (nonatomic, retain) NSString * addressTwo;
+@property (nonatomic, retain) NSString * city;
+@property (nonatomic, retain) NSString * state;
+@property (nonatomic, retain) NSString * zip;
+@property (nonatomic, retain) NSString * type;
+@property (nonatomic, retain) NSString * icon;
+@property (nonatomic, retain) NSString * fax;
+@property (nonatomic, retain) NSString * hours;
+@property (nonatomic, retain) NSString * url;
+@property (nonatomic, retain) NSDate * modified;
+@property (nonatomic, retain) NSString * descriptor;
+@property (nonatomic, retain) NSString * contactEntryId;
+@property (nonatomic, retain) NSString * contactCategoryId;
+@property (nonatomic, retain) CAContactCategory *contactCategory;
 
 @end

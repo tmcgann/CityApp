@@ -2,23 +2,36 @@
 //  CAContactCategory.h
 //  CityApp
 //
-//  Created by Taylor McGann on 1/24/13.
+//  Created by Taylor McGann on 2/10/13.
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
-#pragma once
-
 #import <Foundation/Foundation.h>
-#import <RestKit/RestKit.h>
+#import <CoreData/CoreData.h>
 
-@interface CAContactCategory : NSObject
+@class CAContactEntry;
 
-@property (strong, nonatomic) NSString* contactCategoryId;
-@property (strong, nonatomic) NSString* name;
-@property (strong, nonatomic) NSString* icon;
-@property (strong, nonatomic) NSString* description;
-@property (strong, nonatomic) NSString* rank;
-@property (strong, nonatomic) NSDate *modified;
-@property (strong, nonatomic) NSArray *contactEntries;
+@interface CAContactCategory : NSManagedObject
 
+@property (nonatomic, retain) NSString * contactCategoryId;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * icon;
+@property (nonatomic, retain) NSString * descriptor;
+@property (nonatomic, retain) NSString * rank;
+@property (nonatomic, retain) NSDate * modified;
+@property (nonatomic, retain) NSOrderedSet *contactEntries;
+@end
+
+@interface CAContactCategory (CoreDataGeneratedAccessors)
+
+- (void)insertObject:(CAContactEntry *)value inContactEntriesAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromContactEntriesAtIndex:(NSUInteger)idx;
+- (void)insertContactEntries:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removeContactEntriesAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInContactEntriesAtIndex:(NSUInteger)idx withObject:(CAContactEntry *)value;
+- (void)replaceContactEntriesAtIndexes:(NSIndexSet *)indexes withContactEntries:(NSArray *)values;
+- (void)addContactEntriesObject:(CAContactEntry *)value;
+- (void)removeContactEntriesObject:(CAContactEntry *)value;
+- (void)addContactEntries:(NSOrderedSet *)values;
+- (void)removeContactEntries:(NSOrderedSet *)values;
 @end

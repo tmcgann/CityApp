@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CACoreDataTVC.h"
 
-@interface CAContactCategoriesTVC : UITableViewController
+@interface CAContactCategoriesTVC : CACoreDataTVC
 
-@property (nonatomic, strong) NSArray *contactCategories;
+@property (nonatomic, strong) UIManagedDocument *contactCategoriesDatabase;
+@property (nonatomic, strong) NSOrderedSet *contactCategories;
 
 @end

@@ -8,4 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "CAContactCategory.h"
+#import "CAContactCategory+RK.h"
 #import "CAContactEntry.h"
+#import "CAContactEntry+RK.h"

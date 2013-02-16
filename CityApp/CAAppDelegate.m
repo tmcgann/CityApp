@@ -1,4 +1,5 @@
 //
+
 //  CPAppDelegate.m
 //  CityApp
 //
@@ -15,67 +16,53 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    // RestKit debug output
-//    //RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
-//    //RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
-//    
-//    // setup base url
-//    NSURL *baseURL = [NSURL URLWithString:NSLocalizedString(@"SERVER_URL", nil)];
-//    
-//    // object manager
-//    RKObjectManager* objectManager = [RKObjectManager managerWithBaseURL:baseURL];
-//    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"CityApp" ofType:@"momd"]];
-//    // NOTE: Due to an iOS 5 bug, the managed object model returned is immutable.
-//    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
-//    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
-//    objectManager.managedObjectStore = managedObjectStore;
-//    
-//    // Object mappings
-//    RKObjectMapping *contactEntryMapping = [RKObjectMapping mappingForClass:[CAContactEntry class]];
-//    [contactEntryMapping addAttributeMappingsFromDictionary:@{
-//         @"id" : @"contactEntryId",
-//         @"name" : @"name",
-//         @"phone_number" : @"phoneNumber",
-//         @"email" : @"email",
-//         @"address_one" : @"addressOne",
-//         @"address_two" : @"addressTwo",
-//         @"city" : @"city",
-//         @"state" : @"state",
-//         @"zip" : @"zip",
-//         @"type" : @"type",
-//         @"icon" : @"icon",
-//         @"description" : @"description",
-//         @"fax" : @"fax",
-//         @"hours" : @"hours",
-//         @"url" : @"url",
-//         @"contact_category_id" : @"contactCategoryId",
-//         @"modified" : @"modified"
-//     }];
-//    
-//    RKObjectMapping *contactCategoryMapping = [RKObjectMapping mappingForClass:[CAContactCategory class]];
-//    [contactCategoryMapping addAttributeMappingsFromDictionary:@{
-//         @"id" : @"contactCategoryId",
-//         @"name" : @"name",
-//         @"icon" : @"icon",
-//         @"description" : @"description",
-//         @"rank" : @"rank",
-//         @"modified" : @"modified"
-//     }];
-//    
+    // RestKit debug output
+    RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+
+    // setup object manager
+    NSURL *baseURL = [NSURL URLWithString:NSLocalizedString(@"SERVER_URL", nil)];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:baseURL];
+//    [[RKObjectManager sharedManager] setAcceptHeaderWithMIMEType:RKMIMETypeJSON];
+//    [[RKObjectManager sharedManager] setRequestSerializationMIMEType:RKMIMETypeJSON];    // Serialize to JSON
+    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"CityApp" ofType:@"momd"]];
+    // NOTE: Due to an iOS 5 bug, the managed object model returned is immutable.
+    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    objectManager.managedObjectStore = managedObjectStore;
+    NSError *error;
+    [managedObjectStore addSQLitePersistentStoreAtPath:[RKApplicationDataDirectory() stringByAppendingPathComponent:@"CityApp.sqlite"] fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
+//    [objectManager.managedObjectStore createManagedObjectContexts];
+    
+    RKEntityMapping *contactCategoryMapping = [CAContactCategory mapping:managedObjectStore];
+    RKEntityMapping *contactEntryMapping = [CAContactEntry mapping:managedObjectStore];
+    
 //    [contactCategoryMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"contact_entries" toKeyPath:@"contactEntries" withMapping:contactEntryMapping]];
-//    
-//    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:contactCategoryMapping pathPattern:nil keyPath:@"contact_categories" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-//    
+    
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:contactCategoryMapping pathPattern:nil keyPath:@"contact_categories" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    [objectManager addResponseDescriptorsFromArray:@[responseDescriptor]];
+        
+    __block NSOrderedSet *results = [[NSOrderedSet alloc] init];
+    
+    [objectManager getObjectsAtPath:@"/contact_categories.json" parameters:nil success:^(RKObjectRequestOperation * operation, RKMappingResult *mappingResult) {
+        RKLogInfo(@"Load collection of Contact Categories: %@", mappingResult.array);
+        results = [NSOrderedSet orderedSetWithArray:mappingResult.array];
+    } failure: ^(RKObjectRequestOperation * operation, NSError * error) {
+        NSLog(@"FAILURE %@", error);
+    }];
+    
 //    NSURL *URL = [NSURL URLWithString:@"http://taumu.com/contact_categories.json"];
 //    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-//    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[ responseDescriptor ]];
-//    [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+//    RKManagedObjectRequestOperation *managedObjectRequestOperation = [[RKManagedObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
+//    [managedObjectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 //        RKLogInfo(@"Load collection of Contact Categories: %@", mappingResult.array);
+//        results = [NSOrderedSet orderedSetWithArray:mappingResult.array];
 //    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
 //        RKLogError(@"Operation failed with error: %@", error);
 //    }];
 //    
-//    [objectRequestOperation start];
+//    [managedObjectRequestOperation start];
     
     return YES;
 }
