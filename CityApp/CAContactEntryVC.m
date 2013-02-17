@@ -14,7 +14,6 @@
 @interface CAContactEntryVC ()
 
 @property (strong, nonatomic) NSMutableArray *tableSections;
-//@property (strong, nonatomic) NSMutableDictionary *contactDetailMap;
 
 @end
 
@@ -22,9 +21,7 @@
 
 @synthesize contactEntry = _contactEntry;
 @synthesize contactNameLabel = _contactNameLabel;
-
 @synthesize tableSections = _tableSections;
-//@synthesize contactDetailMap = _contactDetailMap;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,8 +36,10 @@
 {
     [super viewDidLoad];
     
+    // Set navbar title
     [self.navigationItem setTitle:@"Details"];
     
+    // Set contact name label in view
     self.contactNameLabel.text = self.contactEntry.name;
     
     // initialize mutable array
@@ -62,58 +61,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    NSInteger i = 0;
-//    
-//    if (![self.contactEntry.phoneNumber isEqualToString:@""]) {
-////        [self.tableSections addObject:@"Phone Numbers"];
-//        i++;
-//    }
-//    if (![self.contactEntry.fax isEqualToString:@""]) {
-////        [self.tableSections addObject:@"Phone Number"];
-//        i++;
-//    }
-//    if (![self.contactEntry.email isEqualToString:@""]) {
-//        i++;
-//    }
-//    if (![self.contactEntry.addressOne isEqualToString:@""]) {
-//        i++;
-//    }
-//    if (![self.contactEntry.url isEqualToString:@""]) {
-//        i++;
-//    }
-//    if (![self.contactEntry.hours isEqualToString:@""]) {
-//        i++;
-//    }
-//    if (![self.contactEntry.description isEqualToString:@""]) {
-//        i++;
-//    }
-//    
-//    return i;
-    
-//    if (![self.contactEntry.phoneNumber isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.phoneNumber forKey:@"Phone Number"];
-//    }
-//    if (![self.contactEntry.fax isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.fax forKey:@"Fax"];
-//    }
-//    if (![self.contactEntry.email isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.email forKey:@"Email"];
-//    }
-//    if (![self.contactEntry.addressOne isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.addressOne forKey:@"Address"];
-//    }
-//    if (![self.contactEntry.url isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.url forKey:@"URL"];
-//    }
-//    if (![self.contactEntry.hours isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.hours forKey:@"Hours"];
-//    }
-//    if (![self.contactEntry.description isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.description forKey:@"Description"];
-//    }
-//    
-//    return self.contactDetailMap.count;
-    
     if (![self.contactEntry.phoneNumber isEqualToString:@""]) {
         [self.tableSections addObject:@{kTV_CELL_TITLE:@"Phone", kTV_CELL_DETAIL:self.contactEntry.phoneNumber}];
     }
@@ -133,13 +80,10 @@
         [self.tableSections addObject:@{kTV_CELL_TITLE:@"Hours", kTV_CELL_DETAIL:self.contactEntry.hours}];
     }
     if (![self.contactEntry.description isEqualToString:@""]) {
-        [self.tableSections addObject:@{kTV_CELL_TITLE:@"Description", kTV_CELL_DETAIL:self.contactEntry.description}];
+        [self.tableSections addObject:@{kTV_CELL_TITLE:@"Description", kTV_CELL_DETAIL:self.contactEntry.descriptor}];
     }
     
-    DLog(@"Array Count: %d", self.tableSections.count);
-    
     return self.tableSections.count;
-
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

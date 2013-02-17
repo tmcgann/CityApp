@@ -21,7 +21,7 @@
 @synthesize topView = _topView;
 @synthesize tableView = _tableView;
 @synthesize contactEntries = _contactEntries;
-@synthesize contactCategory = _contactCategory;
+@synthesize contactCategoryName = _contactCategoryName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,7 +37,7 @@
     [super viewDidLoad];
     
     // Set title in nav bar to Contact Category name
-    [self.navigationItem setTitle:self.contactCategory];
+    [self.navigationItem setTitle:self.contactCategoryName];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -64,6 +64,10 @@
         CAContactEntryVC *contactEntryVC = segue.destinationViewController;
         CAContactEntry *ce = [self.contactEntries objectAtIndex:(NSUInteger)indexPath.row];
         contactEntryVC.contactEntry = ce;
+        
+        // Set back button title
+        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:self.contactCategoryName style:UIBarButtonItemStyleBordered target: nil action: nil];
+        [self.navigationItem setBackBarButtonItem: backButton];
     }
 }
 

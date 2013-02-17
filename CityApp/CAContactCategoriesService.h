@@ -15,8 +15,7 @@
 -(void)loadStore;
 
 -(NSFetchRequest*)allContactCategories;
--(NSPredicate*)searchForText:(NSString*)text;
-
+//-(NSPredicate*)searchForText:(NSString*)text;
 //-(NSPredicate*)filterByType:(BookFilter)filter;
 
 @end

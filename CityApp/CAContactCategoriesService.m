@@ -26,14 +26,6 @@
 
 - (void)addMappings {
     RKEntityMapping *contactCategoryMapping = [CAObjectStore.shared mappingForEntityForName:@"CAContactCategory"];
-    
-//    NSMutableArray *propertyNames = [NSMutableArray arrayWithArray:[_ContactCategory propertyNames]];
-//    NSIndexSet *indices = [propertyNames indexesOfObjectsPassingTest:^(NSString * name, NSUInteger idx, BOOL * stop) {
-//        return [name isEqualToString:@"descriptionText"];
-//    }];
-//    [propertyNames removeObjectsAtIndexes:indices];
-//    
-//    [bookMapping addAttributeMappingsFromArray:propertyNames];
     [contactCategoryMapping addAttributeMappingsFromDictionary:@{
      @"id" : @"contactCategoryId",
      @"name" : @"name",
@@ -66,7 +58,6 @@
      }];
     contactEntryMapping.identificationAttributes = @[ @"contactEntryId" ];
     
-    
     [contactCategoryMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"contact_entries" toKeyPath:@"contactEntries" withMapping:contactEntryMapping]];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:contactCategoryMapping pathPattern:@"/contact_categories.json" keyPath:@"contact_categories" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -78,16 +69,14 @@
 
 // You can execute fetch requests right on the context
 // OR you can make a fetched results controller and give it a fetch request
-
 - (void)loadStore {
     [[CAObjectStore shared].objectManager getObjectsAtPath:@"/contact_categories.json" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        
     } failure: ^(RKObjectRequestOperation * operation, NSError * error) {
         NSLog(@"FAILURE %@", error);
     }];
 }
 
-// has the sort descriptor built in
+// Sort descriptor built in
 - (NSFetchRequest *)allContactCategories {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"CAContactCategory"];
     NSSortDescriptor *rankDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"rank" ascending:YES];
@@ -96,9 +85,9 @@
     return fetchRequest;
 }
 
-- (NSPredicate *)searchForText:(NSString*)text {
-    return [NSPredicate predicateWithFormat:@"title BEGINSWITH[c] %@", [text lowercaseString]];
-}
+//- (NSPredicate *)searchForText:(NSString*)text {
+//    return [NSPredicate predicateWithFormat:@"title BEGINSWITH[c] %@", [text lowercaseString]];
+//}
 
 //-(NSPredicate*)filterByType:(BookFilter)filter {
 //    if (filter == BookFilterHasAudio) return [NSPredicate predicateWithFormat:@"audioFiles > 0"];

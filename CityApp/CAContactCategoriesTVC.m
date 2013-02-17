@@ -38,14 +38,9 @@
 {
     [super viewDidLoad];
     
+    // Load objects via Core Data/RestKit
     [[CAContactCategoriesService shared] loadStore];
     [self setupFetchedResultsController];
-    
-//    [self pullContactCategories];
-    
-    // Set the back button title
-//    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:nil action:nil];
-//    [self.navigationItem setBackBarButtonItem:backButton];
 }
 
 //- (void)viewWillAppear:(BOOL)animated
@@ -102,7 +97,7 @@
 //        CAContactCategory *cc = [self.contactCategories objectAtIndex:(NSUInteger)indexPath.row];
         CAContactCategory *cc = [self.fetchedResultsController objectAtIndexPath:indexPath];
         contactEntriesVC.contactEntries = cc.contactEntries;
-        contactEntriesVC.contactCategory = cc.name;
+        contactEntriesVC.contactCategoryName = cc.name;
     }
 }
 
