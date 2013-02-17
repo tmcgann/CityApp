@@ -2,7 +2,7 @@
 //  CAContactCategory.h
 //  CityApp
 //
-//  Created by Taylor McGann on 2/10/13.
+//  Created by Taylor McGann on 2/16/13.
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
@@ -14,11 +14,11 @@
 @interface CAContactCategory : NSManagedObject
 
 @property (nonatomic, retain) NSString * contactCategoryId;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * icon;
 @property (nonatomic, retain) NSString * descriptor;
-@property (nonatomic, retain) NSString * rank;
+@property (nonatomic, retain) NSString * icon;
 @property (nonatomic, retain) NSDate * modified;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * rank;
 @property (nonatomic, retain) NSOrderedSet *contactEntries;
 @end
 

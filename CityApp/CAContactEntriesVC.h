@@ -13,6 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSOrderedSet *contactEntries;
-@property (strong, nonatomic) NSString *contactCategory;
+@property (strong, nonatomic) NSString *contactCategoryName;
 
 @end
