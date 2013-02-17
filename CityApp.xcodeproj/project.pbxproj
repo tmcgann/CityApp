@@ -13,6 +13,8 @@
 		3402719016ACE5B300DDFCC6 /* TakePhoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3402718F16ACE5B300DDFCC6 /* TakePhoto@2x.png */; };
 		3402719F16AD009200DDFCC6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3402719E16AD009200DDFCC6 /* MobileCoreServices.framework */; };
 		340271A516AD11D200DDFCC6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340271A416AD11D200DDFCC6 /* AssetsLibrary.framework */; };
+		340E32A216D03ECA00528049 /* CAObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32A116D03ECA00528049 /* CAObjectStore.m */; };
+		340E32A916D0483200528049 /* CAContactCategoriesService.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32A816D0483200528049 /* CAContactCategoriesService.m */; };
 		340FE6D216B24516002FD035 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6C916B24297002FD035 /* libRestKit.a */; };
 		340FE6D816B24551002FD035 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6D416B24551002FD035 /* CFNetwork.framework */; };
 		340FE6D916B24551002FD035 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6D516B24551002FD035 /* CoreData.framework */; };
@@ -86,6 +88,10 @@
 		3402718F16ACE5B300DDFCC6 /* TakePhoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TakePhoto@2x.png"; sourceTree = "<group>"; };
 		3402719E16AD009200DDFCC6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		340271A416AD11D200DDFCC6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		340E32A016D03ECA00528049 /* CAObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAObjectStore.h; sourceTree = "<group>"; };
+		340E32A116D03ECA00528049 /* CAObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAObjectStore.m; sourceTree = "<group>"; };
+		340E32A716D0483200528049 /* CAContactCategoriesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAContactCategoriesService.h; sourceTree = "<group>"; };
+		340E32A816D0483200528049 /* CAContactCategoriesService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAContactCategoriesService.m; sourceTree = "<group>"; };
 		340FE6BE16B24296002FD035 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		340FE6D416B24551002FD035 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		340FE6D516B24551002FD035 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -147,6 +153,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		340E32A616D0481500528049 /* CDServices */ = {
+			isa = PBXGroup;
+			children = (
+				340E32A716D0483200528049 /* CAContactCategoriesService.h */,
+				340E32A816D0483200528049 /* CAContactCategoriesService.m */,
+			);
+			name = CDServices;
+			sourceTree = "<group>";
+		};
 		340FE6BF16B24296002FD035 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +184,8 @@
 				34336D5E16C8B52600625A86 /* CAContactEntry.m */,
 				34336D6016C8B8A200625A86 /* CAContactEntry+RK.h */,
 				34336D6116C8B8A200625A86 /* CAContactEntry+RK.m */,
+				340E32A016D03ECA00528049 /* CAObjectStore.h */,
+				340E32A116D03ECA00528049 /* CAObjectStore.m */,
 				340FE6E416B2531C002FD035 /* CAModels.h */,
 			);
 			name = Models;
@@ -247,6 +264,7 @@
 				34336D4E16C8AF9B00625A86 /* CityApp.xcdatamodeld */,
 				344DB94F16BE0EFA00412C22 /* Controllers */,
 				340FE6E016B24844002FD035 /* Models */,
+				340E32A616D0481500528049 /* CDServices */,
 				34F97AF416A514F900568523 /* Supporting Files */,
 			);
 			path = CityApp;
@@ -382,6 +400,8 @@
 				34336D6516C8B8B700625A86 /* CAContactCategory+RK.m in Sources */,
 				34336D6816C8C76C00625A86 /* CAContactCategory.m in Sources */,
 				34336D6B16CDFFFF00625A86 /* CACoreDataTVC.m in Sources */,
+				340E32A216D03ECA00528049 /* CAObjectStore.m in Sources */,
+				340E32A916D0483200528049 /* CAContactCategoriesService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
