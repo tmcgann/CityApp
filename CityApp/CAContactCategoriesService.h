@@ -15,7 +15,6 @@
 -(void)loadStore;
 
 -(NSFetchRequest*)allContactCategories;
--(NSFetchRequest*)popular;
 -(NSPredicate*)searchForText:(NSString*)text;
 
 //-(NSPredicate*)filterByType:(BookFilter)filter;

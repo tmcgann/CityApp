@@ -90,13 +90,9 @@
 // has the sort descriptor built in
 - (NSFetchRequest *)allContactCategories {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"CAContactCategory"];
-    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"rank" ascending:YES];
-    fetchRequest.sortDescriptors = @[descriptor];
-    return fetchRequest;
-}
-
-- (NSFetchRequest *)popular {
-    NSFetchRequest *fetchRequest = [self allContactCategories];
+    NSSortDescriptor *rankDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"rank" ascending:YES];
+    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    fetchRequest.sortDescriptors = @[rankDescriptor, nameDescriptor];
     return fetchRequest;
 }
 
