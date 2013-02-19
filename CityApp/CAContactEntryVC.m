@@ -7,6 +7,7 @@
 //
 
 #import "CAContactEntryVC.h"
+#import "NSString+URLEncode.h"
 
 #define kTV_CELL_TITLE @"title"
 #define kTV_CELL_DETAIL @"detail"
@@ -18,10 +19,6 @@
 @end
 
 @implementation CAContactEntryVC
-
-@synthesize contactEntry = _contactEntry;
-@synthesize contactNameLabel = _contactNameLabel;
-@synthesize tableSections = _tableSections;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,7 +36,12 @@
     // Set navbar title
     [self.navigationItem setTitle:@"Details"];
     
-    // Set contact name label in view
+    // Set contact name icon and label
+    NSArray *iconComponents = [self.contactEntry.icon componentsSeparatedByString:@"."];
+    if (iconComponents.count == 2) {
+        UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:iconComponents[0] ofType:iconComponents[1]]];
+        self.contactEntryIcon.image = image;
+    }
     self.contactNameLabel.text = self.contactEntry.name;
     
     // initialize mutable array
@@ -52,7 +54,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -99,17 +101,83 @@
     return cell;
 }
 
-#pragma mark - Table view delegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+#warning BUG:Dysfunctional if rows/data is missing
+    switch (indexPath.row) {
+        case CAContactEntryVCActionPhone:
+        {
+            NSString *cleanedString = [[self.contactEntry.phoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
+            NSString *escapedPhoneNumber = [cleanedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", escapedPhoneNumber]];
+            [[UIApplication sharedApplication] openURL:telURL];
+            break;
+        }
+        case CAContactEntryVCActionFax:
+        {
+            NSString *cleanedString = [[self.contactEntry.fax componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
+            NSString *escapedPhoneNumber = [cleanedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", escapedPhoneNumber]];
+            [[UIApplication sharedApplication] openURL:telURL];
+            break;
+        }
+        case CAContactEntryVCActionEmail:
+        {
+            if ([MFMailComposeViewController canSendMail]) {
+                MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+                controller.mailComposeDelegate = self;
+                [controller setToRecipients:@[self.contactEntry.email]];
+                [controller setSubject:@"Greetings"];
+                [controller setMessageBody:[NSString stringWithFormat:@"%@:", self.contactEntry.name] isHTML:NO];
+                if (controller)
+                    [self presentViewController:controller animated:YES completion:nil];
+            } else {
+//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unsupported Device"
+//                                                                message:@"Sorry, your device does not support the mail composer."
+//                                                               delegate:nil
+//                                                      cancelButtonTitle:@"OK"
+//                                                      otherButtonTitles:nil];
+//                [alert show];
+            
+                // Check to see if device supports network connectivity first
+                #warning Incomplete method implementation--check for network reachability.
+                NSString *url = [NSString stringWithFormat:@"mailto:%@?subject=Greetings&body=%@:", self.contactEntry.email, [self.contactEntry.name URLEncode]];
+                [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
+            }
+            break;
+        }
+        case CAContactEntryVCActionAddress:
+        {
+            DLog(@"CAContactEntryVCActionAddress");
+            DLog(@"Will load maps and drop pin...some day.");
+            break;
+        }
+        case CAContactEntryVCActionURL:
+        {
+//            StoreWebsiteViewController *vc = [[StoreWebsiteViewController alloc] initWithNibName:@"StoreWebsiteViewController" bundle:nil website:[NSURL URLWithString:self.store.website]];
+//            [self.tabBarController.tabBar setHidden:YES];
+//            [self.navigationController setHidesBottomBarWhenPushed:YES];
+//            [self.navigationController pushViewController:vc animated:YES];
+            DLog(@"CAContactEntryVCActionURL");
+            DLog(@"Will load web view withe site...some day.");
+            break;
+        }
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error;
+{
+    if (result == MFMailComposeResultSent) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"On it's way!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    #warning Incomplete method implementation--error handling needed.
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

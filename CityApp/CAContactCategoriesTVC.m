@@ -22,9 +22,6 @@
 
 @implementation CAContactCategoriesTVC
 
-@synthesize contactCategoriesDatabase = _contactCategoriesDatabase;
-@synthesize contactCategories = _contactCategories;
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -52,42 +49,42 @@
 //    }
 //}
 
-- (void)setContactCategoriesDatabase:(UIManagedDocument *)contactCategoriesDatabase
-{
-    if (_contactCategoriesDatabase != contactCategoriesDatabase) {
-        _contactCategoriesDatabase = contactCategoriesDatabase;
-        [self useDocument];
-    }
-}
+//- (void)setContactCategoriesDatabase:(UIManagedDocument *)contactCategoriesDatabase
+//{
+//    if (_contactCategoriesDatabase != contactCategoriesDatabase) {
+//        _contactCategoriesDatabase = contactCategoriesDatabase;
+//        [self useDocument];
+//    }
+//}
 
-- (void)useDocument
-{
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.contactCategoriesDatabase.fileURL path]]) {
-        [self.contactCategoriesDatabase saveToURL:self.contactCategoriesDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-            [self setupFetchedResultsController];
-            [self fetchContactDataIntoDocument:self.contactCategoriesDatabase];
-        }];
-    } else if (self.contactCategoriesDatabase.documentState == UIDocumentStateClosed) {
-        [self.contactCategoriesDatabase openWithCompletionHandler:^(BOOL success) {
-            [self setupFetchedResultsController];
-        }];
-    } else if (self.contactCategoriesDatabase.documentState == UIDocumentStateNormal) {
-        [self setupFetchedResultsController];
-    }
-}
+//- (void)useDocument
+//{
+//    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.contactCategoriesDatabase.fileURL path]]) {
+//        [self.contactCategoriesDatabase saveToURL:self.contactCategoriesDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+//            [self setupFetchedResultsController];
+//            [self fetchContactDataIntoDocument:self.contactCategoriesDatabase];
+//        }];
+//    } else if (self.contactCategoriesDatabase.documentState == UIDocumentStateClosed) {
+//        [self.contactCategoriesDatabase openWithCompletionHandler:^(BOOL success) {
+//            [self setupFetchedResultsController];
+//        }];
+//    } else if (self.contactCategoriesDatabase.documentState == UIDocumentStateNormal) {
+//        [self setupFetchedResultsController];
+//    }
+//}
 
 - (void)setupFetchedResultsController
 {
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[[CAContactCategoriesService shared] allContactCategories] managedObjectContext:[CAObjectStore shared].context sectionNameKeyPath:nil cacheName:nil];
 }
 
-- (void)fetchContactDataIntoDocument:(UIManagedDocument *)document
-{
-    dispatch_queue_t fetchQ = dispatch_queue_create("Directory Fetcher", NULL);
-    dispatch_async(fetchQ, ^{
-        
-    });
-}
+//- (void)fetchContactDataIntoDocument:(UIManagedDocument *)document
+//{
+//    dispatch_queue_t fetchQ = dispatch_queue_create("Directory Fetcher", NULL);
+//    dispatch_async(fetchQ, ^{
+//        
+//    });
+//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -95,9 +92,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         CAContactEntriesVC *contactEntriesVC = segue.destinationViewController;
 //        CAContactCategory *cc = [self.contactCategories objectAtIndex:(NSUInteger)indexPath.row];
-        CAContactCategory *cc = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        contactEntriesVC.contactEntries = cc.contactEntries;
-        contactEntriesVC.contactCategoryName = cc.name;
+        contactEntriesVC.contactCategory = [self.fetchedResultsController objectAtIndexPath:indexPath];
     }
 }
 

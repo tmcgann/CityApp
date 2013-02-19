@@ -17,6 +17,11 @@
 		340E32A916D0483200528049 /* CAContactCategoriesService.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32A816D0483200528049 /* CAContactCategoriesService.m */; };
 		340E32B216D061C200528049 /* CAContactCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32B116D061C200528049 /* CAContactCategory.m */; };
 		340E32B516D06BD600528049 /* CAHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32B416D06BD600528049 /* CAHomeVC.m */; };
+		340E32B916D32BC000528049 /* power.png in Resources */ = {isa = PBXBuildFile; fileRef = 340E32B816D32BC000528049 /* power.png */; };
+		340E32BE16D3329000528049 /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 340E32BD16D3329000528049 /* cloud.png */; };
+		340E32C016D3469800528049 /* david.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 340E32BF16D3469800528049 /* david.jpg */; };
+		340E32C216D34ABF00528049 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340E32C116D34ABF00528049 /* MessageUI.framework */; };
+		340E32C516D34FE600528049 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32C416D34FE600528049 /* NSString+URLEncode.m */; };
 		340FE6D216B24516002FD035 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6C916B24297002FD035 /* libRestKit.a */; };
 		340FE6D816B24551002FD035 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6D416B24551002FD035 /* CFNetwork.framework */; };
 		340FE6D916B24551002FD035 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6D516B24551002FD035 /* CoreData.framework */; };
@@ -97,6 +102,12 @@
 		340E32B116D061C200528049 /* CAContactCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAContactCategory.m; sourceTree = "<group>"; };
 		340E32B316D06BD600528049 /* CAHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAHomeVC.h; sourceTree = "<group>"; };
 		340E32B416D06BD600528049 /* CAHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAHomeVC.m; sourceTree = "<group>"; };
+		340E32B816D32BC000528049 /* power.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power.png; sourceTree = "<group>"; };
+		340E32BD16D3329000528049 /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
+		340E32BF16D3469800528049 /* david.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = david.jpg; sourceTree = "<group>"; };
+		340E32C116D34ABF00528049 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		340E32C316D34FE600528049 /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
+		340E32C416D34FE600528049 /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncode.m"; sourceTree = "<group>"; };
 		340FE6BE16B24296002FD035 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		340FE6D416B24551002FD035 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		340FE6D516B24551002FD035 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -138,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				340E32C216D34ABF00528049 /* MessageUI.framework in Frameworks */,
 				340FE6D916B24551002FD035 /* CoreData.framework in Frameworks */,
 				340FE6DF16B24738002FD035 /* libxml2.dylib in Frameworks */,
 				340FE6DD16B2470D002FD035 /* QuartzCore.framework in Frameworks */,
@@ -216,6 +228,9 @@
 		34869B6C16A87C7F009FF9EF /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				340E32BF16D3469800528049 /* david.jpg */,
+				340E32BD16D3329000528049 /* cloud.png */,
+				340E32B816D32BC000528049 /* power.png */,
 				3482C63516BE563A00BC6DDE /* Taylor.jpg */,
 				3402718F16ACE5B300DDFCC6 /* TakePhoto@2x.png */,
 				3402718416ACC8E600DDFCC6 /* Default-568h@2x.png */,
@@ -245,6 +260,7 @@
 		34F97AEC16A514F900568523 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				340E32C116D34ABF00528049 /* MessageUI.framework */,
 				340FE6DE16B24738002FD035 /* libxml2.dylib */,
 				340FE6DC16B2470D002FD035 /* QuartzCore.framework */,
 				340FE6D416B24551002FD035 /* CFNetwork.framework */,
@@ -267,6 +283,8 @@
 				34F97AFD16A514F900568523 /* CAAppDelegate.m */,
 				34F97B0516A514FA00568523 /* MainStoryboard_iPhone.storyboard */,
 				34336D4E16C8AF9B00625A86 /* CityApp.xcdatamodeld */,
+				340E32C316D34FE600528049 /* NSString+URLEncode.h */,
+				340E32C416D34FE600528049 /* NSString+URLEncode.m */,
 				344DB94F16BE0EFA00412C22 /* Controllers */,
 				340FE6E016B24844002FD035 /* Models */,
 				340E32A616D0481500528049 /* CDServices */,
@@ -383,6 +401,9 @@
 				3402719016ACE5B300DDFCC6 /* TakePhoto@2x.png in Resources */,
 				340FE6E816B37BB7002FD035 /* Localizable.strings in Resources */,
 				3482C63616BE563A00BC6DDE /* Taylor.jpg in Resources */,
+				340E32B916D32BC000528049 /* power.png in Resources */,
+				340E32BE16D3329000528049 /* cloud.png in Resources */,
+				340E32C016D3469800528049 /* david.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +429,7 @@
 				340E32A916D0483200528049 /* CAContactCategoriesService.m in Sources */,
 				340E32B216D061C200528049 /* CAContactCategory.m in Sources */,
 				340E32B516D06BD600528049 /* CAHomeVC.m in Sources */,
+				340E32C516D34FE600528049 /* NSString+URLEncode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,7 +521,7 @@
 		34F97B1116A514FA00568523 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Michael McGann (MZ36756FPL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CityApp/CityApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
@@ -509,7 +531,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FCC67171-8C47-4CA2-ACE7-0B123061BC62";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -518,7 +540,7 @@
 		34F97B1216A514FA00568523 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Michael McGann (MZ36756FPL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CityApp/CityApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
@@ -528,7 +550,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FCC67171-8C47-4CA2-ACE7-0B123061BC62";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
