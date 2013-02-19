@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="CAContactCategory" representedClassName="CAContactCategory" syncable="YES">
+        <attribute name="contactCategoryId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="modified" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rank" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="contactEntries" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CAContactEntry" inverseName="contactCategory" inverseEntity="CAContactEntry" syncable="YES"/>
+    </entity>
+    <entity name="CAContactEntry" representedClassName="CAContactEntry" syncable="YES">
+        <attribute name="addressOne" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addressTwo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactCategoryId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactEntryId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fax" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hours" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="modified" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contactCategory" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CAContactCategory" inverseName="contactEntries" inverseEntity="CAContactCategory" syncable="YES"/>
+    </entity>
+    <entity name="CAReport" syncable="YES"/>
+    <elements>
+        <element name="CAContactCategory" positionX="160" positionY="192" width="128" height="150"/>
+        <element name="CAContactEntry" positionX="-0" positionY="192" width="128" height="315"/>
+        <element name="CAReport" positionX="-162" positionY="189" width="128" height="45"/>
+    </elements>
+</model>

@@ -7,6 +7,7 @@
 //
 
 #import "CAContactEntryVC.h"
+#import "NSString+URLEncode.h"
 
 #define kTV_CELL_TITLE @"title"
 #define kTV_CELL_DETAIL @"detail"
@@ -14,17 +15,10 @@
 @interface CAContactEntryVC ()
 
 @property (strong, nonatomic) NSMutableArray *tableSections;
-//@property (strong, nonatomic) NSMutableDictionary *contactDetailMap;
 
 @end
 
 @implementation CAContactEntryVC
-
-@synthesize contactEntry = _contactEntry;
-@synthesize contactNameLabel = _contactNameLabel;
-
-@synthesize tableSections = _tableSections;
-//@synthesize contactDetailMap = _contactDetailMap;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,8 +33,15 @@
 {
     [super viewDidLoad];
     
+    // Set navbar title
     [self.navigationItem setTitle:@"Details"];
     
+    // Set contact name icon and label
+    NSArray *iconComponents = [self.contactEntry.icon componentsSeparatedByString:@"."];
+    if (iconComponents.count == 2) {
+        UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:iconComponents[0] ofType:iconComponents[1]]];
+        self.contactEntryIcon.image = image;
+    }
     self.contactNameLabel.text = self.contactEntry.name;
     
     // initialize mutable array
@@ -53,7 +54,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -62,58 +63,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    NSInteger i = 0;
-//    
-//    if (![self.contactEntry.phoneNumber isEqualToString:@""]) {
-////        [self.tableSections addObject:@"Phone Numbers"];
-//        i++;
-//    }
-//    if (![self.contactEntry.fax isEqualToString:@""]) {
-////        [self.tableSections addObject:@"Phone Number"];
-//        i++;
-//    }
-//    if (![self.contactEntry.email isEqualToString:@""]) {
-//        i++;
-//    }
-//    if (![self.contactEntry.addressOne isEqualToString:@""]) {
-//        i++;
-//    }
-//    if (![self.contactEntry.url isEqualToString:@""]) {
-//        i++;
-//    }
-//    if (![self.contactEntry.hours isEqualToString:@""]) {
-//        i++;
-//    }
-//    if (![self.contactEntry.description isEqualToString:@""]) {
-//        i++;
-//    }
-//    
-//    return i;
-    
-//    if (![self.contactEntry.phoneNumber isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.phoneNumber forKey:@"Phone Number"];
-//    }
-//    if (![self.contactEntry.fax isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.fax forKey:@"Fax"];
-//    }
-//    if (![self.contactEntry.email isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.email forKey:@"Email"];
-//    }
-//    if (![self.contactEntry.addressOne isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.addressOne forKey:@"Address"];
-//    }
-//    if (![self.contactEntry.url isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.url forKey:@"URL"];
-//    }
-//    if (![self.contactEntry.hours isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.hours forKey:@"Hours"];
-//    }
-//    if (![self.contactEntry.description isEqualToString:@""]) {
-//        [self.contactDetailMap setValue:self.contactEntry.description forKey:@"Description"];
-//    }
-//    
-//    return self.contactDetailMap.count;
-    
     if (![self.contactEntry.phoneNumber isEqualToString:@""]) {
         [self.tableSections addObject:@{kTV_CELL_TITLE:@"Phone", kTV_CELL_DETAIL:self.contactEntry.phoneNumber}];
     }
@@ -133,13 +82,10 @@
         [self.tableSections addObject:@{kTV_CELL_TITLE:@"Hours", kTV_CELL_DETAIL:self.contactEntry.hours}];
     }
     if (![self.contactEntry.description isEqualToString:@""]) {
-        [self.tableSections addObject:@{kTV_CELL_TITLE:@"Description", kTV_CELL_DETAIL:self.contactEntry.description}];
+        [self.tableSections addObject:@{kTV_CELL_TITLE:@"Description", kTV_CELL_DETAIL:self.contactEntry.descriptor}];
     }
     
-    DLog(@"Array Count: %d", self.tableSections.count);
-    
     return self.tableSections.count;
-
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -155,17 +101,83 @@
     return cell;
 }
 
-#pragma mark - Table view delegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+#warning BUG:Dysfunctional if rows/data is missing
+    switch (indexPath.row) {
+        case CAContactEntryVCActionPhone:
+        {
+            NSString *cleanedString = [[self.contactEntry.phoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
+            NSString *escapedPhoneNumber = [cleanedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", escapedPhoneNumber]];
+            [[UIApplication sharedApplication] openURL:telURL];
+            break;
+        }
+        case CAContactEntryVCActionFax:
+        {
+            NSString *cleanedString = [[self.contactEntry.fax componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
+            NSString *escapedPhoneNumber = [cleanedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", escapedPhoneNumber]];
+            [[UIApplication sharedApplication] openURL:telURL];
+            break;
+        }
+        case CAContactEntryVCActionEmail:
+        {
+            if ([MFMailComposeViewController canSendMail]) {
+                MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+                controller.mailComposeDelegate = self;
+                [controller setToRecipients:@[self.contactEntry.email]];
+                [controller setSubject:@"Greetings"];
+                [controller setMessageBody:[NSString stringWithFormat:@"%@:", self.contactEntry.name] isHTML:NO];
+                if (controller)
+                    [self presentViewController:controller animated:YES completion:nil];
+            } else {
+//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unsupported Device"
+//                                                                message:@"Sorry, your device does not support the mail composer."
+//                                                               delegate:nil
+//                                                      cancelButtonTitle:@"OK"
+//                                                      otherButtonTitles:nil];
+//                [alert show];
+            
+                // Check to see if device supports network connectivity first
+                #warning Incomplete method implementation--check for network reachability.
+                NSString *url = [NSString stringWithFormat:@"mailto:%@?subject=Greetings&body=%@:", self.contactEntry.email, [self.contactEntry.name URLEncode]];
+                [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
+            }
+            break;
+        }
+        case CAContactEntryVCActionAddress:
+        {
+            DLog(@"CAContactEntryVCActionAddress");
+            DLog(@"Will load maps and drop pin...some day.");
+            break;
+        }
+        case CAContactEntryVCActionURL:
+        {
+//            StoreWebsiteViewController *vc = [[StoreWebsiteViewController alloc] initWithNibName:@"StoreWebsiteViewController" bundle:nil website:[NSURL URLWithString:self.store.website]];
+//            [self.tabBarController.tabBar setHidden:YES];
+//            [self.navigationController setHidesBottomBarWhenPushed:YES];
+//            [self.navigationController pushViewController:vc animated:YES];
+            DLog(@"CAContactEntryVCActionURL");
+            DLog(@"Will load web view withe site...some day.");
+            break;
+        }
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error;
+{
+    if (result == MFMailComposeResultSent) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"On it's way!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    #warning Incomplete method implementation--error handling needed.
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

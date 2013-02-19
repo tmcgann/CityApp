@@ -11,6 +11,8 @@
 #import "CAContactCategory.h"
 #import "CAContactEntry.h"
 #import "CAContactEntriesVC.h"
+#import "CAContactCategoriesService.h"
+#import "CAObjectStore.h"
 
 #define NUMBER_OF_SECTIONS 1;
 
@@ -19,8 +21,6 @@
 @end
 
 @implementation CAContactCategoriesTVC
-
-@synthesize contactCategories = _contactCategories;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,96 +35,68 @@
 {
     [super viewDidLoad];
     
-    [self pullContactCategories];
-    
-    // Set the back button title
-//    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:nil action:nil];
-//    [self.navigationItem setBackBarButtonItem:backButton];
+    // Load objects via Core Data/RestKit
+    [[CAContactCategoriesService shared] loadStore];
+    [self setupFetchedResultsController];
 }
 
-- (void)didReceiveMemoryWarning
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    if (!self.contactCategoriesDatabase) {
+//        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+//        url = [url URLByAppendingPathComponent:@"Default CA Database"];
+//        self.contactCategoriesDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
+//    }
+//}
+
+//- (void)setContactCategoriesDatabase:(UIManagedDocument *)contactCategoriesDatabase
+//{
+//    if (_contactCategoriesDatabase != contactCategoriesDatabase) {
+//        _contactCategoriesDatabase = contactCategoriesDatabase;
+//        [self useDocument];
+//    }
+//}
+
+//- (void)useDocument
+//{
+//    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.contactCategoriesDatabase.fileURL path]]) {
+//        [self.contactCategoriesDatabase saveToURL:self.contactCategoriesDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+//            [self setupFetchedResultsController];
+//            [self fetchContactDataIntoDocument:self.contactCategoriesDatabase];
+//        }];
+//    } else if (self.contactCategoriesDatabase.documentState == UIDocumentStateClosed) {
+//        [self.contactCategoriesDatabase openWithCompletionHandler:^(BOOL success) {
+//            [self setupFetchedResultsController];
+//        }];
+//    } else if (self.contactCategoriesDatabase.documentState == UIDocumentStateNormal) {
+//        [self setupFetchedResultsController];
+//    }
+//}
+
+- (void)setupFetchedResultsController
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[[CAContactCategoriesService shared] allContactCategories] managedObjectContext:[CAObjectStore shared].context sectionNameKeyPath:nil cacheName:nil];
 }
 
-- (void)pullContactCategories
-{
-    // RestKit debug output
-    //RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
-    //RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
-    
-    // Object mappings
-    RKObjectMapping *contactEntryMapping = [RKObjectMapping mappingForClass:[CAContactEntry class]];
-    [contactEntryMapping addAttributeMappingsFromDictionary:@{
-     @"id" : @"contactEntryId",
-     @"name" : @"name",
-     @"phone_number" : @"phoneNumber",
-     @"email" : @"email",
-     @"address_one" : @"addressOne",
-     @"address_two" : @"addressTwo",
-     @"city" : @"city",
-     @"state" : @"state",
-     @"zip" : @"zip",
-     @"type" : @"type",
-     @"icon" : @"icon",
-     @"description" : @"description",
-     @"fax" : @"fax",
-     @"hours" : @"hours",
-     @"url" : @"url",
-     @"contact_category_id" : @"contactCategoryId",
-     @"modified" : @"modified"
-     }];
-    
-    RKObjectMapping *contactCategoryMapping = [RKObjectMapping mappingForClass:[CAContactCategory class]];
-    [contactCategoryMapping addAttributeMappingsFromDictionary:@{
-     @"id" : @"contactCategoryId",
-     @"name" : @"name",
-     @"icon" : @"icon",
-     @"description" : @"description",
-     @"rank" : @"rank",
-     @"modified" : @"modified"
-     }];
-    
-    [contactCategoryMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"contact_entries" toKeyPath:@"contactEntries" withMapping:contactEntryMapping]];
-    
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:contactCategoryMapping pathPattern:nil keyPath:@"contact_categories" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    
-    NSURL *URL = [NSURL URLWithString:@"http://taumu.com/contact_categories.json"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[ responseDescriptor ]];
-    [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        RKLogInfo(@"Load collection of Contact Categories: %@", mappingResult.array);
-        self.contactCategories = mappingResult.array;
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        RKLogError(@"Operation failed with error: %@", error);
-    }];
-    
-    [objectRequestOperation start];
-}
+//- (void)fetchContactDataIntoDocument:(UIManagedDocument *)document
+//{
+//    dispatch_queue_t fetchQ = dispatch_queue_create("Directory Fetcher", NULL);
+//    dispatch_async(fetchQ, ^{
+//        
+//    });
+//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"pushToContactEntries"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         CAContactEntriesVC *contactEntriesVC = segue.destinationViewController;
-        CAContactCategory *cc = [self.contactCategories objectAtIndex:(NSUInteger)indexPath.row];
-        contactEntriesVC.contactEntries = cc.contactEntries;
-        contactEntriesVC.contactCategory = cc.name;
+//        CAContactCategory *cc = [self.contactCategories objectAtIndex:(NSUInteger)indexPath.row];
+        contactEntriesVC.contactCategory = [self.fetchedResultsController objectAtIndexPath:indexPath];
     }
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return NUMBER_OF_SECTIONS;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.contactCategories.count;
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -132,7 +104,8 @@
     static NSString *CellIdentifier = @"CategoryCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    CAContactCategory *cc = [self.contactCategories objectAtIndex:(NSUInteger)indexPath.row];
+//    CAContactCategory *cc = [self.contactCategories objectAtIndex:(NSUInteger)indexPath.row];
+    CAContactCategory *cc = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = cc.name;
     
     return cell;

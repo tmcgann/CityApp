@@ -18,11 +18,6 @@
 
 @implementation CAContactEntriesVC
 
-@synthesize topView = _topView;
-@synthesize tableView = _tableView;
-@synthesize contactEntries = _contactEntries;
-@synthesize contactCategory = _contactCategory;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,7 +32,15 @@
     [super viewDidLoad];
     
     // Set title in nav bar to Contact Category name
-    [self.navigationItem setTitle:self.contactCategory];
+    [self.navigationItem setTitle:self.contactCategory.name];
+    
+    // Load icon and description
+    NSArray *iconComponents = [self.contactCategory.icon componentsSeparatedByString:@"."];
+    if (iconComponents.count == 2) {
+        UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:iconComponents[0] ofType:iconComponents[1]]];
+        self.contactCategoryIcon.image = image;
+    }
+    self.contactCategoryDescription.text = self.contactCategory.descriptor;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -51,19 +54,17 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     if ([segue.identifier isEqualToString:@"pushToContactEntry"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         CAContactEntryVC *contactEntryVC = segue.destinationViewController;
-        CAContactEntry *ce = [self.contactEntries objectAtIndex:(NSUInteger)indexPath.row];
+        CAContactEntry *ce = [self.contactCategory.contactEntries objectAtIndex:(NSUInteger)indexPath.row];
         contactEntryVC.contactEntry = ce;
+        
+        // Set back button title
+        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:self.contactCategory.name style:UIBarButtonItemStyleBordered target: nil action: nil];
+        [self.navigationItem setBackBarButtonItem:backButton];
     }
 }
 
@@ -76,7 +77,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.contactEntries.count;
+    return self.contactCategory.contactEntries.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,7 +86,7 @@
     static NSString *CellIdentifier = @"ContactCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    CAContactEntry *ce = [self.contactEntries objectAtIndex:(NSUInteger)indexPath.row];
+    CAContactEntry *ce = [self.contactCategory.contactEntries objectAtIndex:(NSUInteger)indexPath.row];
     cell.textLabel.text = ce.name;
     
     return cell;

@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="693" y="70"/>
         </scene>
-        <!--View Controller - Home-->
+        <!--HomeVC - Home-->
         <scene sceneID="hjs-eD-evC">
             <objects>
-                <viewController title="Home" id="fcG-0S-pqT" sceneMemberID="viewController">
+                <viewController title="Home" id="fcG-0S-pqT" customClass="CAHomeVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="feK-dh-QXH">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -340,13 +340,35 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BfF-p4-4Fv">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKc-Zl-4Dk">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="88" id="PJc-bO-UZ0"/>
+                                            <constraint firstAttribute="height" constant="80" id="aaD-ID-kuV"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ue-ZA-uFD">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="89" id="fwD-Fw-e46"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="5Ue-ZA-uFD" firstAttribute="leading" secondItem="SKc-Zl-4Dk" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="EJk-JM-7Lo"/>
+                                    <constraint firstItem="SKc-Zl-4Dk" firstAttribute="top" secondItem="BfF-p4-4Fv" secondAttribute="top" constant="20" symbolic="YES" type="default" id="GF7-nf-6JW"/>
+                                    <constraint firstItem="SKc-Zl-4Dk" firstAttribute="leading" secondItem="BfF-p4-4Fv" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="Jln-Ed-PQ3"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Ue-ZA-uFD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="bYJ-aL-JQ6"/>
+                                    <constraint firstAttribute="bottom" secondItem="5Ue-ZA-uFD" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="hJ6-oT-eOU"/>
+                                    <constraint firstAttribute="bottom" secondItem="SKc-Zl-4Dk" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="kSz-OL-A9p"/>
+                                </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="XDJ-9X-lv7">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="376" id="uC7-wE-8Lr"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ContactCell" textLabel="Dwt-jV-qVc" style="IBUITableViewCellStyleDefault" id="G6B-Lx-d9U">
                                         <rect key="frame" x="0.0" y="46" width="320" height="46"/>
@@ -376,7 +398,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XDJ-9X-lv7" firstAttribute="top" secondItem="BfF-p4-4Fv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="JvQ-tk-Y9E"/>
+                            <constraint firstItem="XDJ-9X-lv7" firstAttribute="top" secondItem="BfF-p4-4Fv" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="JvQ-tk-Y9E"/>
                             <constraint firstItem="XDJ-9X-lv7" firstAttribute="trailing" secondItem="lQS-9i-TN5" secondAttribute="trailing" type="default" id="NSB-vy-Cmo"/>
                             <constraint firstItem="XDJ-9X-lv7" firstAttribute="bottom" secondItem="lQS-9i-TN5" secondAttribute="bottom" type="default" id="QiY-Y3-BTC"/>
                             <constraint firstItem="BfF-p4-4Fv" firstAttribute="leading" secondItem="lQS-9i-TN5" secondAttribute="leading" type="default" id="cmP-Kr-CEF"/>
@@ -389,6 +411,8 @@
                         <barButtonItem key="backBarButtonItem" title="Directory" id="zj8-cb-YBq"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="contactCategoryDescription" destination="5Ue-ZA-uFD" id="x7i-ob-Vu7"/>
+                        <outlet property="contactCategoryIcon" destination="SKc-Zl-4Dk" id="1yz-YU-yrD"/>
                         <outlet property="tableView" destination="XDJ-9X-lv7" id="1nk-Wq-qWf"/>
                         <outlet property="topView" destination="BfF-p4-4Fv" id="sXG-OP-gEq"/>
                     </connections>
@@ -490,6 +514,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="sYE-q3-LKu"/>
                     <connections>
+                        <outlet property="contactEntryIcon" destination="QMM-UW-3FB" id="h9N-BG-LmK"/>
                         <outlet property="contactNameLabel" destination="ln1-HB-rGE" id="zj4-NC-pqK"/>
                     </connections>
                 </viewController>
@@ -502,35 +527,6 @@
         <image name="TakePhoto@2x.png" width="640" height="640"/>
         <image name="Taylor.jpg" width="640" height="426"/>
     </resources>
-    <classes>
-        <class className="CAContactCategoriesTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactCategoriesTVC.h"/>
-        </class>
-        <class className="CAContactEntriesVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactEntriesVC.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="CAContactEntryVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactEntryVC.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contactNameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CANewReportVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportVC.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="submitButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="takePhotoButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
