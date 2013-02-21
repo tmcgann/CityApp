@@ -10,6 +10,14 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import "CAContactEntry.h"
 
+#define kCAContactEntryDetailPhone @"Phone"
+#define kCAContactEntryDetailFax @"Fax"
+#define kCAContactEntryDetailEmail @"Email"
+#define kCAContactEntryDetailAddress @"Address"
+#define kCAContactEntryDetailURL @"URL"
+#define kCAContactEntryDetailHours @"Hours"
+#define kCAContactEntryDetailDescription @"Description"
+
 typedef enum {
 	/** Makes a phone call */
 	CAContactEntryVCActionPhone,
@@ -28,5 +36,6 @@ typedef enum {
 @property (strong, nonatomic) CAContactEntry *contactEntry;
 @property (strong, nonatomic) IBOutlet UIImageView *contactEntryIcon;
 @property (weak, nonatomic) IBOutlet UILabel *contactNameLabel;
+@property (strong, nonatomic) IBOutlet UITextView *contactEntryDescriptor;
 
 @end

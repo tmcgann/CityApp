@@ -153,7 +153,9 @@
                             <constraint firstItem="Kb7-kr-f5y" firstAttribute="trailing" secondItem="feK-dh-QXH" secondAttribute="trailing" type="default" id="z3d-8L-6u8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="City Central" id="XuB-o2-MhS"/>
+                    <navigationItem key="navigationItem" title="City Central" id="XuB-o2-MhS">
+                        <barButtonItem key="leftBarButtonItem" title="Cog" id="uaO-Zb-lh3"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVb-Zy-u2x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -341,34 +343,36 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BfF-p4-4Fv">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKc-Zl-4Dk">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blake.png" translatesAutoresizingMaskIntoConstraints="NO" id="SKc-Zl-4Dk">
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="88" id="OHG-ex-3Ug"/>
                                             <constraint firstAttribute="width" constant="88" id="PJc-bO-UZ0"/>
-                                            <constraint firstAttribute="height" constant="80" id="aaD-ID-kuV"/>
                                         </constraints>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ue-ZA-uFD">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="89" id="fwD-Fw-e46"/>
+                                            <constraint firstAttribute="height" constant="86" id="koW-aH-ige"/>
                                         </constraints>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <mutableString key="text">Chocolate cake powder caramels soufflé cheesecake faworki liquorice muffin wafer. Tootsie roll dragée jelly beans brownie wypas. Lollipop bonbon oat cake halvah bonbon. Gummies muffin candy. Chocolate bar sugar plum caramels. Cheesecake gummi bears jelly beans dessert donut cake bonbon powder faworki. Chocolate bar marzipan liquorice. Cake macaroon lemon drops dragée tootsie roll jelly beans. Jelly sweet roll sesame snaps chupa chups pudding pie pudding biscuit. Ice cream sugar plum jujubes tootsie roll pudding icing tiramisu pastry. Cookie wypas sweet roll gummies toffee fruitcake carrot cake chocolate. Applicake cotton candy gingerbread apple pie liquorice wafer. Fruitcake halvah cookie.</mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="5Ue-ZA-uFD" firstAttribute="top" secondItem="BfF-p4-4Fv" secondAttribute="top" constant="20" symbolic="YES" type="default" id="E2m-eF-HOp"/>
                                     <constraint firstItem="5Ue-ZA-uFD" firstAttribute="leading" secondItem="SKc-Zl-4Dk" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="EJk-JM-7Lo"/>
                                     <constraint firstItem="SKc-Zl-4Dk" firstAttribute="top" secondItem="BfF-p4-4Fv" secondAttribute="top" constant="20" symbolic="YES" type="default" id="GF7-nf-6JW"/>
                                     <constraint firstItem="SKc-Zl-4Dk" firstAttribute="leading" secondItem="BfF-p4-4Fv" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="Jln-Ed-PQ3"/>
                                     <constraint firstAttribute="trailing" secondItem="5Ue-ZA-uFD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="bYJ-aL-JQ6"/>
-                                    <constraint firstAttribute="bottom" secondItem="5Ue-ZA-uFD" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="hJ6-oT-eOU"/>
-                                    <constraint firstAttribute="bottom" secondItem="SKc-Zl-4Dk" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="kSz-OL-A9p"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="XDJ-9X-lv7">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="376" id="CRb-7B-wed"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ContactCell" textLabel="Dwt-jV-qVc" style="IBUITableViewCellStyleDefault" id="G6B-Lx-d9U">
                                         <rect key="frame" x="0.0" y="46" width="320" height="46"/>
@@ -479,41 +483,47 @@
                             </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Taylor.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="QMM-UW-3FB">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="ExI-nZ-gXm"/>
+                                    <constraint firstAttribute="height" constant="100" id="bX5-r3-T0X"/>
                                     <constraint firstAttribute="width" constant="100" id="hLY-a9-5Mq"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="172" translatesAutoresizingMaskIntoConstraints="NO" id="ln1-HB-rGE">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Michael Taylor David Gilbert McGann Lenz Sara" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="172" translatesAutoresizingMaskIntoConstraints="NO" id="ln1-HB-rGE">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="LZs-rW-da0"/>
+                                    <constraint firstAttribute="height" constant="43" id="gEx-bH-cl1"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Michael Taylor David Gilbert McGann Lenz Sara">
-                                        <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <font key="NSFont" size="17" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDh-he-evG">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="09b-Ai-Mrm"/>
+                                </constraints>
+                                <mutableString key="text">Chocolate cake powder caramels soufflé cheesecake faworki liquorice muffin wafer. Tootsie roll dragée jelly beans brownie wypas. Lollipop bonbon oat cake halvah bonbon. Gummies muffin candy. Chocolate bar sugar plum caramels. Cheesecake gummi bears jelly beans dessert donut cake bonbon powder faworki. Chocolate bar marzipan liquorice. Cake macaroon lemon drops dragée tootsie roll jelly beans. Jelly sweet roll sesame snaps chupa chups pudding pie pudding biscuit. Ice cream sugar plum jujubes tootsie roll pudding icing tiramisu pastry. Cookie wypas sweet roll gummies toffee fruitcake carrot cake chocolate. Applicake cotton candy gingerbread apple pie liquorice wafer. Fruitcake halvah cookie.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ln1-HB-rGE" firstAttribute="centerY" secondItem="QMM-UW-3FB" secondAttribute="centerY" type="default" id="L5K-Bc-Yjv"/>
+                            <constraint firstItem="yDh-he-evG" firstAttribute="top" secondItem="4pM-UH-Pa5" secondAttribute="top" constant="54" id="3jV-A3-UEW"/>
+                            <constraint firstAttribute="trailing" secondItem="yDh-he-evG" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="AiE-Ue-CPF"/>
+                            <constraint firstItem="ln1-HB-rGE" firstAttribute="top" secondItem="QMM-UW-3FB" secondAttribute="top" type="default" id="J5j-nQ-XKP"/>
+                            <constraint firstItem="QMM-UW-3FB" firstAttribute="top" secondItem="4pM-UH-Pa5" secondAttribute="top" constant="12" id="RdT-MN-ruP"/>
                             <constraint firstItem="JBm-4X-mIX" firstAttribute="trailing" secondItem="4pM-UH-Pa5" secondAttribute="trailing" type="default" id="aVc-xQ-ld1"/>
-                            <constraint firstItem="QMM-UW-3FB" firstAttribute="top" secondItem="4pM-UH-Pa5" secondAttribute="top" constant="12" id="fnl-41-ovy"/>
-                            <constraint firstItem="ln1-HB-rGE" firstAttribute="leading" secondItem="QMM-UW-3FB" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="hOC-wm-sOe"/>
                             <constraint firstAttribute="trailing" secondItem="ln1-HB-rGE" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="hQW-8y-Oa5"/>
                             <constraint firstItem="JBm-4X-mIX" firstAttribute="leading" secondItem="4pM-UH-Pa5" secondAttribute="leading" type="default" id="mnf-1f-kbR"/>
                             <constraint firstItem="QMM-UW-3FB" firstAttribute="leading" secondItem="4pM-UH-Pa5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="uGv-04-V87"/>
+                            <constraint firstItem="ln1-HB-rGE" firstAttribute="leading" secondItem="QMM-UW-3FB" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="uTo-A1-D9n"/>
                             <constraint firstItem="JBm-4X-mIX" firstAttribute="top" secondItem="4pM-UH-Pa5" secondAttribute="top" constant="125" id="uUq-2g-C0x"/>
                             <constraint firstItem="JBm-4X-mIX" firstAttribute="bottom" secondItem="4pM-UH-Pa5" secondAttribute="bottom" type="default" id="ywM-FT-Sku"/>
+                            <constraint firstItem="yDh-he-evG" firstAttribute="leading" secondItem="QMM-UW-3FB" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="zLQ-i7-Aoc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sYE-q3-LKu"/>
                     <connections>
+                        <outlet property="contactEntryDescriptor" destination="yDh-he-evG" id="ar2-Rb-y52"/>
                         <outlet property="contactEntryIcon" destination="QMM-UW-3FB" id="h9N-BG-LmK"/>
                         <outlet property="contactNameLabel" destination="ln1-HB-rGE" id="zj4-NC-pqK"/>
                     </connections>
@@ -526,7 +536,47 @@
     <resources>
         <image name="TakePhoto@2x.png" width="640" height="640"/>
         <image name="Taylor.jpg" width="640" height="426"/>
+        <image name="blake.png" width="400" height="350"/>
     </resources>
+    <classes>
+        <class className="CAContactCategoriesTVC" superclassName="CACoreDataTVC">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactCategoriesTVC.h"/>
+        </class>
+        <class className="CAContactEntriesVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactEntriesVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contactCategoryDescription" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="contactCategoryIcon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="CAContactEntryVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactEntryVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contactEntryDescriptor" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="contactEntryIcon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="contactNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CACoreDataTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CACoreDataTVC.h"/>
+        </class>
+        <class className="CAHomeVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAHomeVC.h"/>
+        </class>
+        <class className="CANewReportVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="submitButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="takePhotoButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

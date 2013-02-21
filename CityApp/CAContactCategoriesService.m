@@ -30,7 +30,7 @@
      @"id" : @"contactCategoryId",
      @"name" : @"name",
      @"icon" : @"icon",
-     @"description" : @"descriptor",
+     @"descriptor" : @"descriptor",
      @"rank" : @"rank",
      @"modified" : @"modified"
      }];
@@ -49,7 +49,7 @@
      @"zip" : @"zip",
      @"type" : @"type",
      @"icon" : @"icon",
-     @"description" : @"descriptor",
+     @"descriptor" : @"descriptor",
      @"fax" : @"fax",
      @"hours" : @"hours",
      @"url" : @"url",
