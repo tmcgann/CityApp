@@ -13,8 +13,8 @@
 #import "CAContactEntriesVC.h"
 #import "CAContactCategoriesService.h"
 #import "CAObjectStore.h"
-
-#define NUMBER_OF_SECTIONS 1;
+#import "TMImageSync.h"
+#import "CASettings.h"
 
 @interface CAContactCategoriesTVC ()
 
@@ -38,6 +38,44 @@
     // Load objects via Core Data/RestKit
     [[CAContactCategoriesService shared] loadStore];
     [self setupFetchedResultsController];
+    
+    // Load images for all the contact categories (not the contact entries)
+#warning BUG: This doesn't work very well if at all the first time the app loads
+    [self syncIcons];
+}
+
+- (void)setupFetchedResultsController
+{
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[[CAContactCategoriesService shared] allContactCategories] managedObjectContext:[CAObjectStore shared].context sectionNameKeyPath:nil cacheName:nil];
+}
+
+#define IMAGE_PLIST_FILENAME @"ImageTimestamp.plist"
+
+- (void)syncIcons {
+//    NSMutableDictionary *imageTimestamps = [TMImageFetcher fetchImageTimestampsFromPlist:IMAGE_PLIST_FILENAME].mutableCopy;
+    TMImageSync *sharedSync = [TMImageSync sharedSync];
+    sharedSync.remoteURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", SERVER_URL, IMAGE_CONTROLLER_PATH]];
+    sharedSync.plistName = IMAGE_PLIST_FILENAME;
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_group_t group = dispatch_group_create();
+    
+    for (CAContactCategory *cc in self.fetchedResultsController.fetchedObjects) {
+        DLog(@"Icon: %@; Modified: %@", cc.icon, cc.modified);
+        if (![cc.icon isEqualToString:@""]) {
+            // Add a task to the group
+            dispatch_group_async(group, queue, ^{
+               [sharedSync syncImage:cc.icon withTimestamp:cc.modified]; // As of now, just checking to see if parent was modified 
+            });
+        }
+    }
+    
+    // Cannot make any more forward progress until threads finish
+    // wait on the group to block the current thread.
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+    
+    // Update image timestamp record (plist)
+    
 }
 
 //- (void)viewWillAppear:(BOOL)animated
@@ -72,11 +110,6 @@
 //        [self setupFetchedResultsController];
 //    }
 //}
-
-- (void)setupFetchedResultsController
-{
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[[CAContactCategoriesService shared] allContactCategories] managedObjectContext:[CAObjectStore shared].context sectionNameKeyPath:nil cacheName:nil];
-}
 
 //- (void)fetchContactDataIntoDocument:(UIManagedDocument *)document
 //{

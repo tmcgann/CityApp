@@ -9,7 +9,6 @@
 #import "CAContactCategoriesService.h"
 #import <RestKit/RestKit.h>
 #import "CAObjectStore.h"
-#import "CAContactEntry+RK.h"
 
 @implementation CAContactCategoriesService
 

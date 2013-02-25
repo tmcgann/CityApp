@@ -9,6 +9,7 @@
 #import "CAContactEntriesVC.h"
 #import "CAContactEntryVC.h"
 #import "CAContactEntry.h"
+#import "TMImageSync.h"
 
 #define NUMBER_OF_SECTIONS 1;
 
@@ -37,7 +38,8 @@
     // Load icon and description
     NSArray *iconComponents = [self.contactCategory.icon componentsSeparatedByString:@"."];
     if (iconComponents.count == 2) {
-        UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:iconComponents[0] ofType:iconComponents[1]]];
+        NSString *imagePath = [NSString stringWithFormat:@"%@%@", [TMImageSync sharedSync].imagesDir.path, self.contactCategory.icon];
+        UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
         self.contactCategoryIcon.image = image;
     }
     self.contactCategoryDescription.text = self.contactCategory.descriptor;

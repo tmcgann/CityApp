@@ -24,6 +24,9 @@
 		340E32C516D34FE600528049 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32C416D34FE600528049 /* NSString+URLEncode.m */; };
 		340E32CE16D54F9E00528049 /* CAWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32CD16D54F9E00528049 /* CAWebVC.m */; };
 		340E32D116D5783200528049 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32D016D5783200528049 /* MBProgressHUD.m */; };
+		340E32D716D9309B00528049 /* TMImageFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32D616D9309B00528049 /* TMImageFetcher.m */; };
+		340E32DA16D9804900528049 /* NSDate+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32D916D9804900528049 /* NSDate+Compare.m */; };
+		340E32E316DAFDA600528049 /* TMImageSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32E216DAFDA600528049 /* TMImageSync.m */; };
 		340FE6D216B24516002FD035 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6C916B24297002FD035 /* libRestKit.a */; };
 		340FE6D816B24551002FD035 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6D416B24551002FD035 /* CFNetwork.framework */; };
 		340FE6D916B24551002FD035 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340FE6D516B24551002FD035 /* CoreData.framework */; };
@@ -34,8 +37,6 @@
 		340FE6E816B37BB7002FD035 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 340FE6E716B37BB7002FD035 /* Localizable.strings */; };
 		34336D5016C8AF9B00625A86 /* CityApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34336D4E16C8AF9B00625A86 /* CityApp.xcdatamodeld */; };
 		34336D5F16C8B52600625A86 /* CAContactEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 34336D5E16C8B52600625A86 /* CAContactEntry.m */; };
-		34336D6216C8B8A200625A86 /* CAContactEntry+RK.m in Sources */ = {isa = PBXBuildFile; fileRef = 34336D6116C8B8A200625A86 /* CAContactEntry+RK.m */; };
-		34336D6516C8B8B700625A86 /* CAContactCategory+RK.m in Sources */ = {isa = PBXBuildFile; fileRef = 34336D6416C8B8B700625A86 /* CAContactCategory+RK.m */; };
 		34336D6B16CDFFFF00625A86 /* CACoreDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34336D6A16CDFFFF00625A86 /* CACoreDataTVC.m */; };
 		344DB95516BE156100412C22 /* CAContactEntriesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 344DB95416BE156100412C22 /* CAContactEntriesVC.m */; };
 		3482C63116BE4B6100BC6DDE /* CAContactEntryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3482C63016BE4B6100BC6DDE /* CAContactEntryVC.m */; };
@@ -114,6 +115,13 @@
 		340E32CD16D54F9E00528049 /* CAWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAWebVC.m; sourceTree = "<group>"; };
 		340E32CF16D5783200528049 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		340E32D016D5783200528049 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		340E32D516D9309B00528049 /* TMImageFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMImageFetcher.h; sourceTree = "<group>"; };
+		340E32D616D9309B00528049 /* TMImageFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMImageFetcher.m; sourceTree = "<group>"; };
+		340E32D816D9804900528049 /* NSDate+Compare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Compare.h"; sourceTree = "<group>"; };
+		340E32D916D9804900528049 /* NSDate+Compare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Compare.m"; sourceTree = "<group>"; };
+		340E32DB16DAC5E700528049 /* CASettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CASettings.h; sourceTree = "<group>"; };
+		340E32E116DAFDA600528049 /* TMImageSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMImageSync.h; sourceTree = "<group>"; };
+		340E32E216DAFDA600528049 /* TMImageSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMImageSync.m; sourceTree = "<group>"; };
 		340FE6BE16B24296002FD035 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		340FE6D416B24551002FD035 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		340FE6D516B24551002FD035 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -126,10 +134,6 @@
 		34336D4F16C8AF9B00625A86 /* CityApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CityApp.xcdatamodel; sourceTree = "<group>"; };
 		34336D5D16C8B52600625A86 /* CAContactEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAContactEntry.h; sourceTree = "<group>"; };
 		34336D5E16C8B52600625A86 /* CAContactEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAContactEntry.m; sourceTree = "<group>"; };
-		34336D6016C8B8A200625A86 /* CAContactEntry+RK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAContactEntry+RK.h"; sourceTree = "<group>"; };
-		34336D6116C8B8A200625A86 /* CAContactEntry+RK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAContactEntry+RK.m"; sourceTree = "<group>"; };
-		34336D6316C8B8B700625A86 /* CAContactCategory+RK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAContactCategory+RK.h"; sourceTree = "<group>"; };
-		34336D6416C8B8B700625A86 /* CAContactCategory+RK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAContactCategory+RK.m"; sourceTree = "<group>"; };
 		34336D6916CDFFFF00625A86 /* CACoreDataTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACoreDataTVC.h; sourceTree = "<group>"; };
 		34336D6A16CDFFFF00625A86 /* CACoreDataTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACoreDataTVC.m; sourceTree = "<group>"; };
 		344DB95316BE156100412C22 /* CAContactEntriesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAContactEntriesVC.h; sourceTree = "<group>"; };
@@ -174,22 +178,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		340E32A616D0481500528049 /* CDServices */ = {
+		340E32A616D0481500528049 /* Core Data Services */ = {
 			isa = PBXGroup;
 			children = (
 				340E32A716D0483200528049 /* CAContactCategoriesService.h */,
 				340E32A816D0483200528049 /* CAContactCategoriesService.m */,
 			);
-			name = CDServices;
+			name = "Core Data Services";
 			sourceTree = "<group>";
 		};
 		340E32C816D3E0EF00528049 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				340E32CF16D5783200528049 /* MBProgressHUD.h */,
-				340E32D016D5783200528049 /* MBProgressHUD.m */,
+				340E32DB16DAC5E700528049 /* CASettings.h */,
 				340E32C316D34FE600528049 /* NSString+URLEncode.h */,
 				340E32C416D34FE600528049 /* NSString+URLEncode.m */,
+				340E32D816D9804900528049 /* NSDate+Compare.h */,
+				340E32D916D9804900528049 /* NSDate+Compare.m */,
+				340E32CF16D5783200528049 /* MBProgressHUD.h */,
+				340E32D016D5783200528049 /* MBProgressHUD.m */,
+				340E32E116DAFDA600528049 /* TMImageSync.h */,
+				340E32E216DAFDA600528049 /* TMImageSync.m */,
+				340E32D516D9309B00528049 /* TMImageFetcher.h */,
+				340E32D616D9309B00528049 /* TMImageFetcher.m */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -210,12 +221,8 @@
 			children = (
 				340E32B016D061C200528049 /* CAContactCategory.h */,
 				340E32B116D061C200528049 /* CAContactCategory.m */,
-				34336D6316C8B8B700625A86 /* CAContactCategory+RK.h */,
-				34336D6416C8B8B700625A86 /* CAContactCategory+RK.m */,
 				34336D5D16C8B52600625A86 /* CAContactEntry.h */,
 				34336D5E16C8B52600625A86 /* CAContactEntry.m */,
-				34336D6016C8B8A200625A86 /* CAContactEntry+RK.h */,
-				34336D6116C8B8A200625A86 /* CAContactEntry+RK.m */,
 				340E32A016D03ECA00528049 /* CAObjectStore.h */,
 				340E32A116D03ECA00528049 /* CAObjectStore.m */,
 				340FE6E416B2531C002FD035 /* CAModels.h */,
@@ -304,7 +311,7 @@
 				34336D4E16C8AF9B00625A86 /* CityApp.xcdatamodeld */,
 				344DB94F16BE0EFA00412C22 /* Controllers */,
 				340FE6E016B24844002FD035 /* Models */,
-				340E32A616D0481500528049 /* CDServices */,
+				340E32A616D0481500528049 /* Core Data Services */,
 				340E32C816D3E0EF00528049 /* Misc */,
 				34F97AF416A514F900568523 /* Supporting Files */,
 			);
@@ -440,8 +447,6 @@
 				3482C63116BE4B6100BC6DDE /* CAContactEntryVC.m in Sources */,
 				34336D5016C8AF9B00625A86 /* CityApp.xcdatamodeld in Sources */,
 				34336D5F16C8B52600625A86 /* CAContactEntry.m in Sources */,
-				34336D6216C8B8A200625A86 /* CAContactEntry+RK.m in Sources */,
-				34336D6516C8B8B700625A86 /* CAContactCategory+RK.m in Sources */,
 				34336D6B16CDFFFF00625A86 /* CACoreDataTVC.m in Sources */,
 				340E32A216D03ECA00528049 /* CAObjectStore.m in Sources */,
 				340E32A916D0483200528049 /* CAContactCategoriesService.m in Sources */,
@@ -450,6 +455,9 @@
 				340E32C516D34FE600528049 /* NSString+URLEncode.m in Sources */,
 				340E32CE16D54F9E00528049 /* CAWebVC.m in Sources */,
 				340E32D116D5783200528049 /* MBProgressHUD.m in Sources */,
+				340E32D716D9309B00528049 /* TMImageFetcher.m in Sources */,
+				340E32DA16D9804900528049 /* NSDate+Compare.m in Sources */,
+				340E32E316DAFDA600528049 /* TMImageSync.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
