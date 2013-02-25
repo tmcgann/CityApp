@@ -309,9 +309,9 @@
 				34F97AFD16A514F900568523 /* CAAppDelegate.m */,
 				34F97B0516A514FA00568523 /* MainStoryboard_iPhone.storyboard */,
 				34336D4E16C8AF9B00625A86 /* CityApp.xcdatamodeld */,
-				344DB94F16BE0EFA00412C22 /* Controllers */,
 				340FE6E016B24844002FD035 /* Models */,
 				340E32A616D0481500528049 /* Core Data Services */,
+				344DB94F16BE0EFA00412C22 /* Controllers */,
 				340E32C816D3E0EF00528049 /* Misc */,
 				34F97AF416A514F900568523 /* Supporting Files */,
 			);

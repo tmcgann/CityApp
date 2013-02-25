@@ -20,7 +20,7 @@
 
 #pragma mark - Accessors
 
-- (NSDictionary *)imageTimestamps {
+- (NSMutableDictionary *)imageTimestamps {
     // Check for plist name
     if (!self.plistName) {
         NSLog(@"ERROR: Plist name not found. Did you setPlistName?");
@@ -33,13 +33,15 @@
         
         if ([sharedFM fileExistsAtPath:imagePlistPath.path]) {
             _imageTimestamps = [_imageTimestamps initWithContentsOfURL:imagePlistPath];
+        } else {
+            _imageTimestamps = [NSMutableDictionary dictionary];
         }
     }
     
     return _imageTimestamps;
 }
 
-- (void)setImageTimestamps:(NSDictionary *)imageTimestamps {
+- (void)setImageTimestamps:(NSMutableDictionary *)imageTimestamps {
     // Does not save timestamps to plist file
     _imageTimestamps = imageTimestamps;
 }
@@ -71,34 +73,34 @@
     return sharedInstance;
 }
 
-+ (NSDictionary *)imageTimestampsFromPlist:(NSString *)plistName {
-    // Get the application support directory path
-    NSFileManager* sharedFM = [NSFileManager defaultManager];
-    NSArray* urls = [sharedFM URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask];
-    NSURL *appSupportDir = nil;
-    
-    if ([urls count] >= 1) {
-        // Use the lastObject - There's probably only one
-        appSupportDir = [urls lastObject];
-    }
-    
-    // Get the plist of image timestamps and convert it to a dictionary
-    NSDictionary *imageTimestamps = nil;
-    if (appSupportDir) {
-        NSURL *imagePlistPath = [appSupportDir URLByAppendingPathComponent:plistName];
-        NSFileManager *sharedFM = [NSFileManager defaultManager];
-        
-        if ([sharedFM fileExistsAtPath:imagePlistPath.path]) {
-            imageTimestamps = [imageTimestamps initWithContentsOfURL:imagePlistPath];
-        }
-    }
-    
-    return imageTimestamps;
-}
-
-+ (void)writeImageTimestampsToPlist:(NSString *)plistName {
-    
-}
+//+ (NSDictionary *)imageTimestampsFromPlist:(NSString *)plistName {
+//    // Get the application support directory path
+//    NSFileManager* sharedFM = [NSFileManager defaultManager];
+//    NSArray* urls = [sharedFM URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask];
+//    NSURL *appSupportDir = nil;
+//    
+//    if ([urls count] >= 1) {
+//        // Use the lastObject - There's probably only one
+//        appSupportDir = [urls lastObject];
+//    }
+//    
+//    // Get the plist of image timestamps and convert it to a dictionary
+//    NSDictionary *imageTimestamps = nil;
+//    if (appSupportDir) {
+//        NSURL *imagePlistPath = [appSupportDir URLByAppendingPathComponent:plistName];
+//        NSFileManager *sharedFM = [NSFileManager defaultManager];
+//        
+//        if ([sharedFM fileExistsAtPath:imagePlistPath.path]) {
+//            imageTimestamps = [imageTimestamps initWithContentsOfURL:imagePlistPath];
+//        }
+//    }
+//    
+//    return imageTimestamps;
+//}
+//
+//+ (void)writeImageTimestampsToPlist:(NSString *)plistName {
+//    
+//}
 
 #pragma mark - Instance Methods
 
@@ -121,10 +123,16 @@
         if (![self imageExists:imagePath withTimestamp:mostRecentTimestamp]) {
             // Download newest image
             [self fetchImage:imagePath];
+            
+            // Add timestamp to dictionary
+            [self.imageTimestamps setValue:mostRecentTimestamp forKey:imagePath];
         }
     } else {
-        // Otherwise download image
+        // Download image
         [self fetchImage:imagePath];
+        
+        // Add timestamp to dictionary
+        [self.imageTimestamps setValue:mostRecentTimestamp forKey:imagePath];
     }
 }
 
@@ -149,6 +157,11 @@
     }
     
     return result;
+}
+
+- (void)writeImageTimestamps {
+    NSURL *url = [NSURL URLWithString:self.plistName relativeToURL:self.plistDir];
+    [self.imageTimestamps writeToURL:url atomically:YES];
 }
 
 - (void)fetchImage:(NSString *)imagePath {

@@ -40,7 +40,7 @@
     [self setupFetchedResultsController];
     
     // Load images for all the contact categories (not the contact entries)
-#warning BUG: This doesn't work very well if at all the first time the app loads
+#warning BUG: This doesn't work very well--if at all--the first time the app loads
     [self syncIcons];
 }
 
@@ -61,7 +61,6 @@
     dispatch_group_t group = dispatch_group_create();
     
     for (CAContactCategory *cc in self.fetchedResultsController.fetchedObjects) {
-        DLog(@"Icon: %@; Modified: %@", cc.icon, cc.modified);
         if (![cc.icon isEqualToString:@""]) {
             // Add a task to the group
             dispatch_group_async(group, queue, ^{
@@ -75,7 +74,7 @@
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     
     // Update image timestamp record (plist)
-    
+    [sharedSync writeImageTimestamps];
 }
 
 //- (void)viewWillAppear:(BOOL)animated

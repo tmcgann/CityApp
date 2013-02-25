@@ -24,19 +24,19 @@
 - (void)downloadImage:(NSString *)imageName
 {
     self.activeDownload = [NSMutableData data];
-    
-    // alloc+init and start an NSURLConnection; release on completion/failure
     self.imageName = imageName;
+    
     NSURL *url = [[NSURL alloc] initWithString:imageName relativeToURL:self.remoteURL];
-    NSLog(@"URL: %@", url.absoluteString);
 //    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLCacheStorageAllowed timeoutInterval:30.0];
 //    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 //    self.imageConnection = connection;
     NSError *error;
     NSData *imageData = [NSData dataWithContentsOfURL:url options:NSDataReadingMappedIfSafe error:&error];
-    NSLog(@"Error: %@", error);
-//    NSLog(@"imageData: %@", imageData);
-    [self.delegate saveImage:imageData withName:imageName];
+    if (error) {
+        NSLog(@"Error: %@", error);
+    } else {
+        [self.delegate saveImage:imageData withName:imageName];
+    }
 }
 
 - (void)cancelDownload
@@ -54,6 +54,8 @@
         NSLog(@"[%@ %@] connection: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), connection);
         NSLog(@"[%@ %@] didReceiveResponse: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), response);
     }
+    
+    // Do something?!
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
