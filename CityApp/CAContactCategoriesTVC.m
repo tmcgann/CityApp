@@ -56,7 +56,7 @@
     sharedSync.remoteURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", SERVER_URL, IMAGE_CONTROLLER_PATH]];
     sharedSync.imagePlistName = IMAGE_PLIST_FILENAME;
     
-    // Set up asynchronous sipatch group
+    // Set up asynchronous dispatch group
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_group_t group = dispatch_group_create();
     

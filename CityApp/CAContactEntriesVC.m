@@ -38,8 +38,8 @@
     // Load icon and description
     NSArray *iconComponents = [self.contactCategory.icon componentsSeparatedByString:@"."];
     if (iconComponents.count == 2) {
-        NSString *imagePath = [NSString stringWithFormat:@"%@%@", [TMImageSync sharedSync].imagesDir.path, self.contactCategory.icon];
-        UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+        NSURL *imageURL = [[TMImageSync sharedSync].imagesDir URLByAppendingPathComponent:self.contactCategory.icon];
+        UIImage *image = [UIImage imageWithContentsOfFile:imageURL.path];
         self.contactCategoryIcon.image = image;
     }
     self.contactCategoryDescription.text = self.contactCategory.descriptor;

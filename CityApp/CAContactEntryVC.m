@@ -113,10 +113,7 @@
         NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", escapedPhoneNumber]];
         [[UIApplication sharedApplication] openURL:telURL];
     } else if ([cellTitle isEqualToString:kCAContactEntryDetailFax]) {
-        NSString *cleanedString = [[self.contactEntry.fax componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
-        NSString *escapedPhoneNumber = [cleanedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", escapedPhoneNumber]];
-        [[UIApplication sharedApplication] openURL:telURL];
+        // Do nothing; you can't send a fax from a phone
     } else if ([cellTitle isEqualToString:kCAContactEntryDetailEmail]) {
         if ([MFMailComposeViewController canSendMail]) {
             MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
