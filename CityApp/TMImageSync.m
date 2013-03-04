@@ -65,6 +65,8 @@
             // Add timestamp to dictionary and set flag
             [self.imageTimestamps setValue:mostRecentTimestamp forKey:imagePath];
             self.newImageTimestampsExist = YES;
+            
+            NSLog(@"Downloaded image %@", imagePath);
         }
     } else {
         // Download image
@@ -73,6 +75,8 @@
         // Add timestamp to dictionary and set flag
         [self.imageTimestamps setValue:mostRecentTimestamp forKey:imagePath];
         self.newImageTimestampsExist = YES;
+        
+        NSLog(@"Downloaded image %@", imagePath);
     }
 }
 

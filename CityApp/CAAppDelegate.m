@@ -20,6 +20,8 @@
 //    RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
 //    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     
+//    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    
     return YES;
 }
 							
