@@ -40,7 +40,7 @@
     [self setupFetchedResultsController];
     
     // Load images for all the contact categories (not the contact entries)
-#warning BUG: This doesn't work very well--if at all--the first time the app loads
+#warning FIXME: This doesn't work the first time the app loads. It is data dependent.
     [self syncIcons];
 }
 
@@ -52,19 +52,20 @@
 #define IMAGE_PLIST_FILENAME @"ImageTimestamp.plist"
 
 - (void)syncIcons {
-//    NSMutableDictionary *imageTimestamps = [TMImageFetcher fetchImageTimestampsFromPlist:IMAGE_PLIST_FILENAME].mutableCopy;
     TMImageSync *sharedSync = [TMImageSync sharedSync];
     sharedSync.remoteURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", SERVER_URL, IMAGE_CONTROLLER_PATH]];
-    sharedSync.plistName = IMAGE_PLIST_FILENAME;
+    sharedSync.imagePlistName = IMAGE_PLIST_FILENAME;
     
+    // Set up asynchronous sipatch group
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_group_t group = dispatch_group_create();
     
     for (CAContactCategory *cc in self.fetchedResultsController.fetchedObjects) {
+        //NSLog(@"cc.icon: %@", cc.icon);
         if (![cc.icon isEqualToString:@""]) {
             // Add a task to the group
             dispatch_group_async(group, queue, ^{
-               [sharedSync syncImage:cc.icon withTimestamp:cc.modified]; // As of now, just checking to see if parent was modified 
+               [sharedSync syncImage:cc.icon withTimestamp:cc.modified]; // As of now, just checking to see if parent was modified
             });
         }
     }
@@ -74,7 +75,9 @@
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     
     // Update image timestamp record (plist)
-    [sharedSync writeImageTimestamps];
+    if (sharedSync.newImageTimestampsExist) {
+        [sharedSync writeImageTimestamps];
+    }
 }
 
 //- (void)viewWillAppear:(BOOL)animated

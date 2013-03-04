@@ -129,9 +129,9 @@
         } else {
 //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Unsupported Device" message:@"Sorry, your device does not support the mail composer." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 //            [alert show];
-            
-            // Check to see if device supports network connectivity first
-            #warning Incomplete method implementation--check for network reachability.
+
+        // Check to see if device supports network connectivity first
+            #warning TODO: Check for network reachability.
             NSString *url = [NSString stringWithFormat:@"mailto:%@?subject=Greetings&body=%@:", self.contactEntry.email, [self.contactEntry.name URLEncode]];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
         }
@@ -155,7 +155,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"On it's way!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
-    #warning Incomplete method implementation--error handling needed.
+#warning TODO: Appropriate error checking
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
