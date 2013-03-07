@@ -15,8 +15,8 @@
 @dynamic reportCategoryId;
 @dynamic name;
 @dynamic descriptor;
-@dynamic actions;
 @dynamic rank;
+@dynamic modified;
 @dynamic reportEntries;
 
 @end

@@ -23,6 +23,7 @@
 @property (nonatomic, retain) NSString * contactPhone;
 @property (nonatomic, retain) NSString * contactEmail;
 @property (nonatomic, retain) NSNumber * exposed;
+@property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) CAReportCategory *reportCategory;
 
 @end

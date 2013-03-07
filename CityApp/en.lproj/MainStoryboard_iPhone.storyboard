@@ -159,20 +159,20 @@
             </objects>
             <point key="canvasLocation" x="1217" y="70"/>
         </scene>
-        <!--Table View Controller - Reports-->
+        <!--Report EntriesTVC - Reports-->
         <scene sceneID="7Yu-QC-rEo">
             <objects>
-                <tableViewController id="LNK-Lz-37u" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="375-Fu-G4e">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                <tableViewController id="LNK-Lz-37u" customClass="CAReportEntriesTVC" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="375-Fu-G4e">
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReportCell" id="2KQ-OU-Fa5">
-                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReportCell" rowHeight="100" id="2KQ-OU-Fa5">
+                                <rect key="frame" x="0.0" y="22" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -186,6 +186,7 @@
                             <outlet property="delegate" destination="LNK-Lz-37u" id="bEp-mJ-a7t"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Reports" id="OGS-bG-hTt">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="AFy-uu-rPR">
                             <connections>
@@ -193,6 +194,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H6r-5Y-VXu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -203,7 +205,7 @@
             <objects>
                 <viewController title="Report Detail" id="9RG-jl-xpz" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gAa-m9-oyv">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -576,8 +578,42 @@
         <image name="Taylor.jpg" width="640" height="426"/>
     </resources>
     <classes>
+        <class className="CAContactCategoriesTVC" superclassName="CACoreDataTVC">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactCategoriesTVC.h"/>
+        </class>
+        <class className="CAContactEntriesVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactEntriesVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contactCategoryDescription" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="contactCategoryIcon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="CAContactEntryVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactEntryVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contactEntryDescriptor" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="contactEntryIcon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="contactNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CACoreDataTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CACoreDataTVC.h"/>
+        </class>
+        <class className="CAHomeVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAHomeVC.h"/>
+        </class>
         <class className="CANewReportVC" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="submitButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="takePhotoButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="CAReportEntriesTVC" superclassName="CACoreDataTVC">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAReportEntriesTVC.h"/>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>

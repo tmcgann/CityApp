@@ -8,6 +8,10 @@
 
 #import "CAReportCategoryService.h"
 
+#define ENTITY_NAME @"CAReportCategory"
+#define JSON_PATH @"/report_categories.json"
+#define JSON_KEY_PATH @"report_categories"
+
 @implementation CAReportCategoryService
 
 + (CAReportCategoryService *)shared
@@ -22,28 +26,27 @@
 }
 
 - (void)addMappings {
-    RKEntityMapping *reportCategoryMapping = [CAObjectStore.shared mappingForEntityForName:@"CAReportCategory"];
+    RKEntityMapping *reportCategoryMapping = [CAObjectStore.shared mappingForEntityForName:ENTITY_NAME];
     [reportCategoryMapping addAttributeMappingsFromDictionary:@{
      @"id" : @"reportCategoryId",
      @"name" : @"name",
-     @"icon" : @"icon",
      @"descriptor" : @"descriptor",
      @"rank" : @"rank",
      @"modified" : @"modified"
      }];
     [reportCategoryMapping setIdentificationAttributes:@[@"reportCategoryId"]];
     
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:reportCategoryMapping pathPattern:@"/report_categories.json" keyPath:@"report_categories" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:reportCategoryMapping pathPattern:JSON_PATH keyPath:JSON_KEY_PATH statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
     [CAObjectStore.shared addResponseDescriptor:responseDescriptor];
     
-    [CAObjectStore.shared syncWithFetchRequest:self.allReportCategories forPath:@"/report_categories.json"];
+    [CAObjectStore.shared syncWithFetchRequest:self.allReportCategories forPath:JSON_PATH];
 }
 
 // You can execute fetch requests right on the context
 // OR you can make a fetched results controller and give it a fetch request
 - (void)loadStore {
-    [[CAObjectStore shared].objectManager getObjectsAtPath:@"/report_categories.json" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[CAObjectStore shared].objectManager getObjectsAtPath:JSON_PATH parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
     } failure: ^(RKObjectRequestOperation * operation, NSError * error) {
         NSLog(@"FAILURE %@", error);
     }];
@@ -51,7 +54,7 @@
 
 // Sort descriptor built in
 - (NSFetchRequest *)allReportCategories {
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"CAReportCategory"];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:ENTITY_NAME];
     NSSortDescriptor *rankDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"rank" ascending:YES];
     NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     fetchRequest.sortDescriptors = @[rankDescriptor, nameDescriptor];

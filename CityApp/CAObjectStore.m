@@ -79,17 +79,17 @@
     [self.objectManager addResponseDescriptor:descriptor];
 }
 
-- (void)syncWithFetchRequest:(NSFetchRequest *)request forPath:(NSString *)path {
-    [self.objectManager addFetchRequestBlock:^(NSURL* url) {
-        RKPathMatcher *matcher = [RKPathMatcher pathMatcherWithPattern:@"/books"];
-        NSFetchRequest *matchingRequest = nil;
-        BOOL match = [matcher matchesPath:[url relativePath] tokenizeQueryStrings:NO parsedArguments:nil];
-        if (match) {
-            matchingRequest = request;
-        }
-        return matchingRequest;
-    }];
-}
+//- (void)syncWithFetchRequest:(NSFetchRequest *)request forPath:(NSString *)path {
+//    [self.objectManager addFetchRequestBlock:^(NSURL* url) {
+//        RKPathMatcher *matcher = [RKPathMatcher pathMatcherWithPattern:@"/books"];
+//        NSFetchRequest *matchingRequest = nil;
+//        BOOL match = [matcher matchesPath:[url relativePath] tokenizeQueryStrings:NO parsedArguments:nil];
+//        if (match) {
+//            matchingRequest = request;
+//        }
+//        return matchingRequest;
+//    }];
+//}
 
 - (NSManagedObjectContext *)context {
     // the mainQueueManagedObjectContext is a child of this one, but it doesn't persist. I'm not exactly sure what it is for.

@@ -22,6 +22,7 @@
 @dynamic contactPhone;
 @dynamic contactEmail;
 @dynamic exposed;
+@dynamic created;
 @dynamic reportCategory;
 
 @end

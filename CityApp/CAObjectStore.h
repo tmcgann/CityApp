@@ -23,7 +23,7 @@
 
 // Simple way to sync objects whose urls have no parameters
 // Will delete anything not matched
-- (void)syncWithFetchRequest:(NSFetchRequest *)request forPath:(NSString *)path;
+//- (void)syncWithFetchRequest:(NSFetchRequest *)request forPath:(NSString *)path;
 
 @end
 

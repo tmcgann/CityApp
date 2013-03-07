@@ -16,8 +16,8 @@
 @property (nonatomic, retain) NSString * reportCategoryId;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * descriptor;
-@property (nonatomic, retain) NSString * actions;
 @property (nonatomic, retain) NSNumber * rank;
+@property (nonatomic, retain) NSDate * modified;
 @property (nonatomic, retain) NSSet *reportEntries;
 @end
 

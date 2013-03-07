@@ -30,8 +30,8 @@
         <relationship name="contactCategory" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CAContactCategory" inverseName="contactEntries" inverseEntity="CAContactCategory" syncable="YES"/>
     </entity>
     <entity name="CAReportCategory" representedClassName="CAReportCategory" syncable="YES">
-        <attribute name="actions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="modified" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rank" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="reportCategoryId" optional="YES" attributeType="String" syncable="YES"/>
@@ -42,6 +42,7 @@
         <attribute name="contactEmail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactPhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="exposed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
@@ -54,6 +55,6 @@
         <element name="CAContactCategory" positionX="160" positionY="192" width="128" height="150"/>
         <element name="CAContactEntry" positionX="-9" positionY="192" width="128" height="315"/>
         <element name="CAReportCategory" positionX="-162" positionY="189" width="128" height="135"/>
-        <element name="CAReportEntry" positionX="-333" positionY="189" width="128" height="210"/>
+        <element name="CAReportEntry" positionX="-333" positionY="189" width="128" height="225"/>
     </elements>
 </model>
