@@ -6,18 +6,16 @@
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
-#import "CAContactCategoriesService.h"
-#import <RestKit/RestKit.h>
-#import "CAObjectStore.h"
+#import "CAContactCategoryService.h"
 
-@implementation CAContactCategoriesService
+@implementation CAContactCategoryService
 
-+ (CAContactCategoriesService *)shared
++ (CAContactCategoryService *)shared
 {
-    static CAContactCategoriesService *instance = nil;
+    static CAContactCategoryService *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[CAContactCategoriesService alloc] init];
+        instance = [[CAContactCategoryService alloc] init];
         [instance addMappings];
     });
     return instance;

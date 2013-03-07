@@ -11,7 +11,7 @@
 #import "CAContactCategory.h"
 #import "CAContactEntry.h"
 #import "CAContactEntriesVC.h"
-#import "CAContactCategoriesService.h"
+#import "CAContactCategoryService.h"
 #import "CAObjectStore.h"
 #import "TMImageSync.h"
 #import "CASettings.h"
@@ -36,7 +36,7 @@
     [super viewDidLoad];
     
     // Load objects via Core Data/RestKit
-    [[CAContactCategoriesService shared] loadStore];
+    [[CAContactCategoryService shared] loadStore];
     [self setupFetchedResultsController];
     
     // Load images for all the contact categories (not the contact entries)
@@ -46,7 +46,7 @@
 
 - (void)setupFetchedResultsController
 {
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[[CAContactCategoriesService shared] allContactCategories] managedObjectContext:[CAObjectStore shared].context sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[[CAContactCategoryService shared] allContactCategories] managedObjectContext:[CAObjectStore shared].context sectionNameKeyPath:nil cacheName:nil];
 }
 
 #define IMAGE_PLIST_FILENAME @"ImageTimestamp.plist"

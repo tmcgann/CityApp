@@ -29,10 +29,31 @@
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="contactCategory" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CAContactCategory" inverseName="contactEntries" inverseEntity="CAContactCategory" syncable="YES"/>
     </entity>
-    <entity name="CAReport" syncable="YES"/>
+    <entity name="CAReportCategory" representedClassName="CAReportCategory" syncable="YES">
+        <attribute name="actions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rank" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="reportCategoryId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="reportEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CAReportEntry" inverseName="reportCategory" inverseEntity="CAReportEntry" syncable="YES"/>
+    </entity>
+    <entity name="CAReportEntry" representedClassName="CAReportEntry" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactPhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exposed" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneUdid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reportEntryId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="reportCategory" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CAReportCategory" inverseName="reportEntries" inverseEntity="CAReportCategory" syncable="YES"/>
+    </entity>
     <elements>
         <element name="CAContactCategory" positionX="160" positionY="192" width="128" height="150"/>
-        <element name="CAContactEntry" positionX="-0" positionY="192" width="128" height="315"/>
-        <element name="CAReport" positionX="-162" positionY="189" width="128" height="45"/>
+        <element name="CAContactEntry" positionX="-9" positionY="192" width="128" height="315"/>
+        <element name="CAReportCategory" positionX="-162" positionY="189" width="128" height="135"/>
+        <element name="CAReportEntry" positionX="-333" positionY="189" width="128" height="210"/>
     </elements>
 </model>

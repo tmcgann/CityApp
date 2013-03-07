@@ -13,8 +13,12 @@
 		3402719016ACE5B300DDFCC6 /* TakePhoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3402718F16ACE5B300DDFCC6 /* TakePhoto@2x.png */; };
 		3402719F16AD009200DDFCC6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3402719E16AD009200DDFCC6 /* MobileCoreServices.framework */; };
 		340271A516AD11D200DDFCC6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340271A416AD11D200DDFCC6 /* AssetsLibrary.framework */; };
+		340AAF2616E8EECB0097A022 /* CAReportEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 340AAF2516E8EECB0097A022 /* CAReportEntry.m */; };
+		340AAF2916E8F0880097A022 /* CAReportCategoryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 340AAF2816E8F0880097A022 /* CAReportCategoryService.m */; };
+		340AAF2C16E8F2870097A022 /* CAReportCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 340AAF2B16E8F2870097A022 /* CAReportCategory.m */; };
+		340AAF2F16E8F8690097A022 /* CAReportEntryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 340AAF2E16E8F8690097A022 /* CAReportEntryService.m */; };
 		340E32A216D03ECA00528049 /* CAObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32A116D03ECA00528049 /* CAObjectStore.m */; };
-		340E32A916D0483200528049 /* CAContactCategoriesService.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32A816D0483200528049 /* CAContactCategoriesService.m */; };
+		340E32A916D0483200528049 /* CAContactCategoryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32A816D0483200528049 /* CAContactCategoryService.m */; };
 		340E32B216D061C200528049 /* CAContactCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32B116D061C200528049 /* CAContactCategory.m */; };
 		340E32B516D06BD600528049 /* CAHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 340E32B416D06BD600528049 /* CAHomeVC.m */; };
 		340E32B916D32BC000528049 /* power.png in Resources */ = {isa = PBXBuildFile; fileRef = 340E32B816D32BC000528049 /* power.png */; };
@@ -97,10 +101,18 @@
 		3402718F16ACE5B300DDFCC6 /* TakePhoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TakePhoto@2x.png"; sourceTree = "<group>"; };
 		3402719E16AD009200DDFCC6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		340271A416AD11D200DDFCC6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		340AAF2416E8EECB0097A022 /* CAReportEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportEntry.h; sourceTree = "<group>"; };
+		340AAF2516E8EECB0097A022 /* CAReportEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportEntry.m; sourceTree = "<group>"; };
+		340AAF2716E8F0880097A022 /* CAReportCategoryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportCategoryService.h; sourceTree = "<group>"; };
+		340AAF2816E8F0880097A022 /* CAReportCategoryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportCategoryService.m; sourceTree = "<group>"; };
+		340AAF2A16E8F2870097A022 /* CAReportCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportCategory.h; sourceTree = "<group>"; };
+		340AAF2B16E8F2870097A022 /* CAReportCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportCategory.m; sourceTree = "<group>"; };
+		340AAF2D16E8F8690097A022 /* CAReportEntryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportEntryService.h; sourceTree = "<group>"; };
+		340AAF2E16E8F8690097A022 /* CAReportEntryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportEntryService.m; sourceTree = "<group>"; };
 		340E32A016D03ECA00528049 /* CAObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAObjectStore.h; sourceTree = "<group>"; };
 		340E32A116D03ECA00528049 /* CAObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAObjectStore.m; sourceTree = "<group>"; };
-		340E32A716D0483200528049 /* CAContactCategoriesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAContactCategoriesService.h; sourceTree = "<group>"; };
-		340E32A816D0483200528049 /* CAContactCategoriesService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAContactCategoriesService.m; sourceTree = "<group>"; };
+		340E32A716D0483200528049 /* CAContactCategoryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAContactCategoryService.h; sourceTree = "<group>"; };
+		340E32A816D0483200528049 /* CAContactCategoryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAContactCategoryService.m; sourceTree = "<group>"; };
 		340E32B016D061C200528049 /* CAContactCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAContactCategory.h; sourceTree = "<group>"; };
 		340E32B116D061C200528049 /* CAContactCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAContactCategory.m; sourceTree = "<group>"; };
 		340E32B316D06BD600528049 /* CAHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAHomeVC.h; sourceTree = "<group>"; };
@@ -181,8 +193,12 @@
 		340E32A616D0481500528049 /* Core Data Services */ = {
 			isa = PBXGroup;
 			children = (
-				340E32A716D0483200528049 /* CAContactCategoriesService.h */,
-				340E32A816D0483200528049 /* CAContactCategoriesService.m */,
+				340E32A716D0483200528049 /* CAContactCategoryService.h */,
+				340E32A816D0483200528049 /* CAContactCategoryService.m */,
+				340AAF2716E8F0880097A022 /* CAReportCategoryService.h */,
+				340AAF2816E8F0880097A022 /* CAReportCategoryService.m */,
+				340AAF2D16E8F8690097A022 /* CAReportEntryService.h */,
+				340AAF2E16E8F8690097A022 /* CAReportEntryService.m */,
 			);
 			name = "Core Data Services";
 			sourceTree = "<group>";
@@ -219,6 +235,10 @@
 		340FE6E016B24844002FD035 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				340AAF2A16E8F2870097A022 /* CAReportCategory.h */,
+				340AAF2B16E8F2870097A022 /* CAReportCategory.m */,
+				340AAF2416E8EECB0097A022 /* CAReportEntry.h */,
+				340AAF2516E8EECB0097A022 /* CAReportEntry.m */,
 				340E32B016D061C200528049 /* CAContactCategory.h */,
 				340E32B116D061C200528049 /* CAContactCategory.m */,
 				34336D5D16C8B52600625A86 /* CAContactEntry.h */,
@@ -449,7 +469,7 @@
 				34336D5F16C8B52600625A86 /* CAContactEntry.m in Sources */,
 				34336D6B16CDFFFF00625A86 /* CACoreDataTVC.m in Sources */,
 				340E32A216D03ECA00528049 /* CAObjectStore.m in Sources */,
-				340E32A916D0483200528049 /* CAContactCategoriesService.m in Sources */,
+				340E32A916D0483200528049 /* CAContactCategoryService.m in Sources */,
 				340E32B216D061C200528049 /* CAContactCategory.m in Sources */,
 				340E32B516D06BD600528049 /* CAHomeVC.m in Sources */,
 				340E32C516D34FE600528049 /* NSString+URLEncode.m in Sources */,
@@ -458,6 +478,10 @@
 				340E32D716D9309B00528049 /* TMImageFetcher.m in Sources */,
 				340E32DA16D9804900528049 /* NSDate+Compare.m in Sources */,
 				340E32E316DAFDA600528049 /* TMImageSync.m in Sources */,
+				340AAF2616E8EECB0097A022 /* CAReportEntry.m in Sources */,
+				340AAF2916E8F0880097A022 /* CAReportCategoryService.m in Sources */,
+				340AAF2C16E8F2870097A022 /* CAReportCategory.m in Sources */,
+				340AAF2F16E8F8690097A022 /* CAReportEntryService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

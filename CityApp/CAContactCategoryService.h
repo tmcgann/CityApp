@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <RestKit/RestKit.h>
+#import "CAObjectStore.h"
 #import "CAContactCategory.h"
 
-@interface CAContactCategoriesService : NSObject
+@interface CAContactCategoryService : NSObject
 
-+(CAContactCategoriesService*)shared;
++(CAContactCategoryService*)shared;
 -(void)loadStore;
 
 -(NSFetchRequest*)allContactCategories;

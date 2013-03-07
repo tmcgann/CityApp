@@ -66,7 +66,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="dIv-HV-nDM" kind="push" id="quw-VG-M4P"/>
+                                            <segue destination="yeO-Lh-bZV" kind="push" id="AsD-fM-q8k"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXX-Ca-2Za">
@@ -189,7 +189,7 @@
                     <navigationItem key="navigationItem" title="Reports" id="OGS-bG-hTt">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="AFy-uu-rPR">
                             <connections>
-                                <segue destination="fxD-qc-5zg" kind="modal" id="2zx-F4-JtQ"/>
+                                <segue destination="fxD-qc-5zg" kind="modal" modalTransitionStyle="coverVertical" id="2zx-F4-JtQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -214,6 +214,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RWF-QV-dYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2300" y="31"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Wvi-fV-Aou">
+            <objects>
+                <viewController id="mde-p4-PwS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="utk-SR-hve">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="h42-fa-oRE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZYA-nx-v3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2237" y="-1299"/>
         </scene>
         <!--New ReportVC - New Report-->
         <scene sceneID="c3u-Yl-WHV">
@@ -276,20 +291,45 @@
             </objects>
             <point key="canvasLocation" x="2300" y="-633"/>
         </scene>
-        <!--View Controller - Services-->
-        <scene sceneID="7wg-Ft-vFT">
+        <!--Table View Controller - Services-->
+        <scene sceneID="taD-6g-txO">
             <objects>
-                <viewController title="Services" id="dIv-HV-nDM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="iT3-eX-men">
+                <tableViewController title="Services" id="yeO-Lh-bZV" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="0Dk-hh-sE3">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Services" id="CJW-SE-trr"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S1a-WU-Ilc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ServiceCell" textLabel="1E8-mi-fBs" style="IBUITableViewCellStyleDefault" id="jsj-in-vG4">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1E8-mi-fBs">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="mde-p4-PwS" kind="push" id="gtp-pM-txL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yeO-Lh-bZV" id="HtI-lb-8Iv"/>
+                            <outlet property="delegate" destination="yeO-Lh-bZV" id="IAc-2W-cJm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Services" id="o6n-7C-SGj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L0J-NU-RCP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1759" y="-947"/>
+            <point key="canvasLocation" x="1759" y="-1299"/>
         </scene>
         <!--Contact CategoriesTVC - Categories-->
         <scene sceneID="MgB-Fl-7HD">
@@ -329,7 +369,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vj2-SW-Rph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1759" y="-1611"/>
+            <point key="canvasLocation" x="1759" y="-1970"/>
         </scene>
         <!--Contact EntriesVC - Contacts-->
         <scene sceneID="QoE-lU-Hb2">
@@ -421,7 +461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mf9-oe-eVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2237" y="-1611"/>
+            <point key="canvasLocation" x="2237" y="-1970"/>
         </scene>
         <!--Contact EntryVC - Contact Detail-->
         <scene sceneID="BcX-9D-qhE">
@@ -528,7 +568,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6da-uN-ibr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2714" y="-1611"/>
+            <point key="canvasLocation" x="2714" y="-1970"/>
         </scene>
     </scenes>
     <resources>
@@ -536,39 +576,8 @@
         <image name="Taylor.jpg" width="640" height="426"/>
     </resources>
     <classes>
-        <class className="CAContactCategoriesTVC" superclassName="CACoreDataTVC">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactCategoriesTVC.h"/>
-        </class>
-        <class className="CAContactEntriesVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactEntriesVC.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contactCategoryDescription" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="contactCategoryIcon" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="CAContactEntryVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactEntryVC.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contactEntryDescriptor" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="contactEntryIcon" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="contactNameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CACoreDataTVC" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CACoreDataTVC.h"/>
-        </class>
-        <class className="CAHomeVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAHomeVC.h"/>
-        </class>
         <class className="CANewReportVC" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportVC.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="submitButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="takePhotoButton" candidateClass="UIButton"/>
-            </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
