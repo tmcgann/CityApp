@@ -181,4 +181,72 @@
     return croppedImage;
 }
 
+#pragma mark - Table View Data Source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//	return [[[self.fetchedResultsController sections] objectAtIndex:section] name];
+//}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Configure the cell
+    static NSString *Cell0 = @"ReportDescriptionCell";
+    static NSString *Cell1 = @"ReportReporterCell";
+    static NSString *Cell2 = @"ReportPublicCell";
+    UITableViewCell *cell;
+    
+    switch (indexPath.row) {
+        case 0:
+            cell = [tableView dequeueReusableCellWithIdentifier:Cell0 forIndexPath:indexPath];
+            break;
+            
+        case 1:
+            cell = [tableView dequeueReusableCellWithIdentifier:Cell1 forIndexPath:indexPath];
+            break;
+            
+        case 2:
+            cell = [tableView dequeueReusableCellWithIdentifier:Cell2 forIndexPath:indexPath];
+            break;
+            
+        default:
+            break;
+    }
+    
+    return cell;
+}
+
+#pragma mark - Table View Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    switch (indexPath.row) {
+//        case 0:
+//            
+//            break;
+//            
+//        case 1:
+//            
+//            break;
+//            
+//        case 2:
+//            
+//            break;
+//            
+//        default:
+//            break;
+//    }
+
+}
+
 @end

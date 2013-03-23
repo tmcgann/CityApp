@@ -57,6 +57,9 @@
 		34F9AA8916F97C69004A2EB7 /* CAReportPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AA8816F97C69004A2EB7 /* CAReportPicture.m */; };
 		34F9AA9516FD41B0004A2EB7 /* CAReportCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AA9416FD41B0004A2EB7 /* CAReportCategory.m */; };
 		34F9AA9816FD41B0004A2EB7 /* CAReportEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AA9716FD41B0004A2EB7 /* CAReportEntry.m */; };
+		34F9AAA216FD8688004A2EB7 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F9AAA116FD8688004A2EB7 /* bg@2x.png */; };
+		34F9AAA416FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F9AAA316FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png */; };
+		34F9AAA616FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F9AAA516FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +182,9 @@
 		34F9AA9416FD41B0004A2EB7 /* CAReportCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportCategory.m; sourceTree = "<group>"; };
 		34F9AA9616FD41B0004A2EB7 /* CAReportEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportEntry.h; sourceTree = "<group>"; };
 		34F9AA9716FD41B0004A2EB7 /* CAReportEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportEntry.m; sourceTree = "<group>"; };
+		34F9AAA116FD8688004A2EB7 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
+		34F9AAA316FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Directory-ContactEntryMap-MayorDavidLenz-Edit1.png"; sourceTree = "<group>"; };
+		34F9AAA516FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Directory-ContactEntryMap-MayorDavidLenz-Edit2.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +313,9 @@
 		34869B6C16A87C7F009FF9EF /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				34F9AAA116FD8688004A2EB7 /* bg@2x.png */,
+				34F9AAA316FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png */,
+				34F9AAA516FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png */,
 				340E32BF16D3469800528049 /* david.jpg */,
 				340E32BD16D3329000528049 /* cloud.png */,
 				340E32B816D32BC000528049 /* power.png */,
@@ -482,6 +491,9 @@
 				340E32B916D32BC000528049 /* power.png in Resources */,
 				340E32BE16D3329000528049 /* cloud.png in Resources */,
 				340E32C016D3469800528049 /* david.jpg in Resources */,
+				34F9AAA216FD8688004A2EB7 /* bg@2x.png in Resources */,
+				34F9AAA416FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png in Resources */,
+				34F9AAA616FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

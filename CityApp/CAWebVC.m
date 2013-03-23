@@ -24,24 +24,6 @@
         
         // Add web view
         [self initWebView];
-        
-        // Add toolbar with back, forward, action buttons
-//        self.toolbar = [[UIToolbar alloc] init];
-//        self.toolbarItems
-//        [self.view addSubview:self.toolbar];
-        
-//        UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-//        UIToolbar *toolbar = [[UIToolbar alloc] init];
-        self.toolbar = [[UIToolbar alloc] init];
-//        [self.navigationController setToolbarHidden:NO animated:YES];
-//        [self.navigationController.toolbar setBarStyle:UIBarStyleBlackOpaque];
-        self.backButton = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStylePlain target:self     action:@selector(onToolbarTapped:)];
-        self.forwardButton = [[UIBarButtonItem alloc] initWithTitle:@"forward" style:UIBarButtonItemStylePlain target:self     action:@selector(onToolbarTapped:)];
-        NSArray *toolbarItems = [NSArray arrayWithObjects:self.backButton, self.forwardButton, nil];
-//        [self.navigationController setToolbarItems:toolbarItems animated:NO];
-        [self setToolbar:self.toolbar];
-        [self setToolbarItems:toolbarItems];
-        [self.toolbar setItems:toolbarItems animated:NO];
     }
     return self;
 }
@@ -50,13 +32,13 @@
 {
     self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
     
-    self.webView.autoresizesSubviews = YES;
-    self.webView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+//    self.webView.autoresizesSubviews = YES;
+//    self.webView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
     
     [self.webView setDelegate:self];
     
 //    self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 504)];
-    self.view.frame = CGRectMake(0, 64, 320, 504);
+//    self.view.frame = CGRectMake(0, 64, 320, 514);
     [self.view addSubview:self.webView];
 }
 
@@ -64,11 +46,20 @@
 {
     [super viewDidLoad];
     
+    // Add toolbar with back, forward, action buttons
+    self.backButton = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStylePlain target:self action:@selector(onToolbarTapped:)];
+    self.backButton.enabled = NO;
+    self.forwardButton = [[UIBarButtonItem alloc] initWithTitle:@"forward" style:UIBarButtonItemStylePlain target:self action:@selector(onToolbarTapped:)];
+    self.forwardButton.enabled = NO;
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:NULL];
+    
+    [self setToolbarItems:@[self.backButton, self.forwardButton, flexibleSpace] animated:NO];
+    [self.navigationController.toolbar setBarStyle:UIBarStyleBlack];
+    [self.navigationController setToolbarHidden:NO animated:YES];
+    
 //    NSURL *url = [NSURL URLWithString:self.url];
 //    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
 //    [self.webView loadRequest:requestObj];
-//    backButton.enabled = NO;
-//    forwardButton.enabled = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -78,36 +69,32 @@
     [self.webView loadRequest:requestObj];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *) portal {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Loading...";
-    hud.dimBackground = YES;
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    hud.labelText = @"Loading...";
+//    hud.dimBackground = YES;
     
-    //    UIActivityIndicatorView *actInd = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    //    UIBarButtonItem *actItem = [[UIBarButtonItem alloc] initWithCustomView:actInd];
-    //    self.navigationItem.rightBarButtonItem = actItem;
-    //    [actInd startAnimating];
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    UIBarButtonItem *actItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
+    self.navigationItem.rightBarButtonItem = actItem;
+    [self.activityIndicator startAnimating];
     
-    //    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
-//    self.navigationItem.rightBarButtonItem = nil;
-//    [actInd stopAnimating];
+    self.navigationItem.rightBarButtonItem = nil;
+    [self.activityIndicator stopAnimating];
 
-//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
-//    backButton.enabled = (self.webView.canGoBack);
-//    forwardButton.enabled = (self.webView.canGoForward);
+    self.backButton.enabled = (self.webView.canGoBack);
+    self.forwardButton.enabled = (self.webView.canGoForward);
 }
 
 @end
