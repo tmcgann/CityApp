@@ -2,7 +2,7 @@
 //  CAContactCategory.m
 //  CityApp
 //
-//  Created by Taylor McGann on 2/16/13.
+//  Created by Taylor McGann on 3/17/13.
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
@@ -18,6 +18,7 @@
 @dynamic modified;
 @dynamic name;
 @dynamic rank;
+@dynamic deleted;
 @dynamic contactEntries;
 
 @end

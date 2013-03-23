@@ -7,6 +7,8 @@
 //
 
 #import "CAHomeVC.h"
+#import "TMImageSync.h"
+#import "CASettings.h"
 
 @interface CAHomeVC ()
 
@@ -31,12 +33,21 @@
     // Set the back button title (for next screen)
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:nil action:nil];
     [self.navigationItem setBackBarButtonItem:backButton];
+    
+    // Setup the TMImageSync shared instance
+    TMImageSync *sharedSync = [TMImageSync sharedSync];
+    sharedSync.remoteURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", SERVER_URL, IMAGE_CONTROLLER_PATH]];
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)touchUpInsideReportsButton:(UIButton *)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self presentReportsView];
+}
+
+- (void)presentReportsView
+{
+    self.reportEntriesSegmentsVC = [[CAReportEntriesVC alloc] init];
+    [self presentViewController:self.reportEntriesSegmentsVC animated:YES completion:nil];
 }
 
 @end

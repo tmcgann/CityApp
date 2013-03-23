@@ -28,11 +28,12 @@
 - (void)addMappings {
     RKEntityMapping *reportCategoryMapping = [CAObjectStore.shared mappingForEntityForName:ENTITY_NAME];
     [reportCategoryMapping addAttributeMappingsFromDictionary:@{
-     @"id" : @"reportCategoryId",
-     @"name" : @"name",
+     @"deleted" : @"deleted",
      @"descriptor" : @"descriptor",
-     @"rank" : @"rank",
-     @"modified" : @"modified"
+     @"id" : @"reportCategoryId",
+     @"modified" : @"modified",
+     @"name" : @"name",
+     @"rank" : @"rank"
      }];
     [reportCategoryMapping setIdentificationAttributes:@[@"reportCategoryId"]];
     
@@ -40,7 +41,7 @@
     
     [CAObjectStore.shared addResponseDescriptor:responseDescriptor];
     
-    [CAObjectStore.shared syncWithFetchRequest:self.allReportCategories forPath:JSON_PATH];
+//    [CAObjectStore.shared syncWithFetchRequest:self.allReportCategories forPath:JSON_PATH];
 }
 
 // You can execute fetch requests right on the context
@@ -55,9 +56,8 @@
 // Sort descriptor built in
 - (NSFetchRequest *)allReportCategories {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:ENTITY_NAME];
-    NSSortDescriptor *rankDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"rank" ascending:YES];
     NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    fetchRequest.sortDescriptors = @[rankDescriptor, nameDescriptor];
+    fetchRequest.sortDescriptors = @[nameDescriptor];
     return fetchRequest;
 }
 

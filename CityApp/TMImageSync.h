@@ -31,6 +31,7 @@
 @property (nonatomic) BOOL debug;
 
 + (TMImageSync *)sharedSync;
+- (void)fetchImageWithoutSync:(NSString *)imagePath;
 - (void)syncImage:(NSString *)imagePath withTimestamp:(NSDate *)mostRecentTimestamp;
 - (BOOL)imageExistsAtPath:(NSString *)imagePath;
 - (BOOL)imageExists:(NSString *)imagePath withTimestamp:(NSDate *)mostRecentTimestamp;
