@@ -2,7 +2,7 @@
 //  CAReportEntry.m
 //  CityApp
 //
-//  Created by Taylor McGann on 3/22/13.
+//  Created by Taylor McGann on 3/23/13.
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
@@ -26,6 +26,7 @@
 @dynamic reportEntryId;
 @dynamic deleted;
 @dynamic modified;
+@dynamic thumbnailData;
 @dynamic reportCategory;
 @dynamic reportPictures;
 

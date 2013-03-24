@@ -2,7 +2,7 @@
 //  CAReportEntry.h
 //  CityApp
 //
-//  Created by Taylor McGann on 3/22/13.
+//  Created by Taylor McGann on 3/23/13.
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
@@ -26,6 +26,7 @@
 @property (nonatomic, retain) NSString * reportEntryId;
 @property (nonatomic, retain) NSNumber * deleted;
 @property (nonatomic, retain) NSDate * modified;
+@property (nonatomic, retain) NSString * thumbnailData;
 @property (nonatomic, retain) CAReportCategory *reportCategory;
 @property (nonatomic, retain) NSOrderedSet *reportPictures;
 @end

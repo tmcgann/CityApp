@@ -56,10 +56,14 @@
 		34F97B0716A514FA00568523 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34F97B0516A514FA00568523 /* MainStoryboard_iPhone.storyboard */; };
 		34F9AA8916F97C69004A2EB7 /* CAReportPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AA8816F97C69004A2EB7 /* CAReportPicture.m */; };
 		34F9AA9516FD41B0004A2EB7 /* CAReportCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AA9416FD41B0004A2EB7 /* CAReportCategory.m */; };
-		34F9AA9816FD41B0004A2EB7 /* CAReportEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AA9716FD41B0004A2EB7 /* CAReportEntry.m */; };
 		34F9AAA216FD8688004A2EB7 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F9AAA116FD8688004A2EB7 /* bg@2x.png */; };
 		34F9AAA416FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F9AAA316FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png */; };
 		34F9AAA616FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F9AAA516FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png */; };
+		34F9AAA916FE8849004A2EB7 /* CAReportEntryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAA816FE8848004A2EB7 /* CAReportEntryDetailVC.m */; };
+		34F9AAAF16FE9E77004A2EB7 /* CAImageValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAAE16FE9E77004A2EB7 /* CAImageValueTransformer.m */; };
+		34F9AAB516FEA341004A2EB7 /* CAReportEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAB416FEA341004A2EB7 /* CAReportEntry.m */; };
+		34F9AAB816FEA9F9004A2EB7 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAB716FEA9F9004A2EB7 /* Base64.m */; };
+		34F9AAC116FEAAE1004A2EB7 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAC016FEAAE1004A2EB7 /* NSData+Base64.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,11 +184,19 @@
 		34F9AA8816F97C69004A2EB7 /* CAReportPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportPicture.m; sourceTree = "<group>"; };
 		34F9AA9316FD41B0004A2EB7 /* CAReportCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportCategory.h; sourceTree = "<group>"; };
 		34F9AA9416FD41B0004A2EB7 /* CAReportCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportCategory.m; sourceTree = "<group>"; };
-		34F9AA9616FD41B0004A2EB7 /* CAReportEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportEntry.h; sourceTree = "<group>"; };
-		34F9AA9716FD41B0004A2EB7 /* CAReportEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportEntry.m; sourceTree = "<group>"; };
 		34F9AAA116FD8688004A2EB7 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		34F9AAA316FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Directory-ContactEntryMap-MayorDavidLenz-Edit1.png"; sourceTree = "<group>"; };
 		34F9AAA516FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Directory-ContactEntryMap-MayorDavidLenz-Edit2.png"; sourceTree = "<group>"; };
+		34F9AAA716FE8848004A2EB7 /* CAReportEntryDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportEntryDetailVC.h; sourceTree = "<group>"; };
+		34F9AAA816FE8848004A2EB7 /* CAReportEntryDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportEntryDetailVC.m; sourceTree = "<group>"; };
+		34F9AAAD16FE9E77004A2EB7 /* CAImageValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAImageValueTransformer.h; sourceTree = "<group>"; };
+		34F9AAAE16FE9E77004A2EB7 /* CAImageValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAImageValueTransformer.m; sourceTree = "<group>"; };
+		34F9AAB316FEA341004A2EB7 /* CAReportEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportEntry.h; sourceTree = "<group>"; };
+		34F9AAB416FEA341004A2EB7 /* CAReportEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportEntry.m; sourceTree = "<group>"; };
+		34F9AAB616FEA9F9004A2EB7 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		34F9AAB716FEA9F9004A2EB7 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		34F9AABF16FEAAE1004A2EB7 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		34F9AAC016FEAAE1004A2EB7 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,22 +236,18 @@
 			name = "Core Data Services";
 			sourceTree = "<group>";
 		};
-		340E32C816D3E0EF00528049 /* Misc */ = {
+		340E32C816D3E0EF00528049 /* Internal Libs & Cats */ = {
 			isa = PBXGroup;
 			children = (
 				340E32DB16DAC5E700528049 /* CASettings.h */,
-				340E32C316D34FE600528049 /* NSString+URLEncode.h */,
-				340E32C416D34FE600528049 /* NSString+URLEncode.m */,
-				340E32D816D9804900528049 /* NSDate+Compare.h */,
-				340E32D916D9804900528049 /* NSDate+Compare.m */,
-				340E32CF16D5783200528049 /* MBProgressHUD.h */,
-				340E32D016D5783200528049 /* MBProgressHUD.m */,
+				34F9AAAD16FE9E77004A2EB7 /* CAImageValueTransformer.h */,
+				34F9AAAE16FE9E77004A2EB7 /* CAImageValueTransformer.m */,
 				340E32E116DAFDA600528049 /* TMImageSync.h */,
 				340E32E216DAFDA600528049 /* TMImageSync.m */,
 				340E32D516D9309B00528049 /* TMImageFetcher.h */,
 				340E32D616D9309B00528049 /* TMImageFetcher.m */,
 			);
-			name = Misc;
+			name = "Internal Libs & Cats";
 			sourceTree = "<group>";
 		};
 		340FE6BF16B24296002FD035 /* Products */ = {
@@ -256,8 +264,8 @@
 		340FE6E016B24844002FD035 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				34F9AA9616FD41B0004A2EB7 /* CAReportEntry.h */,
-				34F9AA9716FD41B0004A2EB7 /* CAReportEntry.m */,
+				34F9AAB316FEA341004A2EB7 /* CAReportEntry.h */,
+				34F9AAB416FEA341004A2EB7 /* CAReportEntry.m */,
 				34F9AA9316FD41B0004A2EB7 /* CAReportCategory.h */,
 				34F9AA9416FD41B0004A2EB7 /* CAReportCategory.m */,
 				34F9AA8716F97C69004A2EB7 /* CAReportPicture.h */,
@@ -306,6 +314,8 @@
 				341DC02416F6E6C500A4C5F8 /* CAReportEntriesCollectionVC.m */,
 				3402718C16ACE2B900DDFCC6 /* CANewReportVC.h */,
 				3402718D16ACE2B900DDFCC6 /* CANewReportVC.m */,
+				34F9AAA716FE8848004A2EB7 /* CAReportEntryDetailVC.h */,
+				34F9AAA816FE8848004A2EB7 /* CAReportEntryDetailVC.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -374,7 +384,8 @@
 				340E32A616D0481500528049 /* Core Data Services */,
 				340FE6E016B24844002FD035 /* Models */,
 				344DB94F16BE0EFA00412C22 /* Controllers */,
-				340E32C816D3E0EF00528049 /* Misc */,
+				34F9AAB216FEA064004A2EB7 /* External Libs & Cats */,
+				340E32C816D3E0EF00528049 /* Internal Libs & Cats */,
 				34F97AF416A514F900568523 /* Supporting Files */,
 			);
 			path = CityApp;
@@ -390,6 +401,23 @@
 				34F97AFB16A514F900568523 /* CityApp-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		34F9AAB216FEA064004A2EB7 /* External Libs & Cats */ = {
+			isa = PBXGroup;
+			children = (
+				340E32C316D34FE600528049 /* NSString+URLEncode.h */,
+				340E32C416D34FE600528049 /* NSString+URLEncode.m */,
+				340E32D816D9804900528049 /* NSDate+Compare.h */,
+				340E32D916D9804900528049 /* NSDate+Compare.m */,
+				34F9AABF16FEAAE1004A2EB7 /* NSData+Base64.h */,
+				34F9AAC016FEAAE1004A2EB7 /* NSData+Base64.m */,
+				34F9AAB616FEA9F9004A2EB7 /* Base64.h */,
+				34F9AAB716FEA9F9004A2EB7 /* Base64.m */,
+				340E32CF16D5783200528049 /* MBProgressHUD.h */,
+				340E32D016D5783200528049 /* MBProgressHUD.m */,
+			);
+			name = "External Libs & Cats";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -531,7 +559,11 @@
 				341DC02816F6E6E600A4C5F8 /* CAReportEntriesMapVC.m in Sources */,
 				34F9AA8916F97C69004A2EB7 /* CAReportPicture.m in Sources */,
 				34F9AA9516FD41B0004A2EB7 /* CAReportCategory.m in Sources */,
-				34F9AA9816FD41B0004A2EB7 /* CAReportEntry.m in Sources */,
+				34F9AAA916FE8849004A2EB7 /* CAReportEntryDetailVC.m in Sources */,
+				34F9AAAF16FE9E77004A2EB7 /* CAImageValueTransformer.m in Sources */,
+				34F9AAB516FEA341004A2EB7 /* CAReportEntry.m in Sources */,
+				34F9AAB816FEA9F9004A2EB7 /* Base64.m in Sources */,
+				34F9AAC116FEAAE1004A2EB7 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@
 #import "CAReportCategory.h"
 #import "TMImageSync.h"
 #import "CASettings.h"
+#import "NSData+Base64.h"
 
 #define CELL_PICTURE_TAG 0
 #define CELL_CATEGORY_TAG 1
@@ -82,8 +83,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     CAReportEntry *reportEntry = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    CAReportPicture *reportPicture = [reportEntry.reportPictures lastObject];
-    ((UIImageView *)[cell viewWithTag:CELL_PICTURE_TAG]).image = [UIImage imageWithContentsOfFile:reportPicture.filename];
+//    CAReportPicture *reportPicture = [reportEntry.reportPictures lastObject];
+//    ((UIImageView *)[cell viewWithTag:CELL_PICTURE_TAG]).image = [UIImage imageWithContentsOfFile:reportPicture.filename];
+    NSString *thumbnailBase64 = reportEntry.thumbnailData;
+    NSData *thumbnailData = [NSData dataFromBase64String:thumbnailBase64];
+    UIImage *reportPictureThumbnail = [UIImage imageWithData:thumbnailData];
+    ((UIImageView *)[cell viewWithTag:CELL_PICTURE_TAG]).image = reportPictureThumbnail;
     ((UILabel *)[cell viewWithTag:CELL_CATEGORY_TAG]).text = reportEntry.reportCategory.name;
     ((UILabel *)[cell viewWithTag:CELL_ADDRESS_TAG]).text = reportEntry.address;
     ((UILabel *)[cell viewWithTag:CELL_DESCRIPTOR_TAG]).text = reportEntry.descriptor;

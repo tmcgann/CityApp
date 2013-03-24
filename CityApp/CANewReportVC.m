@@ -190,20 +190,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
-
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//	return [[[self.fetchedResultsController sections] objectAtIndex:section] name];
-//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Configure the cell
     static NSString *Cell0 = @"ReportDescriptionCell";
-    static NSString *Cell1 = @"ReportReporterCell";
-    static NSString *Cell2 = @"ReportPublicCell";
+    static NSString *Cell1 = @"ReportAddressCell";
+    static NSString *Cell2 = @"ReportReporterCell";
+    static NSString *Cell3 = @"ReportPublicCell";
     UITableViewCell *cell;
     
     switch (indexPath.row) {
@@ -219,9 +215,16 @@
             cell = [tableView dequeueReusableCellWithIdentifier:Cell2 forIndexPath:indexPath];
             break;
             
+        case 3:
+            cell = [tableView dequeueReusableCellWithIdentifier:Cell3 forIndexPath:indexPath];
+            break;
+
+            
         default:
             break;
     }
+    
+    [tableView cellForRowAtIndexPath:indexPath];
     
     return cell;
 }
@@ -230,22 +233,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    switch (indexPath.row) {
-//        case 0:
-//            
-//            break;
-//            
-//        case 1:
-//            
-//            break;
-//            
-//        case 2:
-//            
-//            break;
-//            
-//        default:
-//            break;
-//    }
 
 }
 

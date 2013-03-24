@@ -9,7 +9,6 @@
 #import "CAReportEntryService.h"
 
 #define PRIMARY_ENTITY_NAME @"CAReportEntry"
-#define NESTED_ENTITY_NAME @"CAReportPicture"
 #define JSON_PATH @"/report_entries.json"
 #define JSON_KEY_PATH @"report_entries"
 
@@ -42,20 +41,20 @@
      @"latitude" : @"latitude",
      @"longitude" : @"longitude",
      @"modified" : @"modified",
-     @"phone_udid" : @"phoneUdid"//,
-//     @"thumbnail" : @"thumbnail"
+     @"phone_udid" : @"phoneUdid",
+     @"thumbnail_data" : @"thumbnailData"
      }];
     [reportEntryMapping setIdentificationAttributes:@[@"reportEntryId"]];
     
-    RKEntityMapping *reportPictureMapping = [CAObjectStore.shared mappingForEntityForName:@"CAReportPicture"];
-    [reportPictureMapping addAttributeMappingsFromDictionary:@{
-     @"created" : @"created",
-     @"filename" : @"filename",
-     @"id" : @"reportPictureId"
-     }];
-    [reportPictureMapping setIdentificationAttributes:@[@"reportPictureId"]];
+//    RKEntityMapping *reportPictureMapping = [CAObjectStore.shared mappingForEntityForName:@"CAReportPicture"];
+//    [reportPictureMapping addAttributeMappingsFromDictionary:@{
+//     @"created" : @"created",
+//     @"filename" : @"filename",
+//     @"id" : @"reportPictureId"
+//     }];
+//    [reportPictureMapping setIdentificationAttributes:@[@"reportPictureId"]];
     
-    [reportEntryMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"report_pictures" toKeyPath:@"reportPictures" withMapping:reportPictureMapping]];
+//    [reportEntryMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"report_pictures" toKeyPath:@"reportPictures" withMapping:reportPictureMapping]];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:reportEntryMapping pathPattern:JSON_PATH keyPath:JSON_KEY_PATH statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
