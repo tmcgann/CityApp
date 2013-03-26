@@ -47,6 +47,7 @@
 		344DB95516BE156100412C22 /* CAContactEntriesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 344DB95416BE156100412C22 /* CAContactEntriesVC.m */; };
 		3482C63116BE4B6100BC6DDE /* CAContactEntryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3482C63016BE4B6100BC6DDE /* CAContactEntryVC.m */; };
 		3482C63616BE563A00BC6DDE /* Taylor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3482C63516BE563A00BC6DDE /* Taylor.jpg */; };
+		34C4A6051701627000751558 /* UIImage+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A6041701627000751558 /* UIImage+Orientation.m */; };
 		34F97AEE16A514F900568523 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AED16A514F900568523 /* UIKit.framework */; };
 		34F97AF016A514F900568523 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AEF16A514F900568523 /* Foundation.framework */; };
 		34F97AF216A514F900568523 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AF116A514F900568523 /* CoreGraphics.framework */; };
@@ -64,6 +65,7 @@
 		34F9AAB516FEA341004A2EB7 /* CAReportEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAB416FEA341004A2EB7 /* CAReportEntry.m */; };
 		34F9AAB816FEA9F9004A2EB7 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAB716FEA9F9004A2EB7 /* Base64.m */; };
 		34F9AAC116FEAAE1004A2EB7 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAC016FEAAE1004A2EB7 /* NSData+Base64.m */; };
+		34F9AAC416FEBADE004A2EB7 /* CAReportPictureService.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAC316FEBADE004A2EB7 /* CAReportPictureService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +171,8 @@
 		3482C62F16BE4B6100BC6DDE /* CAContactEntryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAContactEntryVC.h; sourceTree = "<group>"; };
 		3482C63016BE4B6100BC6DDE /* CAContactEntryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAContactEntryVC.m; sourceTree = "<group>"; };
 		3482C63516BE563A00BC6DDE /* Taylor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Taylor.jpg; sourceTree = "<group>"; };
+		34C4A6031701627000751558 /* UIImage+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Orientation.h"; sourceTree = "<group>"; };
+		34C4A6041701627000751558 /* UIImage+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Orientation.m"; sourceTree = "<group>"; };
 		34F97AE916A514F900568523 /* CityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F97AED16A514F900568523 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34F97AEF16A514F900568523 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -197,6 +201,8 @@
 		34F9AAB716FEA9F9004A2EB7 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		34F9AABF16FEAAE1004A2EB7 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		34F9AAC016FEAAE1004A2EB7 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		34F9AAC216FEBADE004A2EB7 /* CAReportPictureService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportPictureService.h; sourceTree = "<group>"; };
+		34F9AAC316FEBADE004A2EB7 /* CAReportPictureService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportPictureService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +238,8 @@
 				340AAF2816E8F0880097A022 /* CAReportCategoryService.m */,
 				340AAF2D16E8F8690097A022 /* CAReportEntryService.h */,
 				340AAF2E16E8F8690097A022 /* CAReportEntryService.m */,
+				34F9AAC216FEBADE004A2EB7 /* CAReportPictureService.h */,
+				34F9AAC316FEBADE004A2EB7 /* CAReportPictureService.m */,
 			);
 			name = "Core Data Services";
 			sourceTree = "<group>";
@@ -412,6 +420,8 @@
 				340E32D916D9804900528049 /* NSDate+Compare.m */,
 				34F9AABF16FEAAE1004A2EB7 /* NSData+Base64.h */,
 				34F9AAC016FEAAE1004A2EB7 /* NSData+Base64.m */,
+				34C4A6031701627000751558 /* UIImage+Orientation.h */,
+				34C4A6041701627000751558 /* UIImage+Orientation.m */,
 				34F9AAB616FEA9F9004A2EB7 /* Base64.h */,
 				34F9AAB716FEA9F9004A2EB7 /* Base64.m */,
 				340E32CF16D5783200528049 /* MBProgressHUD.h */,
@@ -564,6 +574,8 @@
 				34F9AAB516FEA341004A2EB7 /* CAReportEntry.m in Sources */,
 				34F9AAB816FEA9F9004A2EB7 /* Base64.m in Sources */,
 				34F9AAC116FEAAE1004A2EB7 /* NSData+Base64.m in Sources */,
+				34F9AAC416FEBADE004A2EB7 /* CAReportPictureService.m in Sources */,
+				34C4A6051701627000751558 /* UIImage+Orientation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

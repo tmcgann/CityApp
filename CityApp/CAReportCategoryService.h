@@ -13,9 +13,8 @@
 
 @interface CAReportCategoryService : NSObject
 
-+(CAReportCategoryService*)shared;
--(void)loadStore;
-
--(NSFetchRequest*)allReportCategories;
++ (CAReportCategoryService*)shared;
+- (void)loadStore;
+- (NSFetchRequest*)allReportCategories;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "CAReportEntriesMapVC.h"
+#import "CAReportEntryDetailVC.h"
 
 @interface CAReportEntriesMapVC ()
 

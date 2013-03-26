@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class CAReportEntry, CAReportPicture;
+
 @interface CAReportEntryDetailVC : UIViewController
+
+@property (strong, nonatomic) CAReportEntry *reportEntry;
+@property (strong, nonatomic) CAReportPicture *reportPicture;
+@property (strong, nonatomic) IBOutlet UIImageView *pictureImageView;
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
+@property (strong, nonatomic) IBOutlet UILabel *reporterLabel;
+@property (strong, nonatomic) IBOutlet UILabel *createdLabel;
+@property (strong, nonatomic) IBOutlet UILabel *caseIdLabel;
 
 @end

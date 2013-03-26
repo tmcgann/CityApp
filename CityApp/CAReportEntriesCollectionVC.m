@@ -7,6 +7,7 @@
 //
 
 #import "CAReportEntriesCollectionVC.h"
+#import "CAReportEntryDetailVC.h"
 
 @interface CAReportEntriesCollectionVC ()
 

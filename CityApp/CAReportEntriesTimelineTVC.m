@@ -7,6 +7,7 @@
 //
 
 #import "CAReportEntriesTimelineTVC.h"
+#import "CAReportEntryDetailVC.h"
 #import "CAReportEntryService.h"
 #import "CAReportEntry.h"
 #import "CAReportPicture.h"
@@ -72,6 +73,17 @@
 //            }
 //        });
 //    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"pushToReportEntryDetail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        CAReportEntryDetailVC *reportEntryDetailVC = segue.destinationViewController;
+        reportEntryDetailVC.reportEntry = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//        reportEntryDetailVC.reportPicture = nil;
+//        reportEntryDetailVC.reportCategory = nil;
+    }
 }
 
 #pragma mark - Table view data source

@@ -9,17 +9,13 @@
 #import "CANewReportVC.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "UIImage+Orientation.h"
 
 @interface CANewReportVC ()
 
 @end
 
 @implementation CANewReportVC
-
-@synthesize cancelButton = _cancelButton;
-@synthesize submitButton = _submitButton;
-@synthesize takePhotoButton = _takePhotoButton;
-@synthesize imagePicker = _imagePicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +30,17 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Deselect table view cell after return from segue
+    NSIndexPath *indexPath = [self.reportInfoTableView indexPathForSelectedRow];
+    if (indexPath) {
+        [self.reportInfoTableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,7 +72,7 @@
 - (BOOL)startCameraControllerFromViewController:(UIViewController*)controller
                                   usingDelegate:(id <UIImagePickerControllerDelegate, UINavigationControllerDelegate>)delegate
 {
-    BOOL result = YES;
+    BOOL cameraAvailable = YES;
     self.imagePicker = [[UIImagePickerController alloc] init];
     
     if (([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == NO) || (delegate == nil) || (controller == nil))
@@ -73,7 +80,7 @@
         self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         self.imagePicker.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         
-        result = NO;
+        cameraAvailable = NO;
     }
     else
     {
@@ -92,7 +99,7 @@
     
     [controller presentViewController:self.imagePicker animated:YES completion:nil];
     
-    return result;
+    return cameraAvailable;
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -118,44 +125,46 @@
             //UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil , nil);
             ALAssetsLibrary *library = [ALAssetsLibrary new];
             [library writeImageToSavedPhotosAlbum:originalImage.CGImage metadata:mediaMetadata completionBlock:nil];
-            
-            // Rotate image if portrait
-            // TODO: Rotate the image if it's portrait so that it looks right in in the preview
-//            if (mediaMetadata objectForKey:<#(id)#>)
+        }
+        
+        // Rotate image if portrait
+        if (!editedImage) {
+            editedImage = originalImage;
+            [editedImage fixOrientation];
         }
         
         // If no edited image exists, use a cropped version of the original image
-        if (!editedImage)
-        {
-            CGFloat width = originalImage.size.width;
-            CGFloat height = originalImage.size.height;
-            
-            // Crop photo album images as long as they are standard iPhone images with standard 4:3 or 3:4 ratio
-            if (width > height)
-            {
-                // 'x' is half the distance of the difference between the width and the height
-                CGFloat x = (width - height) / 2;
-                
-                // Make a new bounding rectangle including our crop
-                CGRect newSize = CGRectMake(x, 0, height, height);
-                
-                editedImage = [self cropImage:originalImage toRect:newSize];
-            }
-            else if (height > width)
-            {
-                // 'y' is half the distance of the difference between the height and the width
-                CGFloat y = (height - width) / 2;
-                
-                // Make a new bounding rectangle including our crop
-                CGRect newSize = CGRectMake(0, y, width, width);
-                
-                editedImage = [self cropImage:originalImage toRect:newSize];
-            }
-            else
-            {
-                editedImage = originalImage;
-            }
-        }
+//        if (!editedImage)
+//        {
+//            CGFloat width = originalImage.size.width;
+//            CGFloat height = originalImage.size.height;
+//            
+//            // Crop photo album images as long as they are standard iPhone images with standard 4:3 or 3:4 ratio
+//            if (width > height)
+//            {
+//                // 'x' is half the distance of the difference between the width and the height
+//                CGFloat x = (width - height) / 2;
+//                
+//                // Make a new bounding rectangle including our crop
+//                CGRect newSize = CGRectMake(x, 0, height, height);
+//                
+//                editedImage = [self cropImage:originalImage toRect:newSize];
+//            }
+//            else if (height > width)
+//            {
+//                // 'y' is half the distance of the difference between the height and the width
+//                CGFloat y = (height - width) / 2;
+//                
+//                // Make a new bounding rectangle including our crop
+//                CGRect newSize = CGRectMake(0, y, width, width);
+//                
+//                editedImage = [self cropImage:originalImage toRect:newSize];
+//            }
+//            else
+//            {
+//                editedImage = originalImage;
+//            }
+//        }
         
         [self.takePhotoButton setBackgroundImage:editedImage forState:UIControlStateNormal];
     }
@@ -195,6 +204,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //TODO: See if there is a more efficient way to do this since there are 4 unique cells
+    
     // Configure the cell
     static NSString *Cell0 = @"ReportDescriptionCell";
     static NSString *Cell1 = @"ReportAddressCell";
@@ -224,8 +235,6 @@
             break;
     }
     
-    [tableView cellForRowAtIndexPath:indexPath];
-    
     return cell;
 }
 
@@ -233,7 +242,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    //Do nothing
 }
 
 @end

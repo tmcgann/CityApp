@@ -1,8 +1,8 @@
 //
-//  CAReportEntryService.h
+//  CAReportPictureService.h
 //  CityApp
 //
-//  Created by Taylor McGann on 3/7/13.
+//  Created by Taylor McGann on 3/23/13.
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
@@ -11,10 +11,10 @@
 #import "CAObjectStore.h"
 #import "CAReportEntry.h"
 
-@interface CAReportEntryService : NSObject
+@interface CAReportPictureService : NSObject
 
-+ (CAReportEntryService*)shared;
++ (CAReportPictureService*)shared;
 - (void)loadStore;
-- (NSFetchRequest*)allReportEntries;
+- (NSFetchRequest*)allReportPictures;
 
 @end

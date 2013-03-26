@@ -45,9 +45,9 @@
     self.contactCategoryDescription.text = self.contactCategory.descriptor;
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     
     // Deselect table view cell after return from segue
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
