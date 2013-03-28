@@ -32,6 +32,7 @@
         <relationship name="contactCategory" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CAContactCategory" inverseName="contactEntries" inverseEntity="CAContactCategory" syncable="YES"/>
     </entity>
     <entity name="CAReportCategory" representedClassName="CAReportCategory" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modified" optional="YES" attributeType="Date" syncable="YES"/>
@@ -54,6 +55,7 @@
         <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modified" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="phoneUdid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reportCategoryId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reportEntryId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnailData" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="reportCategory" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CAReportCategory" inverseName="reportEntries" inverseEntity="CAReportCategory" syncable="YES"/>
@@ -68,9 +70,9 @@
     <elements>
         <element name="CAContactCategory" positionX="160" positionY="192" width="128" height="165"/>
         <element name="CAContactEntry" positionX="-9" positionY="192" width="128" height="330"/>
-        <element name="CAReportCategory" positionX="-162" positionY="189" width="128" height="150"/>
-        <element name="CAReportEntry" positionX="-333" positionY="189" width="128" height="285"/>
-        <element name="CAReportPicture" positionX="-513" positionY="288" width="128" height="105"/>
+        <element name="CAReportCategory" positionX="-162" positionY="189" width="128" height="165"/>
         <element name="CAReportComment" positionX="-513" positionY="405" width="128" height="45"/>
+        <element name="CAReportEntry" positionX="-333" positionY="189" width="128" height="300"/>
+        <element name="CAReportPicture" positionX="-513" positionY="288" width="128" height="105"/>
     </elements>
 </model>

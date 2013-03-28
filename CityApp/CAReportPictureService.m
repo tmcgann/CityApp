@@ -61,15 +61,16 @@
     return fetchRequest;
 }
 
-//- (NSFetchRequest *)reportPicturesForReportEntry:(CAReportEntry *)reportEntry
-//{
-//    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:PRIMARY_ENTITY_NAME];
-//    NSSortDescriptor *createdDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO];
-//    fetchRequest.sortDescriptors = @[createdDescriptor];
-//    return fetchRequest;
-//}
+- (NSFetchRequest *)reportPicturesForReportEntry:(CAReportEntry *)reportEntry
+{
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:PRIMARY_ENTITY_NAME];
+    NSSortDescriptor *createdDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO];
+    fetchRequest.sortDescriptors = @[createdDescriptor];
+    fetchRequest.predicate = [self filterByReportEntry:reportEntry];
+    return fetchRequest;
+}
 
-- (NSPredicate *)reportPicturesForReportEntry:(CAReportEntry *)reportEntry
+- (NSPredicate *)filterByReportEntry:(CAReportEntry *)reportEntry
 {
     return [NSPredicate predicateWithFormat:@"reportEntry == $reportEntry", reportEntry];
 }

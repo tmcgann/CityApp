@@ -7,6 +7,7 @@
 //
 
 #import "CAReportEntryService.h"
+#import "CAReportEntry.h"
 
 #define PRIMARY_ENTITY_NAME @"CAReportEntry"
 #define JSON_PATH @"/report_entries.json"
@@ -27,40 +28,40 @@
 
 - (void)addMappings
 {
-    RKEntityMapping *reportEntryMapping = [CAObjectStore.shared mappingForEntityForName:PRIMARY_ENTITY_NAME];
-    [reportEntryMapping addAttributeMappingsFromDictionary:@{
-     @"address" : @"address",
-     @"contact_email" : @"contactEmail",
-     @"contact_name" : @"contactName",
-     @"contact_phone" : @"contactPhone",
-     @"created" : @"created",
-     @"deleted" : @"deleted",
-     @"descriptor" : @"descriptor",
-     @"exposed" : @"exposed",
-     @"id" : @"reportEntryId",
-     @"latitude" : @"latitude",
-     @"longitude" : @"longitude",
-     @"modified" : @"modified",
-     @"phone_udid" : @"phoneUdid",
-     @"thumbnail_data" : @"thumbnailData"
-     }];
-    [reportEntryMapping setIdentificationAttributes:@[@"reportEntryId"]];
+    NSDictionary *reportEntryDict = @{
+        @"address" : @"address",
+        @"contact_email" : @"contactEmail",
+        @"contact_name" : @"contactName",
+        @"contact_phone" : @"contactPhone",
+        @"created" : @"created",
+        @"deleted" : @"deleted",
+        @"descriptor" : @"descriptor",
+        @"exposed" : @"exposed",
+        @"id" : @"reportEntryId",
+        @"latitude" : @"latitude",
+        @"longitude" : @"longitude",
+        @"modified" : @"modified",
+        @"phone_udid" : @"phoneUdid",
+        @"report_category_id" : @"reportCategoryId",
+        @"thumbnail_data" : @"thumbnailData"
+    };
     
-//    RKEntityMapping *reportPictureMapping = [CAObjectStore.shared mappingForEntityForName:@"CAReportPicture"];
-//    [reportPictureMapping addAttributeMappingsFromDictionary:@{
-//     @"created" : @"created",
-//     @"filename" : @"filename",
-//     @"id" : @"reportPictureId"
-//     }];
-//    [reportPictureMapping setIdentificationAttributes:@[@"reportPictureId"]];
+    // RESPONSE MAPPING
+    RKEntityMapping *reportEntryResponseMapping = [CAObjectStore.shared mappingForEntityForName:PRIMARY_ENTITY_NAME];
+    [reportEntryResponseMapping addAttributeMappingsFromDictionary:reportEntryDict];
+    [reportEntryResponseMapping setIdentificationAttributes:@[@"reportEntryId"]];
     
-//    [reportEntryMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"report_pictures" toKeyPath:@"reportPictures" withMapping:reportPictureMapping]];
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:reportEntryResponseMapping pathPattern:JSON_PATH keyPath:JSON_KEY_PATH statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:reportEntryMapping pathPattern:JSON_PATH keyPath:JSON_KEY_PATH statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [[CAObjectStore shared] addResponseDescriptor:responseDescriptor];
     
-    [CAObjectStore.shared addResponseDescriptor:responseDescriptor];
+    // REQUEST MAPPING
+    RKEntityMapping *reportEntryRequestMapping = (RKEntityMapping *)[RKObjectMapping requestMapping];
+    [reportEntryRequestMapping addAttributeMappingsFromDictionary:reportEntryDict];
     
-    //    [CAObjectStore.shared syncWithFetchRequest:self.allReportEntries forPath:JSON_PATH];
+    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:reportEntryRequestMapping objectClass:[CAReportEntry class] rootKeyPath:@"report_entry"];
+    
+    [[CAObjectStore shared] addRequestDescriptor:requestDescriptor];
 }
 
 // You can execute fetch requests right on the context
@@ -80,6 +81,21 @@
     NSSortDescriptor *createdDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO];
     fetchRequest.sortDescriptors = @[createdDescriptor];
     return fetchRequest;
+}
+
+- (void)createEntry:(CAReportEntry *)reportEntry withPicture:(UIImage *)picture
+{
+//    [[CAObjectStore shared].objectManager postObject:reportEntry path:@"/report_entries/add" parameters:nil success:nil failure:nil];
+    // Serialize the class attributes then attach a file
+    NSMutableURLRequest *request = [[CAObjectStore shared].objectManager multipartFormRequestWithObject:reportEntry method:RKRequestMethodPOST path:@"/report_entries/add" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:UIImageJPEGRepresentation(picture, 0.8)
+                                    name:@"reportEntry[picture]"
+                                fileName:@"photo.jpeg"
+                                mimeType:@"image/jpeg"];
+    }];
+    
+    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:nil failure:nil];
+    [[CAObjectStore shared].objectManager enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
 }
 
 

@@ -11,6 +11,7 @@
 #import <RestKit/RestKit.h>
 #import <RestKit/CoreData.h>
 #import "CAModels.h"
+#import "CAServices.h"
 
 @implementation CAAppDelegate
 
@@ -21,6 +22,9 @@
 //    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     
 //    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    
+    // Load object stores
+    [[CAReportCategoryService shared] loadStore];
     
     return YES;
 }

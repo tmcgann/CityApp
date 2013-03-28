@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class CAReportEntry;
+
 @interface CANewReportVC : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
 

@@ -9,6 +9,8 @@
 #import "CANewReportVC.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "CAReportEntryService.h"
+#import "CAReportPicture.h"
 #import "UIImage+Orientation.h"
 
 @interface CANewReportVC ()
@@ -29,7 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -43,12 +44,6 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Button Pressed Methods
 
 - (IBAction)cancelPressed:(UIBarButtonItem *)sender
@@ -58,13 +53,44 @@
 
 - (IBAction)submitPressed:(UIBarButtonItem *)sender
 {
-#warning TODO: This doesn't do anything yet. Make it actually do something.
+    [self submitNewReportEntry];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)takePhotoPressed:(UIButton *)sender
 {
     [self startCameraControllerFromViewController:self usingDelegate:self];
+}
+
+#pragma mark - Submit New Report Entry
+
+//- (BOOL)validateData
+//{
+//    BOOL validReportCategory = NO;
+//    BOOL validDescription = NO;
+//    
+//    if (self.newReportEntry.reportCategory) {
+//        validReportCategory = YES;
+//    }
+//    if (self.newReportEntry.descriptor) {
+//        validDescription = YES;
+//    }
+//    
+//    return (validReportCategory && validDescription);
+//}
+
+- (void)submitNewReportEntry
+{
+    CAObjectStore *objectStore = [CAObjectStore shared];
+//    CAReportEntry *reportEntry = (CAReportEntry *)[objectStore insertNewObjectForEntityName:@"CAReportEntry"];
+//    reportEntry.reportCategory =
+//    CAReportPicture *reportPicture = (CAReportPicture *)[objectStore insertNewObjectForEntityName:@"CAReportPicture"];
+//    reportPicture.filename =
+//    [objectStore saveContext];
+//    DLog(@"New Report Entry: %@", self.newReportEntry.description);
+    
+//    [[CAReportEntryService shared] createEntry:self.newReportEntry withPicture:self.takePhotoButton.imageView.image];
 }
 
 #pragma mark - Launch Camera
@@ -190,7 +216,7 @@
     return croppedImage;
 }
 
-#pragma mark - Table View Data Source
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -199,7 +225,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -207,10 +233,11 @@
     //TODO: See if there is a more efficient way to do this since there are 4 unique cells
     
     // Configure the cell
-    static NSString *Cell0 = @"ReportDescriptionCell";
-    static NSString *Cell1 = @"ReportAddressCell";
-    static NSString *Cell2 = @"ReportReporterCell";
-    static NSString *Cell3 = @"ReportPublicCell";
+    static NSString *Cell0 = @"ReportCategoryCell";
+    static NSString *Cell1 = @"ReportDescriptionCell";
+    static NSString *Cell2 = @"ReportAddressCell";
+    static NSString *Cell3 = @"ReportReporterCell";
+    static NSString *Cell4 = @"ReportPublicCell";
     UITableViewCell *cell;
     
     switch (indexPath.row) {
@@ -230,6 +257,9 @@
             cell = [tableView dequeueReusableCellWithIdentifier:Cell3 forIndexPath:indexPath];
             break;
 
+        case 4:
+            cell = [tableView dequeueReusableCellWithIdentifier:Cell4 forIndexPath:indexPath];
+            break;
             
         default:
             break;
@@ -238,7 +268,7 @@
     return cell;
 }
 
-#pragma mark - Table View Delegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

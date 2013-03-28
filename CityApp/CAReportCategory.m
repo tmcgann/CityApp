@@ -2,7 +2,7 @@
 //  CAReportCategory.m
 //  CityApp
 //
-//  Created by Taylor McGann on 3/22/13.
+//  Created by Taylor McGann on 3/26/13.
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
@@ -14,10 +14,11 @@
 
 @dynamic deleted;
 @dynamic descriptor;
-@dynamic modified;
+@dynamic created;
 @dynamic name;
 @dynamic rank;
 @dynamic reportCategoryId;
+@dynamic modified;
 @dynamic reportEntries;
 
 @end

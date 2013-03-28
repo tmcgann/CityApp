@@ -9,6 +9,7 @@
 #import "CAReportEntriesTimelineTVC.h"
 #import "CAReportEntryDetailVC.h"
 #import "CAReportEntryService.h"
+#import "CAReportCategoryService.h"
 #import "CAReportEntry.h"
 #import "CAReportPicture.h"
 #import "CAReportCategory.h"
@@ -94,14 +95,18 @@
     static NSString *CellIdentifier = @"ReportEntryCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    // Get all the necessary objects and data to for the various images and labels
     CAReportEntry *reportEntry = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    CAReportCategory *reportCategory = [[CAReportCategoryService shared] reportCategoryById:reportEntry.reportCategoryId];
 //    CAReportPicture *reportPicture = [reportEntry.reportPictures lastObject];
 //    ((UIImageView *)[cell viewWithTag:CELL_PICTURE_TAG]).image = [UIImage imageWithContentsOfFile:reportPicture.filename];
     NSString *thumbnailBase64 = reportEntry.thumbnailData;
     NSData *thumbnailData = [NSData dataFromBase64String:thumbnailBase64];
     UIImage *reportPictureThumbnail = [UIImage imageWithData:thumbnailData];
+    
     ((UIImageView *)[cell viewWithTag:CELL_PICTURE_TAG]).image = reportPictureThumbnail;
-    ((UILabel *)[cell viewWithTag:CELL_CATEGORY_TAG]).text = reportEntry.reportCategory.name;
+//    ((UILabel *)[cell viewWithTag:CELL_CATEGORY_TAG]).text = reportEntry.reportCategory.name;
+    ((UILabel *)[cell viewWithTag:CELL_CATEGORY_TAG]).text = reportEntry.reportCategoryId;
     ((UILabel *)[cell viewWithTag:CELL_ADDRESS_TAG]).text = reportEntry.address;
     ((UILabel *)[cell viewWithTag:CELL_DESCRIPTOR_TAG]).text = reportEntry.descriptor;
     ((UILabel *)[cell viewWithTag:CELL_CREATED_TAG]).text = [NSString stringWithFormat:@"%@", reportEntry.created.description];

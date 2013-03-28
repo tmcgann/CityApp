@@ -48,6 +48,9 @@
 		3482C63116BE4B6100BC6DDE /* CAContactEntryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3482C63016BE4B6100BC6DDE /* CAContactEntryVC.m */; };
 		3482C63616BE563A00BC6DDE /* Taylor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3482C63516BE563A00BC6DDE /* Taylor.jpg */; };
 		34C4A6051701627000751558 /* UIImage+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A6041701627000751558 /* UIImage+Orientation.m */; };
+		34C4A60E170218C500751558 /* CAReportCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A60D170218C500751558 /* CAReportCategory.m */; };
+		34C4A61417021F1500751558 /* CAReportEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A61317021F1500751558 /* CAReportEntry.m */; };
+		34C4A61A17040F5A00751558 /* CANewReportReporterDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A61917040F5A00751558 /* CANewReportReporterDetailTVC.m */; };
 		34F97AEE16A514F900568523 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AED16A514F900568523 /* UIKit.framework */; };
 		34F97AF016A514F900568523 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AEF16A514F900568523 /* Foundation.framework */; };
 		34F97AF216A514F900568523 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AF116A514F900568523 /* CoreGraphics.framework */; };
@@ -56,13 +59,11 @@
 		34F97AFE16A514F900568523 /* CAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F97AFD16A514F900568523 /* CAAppDelegate.m */; };
 		34F97B0716A514FA00568523 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34F97B0516A514FA00568523 /* MainStoryboard_iPhone.storyboard */; };
 		34F9AA8916F97C69004A2EB7 /* CAReportPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AA8816F97C69004A2EB7 /* CAReportPicture.m */; };
-		34F9AA9516FD41B0004A2EB7 /* CAReportCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AA9416FD41B0004A2EB7 /* CAReportCategory.m */; };
 		34F9AAA216FD8688004A2EB7 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F9AAA116FD8688004A2EB7 /* bg@2x.png */; };
 		34F9AAA416FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F9AAA316FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png */; };
 		34F9AAA616FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F9AAA516FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png */; };
 		34F9AAA916FE8849004A2EB7 /* CAReportEntryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAA816FE8848004A2EB7 /* CAReportEntryDetailVC.m */; };
 		34F9AAAF16FE9E77004A2EB7 /* CAImageValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAAE16FE9E77004A2EB7 /* CAImageValueTransformer.m */; };
-		34F9AAB516FEA341004A2EB7 /* CAReportEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAB416FEA341004A2EB7 /* CAReportEntry.m */; };
 		34F9AAB816FEA9F9004A2EB7 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAB716FEA9F9004A2EB7 /* Base64.m */; };
 		34F9AAC116FEAAE1004A2EB7 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAC016FEAAE1004A2EB7 /* NSData+Base64.m */; };
 		34F9AAC416FEBADE004A2EB7 /* CAReportPictureService.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAC316FEBADE004A2EB7 /* CAReportPictureService.m */; };
@@ -173,6 +174,13 @@
 		3482C63516BE563A00BC6DDE /* Taylor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Taylor.jpg; sourceTree = "<group>"; };
 		34C4A6031701627000751558 /* UIImage+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Orientation.h"; sourceTree = "<group>"; };
 		34C4A6041701627000751558 /* UIImage+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Orientation.m"; sourceTree = "<group>"; };
+		34C4A60C170218C500751558 /* CAReportCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportCategory.h; sourceTree = "<group>"; };
+		34C4A60D170218C500751558 /* CAReportCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportCategory.m; sourceTree = "<group>"; };
+		34C4A60F17021D1500751558 /* CAServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAServices.h; sourceTree = "<group>"; };
+		34C4A61217021F1500751558 /* CAReportEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportEntry.h; sourceTree = "<group>"; };
+		34C4A61317021F1500751558 /* CAReportEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportEntry.m; sourceTree = "<group>"; };
+		34C4A61817040F5A00751558 /* CANewReportReporterDetailTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CANewReportReporterDetailTVC.h; sourceTree = "<group>"; };
+		34C4A61917040F5A00751558 /* CANewReportReporterDetailTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CANewReportReporterDetailTVC.m; sourceTree = "<group>"; };
 		34F97AE916A514F900568523 /* CityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F97AED16A514F900568523 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34F97AEF16A514F900568523 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -186,8 +194,6 @@
 		34F97B0616A514FA00568523 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		34F9AA8716F97C69004A2EB7 /* CAReportPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportPicture.h; sourceTree = "<group>"; };
 		34F9AA8816F97C69004A2EB7 /* CAReportPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportPicture.m; sourceTree = "<group>"; };
-		34F9AA9316FD41B0004A2EB7 /* CAReportCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportCategory.h; sourceTree = "<group>"; };
-		34F9AA9416FD41B0004A2EB7 /* CAReportCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportCategory.m; sourceTree = "<group>"; };
 		34F9AAA116FD8688004A2EB7 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		34F9AAA316FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Directory-ContactEntryMap-MayorDavidLenz-Edit1.png"; sourceTree = "<group>"; };
 		34F9AAA516FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Directory-ContactEntryMap-MayorDavidLenz-Edit2.png"; sourceTree = "<group>"; };
@@ -195,8 +201,6 @@
 		34F9AAA816FE8848004A2EB7 /* CAReportEntryDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportEntryDetailVC.m; sourceTree = "<group>"; };
 		34F9AAAD16FE9E77004A2EB7 /* CAImageValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAImageValueTransformer.h; sourceTree = "<group>"; };
 		34F9AAAE16FE9E77004A2EB7 /* CAImageValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAImageValueTransformer.m; sourceTree = "<group>"; };
-		34F9AAB316FEA341004A2EB7 /* CAReportEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportEntry.h; sourceTree = "<group>"; };
-		34F9AAB416FEA341004A2EB7 /* CAReportEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportEntry.m; sourceTree = "<group>"; };
 		34F9AAB616FEA9F9004A2EB7 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		34F9AAB716FEA9F9004A2EB7 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		34F9AABF16FEAAE1004A2EB7 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -240,6 +244,9 @@
 				340AAF2E16E8F8690097A022 /* CAReportEntryService.m */,
 				34F9AAC216FEBADE004A2EB7 /* CAReportPictureService.h */,
 				34F9AAC316FEBADE004A2EB7 /* CAReportPictureService.m */,
+				340E32A016D03ECA00528049 /* CAObjectStore.h */,
+				340E32A116D03ECA00528049 /* CAObjectStore.m */,
+				34C4A60F17021D1500751558 /* CAServices.h */,
 			);
 			name = "Core Data Services";
 			sourceTree = "<group>";
@@ -272,18 +279,16 @@
 		340FE6E016B24844002FD035 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				34F9AAB316FEA341004A2EB7 /* CAReportEntry.h */,
-				34F9AAB416FEA341004A2EB7 /* CAReportEntry.m */,
-				34F9AA9316FD41B0004A2EB7 /* CAReportCategory.h */,
-				34F9AA9416FD41B0004A2EB7 /* CAReportCategory.m */,
+				34C4A61217021F1500751558 /* CAReportEntry.h */,
+				34C4A61317021F1500751558 /* CAReportEntry.m */,
+				34C4A60C170218C500751558 /* CAReportCategory.h */,
+				34C4A60D170218C500751558 /* CAReportCategory.m */,
 				34F9AA8716F97C69004A2EB7 /* CAReportPicture.h */,
 				34F9AA8816F97C69004A2EB7 /* CAReportPicture.m */,
 				341DC01D16F6C4A200A4C5F8 /* CAContactCategory.h */,
 				341DC01E16F6C4A200A4C5F8 /* CAContactCategory.m */,
 				341DC01416F6C4A100A4C5F8 /* CAContactEntry.h */,
 				341DC01516F6C4A100A4C5F8 /* CAContactEntry.m */,
-				340E32A016D03ECA00528049 /* CAObjectStore.h */,
-				340E32A116D03ECA00528049 /* CAObjectStore.m */,
 				340FE6E416B2531C002FD035 /* CAModels.h */,
 			);
 			name = Models;
@@ -322,6 +327,8 @@
 				341DC02416F6E6C500A4C5F8 /* CAReportEntriesCollectionVC.m */,
 				3402718C16ACE2B900DDFCC6 /* CANewReportVC.h */,
 				3402718D16ACE2B900DDFCC6 /* CANewReportVC.m */,
+				34C4A61817040F5A00751558 /* CANewReportReporterDetailTVC.h */,
+				34C4A61917040F5A00751558 /* CANewReportReporterDetailTVC.m */,
 				34F9AAA716FE8848004A2EB7 /* CAReportEntryDetailVC.h */,
 				34F9AAA816FE8848004A2EB7 /* CAReportEntryDetailVC.m */,
 			);
@@ -568,14 +575,15 @@
 				341DC02516F6E6C500A4C5F8 /* CAReportEntriesCollectionVC.m in Sources */,
 				341DC02816F6E6E600A4C5F8 /* CAReportEntriesMapVC.m in Sources */,
 				34F9AA8916F97C69004A2EB7 /* CAReportPicture.m in Sources */,
-				34F9AA9516FD41B0004A2EB7 /* CAReportCategory.m in Sources */,
 				34F9AAA916FE8849004A2EB7 /* CAReportEntryDetailVC.m in Sources */,
 				34F9AAAF16FE9E77004A2EB7 /* CAImageValueTransformer.m in Sources */,
-				34F9AAB516FEA341004A2EB7 /* CAReportEntry.m in Sources */,
 				34F9AAB816FEA9F9004A2EB7 /* Base64.m in Sources */,
 				34F9AAC116FEAAE1004A2EB7 /* NSData+Base64.m in Sources */,
 				34F9AAC416FEBADE004A2EB7 /* CAReportPictureService.m in Sources */,
 				34C4A6051701627000751558 /* UIImage+Orientation.m in Sources */,
+				34C4A60E170218C500751558 /* CAReportCategory.m in Sources */,
+				34C4A61417021F1500751558 /* CAReportEntry.m in Sources */,
+				34C4A61A17040F5A00751558 /* CANewReportReporterDetailTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
