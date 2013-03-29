@@ -85,7 +85,6 @@
     if ([segue.identifier isEqualToString:@"pushToContactEntries"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         CAContactEntriesVC *contactEntriesVC = segue.destinationViewController;
-//        CAContactCategory *cc = [self.contactCategories objectAtIndex:(NSUInteger)indexPath.row];
         contactEntriesVC.contactCategory = [self.fetchedResultsController objectAtIndexPath:indexPath];
     }
 }
@@ -95,7 +94,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Configure the cell
-    static NSString *CellIdentifier = @"CategoryCell";
+    static NSString *CellIdentifier = @"ContactCategoryCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
 //    CAContactCategory *cc = [self.contactCategories objectAtIndex:(NSUInteger)indexPath.row];

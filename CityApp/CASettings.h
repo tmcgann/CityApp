@@ -18,3 +18,4 @@
 #define REPORTER_EMAIL_ADDRESS_KEY @"emailAddress"
 #define REPORTER_TWITTER_HANDLE_KEY @"twitterHandle"
 #define REPORTER_PHONE_NUMBER_KEY @"phoneNumber"
+#define REPORTER_INFO_DEFAULT_NAME @"Anonymous"

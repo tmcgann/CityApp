@@ -9,9 +9,21 @@
 #import "CANewReportVC.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "CANewReportReportCategoryTVC.h"
+//#import "CANewReportDescriptionTVC.h"
+//#import "CANewReportAddressTVC.h"
+#import "CANewReportReporterDetailTVC.h"
 #import "CAReportEntryService.h"
+#import "CAReportCategory.h"
 #import "CAReportPicture.h"
 #import "UIImage+Orientation.h"
+#import "CASettings.h"
+
+//#define NEW_REPORT_INFO_CATEGORY_KEY @"reportCategory"
+//#define NEW_REPORT_INFO_DESCRIPTION_KEY @"description"
+//#define NEW_REPORT_INFO_ADDRESS_KEY @"address"
+//#define NEW_REPORT_INFO_REPORTER_KEY @"reporter"
+//#define NEW_REPORT_INFO_PUBLIC_KEY @"public"
 
 @interface CANewReportVC ()
 
@@ -19,32 +31,131 @@
 
 @implementation CANewReportVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupNewReportInfo];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self deselectSelectedRow];
     
-    // Deselect table view cell after return from segue
+    // Refresh table view to update data in the event of any changes
+    [self.reportInfoTableView reloadData];
+}
+
+- (void)deselectSelectedRow
+{
+    // Deselect table view cell upon returning to view
     NSIndexPath *indexPath = [self.reportInfoTableView indexPathForSelectedRow];
     if (indexPath) {
         [self.reportInfoTableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 
-#pragma mark - Button Pressed Methods
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueToReportCategory"]) {
+        CANewReportReportCategoryTVC *reportCategoryTVC = segue.destinationViewController;
+        reportCategoryTVC.selectedReportCategory = self.reportCategory;
+    } else if ([segue.identifier isEqualToString:@"segueToReportDescription"]) {
+        // Update with current description
+    } else if ([segue.identifier isEqualToString:@"segueToReportAddress"]) {
+        // Update with current address
+    }
+    // Don't have to pass any data to reporter detail b/c data is stored in NSUserDefaults
+}
+
+- (void)setupNewReportInfo
+{
+//    self.newReportInfo = [NSMutableDictionary dictionaryWithCapacity:5];
+    
+    // Load any existing reporter info from user defaults
+    NSDictionary *reporterInfo = [[NSUserDefaults standardUserDefaults] valueForKey:REPORTER_INFO_DICT_KEY];
+    self.reportReporterInfo = reporterInfo;
+//    [self.newReportInfo setValue:reporterInfo forKey:NEW_REPORT_INFO_REPORTER_KEY];
+    
+    // Automatically calculate the users current address
+    NSString *currentAddress = [self determineCurrentAddress];
+    self.reportAddress = currentAddress;
+//    [self.newReportInfo setValue:currentAddress forKey:NEW_REPORT_INFO_ADDRESS_KEY];
+    
+    // New reports are public by default until modified
+    self.reportPublic = YES;
+//    [self.newReportInfo setValue:YES forKey:NEW_REPORT_INFO_PUBLIC_KEY];
+}
+
+- (NSString *)determineCurrentAddress
+{
+    return nil;
+}
+
+#pragma mark - Label text methods
+
+- (void)setupCategoryLabel:(UILabel *)label
+{
+    if (self.reportCategory) {
+        label.text = self.reportCategory.name;
+        label.textColor = [UIColor darkTextColor];
+    } else {
+        label.text = @"Report Category";
+        label.textColor = [UIColor lightGrayColor];
+    }
+}
+
+- (void)setupDescriptionLabel:(UILabel *)label
+{
+    if (self.reportDescription) {
+        label.text = self.reportDescription;
+        label.textColor = [UIColor darkTextColor];
+    } else {
+        label.text = @"Description";
+        label.textColor = [UIColor lightGrayColor];
+    }
+}
+
+- (void)setupAddressLabel:(UILabel *)label
+{
+    if (self.reportAddress) {
+        label.text = self.reportAddress;
+        label.textColor = [UIColor darkTextColor];
+    } else {
+        label.text = @"Address";
+        label.textColor = [UIColor lightGrayColor];
+    }
+}
+
+- (void)setupReporterLabel:(UILabel *)label
+{
+    if (self.reportReporterInfo) {
+        label.text = [self reporterLabelText];
+        label.textColor = [UIColor darkTextColor];
+    } else {
+        label.text = REPORTER_INFO_DEFAULT_NAME;
+        label.textColor = [UIColor lightGrayColor];
+    }
+}
+
+- (NSString *)reporterLabelText
+{
+    NSString *name;
+    
+    if (![[self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] isEqualToString:@""] && ![[self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] isEqualToString:@""]) {
+        name = [NSString stringWithFormat:@"%@ %@", [self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY], [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY]];
+    } else if (![[self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] isEqualToString:@""]) {
+        name = [self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY];
+    } else if (![[self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] isEqualToString:@""]) {
+        name = [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY];
+    } else {
+        name = REPORTER_INFO_DEFAULT_NAME;
+    }
+    
+    return name;
+}
+
+#pragma mark - IBAction Methods
 
 - (IBAction)cancelPressed:(UIBarButtonItem *)sender
 {
@@ -53,9 +164,10 @@
 
 - (IBAction)submitPressed:(UIBarButtonItem *)sender
 {
-    [self submitNewReportEntry];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    if ([self validData]) {
+        [self submitNewReportEntry];
+        [self dismissViewControllerAnimated:YES completion:nil];
+//    }
 }
 
 - (IBAction)takePhotoPressed:(UIButton *)sender
@@ -63,22 +175,33 @@
     [self startCameraControllerFromViewController:self usingDelegate:self];
 }
 
+- (IBAction)switchValueChanged:(UISwitch *)sender
+{
+    self.reportPublic = sender.on;
+}
+
 #pragma mark - Submit New Report Entry
 
-//- (BOOL)validateData
-//{
+- (BOOL)validData
+{
 //    BOOL validReportCategory = NO;
 //    BOOL validDescription = NO;
+//    BOOL validAddress = NO;
 //    
-//    if (self.newReportEntry.reportCategory) {
+//    if (self.newReportCategory) {
 //        validReportCategory = YES;
 //    }
-//    if (self.newReportEntry.descriptor) {
+//    if (self.newReportDescription) {
 //        validDescription = YES;
 //    }
+//    if (self.newReportAddress) {
+//        validAddress = YES;
+//    }
 //    
-//    return (validReportCategory && validDescription);
-//}
+//    return (validReportCategory && validDescription && validAddress);
+
+    return (self.reportCategory && self.reportDescription && self.reportAddress);
+}
 
 - (void)submitNewReportEntry
 {
@@ -230,7 +353,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //TODO: See if there is a more efficient way to do this since there are 4 unique cells
+    //TODO: See if there is a more efficient way to do this since there are 5 unique cells
     
     // Configure the cell
     static NSString *Cell0 = @"ReportCategoryCell";
@@ -242,27 +365,44 @@
     
     switch (indexPath.row) {
         case 0:
+        {
             cell = [tableView dequeueReusableCellWithIdentifier:Cell0 forIndexPath:indexPath];
-            break;
+            UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
+            [self setupCategoryLabel:cellLabel];
+        }
+        break;
             
         case 1:
+        {
             cell = [tableView dequeueReusableCellWithIdentifier:Cell1 forIndexPath:indexPath];
-            break;
+            UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
+            [self setupDescriptionLabel:cellLabel];
+        }
+        break;
             
         case 2:
+        {
             cell = [tableView dequeueReusableCellWithIdentifier:Cell2 forIndexPath:indexPath];
-            break;
+            UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
+            [self setupAddressLabel:cellLabel];
+        }
+        break;
             
         case 3:
+        {
             cell = [tableView dequeueReusableCellWithIdentifier:Cell3 forIndexPath:indexPath];
-            break;
+            UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
+            [self setupReporterLabel:cellLabel];
+        }
+        break;
 
         case 4:
+        {
             cell = [tableView dequeueReusableCellWithIdentifier:Cell4 forIndexPath:indexPath];
-            break;
-            
-        default:
-            break;
+            UISwitch *cellSwitch = (UISwitch *)[cell viewWithTag:1];
+            [cellSwitch setOn:self.reportPublic animated:YES];
+        }
+        break;
     }
     
     return cell;

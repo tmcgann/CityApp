@@ -529,7 +529,7 @@
                                                     <rect key="frame" x="10" y="1" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Report Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="f5p-wf-uvc">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Report Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="f5p-wf-uvc">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="258" id="Wk5-9r-w9f"/>
                                                             </constraints>
@@ -544,7 +544,7 @@
                                                     <constraint firstItem="f5p-wf-uvc" firstAttribute="centerY" secondItem="Pzb-St-dWv" secondAttribute="centerY" type="default" id="ert-Ve-zMd"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="vWg-CG-0BI" kind="push" id="uz1-is-Xqr"/>
+                                                    <segue destination="vWg-CG-0BI" kind="push" identifier="segueToReportCategory" id="uz1-is-Xqr"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ReportDescriptionCell" id="vdQ-n2-Bch">
@@ -554,7 +554,7 @@
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="YDo-Ho-fgh">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="YDo-Ho-fgh">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="258" id="tyr-HU-cpI"/>
                                                             </constraints>
@@ -569,7 +569,7 @@
                                                     <constraint firstItem="YDo-Ho-fgh" firstAttribute="leading" secondItem="vdQ-n2-Bch" secondAttribute="leading" constant="20" type="default" id="fJ7-m4-bux"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="Nse-u8-kcK" kind="push" id="eu5-NY-OQ9"/>
+                                                    <segue destination="Nse-u8-kcK" kind="push" identifier="segueToReportDescription" id="eu5-NY-OQ9"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ReportAddressCell" id="UNo-3p-347">
@@ -579,7 +579,7 @@
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="sA9-4T-xDL">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="sA9-4T-xDL">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="258" id="zAy-Hr-u7f"/>
                                                             </constraints>
@@ -594,7 +594,7 @@
                                                     <constraint firstItem="sA9-4T-xDL" firstAttribute="top" secondItem="UNo-3p-347" secondAttribute="top" constant="11" id="JUA-mA-xsz"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="bgk-4z-wT1" kind="push" id="xDY-7r-Mbd"/>
+                                                    <segue destination="bgk-4z-wT1" kind="push" identifier="segueToReportAddress" id="xDY-7r-Mbd"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ReportReporterCell" id="Uwz-cF-2po">
@@ -604,7 +604,7 @@
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reporter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="r4M-sB-EQr">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Reporter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="r4M-sB-EQr">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="258" id="Cx6-lb-iOo"/>
                                                             </constraints>
@@ -633,11 +633,15 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="183" id="DRd-1K-Ceq"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
-                                                        <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="apw-CN-lSp"/>
+                                                        <switch opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="apw-CN-lSp">
+                                                            <connections>
+                                                                <action selector="switchValueChanged:" destination="fxD-qc-5zg" eventType="valueChanged" id="Pwu-NA-d0n"/>
+                                                            </connections>
+                                                        </switch>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -727,20 +731,20 @@
             </objects>
             <point key="canvasLocation" x="2237" y="-622"/>
         </scene>
-        <!--Table View Controller - Report Category-->
+        <!--New Report Report CategoryTVC - Report Category-->
         <scene sceneID="ZMp-0m-tAH">
             <objects>
-                <tableViewController id="vWg-CG-0BI" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Fhd-Gj-Rgo">
+                <tableViewController id="vWg-CG-0BI" customClass="CANewReportReportCategoryTVC" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Fhd-Gj-Rgo">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="DWf-Ys-FhE">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReportCategoryCell" id="DWf-Ys-FhE">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -993,61 +997,6 @@
             </objects>
             <point key="canvasLocation" x="4288" y="-622"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="dEZ-fP-d1n">
-            <objects>
-                <viewController id="qjR-2S-uWf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Dn0-CG-8fx">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Acq-Rp-224">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="285" id="YJN-FB-nZ7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jt0-Jx-l4Q">
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6fh-6E-sKN">
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ydg-sE-qZS">
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Twitter Handle" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N4s-cx-vi2">
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="6fh-6E-sKN" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="3ml-pn-FER"/>
-                            <constraint firstItem="6fh-6E-sKN" firstAttribute="leading" secondItem="Jt0-Jx-l4Q" secondAttribute="leading" type="default" id="C6u-uy-FT8"/>
-                            <constraint firstItem="Acq-Rp-224" firstAttribute="top" secondItem="Dn0-CG-8fx" secondAttribute="top" constant="53" id="JPb-jN-yf1"/>
-                            <constraint firstItem="6fh-6E-sKN" firstAttribute="top" secondItem="Jt0-Jx-l4Q" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Jcx-5M-01o"/>
-                            <constraint firstItem="Jt0-Jx-l4Q" firstAttribute="leading" secondItem="Acq-Rp-224" secondAttribute="leading" type="default" id="Nu4-MS-1po"/>
-                            <constraint firstAttribute="trailing" secondItem="ydg-sE-qZS" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Nva-C3-uzx"/>
-                            <constraint firstItem="N4s-cx-vi2" firstAttribute="leading" secondItem="ydg-sE-qZS" secondAttribute="leading" type="default" id="P69-1r-KOb"/>
-                            <constraint firstAttribute="trailing" secondItem="N4s-cx-vi2" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="RxR-tG-QGH"/>
-                            <constraint firstItem="ydg-sE-qZS" firstAttribute="leading" secondItem="6fh-6E-sKN" secondAttribute="leading" type="default" id="bWT-6b-vVY"/>
-                            <constraint firstItem="Jt0-Jx-l4Q" firstAttribute="top" secondItem="Acq-Rp-224" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="c1H-sM-lhC"/>
-                            <constraint firstItem="ydg-sE-qZS" firstAttribute="top" secondItem="6fh-6E-sKN" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="klf-9C-Htb"/>
-                            <constraint firstAttribute="trailing" secondItem="Acq-Rp-224" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="l6F-GO-Ym6"/>
-                            <constraint firstAttribute="trailing" secondItem="Jt0-Jx-l4Q" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nCh-1r-FgQ"/>
-                            <constraint firstItem="N4s-cx-vi2" firstAttribute="top" secondItem="ydg-sE-qZS" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="uwW-qM-yiv"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KpH-H5-7jL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4654" y="-622"/>
-        </scene>
         <!--Table View Controller - Services-->
         <scene sceneID="taD-6g-txO">
             <objects>
@@ -1097,7 +1046,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" textLabel="AiL-As-PYk" style="IBUITableViewCellStyleDefault" id="Vfb-Hd-SkY">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCategoryCell" textLabel="AiL-As-PYk" style="IBUITableViewCellStyleDefault" id="Vfb-Hd-SkY">
                                 <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1389,6 +1338,9 @@
             <relationships>
                 <relationship kind="action" name="touchUpInsideReportsButton:" candidateClass="UIButton"/>
             </relationships>
+        </class>
+        <class className="CANewReportReportCategoryTVC" superclassName="CACoreDataTVC">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportReportCategoryTVC.h"/>
         </class>
         <class className="CANewReportReporterDetailTVC" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportReporterDetailTVC.h"/>

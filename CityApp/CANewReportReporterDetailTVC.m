@@ -7,6 +7,7 @@
 //
 
 #import "CANewReportReporterDetailTVC.h"
+#import "CANewReportVC.h"
 #import "CASettings.h"
 
 @interface CANewReportReporterDetailTVC ()
@@ -59,10 +60,18 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)updateReportEntryData
+{
+    NSArray *viewControllers = [self.navigationController viewControllers];
+    NSUInteger previousViewControllerIndex = viewControllers.count - 2;
+    CANewReportVC *newReportVC = (CANewReportVC *)[viewControllers objectAtIndex:previousViewControllerIndex];
+    newReportVC.reportReporterInfo = [[NSUserDefaults standardUserDefaults] objectForKey:REPORTER_INFO_DICT_KEY];
+}
+
 - (IBAction)savePressed:(UIBarButtonItem *)sender
 {
     [self saveReporterInfo];
-    
+    [self updateReportEntryData];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

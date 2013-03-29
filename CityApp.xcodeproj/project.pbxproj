@@ -51,6 +51,7 @@
 		34C4A60E170218C500751558 /* CAReportCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A60D170218C500751558 /* CAReportCategory.m */; };
 		34C4A61417021F1500751558 /* CAReportEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A61317021F1500751558 /* CAReportEntry.m */; };
 		34C4A61A17040F5A00751558 /* CANewReportReporterDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A61917040F5A00751558 /* CANewReportReporterDetailTVC.m */; };
+		34C4A61D170542E100751558 /* CANewReportReportCategoryTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A61C170542E100751558 /* CANewReportReportCategoryTVC.m */; };
 		34F97AEE16A514F900568523 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AED16A514F900568523 /* UIKit.framework */; };
 		34F97AF016A514F900568523 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AEF16A514F900568523 /* Foundation.framework */; };
 		34F97AF216A514F900568523 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AF116A514F900568523 /* CoreGraphics.framework */; };
@@ -181,6 +182,8 @@
 		34C4A61317021F1500751558 /* CAReportEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportEntry.m; sourceTree = "<group>"; };
 		34C4A61817040F5A00751558 /* CANewReportReporterDetailTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CANewReportReporterDetailTVC.h; sourceTree = "<group>"; };
 		34C4A61917040F5A00751558 /* CANewReportReporterDetailTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CANewReportReporterDetailTVC.m; sourceTree = "<group>"; };
+		34C4A61B170542E100751558 /* CANewReportReportCategoryTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CANewReportReportCategoryTVC.h; sourceTree = "<group>"; };
+		34C4A61C170542E100751558 /* CANewReportReportCategoryTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CANewReportReportCategoryTVC.m; sourceTree = "<group>"; };
 		34F97AE916A514F900568523 /* CityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F97AED16A514F900568523 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34F97AEF16A514F900568523 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -327,6 +330,8 @@
 				341DC02416F6E6C500A4C5F8 /* CAReportEntriesCollectionVC.m */,
 				3402718C16ACE2B900DDFCC6 /* CANewReportVC.h */,
 				3402718D16ACE2B900DDFCC6 /* CANewReportVC.m */,
+				34C4A61B170542E100751558 /* CANewReportReportCategoryTVC.h */,
+				34C4A61C170542E100751558 /* CANewReportReportCategoryTVC.m */,
 				34C4A61817040F5A00751558 /* CANewReportReporterDetailTVC.h */,
 				34C4A61917040F5A00751558 /* CANewReportReporterDetailTVC.m */,
 				34F9AAA716FE8848004A2EB7 /* CAReportEntryDetailVC.h */,
@@ -584,6 +589,7 @@
 				34C4A60E170218C500751558 /* CAReportCategory.m in Sources */,
 				34C4A61417021F1500751558 /* CAReportEntry.m in Sources */,
 				34C4A61A17040F5A00751558 /* CANewReportReporterDetailTVC.m in Sources */,
+				34C4A61D170542E100751558 /* CANewReportReportCategoryTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

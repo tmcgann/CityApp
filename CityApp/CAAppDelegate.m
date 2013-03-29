@@ -24,7 +24,6 @@
 //    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     
     // Load object stores
-    [[CAReportCategoryService shared] loadStore];
     
     return YES;
 }
