@@ -619,7 +619,7 @@
                                                     <constraint firstItem="r4M-sB-EQr" firstAttribute="top" secondItem="Uwz-cF-2po" secondAttribute="top" constant="11" id="gaM-Zm-4UC"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="wo2-k5-Ksi" kind="push" id="L9k-A2-Vxb"/>
+                                                    <segue destination="wo2-k5-Ksi" kind="push" identifier="segueToReporterInfo" id="L9k-A2-Vxb"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ReportPublicCell" id="2iz-KU-XwQ">
@@ -974,7 +974,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Reporter Info" id="a7Q-3J-bJg">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="2Lg-QN-UIf"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="2Lg-QN-UIf">
+                            <connections>
+                                <action selector="savePressed:" destination="wo2-k5-Ksi" id="SmH-pD-hb3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <connections>
@@ -1389,6 +1393,7 @@
         <class className="CANewReportReporterDetailTVC" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportReporterDetailTVC.h"/>
             <relationships>
+                <relationship kind="action" name="savePressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="emailAddressField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>

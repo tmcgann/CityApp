@@ -16,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailAddressField;
 @property (weak, nonatomic) IBOutlet UITextField *twitterHandleField;
 
+- (IBAction)savePressed:(UIBarButtonItem *)sender;
+
 @end

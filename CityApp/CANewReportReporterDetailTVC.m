@@ -7,6 +7,7 @@
 //
 
 #import "CANewReportReporterDetailTVC.h"
+#import "CASettings.h"
 
 @interface CANewReportReporterDetailTVC ()
 
@@ -26,6 +27,43 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self populateFieldsWithReporterInfo];
+}
+
+- (void)populateFieldsWithReporterInfo
+{
+    // Get reporter info from NSUserDefaults
+    NSDictionary *reporterInfo = [[NSUserDefaults standardUserDefaults] objectForKey:REPORTER_INFO_DICT_KEY];
+    if (reporterInfo) {
+        self.firstNameField.text = [reporterInfo valueForKey:REPORTER_FIRST_NAME_KEY];
+        self.lastNameField.text = [reporterInfo valueForKey:REPORTER_LAST_NAME_KEY];
+        self.emailAddressField.text = [reporterInfo valueForKey:REPORTER_EMAIL_ADDRESS_KEY];
+        self.twitterHandleField.text = [reporterInfo valueForKey:REPORTER_TWITTER_HANDLE_KEY];
+        self.phoneNumberField.text = [reporterInfo valueForKey:REPORTER_PHONE_NUMBER_KEY];
+    }
+}
+
+- (void)saveReporterInfo
+{
+    // Build a dictionary of the reporter info
+    NSMutableDictionary *reporterInfo = [NSMutableDictionary dictionaryWithCapacity:5];
+    [reporterInfo setValue:self.firstNameField.text forKey:REPORTER_FIRST_NAME_KEY];
+    [reporterInfo setValue:self.lastNameField.text forKey:REPORTER_LAST_NAME_KEY];
+    [reporterInfo setValue:self.emailAddressField.text forKey:REPORTER_EMAIL_ADDRESS_KEY];
+    [reporterInfo setValue:self.twitterHandleField.text forKey:REPORTER_TWITTER_HANDLE_KEY];
+    [reporterInfo setValue:self.phoneNumberField.text forKey:REPORTER_PHONE_NUMBER_KEY];
+    
+    // Save to NSUserDefaults
+    [[NSUserDefaults standardUserDefaults] setObject:[reporterInfo copy] forKey:REPORTER_INFO_DICT_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (IBAction)savePressed:(UIBarButtonItem *)sender
+{
+    [self saveReporterInfo];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source
