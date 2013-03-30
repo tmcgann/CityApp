@@ -10,8 +10,8 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "CANewReportReportCategoryTVC.h"
-//#import "CANewReportDescriptionTVC.h"
-//#import "CANewReportAddressTVC.h"
+#import "CANewReportDescriptionVC.h"
+//#import "CANewReportAddressVC.h"
 #import "CANewReportReporterDetailTVC.h"
 #import "CAReportEntryService.h"
 #import "CAReportCategory.h"
@@ -61,7 +61,8 @@
         CANewReportReportCategoryTVC *reportCategoryTVC = segue.destinationViewController;
         reportCategoryTVC.selectedReportCategory = self.reportCategory;
     } else if ([segue.identifier isEqualToString:@"segueToReportDescription"]) {
-        // Update with current description
+        CANewReportDescriptionVC *descriptionVC = segue.destinationViewController;
+        descriptionVC.reportDescription = self.reportDescription;
     } else if ([segue.identifier isEqualToString:@"segueToReportAddress"]) {
         // Update with current address
     }
