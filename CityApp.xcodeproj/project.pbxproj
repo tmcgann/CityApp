@@ -53,6 +53,9 @@
 		34C4A61A17040F5A00751558 /* CANewReportReporterDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A61917040F5A00751558 /* CANewReportReporterDetailTVC.m */; };
 		34C4A61D170542E100751558 /* CANewReportReportCategoryTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A61C170542E100751558 /* CANewReportReportCategoryTVC.m */; };
 		34C4A62017066A7400751558 /* CANewReportDescriptionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A61F17066A7300751558 /* CANewReportDescriptionVC.m */; };
+		34C4A6231707A82400751558 /* CANewReportAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A6221707A82400751558 /* CANewReportAddressVC.m */; };
+		34C4A6251708B3F600751558 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C4A6241708B3F600751558 /* MapKit.framework */; };
+		34C4A6271708B40000751558 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C4A6261708B3FF00751558 /* CoreLocation.framework */; };
 		34F97AEE16A514F900568523 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AED16A514F900568523 /* UIKit.framework */; };
 		34F97AF016A514F900568523 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AEF16A514F900568523 /* Foundation.framework */; };
 		34F97AF216A514F900568523 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AF116A514F900568523 /* CoreGraphics.framework */; };
@@ -187,6 +190,10 @@
 		34C4A61C170542E100751558 /* CANewReportReportCategoryTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CANewReportReportCategoryTVC.m; sourceTree = "<group>"; };
 		34C4A61E17066A7300751558 /* CANewReportDescriptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CANewReportDescriptionVC.h; sourceTree = "<group>"; };
 		34C4A61F17066A7300751558 /* CANewReportDescriptionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CANewReportDescriptionVC.m; sourceTree = "<group>"; };
+		34C4A6211707A82400751558 /* CANewReportAddressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CANewReportAddressVC.h; sourceTree = "<group>"; };
+		34C4A6221707A82400751558 /* CANewReportAddressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CANewReportAddressVC.m; sourceTree = "<group>"; };
+		34C4A6241708B3F600751558 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		34C4A6261708B3FF00751558 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		34F97AE916A514F900568523 /* CityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F97AED16A514F900568523 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34F97AEF16A514F900568523 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -220,6 +227,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34C4A6271708B40000751558 /* CoreLocation.framework in Frameworks */,
+				34C4A6251708B3F600751558 /* MapKit.framework in Frameworks */,
 				340E32C216D34ABF00528049 /* MessageUI.framework in Frameworks */,
 				340FE6D916B24551002FD035 /* CoreData.framework in Frameworks */,
 				340FE6DF16B24738002FD035 /* libxml2.dylib in Frameworks */,
@@ -337,6 +346,8 @@
 				34C4A61C170542E100751558 /* CANewReportReportCategoryTVC.m */,
 				34C4A61E17066A7300751558 /* CANewReportDescriptionVC.h */,
 				34C4A61F17066A7300751558 /* CANewReportDescriptionVC.m */,
+				34C4A6211707A82400751558 /* CANewReportAddressVC.h */,
+				34C4A6221707A82400751558 /* CANewReportAddressVC.m */,
 				34C4A61817040F5A00751558 /* CANewReportReporterDetailTVC.h */,
 				34C4A61917040F5A00751558 /* CANewReportReporterDetailTVC.m */,
 				34F9AAA716FE8848004A2EB7 /* CAReportEntryDetailVC.h */,
@@ -383,6 +394,8 @@
 		34F97AEC16A514F900568523 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				34C4A6261708B3FF00751558 /* CoreLocation.framework */,
+				34C4A6241708B3F600751558 /* MapKit.framework */,
 				340E32C116D34ABF00528049 /* MessageUI.framework */,
 				340FE6DE16B24738002FD035 /* libxml2.dylib */,
 				340FE6DC16B2470D002FD035 /* QuartzCore.framework */,
@@ -596,6 +609,7 @@
 				34C4A61A17040F5A00751558 /* CANewReportReporterDetailTVC.m in Sources */,
 				34C4A61D170542E100751558 /* CANewReportReportCategoryTVC.m in Sources */,
 				34C4A62017066A7400751558 /* CANewReportDescriptionVC.m in Sources */,
+				34C4A6231707A82400751558 /* CANewReportAddressVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
