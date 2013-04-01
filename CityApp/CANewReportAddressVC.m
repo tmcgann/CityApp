@@ -8,9 +8,12 @@
 
 #import "CANewReportAddressVC.h"
 
+#define ANNOTATION_VIEW_IDENTIFIER @"defaultPinAnnotationView"
+
 @interface CANewReportAddressVC ()
 
 @property (strong, nonatomic) CLGeocoder *geocoder;
+@property (strong, nonatomic) MKPinAnnotationView *pinAnnotationView;
 
 @end
 
@@ -21,6 +24,12 @@
     [super viewDidLoad];
     [self setupMapView];
 //    [self setupLocationManager];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self showUserLocation];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -34,6 +43,23 @@
     self.mapView.showsUserLocation = YES;
 }
 
+- (void)showUserLocation
+{
+    // Get user location and region
+    CLLocationCoordinate2D currentCoordinate = [self.mapView.userLocation coordinate];
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currentCoordinate, 300, 300);
+    
+    // Show the region
+    [self.mapView setRegion:region animated:YES];
+    
+    // Drop the draggable pin
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    annotation.coordinate = currentCoordinate;
+    CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:currentCoordinate.latitude longitude:currentCoordinate.longitude];
+    annotation.title = [self convertCoordinatesToAddress:currentLocation];
+    [self.mapView addAnnotation:annotation];
+}
+
 - (void)setupLocationManager
 {
     self.locationManager = [[CLLocationManager alloc] init];
@@ -43,30 +69,33 @@
     [self.locationManager startUpdatingLocation];
 }
 
-//- (void)geocodeLocation:(CLLocation*)location forAnnotation:(MapLocation*)annotation
-//{
-//    [self.geocoder reverseGeocodeLocation:location completionHandler:
-//     ^(NSArray* placemarks, NSError* error){
-//         if ([placemarks count] > 0)
-//         {
-//             annotation.placemark = [placemarks objectAtIndex:0];
-//             
-//             // Add a More Info button to the annotation's view.
-//             MKPinAnnotationView*  view = (MKPinAnnotationView*)[map viewForAnnotation:annotation];
-//             if (view && (view.rightCalloutAccessoryView == nil))
-//             {
-//                 view.canShowCallout = YES;
-//                 view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//             }
-//         }
-//     }];
-//}
+- (NSString *)convertCoordinatesToAddress:(CLLocation *)location
+{
+    NSString __block *address = nil;
+    [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        if ([placemarks count] > 0) {
+            //annotation.placemark = [placemarks objectAtIndex:0];
+            
+            // Add a More Info button to the annotation's view.
+            //MKPinAnnotationView*  view = (MKPinAnnotationView*)[map viewForAnnotation:annotation];
+            //if (view && (view.rightCalloutAccessoryView == nil))
+            //{
+            //    view.canShowCallout = YES;
+            //    view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            //}
+            
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            address = [placemark.addressDictionary valueForKey:@"Name"];
+            NSLog(@"Address Dictionary: %@", placemark.addressDictionary);
+        }
+    }];
+    return address;
+}
 
 - (void)convertAddressToCoordinates:(NSString *)address
 {
     [self.geocoder geocodeAddressString:address completionHandler:^(NSArray* placemarks, NSError* error) {
-         for (CLPlacemark* aPlacemark in placemarks)
-         {
+         for (CLPlacemark* placemark in placemarks) {
              // Process the placemark.
          }
     }];
@@ -76,7 +105,30 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    return nil;
+    // If it's the user location, just return nil.
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    
+    // Only default annotations left, so handle it with a pin annotation view
+    self.pinAnnotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:ANNOTATION_VIEW_IDENTIFIER];
+    
+    if (!self.pinAnnotationView) {
+        self.pinAnnotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:ANNOTATION_VIEW_IDENTIFIER];
+        self.pinAnnotationView.pinColor = MKPinAnnotationColorRed;
+        self.pinAnnotationView.draggable = YES;
+        self.pinAnnotationView.animatesDrop = YES;
+        self.pinAnnotationView.canShowCallout = YES;
+        DLog(@"Loaded a new MKPinAnnotationView. Is this expected?");
+    } else {
+        self.pinAnnotationView.annotation = annotation;
+    }
+    
+    return self.pinAnnotationView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
+{
+    
 }
 
 #pragma mark - CLLocationManagerDelegate Methods
@@ -107,5 +159,15 @@
         _geocoder = [[CLGeocoder alloc] init];
     return _geocoder;
 }
+
+//- (MKPinAnnotationView *)annotationView
+//{
+//    if (!_annotationView) {
+//        _annotationView = [[MKPinAnnotationView alloc] init];
+//        _annotationView.animatesDrop = YES;
+//        _annotationView.pinColor = MKPinAnnotationColorRed;
+//    }
+//    return _annotationView;
+//}
 
 @end
