@@ -2,7 +2,7 @@
 //  CAContactEntry.m
 //  CityApp
 //
-//  Created by Taylor McGann on 2/10/13.
+//  Created by Taylor McGann on 3/17/13.
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
@@ -12,23 +12,24 @@
 
 @implementation CAContactEntry
 
-@dynamic name;
-@dynamic phoneNumber;
-@dynamic email;
 @dynamic addressOne;
 @dynamic addressTwo;
 @dynamic city;
-@dynamic state;
-@dynamic zip;
-@dynamic type;
-@dynamic icon;
+@dynamic contactCategoryId;
+@dynamic contactEntryId;
+@dynamic descriptor;
+@dynamic email;
 @dynamic fax;
 @dynamic hours;
-@dynamic url;
+@dynamic icon;
 @dynamic modified;
-@dynamic descriptor;
-@dynamic contactEntryId;
-@dynamic contactCategoryId;
+@dynamic name;
+@dynamic phoneNumber;
+@dynamic state;
+@dynamic type;
+@dynamic url;
+@dynamic zip;
+@dynamic deleted;
 @dynamic contactCategory;
 
 @end

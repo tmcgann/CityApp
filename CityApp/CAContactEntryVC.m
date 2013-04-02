@@ -135,6 +135,16 @@
     } else if ([cellTitle isEqualToString:kCAContactEntryDetailAddress]) {
         DLog(@"CAContactEntryVCActionAddress");
         DLog(@"Will load maps and drop pin...some day.");
+//        UIViewController *vc = [[UIViewController alloc] init];
+//        NSString *imagePath = [NSString stringWithFormat:@"%@/%@", [NSBundle mainBundle].bundleIdentifier, @"Directory-ContactEntryMap-MayorDavidLenz-Edit1.png"];
+////        UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+//        UIImage *image = [UIImage imageWithContentsOfFile:@"Directory-ContactEntryMap-MayorDavidLenz-Edit2.png"];
+//        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+//        imageView.bounds = vc.view.frame;
+//        [vc.view addSubview:imageView];
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FakeMapVC"];
+        vc.title = @"Map Detail";
+        [self.navigationController pushViewController:vc animated:YES];
     } else if ([cellTitle isEqualToString:kCAContactEntryDetailURL]) {
         DLog(@"CAContactEntryVCActionURL");
         CAWebVC *webViewVC = [[CAWebVC alloc] init];

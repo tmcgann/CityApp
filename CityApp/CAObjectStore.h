@@ -19,6 +19,8 @@
 - (void)saveContext;
 
 - (RKEntityMapping *)mappingForEntityForName:(NSString *)entityName;
+- (id)insertNewObjectForEntityName:(NSString *)entityName;
+- (void)addRequestDescriptor:(RKRequestDescriptor *)descriptor;
 - (void)addResponseDescriptor:(RKResponseDescriptor *)descriptor;
 
 // Simple way to sync objects whose urls have no parameters

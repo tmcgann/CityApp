@@ -10,3 +10,6 @@
 #import "CAObjectStore.h"
 #import "CAContactCategory.h"
 #import "CAContactEntry.h"
+#import "CAReportCategory.h"
+#import "CAReportEntry.h"
+#import "CAReportPicture.h"

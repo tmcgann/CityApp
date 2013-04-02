@@ -53,6 +53,14 @@
     return self;
 }
 
+- (void)fetchImageWithoutSync:(NSString *)imagePath {
+    // Check to see if image exists NOT at path
+    if (![self imageExistsAtPath:imagePath]) {
+        // Download image
+        [self fetchImage:imagePath];
+    }
+}
+
 - (void)syncImage:(NSString *)imagePath withTimestamp:(NSDate *)mostRecentTimestamp {
     // Check to see if image exists at path
     if ([self imageExistsAtPath:imagePath]) {

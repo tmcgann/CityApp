@@ -29,7 +29,8 @@
      @"icon" : @"icon",
      @"descriptor" : @"descriptor",
      @"rank" : @"rank",
-     @"modified" : @"modified"
+     @"modified" : @"modified",
+     @"deleted" : @"deleted"
      }];
     [contactCategoryMapping setIdentificationAttributes:@[@"contactCategoryId"]];
     
@@ -51,7 +52,8 @@
      @"hours" : @"hours",
      @"url" : @"url",
      @"contact_category_id" : @"contactCategoryId",
-     @"modified" : @"modified"
+     @"modified" : @"modified",
+     @"deleted" : @"deleted"
      }];
     contactEntryMapping.identificationAttributes = @[ @"contactEntryId" ];
     
@@ -61,7 +63,7 @@
     
     [CAObjectStore.shared addResponseDescriptor:responseDescriptor];
     
-    [CAObjectStore.shared syncWithFetchRequest:self.allContactCategories forPath:@"/contact_categories.json"];
+//    [CAObjectStore.shared syncWithFetchRequest:self.allContactCategories forPath:@"/contact_categories.json"];
 }
 
 // You can execute fetch requests right on the context

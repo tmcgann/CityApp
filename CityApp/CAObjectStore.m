@@ -44,8 +44,8 @@
     return sharedInstance;
 }
 
-- (void)initObjectManager {
-    
+- (void)initObjectManager
+{    
     NSLog(@"ENDPOINT = %@", NSLocalizedString(@"SERVER_URL", nil));
     
     // Core Data Example
@@ -70,12 +70,23 @@
 #pragma mark - Data
 
 // some demeters law, don't access the store and stuff, just add them here.
-// See BookService for usage
-- (RKEntityMapping *)mappingForEntityForName:(NSString *)entityName {
+- (RKEntityMapping *)mappingForEntityForName:(NSString *)entityName
+{
     return [RKEntityMapping mappingForEntityForName:entityName inManagedObjectStore:self.objectStore];
 }
 
-- (void)addResponseDescriptor:(RKResponseDescriptor *)descriptor {
+- (id)insertNewObjectForEntityName:(NSString *)entityName
+{
+    return [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:self.context];
+}
+
+- (void)addRequestDescriptor:(RKRequestDescriptor *)descriptor
+{
+    [self.objectManager addRequestDescriptor:descriptor];
+}
+
+- (void)addResponseDescriptor:(RKResponseDescriptor *)descriptor
+{
     [self.objectManager addResponseDescriptor:descriptor];
 }
 
@@ -91,7 +102,8 @@
 //    }];
 //}
 
-- (NSManagedObjectContext *)context {
+- (NSManagedObjectContext *)context
+{
     // the mainQueueManagedObjectContext is a child of this one, but it doesn't persist. I'm not exactly sure what it is for.
     // either way, we need to use this one if we want things to save
     return self.objectStore.persistentStoreManagedObjectContext;

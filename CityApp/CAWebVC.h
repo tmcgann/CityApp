@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) NSString *url;
-@property (strong, nonatomic) UIToolbar *toolbar;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) UIBarButtonItem *backButton;
 @property (strong, nonatomic) UIBarButtonItem *forwardButton;
 

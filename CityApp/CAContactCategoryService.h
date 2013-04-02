@@ -13,11 +13,10 @@
 
 @interface CAContactCategoryService : NSObject
 
-+(CAContactCategoryService*)shared;
--(void)loadStore;
-
--(NSFetchRequest*)allContactCategories;
-//-(NSPredicate*)searchForText:(NSString*)text;
-//-(NSPredicate*)filterByType:(BookFilter)filter;
++ (CAContactCategoryService*)shared;
+- (void)loadStore;
+- (NSFetchRequest*)allContactCategories;
+//- (NSPredicate*)searchForText:(NSString*)text;
+//- (NSPredicate*)filterByType:(BookFilter)filter;
 
 @end

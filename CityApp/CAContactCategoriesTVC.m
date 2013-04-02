@@ -49,7 +49,7 @@
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[[CAContactCategoryService shared] allContactCategories] managedObjectContext:[CAObjectStore shared].context sectionNameKeyPath:nil cacheName:nil];
 }
 
-#define IMAGE_PLIST_FILENAME @"ImageTimestamp.plist"
+#define IMAGE_PLIST_FILENAME @"ContactCategoryIconTimestamp.plist"
 
 - (void)syncIcons {
     TMImageSync *sharedSync = [TMImageSync sharedSync];
@@ -80,53 +80,11 @@
     }
 }
 
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    if (!self.contactCategoriesDatabase) {
-//        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-//        url = [url URLByAppendingPathComponent:@"Default CA Database"];
-//        self.contactCategoriesDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
-//    }
-//}
-
-//- (void)setContactCategoriesDatabase:(UIManagedDocument *)contactCategoriesDatabase
-//{
-//    if (_contactCategoriesDatabase != contactCategoriesDatabase) {
-//        _contactCategoriesDatabase = contactCategoriesDatabase;
-//        [self useDocument];
-//    }
-//}
-
-//- (void)useDocument
-//{
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.contactCategoriesDatabase.fileURL path]]) {
-//        [self.contactCategoriesDatabase saveToURL:self.contactCategoriesDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-//            [self setupFetchedResultsController];
-//            [self fetchContactDataIntoDocument:self.contactCategoriesDatabase];
-//        }];
-//    } else if (self.contactCategoriesDatabase.documentState == UIDocumentStateClosed) {
-//        [self.contactCategoriesDatabase openWithCompletionHandler:^(BOOL success) {
-//            [self setupFetchedResultsController];
-//        }];
-//    } else if (self.contactCategoriesDatabase.documentState == UIDocumentStateNormal) {
-//        [self setupFetchedResultsController];
-//    }
-//}
-
-//- (void)fetchContactDataIntoDocument:(UIManagedDocument *)document
-//{
-//    dispatch_queue_t fetchQ = dispatch_queue_create("Directory Fetcher", NULL);
-//    dispatch_async(fetchQ, ^{
-//        
-//    });
-//}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"pushToContactEntries"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         CAContactEntriesVC *contactEntriesVC = segue.destinationViewController;
-//        CAContactCategory *cc = [self.contactCategories objectAtIndex:(NSUInteger)indexPath.row];
         contactEntriesVC.contactCategory = [self.fetchedResultsController objectAtIndexPath:indexPath];
     }
 }
@@ -136,7 +94,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Configure the cell
-    static NSString *CellIdentifier = @"CategoryCell";
+    static NSString *CellIdentifier = @"ContactCategoryCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
 //    CAContactCategory *cc = [self.contactCategories objectAtIndex:(NSUInteger)indexPath.row];
@@ -150,14 +108,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSString *cellIdentifier = [tableView cellForRowAtIndexPath:indexPath].reuseIdentifier;
-//    
-//    if ([cellIdentifier isEqualToString:@"CategoryCell"]) {
-//        [self performSegueWithIdentifier:@"pushToContactEntries" sender:self];
-//    }
-//    
-//    // Must do this last so that prepareForSegue:sender: can access indexPath
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
 @end

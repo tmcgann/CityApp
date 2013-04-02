@@ -8,11 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CANewReportVC : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@class CAReportCategory;
+
+@interface CANewReportVC : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
+
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *submitButton;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
+@property (strong, nonatomic) IBOutlet UITableView *reportInfoTableView;
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
+//@property (strong, nonatomic) NSMutableDictionary *newReportInfo;
+@property (strong, nonatomic) CAReportCategory *reportCategory;
+@property (strong, nonatomic) NSString *reportDescription;
+@property (strong, nonatomic) NSString *reportAddress;
+@property (strong, nonatomic) NSDictionary *reportReporterInfo;
+@property (nonatomic) BOOL *reportPublic;
 
 @end

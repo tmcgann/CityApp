@@ -2,7 +2,7 @@
 //  CAContactCategory.h
 //  CityApp
 //
-//  Created by Taylor McGann on 2/16/13.
+//  Created by Taylor McGann on 3/17/13.
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSDate * modified;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * rank;
+@property (nonatomic, retain) NSNumber * deleted;
 @property (nonatomic, retain) NSOrderedSet *contactEntries;
 @end
 

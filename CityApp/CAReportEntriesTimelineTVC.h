@@ -8,6 +8,6 @@
 
 #import "CACoreDataTVC.h"
 
-@interface CAReportEntriesTVC : CACoreDataTVC
+@interface CAReportEntriesTimelineTVC : CACoreDataTVC
 
 @end

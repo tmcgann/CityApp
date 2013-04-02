@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CAReportEntriesVC.h"
 
 @interface CAHomeVC : UIViewController
+
+@property (nonatomic) CAReportEntriesVC *reportEntriesSegmentsVC;
+
+- (IBAction)touchUpInsideReportsButton:(UIButton *)sender;
 
 @end

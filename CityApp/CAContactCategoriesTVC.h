@@ -11,7 +11,6 @@
 
 @interface CAContactCategoriesTVC : CACoreDataTVC
 
-//@property (nonatomic, strong) UIManagedDocument *contactCategoriesDatabase;
 @property (nonatomic, strong) NSOrderedSet *contactCategories;
 
 @end

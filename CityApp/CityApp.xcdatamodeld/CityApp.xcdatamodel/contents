@@ -2,6 +2,7 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="CAContactCategory" representedClassName="CAContactCategory" syncable="YES">
         <attribute name="contactCategoryId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modified" optional="YES" attributeType="Date" syncable="YES"/>
@@ -15,6 +16,7 @@
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactCategoryId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactEntryId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fax" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,31 +32,47 @@
         <relationship name="contactCategory" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CAContactCategory" inverseName="contactEntries" inverseEntity="CAContactCategory" syncable="YES"/>
     </entity>
     <entity name="CAReportCategory" representedClassName="CAReportCategory" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modified" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rank" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="reportCategoryId" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="reportEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CAReportEntry" inverseName="reportCategory" inverseEntity="CAReportEntry" syncable="YES"/>
+        <relationship name="reportEntries" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CAReportEntry" inverseName="reportCategory" inverseEntity="CAReportEntry" syncable="YES"/>
     </entity>
+    <entity name="CAReportComment" syncable="YES"/>
     <entity name="CAReportEntry" representedClassName="CAReportEntry" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactEmail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactPhone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="descriptor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="exposed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="modified" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="phoneUdid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reportCategoryId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reportEntryId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnailData" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="reportCategory" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CAReportCategory" inverseName="reportEntries" inverseEntity="CAReportCategory" syncable="YES"/>
+        <relationship name="reportPictures" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CAReportPicture" inverseName="reportEntry" inverseEntity="CAReportPicture" syncable="YES"/>
+    </entity>
+    <entity name="CAReportPicture" representedClassName="CAReportPicture" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="filename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reportPictureId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="reportEntry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CAReportEntry" inverseName="reportPictures" inverseEntity="CAReportEntry" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CAContactCategory" positionX="160" positionY="192" width="128" height="150"/>
-        <element name="CAContactEntry" positionX="-9" positionY="192" width="128" height="315"/>
-        <element name="CAReportCategory" positionX="-162" positionY="189" width="128" height="135"/>
-        <element name="CAReportEntry" positionX="-333" positionY="189" width="128" height="225"/>
+        <element name="CAContactCategory" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="CAContactEntry" positionX="-9" positionY="192" width="128" height="330"/>
+        <element name="CAReportCategory" positionX="-162" positionY="189" width="128" height="165"/>
+        <element name="CAReportComment" positionX="-513" positionY="405" width="128" height="45"/>
+        <element name="CAReportEntry" positionX="-333" positionY="189" width="128" height="300"/>
+        <element name="CAReportPicture" positionX="-513" positionY="288" width="128" height="105"/>
     </elements>
 </model>

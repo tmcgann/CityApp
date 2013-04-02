@@ -8,7 +8,7 @@
 
 #import "CAReportCategoryService.h"
 
-#define ENTITY_NAME @"CAReportCategory"
+#define PRIMARY_ENTITY_NAME @"CAReportCategory"
 #define JSON_PATH @"/report_categories.json"
 #define JSON_KEY_PATH @"report_categories"
 
@@ -26,21 +26,25 @@
 }
 
 - (void)addMappings {
-    RKEntityMapping *reportCategoryMapping = [CAObjectStore.shared mappingForEntityForName:ENTITY_NAME];
-    [reportCategoryMapping addAttributeMappingsFromDictionary:@{
-     @"id" : @"reportCategoryId",
-     @"name" : @"name",
-     @"descriptor" : @"descriptor",
-     @"rank" : @"rank",
-     @"modified" : @"modified"
-     }];
+    NSDictionary *reportCategoryDict = @{
+        @"created" : @"created",
+        @"deleted" : @"deleted",
+        @"descriptor" : @"descriptor",
+        @"id" : @"reportCategoryId",
+        @"modified" : @"modified",
+        @"name" : @"name",
+        @"rank" : @"rank"
+    };
+    
+    RKEntityMapping *reportCategoryMapping = [CAObjectStore.shared mappingForEntityForName:PRIMARY_ENTITY_NAME];
+    [reportCategoryMapping addAttributeMappingsFromDictionary:reportCategoryDict];
     [reportCategoryMapping setIdentificationAttributes:@[@"reportCategoryId"]];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:reportCategoryMapping pathPattern:JSON_PATH keyPath:JSON_KEY_PATH statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
     [CAObjectStore.shared addResponseDescriptor:responseDescriptor];
     
-    [CAObjectStore.shared syncWithFetchRequest:self.allReportCategories forPath:JSON_PATH];
+//    [CAObjectStore.shared syncWithFetchRequest:self.allReportCategories forPath:JSON_PATH];
 }
 
 // You can execute fetch requests right on the context
@@ -54,11 +58,23 @@
 
 // Sort descriptor built in
 - (NSFetchRequest *)allReportCategories {
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:ENTITY_NAME];
-    NSSortDescriptor *rankDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"rank" ascending:YES];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:PRIMARY_ENTITY_NAME];
     NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    fetchRequest.sortDescriptors = @[rankDescriptor, nameDescriptor];
+    fetchRequest.sortDescriptors = @[nameDescriptor];
     return fetchRequest;
+}
+
+- (NSFetchRequest *)reportCategoryById:(NSString *)reportCategoryId
+{
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:PRIMARY_ENTITY_NAME];
+    fetchRequest.predicate = [self filterById:reportCategoryId];
+    return fetchRequest;
+}
+
+- (NSPredicate *)filterById:(NSString *)reportCategoryId
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"reportCategoryId == %@", reportCategoryId];
+    return predicate;
 }
 
 @end
