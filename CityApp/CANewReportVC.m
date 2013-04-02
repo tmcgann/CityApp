@@ -185,13 +185,10 @@
 {
     CAObjectStore *objectStore = [CAObjectStore shared];
     
-    // Create report picture
-//    CAReportPicture *reportPicture = (CAReportPicture *)[objectStore insertNewObjectForEntityName:@"CAReportPicture"];
-//    reportPicture.filename =
-    
-    // Create report entry and associate with report picture
+    // Create report entry
     CAReportEntry *reportEntry = (CAReportEntry *)[objectStore insertNewObjectForEntityName:@"CAReportEntry"];
     reportEntry.reportCategory = self.reportCategory;
+//    reportEntry.reportCategoryId = self.reportCategory.reportCategoryId;
     reportEntry.descriptor = self.reportDescription;
     reportEntry.address = self.reportAddress;
     reportEntry.contactName = [self buildReporterName];
@@ -199,8 +196,17 @@
     reportEntry.contactPhone = [self.reportReporterInfo valueForKey:REPORTER_PHONE_NUMBER_KEY];
     reportEntry.exposed = [NSNumber numberWithBool:self.reportPublic];
     
+    // Create report picture
+//    CAReportPicture *reportPicture = (CAReportPicture *)[objectStore insertNewObjectForEntityName:@"CAReportPicture"];
+//    reportPicture.filename =
+    
+    // Associate with report picture with report entry
+//    NSMutableOrderedSet *reportPictures = [NSMutableOrderedSet orderedSetWithOrderedSet:reportEntry.reportPictures];
+//    [reportPictures addObject:reportPicture];
+//    reportEntry.reportPictures = [reportPictures copy];
+    
     //TEMP
-    reportEntry.reportEntryId = @"169a46ff-ff02-4281-b56a-5b7d0b24e55c";
+    reportEntry.reportEntryId = @"4c8e5cb2-7c37-4e94-85c9-fde1885efa80";
     
 //    [objectStore saveContext];
     DLog(@"New Report Entry: %@", reportEntry.description);

@@ -59,7 +59,7 @@
     RKEntityMapping *reportEntryRequestMapping = (RKEntityMapping *)[RKObjectMapping requestMapping];
     [reportEntryRequestMapping addAttributeMappingsFromDictionary:reportEntryDict];
     
-    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:reportEntryRequestMapping objectClass:[CAReportEntry class] rootKeyPath:@"report_entry"];
+    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[reportEntryRequestMapping inverseMapping] objectClass:[CAReportEntry class] rootKeyPath:@"report_entry"];
     
     [[CAObjectStore shared] addRequestDescriptor:requestDescriptor];
 }
