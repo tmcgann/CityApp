@@ -35,13 +35,8 @@
     BOOL validData = YES;
     
     // Check character count
-    if (self.descriptionTextView.text.length > MAXIMUM_CHARACTER_COUNT) {
-        NSString *title = @"Exceeds Character Limit";
-        NSString *message = [NSString stringWithFormat:@"Your description must contain fewer than %d characters.", MAXIMUM_CHARACTER_COUNT];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+    if (self.descriptionTextView.text.length > MAXIMUM_CHARACTER_COUNT)
         validData = NO;
-    }
     
     return validData;
 }
@@ -70,6 +65,11 @@
     if ([self validData]) {
         [self updateReportEntryData];
         [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        NSString *title = @"Exceeds Character Limit";
+        NSString *message = [NSString stringWithFormat:@"Your description must contain fewer than %d characters.", MAXIMUM_CHARACTER_COUNT];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
     }
 }
 

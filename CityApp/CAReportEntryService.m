@@ -83,6 +83,11 @@
     return fetchRequest;
 }
 
+- (void)createEntry:(CAReportEntry *)reportEntry
+{
+    [[CAObjectStore shared].objectManager postObject:reportEntry path:@"/report_entries/add" parameters:nil success:nil failure:nil];
+}
+
 - (void)createEntry:(CAReportEntry *)reportEntry withPicture:(UIImage *)picture
 {
 //    [[CAObjectStore shared].objectManager postObject:reportEntry path:@"/report_entries/add" parameters:nil success:nil failure:nil];

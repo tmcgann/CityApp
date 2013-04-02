@@ -11,7 +11,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "CANewReportReportCategoryTVC.h"
 #import "CANewReportDescriptionVC.h"
-//#import "CANewReportAddressVC.h"
+#import "CANewReportAddressVC.h"
 #import "CANewReportReporterDetailTVC.h"
 #import "CAReportEntryService.h"
 #import "CAReportCategory.h"
@@ -64,7 +64,9 @@
         CANewReportDescriptionVC *descriptionVC = segue.destinationViewController;
         descriptionVC.reportDescription = self.reportDescription;
     } else if ([segue.identifier isEqualToString:@"segueToReportAddress"]) {
-        // Update with current address
+#warning TODO: Update pin location based on saved report address
+//        CANewReportAddressVC *addressVC = segue.destinationViewController;
+//        addressVC.reportAddress = self.reportAddress;
     }
     // Don't have to pass any data to reporter detail b/c data is stored in NSUserDefaults
 }
@@ -131,7 +133,7 @@
 - (void)setupReporterLabel:(UILabel *)label
 {
     if (self.reportReporterInfo) {
-        label.text = [self reporterLabelText];
+        label.text = [self buildReporterName];
         label.textColor = [UIColor darkTextColor];
     } else {
         label.text = REPORTER_INFO_DEFAULT_NAME;
@@ -139,7 +141,7 @@
     }
 }
 
-- (NSString *)reporterLabelText
+- (NSString *)buildReporterName
 {
     NSString *name;
     
@@ -156,6 +158,57 @@
     return name;
 }
 
+#pragma mark - Submit New Report Entry
+
+- (BOOL)validData
+{
+    //    BOOL validReportCategory = NO;
+    //    BOOL validDescription = NO;
+    //    BOOL validAddress = NO;
+    //
+    //    if (self.newReportCategory) {
+    //        validReportCategory = YES;
+    //    }
+    //    if (self.newReportDescription) {
+    //        validDescription = YES;
+    //    }
+    //    if (self.newReportAddress) {
+    //        validAddress = YES;
+    //    }
+    //
+    //    return (validReportCategory && validDescription && validAddress);
+    
+    return (self.reportCategory && self.reportDescription && self.reportAddress && self.reportPublic);
+}
+
+- (void)submitNewReportEntry
+{
+    CAObjectStore *objectStore = [CAObjectStore shared];
+    
+    // Create report picture
+//    CAReportPicture *reportPicture = (CAReportPicture *)[objectStore insertNewObjectForEntityName:@"CAReportPicture"];
+//    reportPicture.filename =
+    
+    // Create report entry and associate with report picture
+    CAReportEntry *reportEntry = (CAReportEntry *)[objectStore insertNewObjectForEntityName:@"CAReportEntry"];
+    reportEntry.reportCategory = self.reportCategory;
+    reportEntry.descriptor = self.reportDescription;
+    reportEntry.address = self.reportAddress;
+    reportEntry.contactName = [self buildReporterName];
+    reportEntry.contactEmail = [self.reportReporterInfo valueForKey:REPORTER_EMAIL_ADDRESS_KEY];
+    reportEntry.contactPhone = [self.reportReporterInfo valueForKey:REPORTER_PHONE_NUMBER_KEY];
+    reportEntry.exposed = [NSNumber numberWithBool:self.reportPublic];
+    
+    //TEMP
+    reportEntry.reportEntryId = @"169a46ff-ff02-4281-b56a-5b7d0b24e55c";
+    
+//    [objectStore saveContext];
+    DLog(@"New Report Entry: %@", reportEntry.description);
+
+    [[CAReportEntryService shared] createEntry:reportEntry];
+//    [[CAReportEntryService shared] createEntry:self.newReportEntry withPicture:self.takePhotoButton.imageView.image];
+}
+
 #pragma mark - IBAction Methods
 
 - (IBAction)cancelPressed:(UIBarButtonItem *)sender
@@ -165,10 +218,15 @@
 
 - (IBAction)submitPressed:(UIBarButtonItem *)sender
 {
-//    if ([self validData]) {
+    if ([self validData]) {
         [self submitNewReportEntry];
-        [self dismissViewControllerAnimated:YES completion:nil];
-//    }
+//        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        NSString *title = @"Missing Required Info";
+        NSString *message = @"All fields are required to submit a report.";
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (IBAction)takePhotoPressed:(UIButton *)sender
@@ -179,42 +237,6 @@
 - (IBAction)switchValueChanged:(UISwitch *)sender
 {
     self.reportPublic = sender.on;
-}
-
-#pragma mark - Submit New Report Entry
-
-- (BOOL)validData
-{
-//    BOOL validReportCategory = NO;
-//    BOOL validDescription = NO;
-//    BOOL validAddress = NO;
-//    
-//    if (self.newReportCategory) {
-//        validReportCategory = YES;
-//    }
-//    if (self.newReportDescription) {
-//        validDescription = YES;
-//    }
-//    if (self.newReportAddress) {
-//        validAddress = YES;
-//    }
-//    
-//    return (validReportCategory && validDescription && validAddress);
-
-    return (self.reportCategory && self.reportDescription && self.reportAddress);
-}
-
-- (void)submitNewReportEntry
-{
-    CAObjectStore *objectStore = [CAObjectStore shared];
-//    CAReportEntry *reportEntry = (CAReportEntry *)[objectStore insertNewObjectForEntityName:@"CAReportEntry"];
-//    reportEntry.reportCategory =
-//    CAReportPicture *reportPicture = (CAReportPicture *)[objectStore insertNewObjectForEntityName:@"CAReportPicture"];
-//    reportPicture.filename =
-//    [objectStore saveContext];
-//    DLog(@"New Report Entry: %@", self.newReportEntry.description);
-    
-//    [[CAReportEntryService shared] createEntry:self.newReportEntry withPicture:self.takePhotoButton.imageView.image];
 }
 
 #pragma mark - Launch Camera

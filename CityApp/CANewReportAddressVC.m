@@ -7,6 +7,7 @@
 //
 
 #import "CANewReportAddressVC.h"
+#import "CANewReportVC.h"
 
 #define ANNOTATION_VIEW_IDENTIFIER @"defaultPinAnnotationView"
 
@@ -29,7 +30,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self showUserLocation];
+    [self setRegionToUserLocation];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -41,9 +42,10 @@
 - (void)setupMapView
 {
     self.mapView.showsUserLocation = YES;
+    self.mapView.userLocation.title = nil;
 }
 
-- (void)showUserLocation
+- (void)setRegionToUserLocation
 {
     // Get user location and region
     CLLocationCoordinate2D currentCoordinate = [self.mapView.userLocation coordinate];
@@ -56,40 +58,50 @@
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
     annotation.coordinate = currentCoordinate;
     CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:currentCoordinate.latitude longitude:currentCoordinate.longitude];
-    annotation.title = [self convertCoordinatesToAddress:currentLocation];
+    [self reverseGeocodeLocation:currentLocation forAnnotation:annotation];
     [self.mapView addAnnotation:annotation];
 }
 
-- (void)setupLocationManager
+- (void)dropPin:(MKUserLocation *)userLocation
 {
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locationManager.distanceFilter = 20;
-    self.locationManager.delegate = self;
-    [self.locationManager startUpdatingLocation];
+    // Drop the draggable pin
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    annotation.coordinate = userLocation.coordinate;
+    CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:userLocation.coordinate.latitude longitude:userLocation.coordinate.longitude];
+    [self reverseGeocodeLocation:currentLocation forAnnotation:annotation];
+    [self.mapView addAnnotation:annotation];
 }
 
-- (NSString *)convertCoordinatesToAddress:(CLLocation *)location
+//- (void)setupLocationManager
+//{
+//    self.locationManager = [[CLLocationManager alloc] init];
+//    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    self.locationManager.distanceFilter = 20;
+//    self.locationManager.delegate = self;
+//    [self.locationManager startUpdatingLocation];
+//}
+
+- (void)reverseGeocodeLocation:(CLLocation *)location forAnnotation:(MKPointAnnotation *)annotation
 {
-    NSString __block *address = nil;
-    [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-        if ([placemarks count] > 0) {
-            //annotation.placemark = [placemarks objectAtIndex:0];
-            
-            // Add a More Info button to the annotation's view.
-            //MKPinAnnotationView*  view = (MKPinAnnotationView*)[map viewForAnnotation:annotation];
-            //if (view && (view.rightCalloutAccessoryView == nil))
-            //{
-            //    view.canShowCallout = YES;
-            //    view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-            //}
-            
-            CLPlacemark *placemark = [placemarks objectAtIndex:0];
-            address = [placemark.addressDictionary valueForKey:@"Name"];
-            NSLog(@"Address Dictionary: %@", placemark.addressDictionary);
-        }
-    }];
-    return address;
+    [self.geocoder reverseGeocodeLocation:location completionHandler:
+     ^(NSArray* placemarks, NSError* error){
+         if ([placemarks count] > 0)
+         {
+//             annotation.placemark = [placemarks objectAtIndex:0];
+             
+             // Add a More Info button to the annotation's view.
+//             MKPinAnnotationView*  view = (MKPinAnnotationView*)[map viewForAnnotation:annotation];
+//             if (view && (view.rightCalloutAccessoryView == nil))
+//             {
+//                 view.canShowCallout = YES;
+//                 view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//             }
+             
+             CLPlacemark *placemark = [placemarks objectAtIndex:0];
+             annotation.title = [placemark.addressDictionary valueForKey:@"Name"];
+             NSLog(@"Address Dictionary: %@", placemark.addressDictionary);
+         }
+     }];
 }
 
 - (void)convertAddressToCoordinates:(NSString *)address
@@ -99,6 +111,30 @@
              // Process the placemark.
          }
     }];
+}
+
+- (BOOL)validData
+{
+#warning TODO: Validate data by making sure the address is in the desired city: set a city variable in the CASettings, create a custom CAMapAnnotation w/ a property to hold the placemark from 'reverseGeocodeLocation:forAnnotation:'; Use '[placemark.addressDictionary valueForKey:@"City"]' for the city name
+    return YES;
+}
+
+- (void)updateReportEntryData
+{
+    NSArray *viewControllers = [self.navigationController viewControllers];
+    NSUInteger previousViewControllerIndex = viewControllers.count - 2;
+    CANewReportVC *newReportVC = (CANewReportVC *)[viewControllers objectAtIndex:previousViewControllerIndex];
+    newReportVC.reportAddress = self.pinAnnotationView.annotation.title;
+}
+
+#pragma mark - IBActions
+
+- (IBAction)savePressed:(UIBarButtonItem *)sender
+{
+    if ([self validData]) {
+        [self updateReportEntryData];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - MKMapViewDelegate
@@ -128,7 +164,10 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
 {
-    
+    MKPointAnnotation *annotation = (MKPointAnnotation *)annotationView.annotation;
+    CLLocationCoordinate2D newCoordinate = ((MKPointAnnotation *)annotationView.annotation).coordinate;
+    CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:newCoordinate.latitude longitude:newCoordinate.longitude];
+    [self reverseGeocodeLocation:newLocation forAnnotation:annotation];
 }
 
 #pragma mark - CLLocationManagerDelegate Methods

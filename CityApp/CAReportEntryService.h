@@ -16,6 +16,7 @@
 + (CAReportEntryService*)shared;
 - (void)loadStore;
 - (NSFetchRequest*)allReportEntries;
+- (void)createEntry:(CAReportEntry *)reportEntry;
 - (void)createEntry:(CAReportEntry *)reportEntry withPicture:(UIImage *)picture;
 
 @end

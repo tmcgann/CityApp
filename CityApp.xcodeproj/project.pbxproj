@@ -56,6 +56,7 @@
 		34C4A6231707A82400751558 /* CANewReportAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A6221707A82400751558 /* CANewReportAddressVC.m */; };
 		34C4A6251708B3F600751558 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C4A6241708B3F600751558 /* MapKit.framework */; };
 		34C4A6271708B40000751558 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C4A6261708B3FF00751558 /* CoreLocation.framework */; };
+		34C4A62A170A94EA00751558 /* CAMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A629170A94EA00751558 /* CAMapAnnotation.m */; };
 		34F97AEE16A514F900568523 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AED16A514F900568523 /* UIKit.framework */; };
 		34F97AF016A514F900568523 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AEF16A514F900568523 /* Foundation.framework */; };
 		34F97AF216A514F900568523 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AF116A514F900568523 /* CoreGraphics.framework */; };
@@ -194,6 +195,8 @@
 		34C4A6221707A82400751558 /* CANewReportAddressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CANewReportAddressVC.m; sourceTree = "<group>"; };
 		34C4A6241708B3F600751558 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		34C4A6261708B3FF00751558 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		34C4A628170A94EA00751558 /* CAMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMapAnnotation.h; sourceTree = "<group>"; };
+		34C4A629170A94EA00751558 /* CAMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAMapAnnotation.m; sourceTree = "<group>"; };
 		34F97AE916A514F900568523 /* CityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F97AED16A514F900568523 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34F97AEF16A514F900568523 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -304,6 +307,8 @@
 				341DC01E16F6C4A200A4C5F8 /* CAContactCategory.m */,
 				341DC01416F6C4A100A4C5F8 /* CAContactEntry.h */,
 				341DC01516F6C4A100A4C5F8 /* CAContactEntry.m */,
+				34C4A628170A94EA00751558 /* CAMapAnnotation.h */,
+				34C4A629170A94EA00751558 /* CAMapAnnotation.m */,
 				340FE6E416B2531C002FD035 /* CAModels.h */,
 			);
 			name = Models;
@@ -610,6 +615,7 @@
 				34C4A61D170542E100751558 /* CANewReportReportCategoryTVC.m in Sources */,
 				34C4A62017066A7400751558 /* CANewReportDescriptionVC.m in Sources */,
 				34C4A6231707A82400751558 /* CANewReportAddressVC.m in Sources */,
+				34C4A62A170A94EA00751558 /* CAMapAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

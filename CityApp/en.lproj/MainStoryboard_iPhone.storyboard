@@ -846,7 +846,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Report Address" prompt="Drag and drop pin to desired location..." id="ifu-PK-uHx">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="xor-Yb-g4b"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="xor-Yb-g4b">
+                            <connections>
+                                <action selector="savePressed:" destination="bgk-4z-wT1" id="GfT-K9-K6o"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Jas-5s-elB" id="JlJ-jR-9qR"/>
@@ -1371,6 +1375,7 @@
         <class className="CANewReportAddressVC" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportAddressVC.h"/>
             <relationships>
+                <relationship kind="action" name="savePressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
             </relationships>
         </class>

@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
+- (IBAction)savePressed:(UIBarButtonItem *)sender;
+
 @end
