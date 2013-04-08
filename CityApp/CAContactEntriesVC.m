@@ -10,6 +10,7 @@
 #import "CAContactEntryVC.h"
 #import "CAContactEntry.h"
 #import "TMImageSync.h"
+#import "CASettings.h"
 
 #define NUMBER_OF_SECTIONS 1;
 
@@ -19,18 +20,12 @@
 
 @implementation CAContactEntriesVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Background image
+    self.navigationController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:GLOBAL_BACKGROUND_IMAGE]];
     
     // Set title in nav bar to Contact Category name
     [self.navigationItem setTitle:self.contactCategory.name];

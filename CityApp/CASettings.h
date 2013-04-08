@@ -8,8 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+// External API
 #define SERVER_URL @"http://taumu.com"
 #define IMAGE_CONTROLLER_PATH @"/fetch/fetch/"
+
+// UI
+#define GLOBAL_BACKGROUND_IMAGE @"bg@2x.png"
+
+// Image Size for Scaling
+#define LANDSCAPE_IMAGE_SCALED_WIDTH 1920
+#define LANDSCAPE_IMAGE_SCALED_HEIGHT 1200
+#define PORTRAIT_IMAGE_SCALED_WIDTH 1200
+#define PORTRAIT_IMAGE_SCALED_HEIGHT 1920
 
 // NSUserDefaults Keys
 #define REPORTER_INFO_DICT_KEY @"reporterInfo"

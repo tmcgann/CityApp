@@ -59,7 +59,8 @@
     RKEntityMapping *reportEntryRequestMapping = (RKEntityMapping *)[RKObjectMapping requestMapping];
     [reportEntryRequestMapping addAttributeMappingsFromDictionary:reportEntryDict];
     
-    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[reportEntryRequestMapping inverseMapping] objectClass:[CAReportEntry class] rootKeyPath:@"report_entry"];
+//    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[reportEntryRequestMapping inverseMapping] objectClass:[CAReportEntry class] rootKeyPath:@"report_entry"];
+    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[reportEntryRequestMapping inverseMapping] objectClass:[CAReportEntry class] rootKeyPath:nil];
     
     [[CAObjectStore shared] addRequestDescriptor:requestDescriptor];
 }
@@ -90,11 +91,9 @@
 
 - (void)createEntry:(CAReportEntry *)reportEntry withPicture:(UIImage *)picture
 {
-//    [[CAObjectStore shared].objectManager postObject:reportEntry path:@"/report_entries/add" parameters:nil success:nil failure:nil];
-    // Serialize the class attributes then attach a file
     NSMutableURLRequest *request = [[CAObjectStore shared].objectManager multipartFormRequestWithObject:reportEntry method:RKRequestMethodPOST path:@"/report_entries/add" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:UIImageJPEGRepresentation(picture, 0.8)
-                                    name:@"reportEntry[picture]"
+                                    name:@"data[File][image]"
                                 fileName:@"photo.jpeg"
                                 mimeType:@"image/jpeg"];
     }];

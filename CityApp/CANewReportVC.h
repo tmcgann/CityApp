@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
 @property (strong, nonatomic) IBOutlet UITableView *reportInfoTableView;
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
-//@property (strong, nonatomic) NSMutableDictionary *newReportInfo;
+@property (nonatomic) BOOL photoExists;
 @property (strong, nonatomic) CAReportCategory *reportCategory;
 @property (strong, nonatomic) NSString *reportDescription;
 @property (strong, nonatomic) NSString *reportAddress;

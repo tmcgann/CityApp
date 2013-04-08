@@ -23,6 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    [self setupAddressToolbar];
     [self setupMapView];
 //    [self setupLocationManager];
 }
@@ -36,7 +37,21 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [self.navigationController setToolbarHidden:YES animated:NO];
 //    [self.locationManager stopUpdatingLocation];
+}
+
+- (void)setupAddressToolbar
+{
+//    self.addressTextField = [[UITextField alloc] initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)];
+//    self.addressTextField.text =
+    
+    UIBarButtonItem *textFieldWrapper = [[UIBarButtonItem alloc] initWithCustomView:self.addressTextField];
+//    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:NULL];
+    
+    [self setToolbarItems:@[textFieldWrapper] animated:NO];
+    [self.navigationController.toolbar setBarStyle:UIBarStyleBlack];
+    [self.navigationController setToolbarHidden:NO animated:NO];
 }
 
 - (void)setupMapView

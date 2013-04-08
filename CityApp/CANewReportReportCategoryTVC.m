@@ -10,6 +10,7 @@
 #import "CANewReportVC.h"
 #import "CAReportCategoryService.h"
 #import "CAReportCategory.h"
+#import "CASettings.h"
 
 @interface CANewReportReportCategoryTVC ()
 
@@ -22,6 +23,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:GLOBAL_BACKGROUND_IMAGE]];
 	
     // Load objects via Core Data/RestKit
     [[CAReportCategoryService shared] loadStore];
