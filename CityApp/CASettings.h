@@ -13,9 +13,11 @@
 #define IMAGE_CONTROLLER_PATH @"/fetch/fetch/"
 
 // UI
-#define GLOBAL_BACKGROUND_IMAGE @"bg@2x.png"
+#define GLOBAL_BACKGROUND_IMAGE @"bg.png"
+#define GLOBAL_NAVBAR_IMAGE @"navbar.png"
 
-// Image Size for Scaling
+// Image Attributes
+#define REPORT_ENTRY_THUMBNAIL_CORNER_RADIUS 3.0f
 #define LANDSCAPE_IMAGE_SCALED_WIDTH 1920
 #define LANDSCAPE_IMAGE_SCALED_HEIGHT 1200
 #define PORTRAIT_IMAGE_SCALED_WIDTH 1200

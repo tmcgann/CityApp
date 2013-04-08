@@ -27,7 +27,7 @@
     [super viewDidLoad];
     
     // Background image
-    self.navigationController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:GLOBAL_BACKGROUND_IMAGE]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:GLOBAL_BACKGROUND_IMAGE]];
     
     // Set navbar title
     [self.navigationItem setTitle:@"Details"];

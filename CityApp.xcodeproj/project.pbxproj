@@ -59,8 +59,9 @@
 		34C4A62A170A94EA00751558 /* CAMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A629170A94EA00751558 /* CAMapAnnotation.m */; };
 		34C4A62E1712634900751558 /* Icon-(Retina).png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4A62D1712634800751558 /* Icon-(Retina).png */; };
 		34C4A6331712695E00751558 /* icon-screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4A6321712695E00751558 /* icon-screenshot.png */; };
-		34C4A6421712888200751558 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4A6401712888100751558 /* bg@2x.png */; };
 		34C4A646171293D400751558 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A645171293D400751558 /* UIImage+Scale.m */; };
+		34C4A64B1713685200751558 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4A6491713685100751558 /* bg@2x.png */; };
+		34C4A64C1713685200751558 /* navbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4A64A1713685100751558 /* navbar@2x.png */; };
 		34F97AEE16A514F900568523 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AED16A514F900568523 /* UIKit.framework */; };
 		34F97AF016A514F900568523 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AEF16A514F900568523 /* Foundation.framework */; };
 		34F97AF216A514F900568523 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AF116A514F900568523 /* CoreGraphics.framework */; };
@@ -202,9 +203,10 @@
 		34C4A629170A94EA00751558 /* CAMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAMapAnnotation.m; sourceTree = "<group>"; };
 		34C4A62D1712634800751558 /* Icon-(Retina).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-(Retina).png"; sourceTree = "<group>"; };
 		34C4A6321712695E00751558 /* icon-screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-screenshot.png"; sourceTree = "<group>"; };
-		34C4A6401712888100751558 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		34C4A644171293D400751558 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		34C4A645171293D400751558 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
+		34C4A6491713685100751558 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
+		34C4A64A1713685100751558 /* navbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar@2x.png"; sourceTree = "<group>"; };
 		34F97AE916A514F900568523 /* CityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F97AED16A514F900568523 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34F97AEF16A514F900568523 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -371,7 +373,8 @@
 		34869B6C16A87C7F009FF9EF /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				34C4A6401712888100751558 /* bg@2x.png */,
+				34C4A6491713685100751558 /* bg@2x.png */,
+				34C4A64A1713685100751558 /* navbar@2x.png */,
 				34F9AAA316FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png */,
 				34F9AAA516FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png */,
 				340E32BF16D3469800528049 /* david.jpg */,
@@ -579,7 +582,8 @@
 				34F9AAA616FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png in Resources */,
 				34C4A62E1712634900751558 /* Icon-(Retina).png in Resources */,
 				34C4A6331712695E00751558 /* icon-screenshot.png in Resources */,
-				34C4A6421712888200751558 /* bg@2x.png in Resources */,
+				34C4A64B1713685200751558 /* bg@2x.png in Resources */,
+				34C4A64C1713685200751558 /* navbar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

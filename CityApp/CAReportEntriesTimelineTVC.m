@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Taylor McGann. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "CAReportEntriesTimelineTVC.h"
 #import "CAReportEntryDetailVC.h"
 #import "CAReportEntryService.h"
@@ -33,47 +34,16 @@
 {
     [super viewDidLoad];
     
-    // Load objects via Core Data/RestKit
-    [[CAReportEntryService shared] loadStore];
-    [self setupFetchedResultsController];
+    // Background image
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:GLOBAL_BACKGROUND_IMAGE]];
     
-    // Load images for all the report entries
-#warning FIXME: This doesn't work the first time the app loads. It is data dependent.
-//    [self fetchPictures];
+    // Load objects via Core Data/RestKit
+    [self setupFetchedResultsController];
 }
 
 - (void)setupFetchedResultsController
 {
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[[CAReportEntryService shared] allReportEntries] managedObjectContext:[CAObjectStore shared].context sectionNameKeyPath:nil cacheName:nil];
-}
-
-- (void)fetchPictures
-{
-#warning FIXME: This code may NOT be thread safe if TMImageSync is busy elsewhere and you change the remoteURL!!! Might be best NOT to use a shared instance
-    TMImageSync *imageSync = [[TMImageSync alloc] init];
-    imageSync.remoteURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", SERVER_URL, IMAGE_CONTROLLER_PATH]];
-    
-    NSArray *reportEntries = self.fetchedResultsController.fetchedObjects;
-    NSUInteger count = reportEntries.count;
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
-    dispatch_apply(count, queue, ^(size_t i) {
-        CAReportEntry *reportEntry = [reportEntries objectAtIndex:i];
-        CAReportPicture *reportPicture = [reportEntry.reportPictures lastObject];
-        if (reportPicture && ![@"" isEqualToString:reportPicture.filename]) {
-            [imageSync fetchImageWithoutSync:reportPicture.filename];
-        }
-    });
-
-    // An alternate way of doing it
-//    for (CAReportEntry *reportEntry in reportEntries) {
-//        dispatch_async(queue, ^(){
-//            CAReportPicture *reportPicture = [reportEntry.reportPictures lastObject];
-//            if (reportPicture && ![@"" isEqualToString:reportPicture.filename]) {
-//                [imageSync fetchImageWithoutSync:reportPicture.filename];
-//            }
-//        });
-//    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -97,18 +67,22 @@
     
     // Get all the necessary objects and data to for the various images and labels
     CAReportEntry *reportEntry = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    CAReportCategory *reportCategory = [[CAReportCategoryService shared] reportCategoryById:reportEntry.reportCategoryId];
-//    CAReportPicture *reportPicture = [reportEntry.reportPictures lastObject];
-//    ((UIImageView *)[cell viewWithTag:CELL_PICTURE_TAG]).image = [UIImage imageWithContentsOfFile:reportPicture.filename];
+
     NSString *thumbnailBase64 = reportEntry.thumbnailData;
     NSData *thumbnailData = [NSData dataFromBase64String:thumbnailBase64];
     UIImage *reportPictureThumbnail = [UIImage imageWithData:thumbnailData];
+    UIImageView *thumbailImageView = (UIImageView *)[cell viewWithTag:CELL_PICTURE_TAG];
+    thumbailImageView.image = reportPictureThumbnail;
+    thumbailImageView.layer.cornerRadius = REPORT_ENTRY_THUMBNAIL_CORNER_RADIUS;
+    thumbailImageView.clipsToBounds = YES;
     
-    ((UIImageView *)[cell viewWithTag:CELL_PICTURE_TAG]).image = reportPictureThumbnail;
-//    ((UILabel *)[cell viewWithTag:CELL_CATEGORY_TAG]).text = reportEntry.reportCategory.name;
-    ((UILabel *)[cell viewWithTag:CELL_CATEGORY_TAG]).text = reportEntry.reportCategoryId;
+    CAReportCategory *reportCategory = [self fetchReportCategoryById:reportEntry.reportCategoryId];
+    ((UILabel *)[cell viewWithTag:CELL_CATEGORY_TAG]).text = reportCategory.name;
+    
     ((UILabel *)[cell viewWithTag:CELL_ADDRESS_TAG]).text = reportEntry.address;
+    
     ((UILabel *)[cell viewWithTag:CELL_DESCRIPTOR_TAG]).text = reportEntry.descriptor;
+    
     ((UILabel *)[cell viewWithTag:CELL_CREATED_TAG]).text = [NSString stringWithFormat:@"%@", reportEntry.created.description];
     
     return cell;
@@ -119,6 +93,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+#pragma mark - Core Data
+
+- (CAReportCategory *)fetchReportCategoryById:(NSString *)reportCategoryId
+{
+    NSFetchRequest *fetchRequest = [[CAReportCategoryService shared] reportCategoryById:reportCategoryId];
+    NSError *error;
+    NSArray *fetchedResults = [[CAObjectStore shared].context executeFetchRequest:fetchRequest error:&error];
+    CAReportCategory *reportCategory = [fetchedResults lastObject];
+    return reportCategory;
 }
 
 

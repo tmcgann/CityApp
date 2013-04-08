@@ -17,15 +17,6 @@
 
 @implementation CAReportEntriesVC
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialize view controllers before the view loads
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -75,7 +66,6 @@
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:NULL];
     
     [self setToolbarItems:@[flexibleSpace, segmentedControlWrapper, flexibleSpace] animated:NO];
-    [self.navigationController.toolbar setBarStyle:UIBarStyleBlack];
     [self.navigationController setToolbarHidden:NO animated:YES];
 }
 

@@ -25,7 +25,7 @@
     [super viewDidLoad];
     
     // Background image
-    self.navigationController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:GLOBAL_BACKGROUND_IMAGE]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:GLOBAL_BACKGROUND_IMAGE]];
     
     // Set title in nav bar to Contact Category name
     [self.navigationItem setTitle:self.contactCategory.name];

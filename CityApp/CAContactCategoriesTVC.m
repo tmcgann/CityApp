@@ -27,10 +27,9 @@
     [super viewDidLoad];
     
     // Background image
-    self.navigationController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:GLOBAL_BACKGROUND_IMAGE]];
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:GLOBAL_BACKGROUND_IMAGE]];
     
     // Load objects via Core Data/RestKit
-    [[CAContactCategoryService shared] loadStore];
     [self setupFetchedResultsController];
     
     // Load images for all the contact categories (not the contact entries)

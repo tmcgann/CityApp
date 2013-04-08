@@ -27,7 +27,6 @@
     self.navigationController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:GLOBAL_BACKGROUND_IMAGE]];
 	
     // Load objects via Core Data/RestKit
-    [[CAReportCategoryService shared] loadStore];
     [self setupFetchedResultsController];
 }
 
