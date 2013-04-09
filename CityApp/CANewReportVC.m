@@ -80,9 +80,8 @@
         CANewReportDescriptionVC *descriptionVC = segue.destinationViewController;
         descriptionVC.reportDescription = self.reportDescription;
     } else if ([segue.identifier isEqualToString:@"segueToReportAddress"]) {
-#warning TODO: Update pin location based on saved report address
-//        CANewReportAddressVC *addressVC = segue.destinationViewController;
-//        addressVC.reportAddress = self.reportAddress;
+        CANewReportAddressVC *addressVC = segue.destinationViewController;
+        addressVC.pinLocation = self.reportLocation;
     }
     // Don't have to pass any data to reporter detail b/c data is stored in NSUserDefaults
 }
@@ -92,6 +91,9 @@
     // Load any existing reporter info from user defaults
     NSDictionary *reporterInfo = [[NSUserDefaults standardUserDefaults] valueForKey:REPORTER_INFO_DICT_KEY];
     self.reportReporterInfo = reporterInfo;
+    
+    // Report addres not user defined by default
+    self.reportAddressUserDefined = NO;
     
     // New reports are public by default until modified
     self.reportPublic = YES;
@@ -108,18 +110,14 @@
 
 - (void)updateCurrentAddress:(CLLocation *)location
 {
-    UITableViewCell *cell = [self.reportInfoTableView dequeueReusableCellWithIdentifier:@"ReportAddressCell"];
-    UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
     [self.geocoder reverseGeocodeLocation:location completionHandler:
      ^(NSArray* placemarks, NSError* error){
          if ([placemarks count] > 0)
          {
              CLPlacemark *placemark = [placemarks objectAtIndex:0];
-             NSString *currentAddress = [placemark.addressDictionary valueForKey:@"Name"];
-             cellLabel.text = currentAddress;
-             self.reportAddress = currentAddress;
+             self.reportPlacemark = placemark;
+             self.reportAddress = [placemark.addressDictionary valueForKey:@"Name"];
              [self.reportInfoTableView reloadData];
-             NSLog(@"Address Dictionary: %@", placemark.addressDictionary);
          }
      }];
 }
@@ -150,9 +148,12 @@
 
 - (void)setupAddressLabel:(UILabel *)label
 {
-    if (self.reportAddress) {
+    if (self.reportAddressUserDefined) {
         label.text = self.reportAddress;
         label.textColor = [UIColor darkTextColor];
+    } else if (self.reportAddress) {
+        label.text = self.reportAddress;
+        label.textColor = [UIColor lightGrayColor];
     } else {
         label.text = @"Address";
         label.textColor = [UIColor lightGrayColor];
@@ -204,8 +205,8 @@
     reportEntry.reportCategoryId = self.reportCategory.reportCategoryId;
     reportEntry.descriptor = self.reportDescription;
     reportEntry.address = self.reportAddress;
-//    reportEntry.latitude = self.
-//    reportEntry.longitude = self.
+    reportEntry.latitude = [NSString stringWithFormat:@"%+.8f", self.reportLocation.coordinate.latitude];
+    reportEntry.longitude = [NSString stringWithFormat:@"%+.8f", self.reportLocation.coordinate.longitude];
     reportEntry.contactName = [self buildReporterName];
     reportEntry.contactEmail = [self.reportReporterInfo valueForKey:REPORTER_EMAIL_ADDRESS_KEY];
     reportEntry.contactPhone = [self.reportReporterInfo valueForKey:REPORTER_PHONE_NUMBER_KEY];
@@ -444,13 +445,13 @@
 {
     // If it's a relatively recent event, turn off updates to save power?
     // If the event is recent AND accurate, turn off updates to save power?
-    CLLocation* location = [locations lastObject];
-    NSDate* eventDate = location.timestamp;
+    self.reportLocation = [locations lastObject];
+    NSDate* eventDate = self.reportLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     if (abs(howRecent) < 15.0) {
-        [self updateCurrentAddress:location];
-        NSLog(@"latitude %+.6f, longitude %+.6f\n", location.coordinate.latitude, location.coordinate.longitude);
-        NSLog(@"horizontalAccuracy: %+.6f", location.horizontalAccuracy);
+        [self updateCurrentAddress:self.reportLocation];
+//        DLog(@"latitude %+.6f, longitude %+.6f\n", self.reportLocation.coordinate.latitude, self.reportLocation.coordinate.longitude);
+//        DLog(@"horizontalAccuracy: %+.6f", self.reportLocation.horizontalAccuracy);
     }
 }
 

@@ -27,9 +27,12 @@
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
 @property (nonatomic) BOOL photoExists;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *reportLocation;
+@property (strong, nonatomic) CLPlacemark *reportPlacemark;
+@property (strong, nonatomic) NSString *reportAddress;
+@property (nonatomic) BOOL reportAddressUserDefined;
 @property (strong, nonatomic) CAReportCategory *reportCategory;
 @property (strong, nonatomic) NSString *reportDescription;
-@property (strong, nonatomic) NSString *reportAddress;
 @property (strong, nonatomic) NSDictionary *reportReporterInfo;
 @property (nonatomic) BOOL *reportPublic;
 

@@ -13,7 +13,9 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
-@property (strong, nonatomic) NSDictionary *addressDictionary;
+@property (strong, nonatomic) MKPointAnnotation *annotation;
+@property (strong, nonatomic) CLLocation *pinLocation;
+@property (strong, nonatomic) CLPlacemark *pinPlacemark;
 
 - (IBAction)savePressed:(UIBarButtonItem *)sender;
 

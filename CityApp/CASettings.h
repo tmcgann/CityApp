@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+// City
+#define CITY @"Provo"
+
 // External API
 #define SERVER_URL @"http://taumu.com"
 #define IMAGE_CONTROLLER_PATH @"/fetch/fetch/"

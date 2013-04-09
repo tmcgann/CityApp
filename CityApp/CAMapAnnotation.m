@@ -8,6 +8,25 @@
 
 #import "CAMapAnnotation.h"
 
+@interface CAMapAnnotation ()
+
+@property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
+
+@end
+
 @implementation CAMapAnnotation
+
+- (id)initWithCoordinate:(CLLocationCoordinate2D)coord {
+    self = [super init];
+    if (self) {
+        self.coordinate = coord;
+    }
+    return self;
+}
+
+- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate
+{
+    
+}
 
 @end
