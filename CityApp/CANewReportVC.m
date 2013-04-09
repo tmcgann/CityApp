@@ -175,11 +175,11 @@
 {
     NSString *name;
     
-    if ([self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] && [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY]) {
+    if ([self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] && [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] && ![[self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] isEqualToString:@""] && ![[self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] isEqualToString:@""]) {
         name = [NSString stringWithFormat:@"%@ %@", [self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY], [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY]];
-    } else if ([self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY]) {
+    } else if ([self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] && ![[self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] isEqualToString:@""]) {
         name = [self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY];
-    } else if ([self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY]) {
+    } else if ([self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] && ![[self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] isEqualToString:@""]) {
         name = [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY];
     } else {
         name = REPORTER_INFO_DEFAULT_NAME;
