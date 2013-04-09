@@ -67,14 +67,8 @@
 - (NSFetchRequest *)reportCategoryById:(NSString *)reportCategoryId
 {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:PRIMARY_ENTITY_NAME];
-    fetchRequest.predicate = [self filterById:reportCategoryId];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"reportCategoryId = %@", reportCategoryId];
     return fetchRequest;
-}
-
-- (NSPredicate *)filterById:(NSString *)reportCategoryId
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"reportCategoryId == %@", reportCategoryId];
-    return predicate;
 }
 
 @end

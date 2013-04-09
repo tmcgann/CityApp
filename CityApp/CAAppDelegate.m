@@ -12,6 +12,7 @@
 #import <RestKit/CoreData.h>
 #import "CAModels.h"
 #import "CAServices.h"
+#import "CASettings.h"
 
 @implementation CAAppDelegate
 
@@ -24,6 +25,18 @@
 //    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     
     // Load object stores
+    [[CAContactCategoryService shared] loadStore];
+    [[CAReportCategoryService shared] loadStore];
+    [[CAReportEntryService shared] loadStore];
+    
+    // Set nav bar bg image (iOS 5.0+)
+    if ([[UINavigationBar class] respondsToSelector:@selector(appearance)]) {
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:GLOBAL_NAVBAR_IMAGE] forBarMetrics:UIBarMetricsDefault];
+    }
+    
+    // Set nav contoller
+    [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:GLOBAL_NAVBAR_IMAGE] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    [[UIToolbar appearance] setBarStyle:UIBarStyleBlackOpaque];
     
     return YES;
 }

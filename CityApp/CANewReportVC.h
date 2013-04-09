@@ -7,22 +7,32 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@class CAReportCategory;
+@protocol CAReportEntriesRefreshDelegate <NSObject>
+@required
+- (void)didDismissNewReportEntryModal;
+@end
 
-@interface CANewReportVC : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@class CAReportCategory, CAReportEntriesVC;
 
+@interface CANewReportVC : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
 
+@property (weak, nonatomic) CAReportEntriesVC *delegate;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *submitButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
 @property (strong, nonatomic) IBOutlet UITableView *reportInfoTableView;
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
-//@property (strong, nonatomic) NSMutableDictionary *newReportInfo;
+@property (nonatomic) BOOL photoExists;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *reportLocation;
+@property (strong, nonatomic) CLPlacemark *reportPlacemark;
+@property (strong, nonatomic) NSString *reportAddress;
+@property (nonatomic) BOOL reportAddressUserDefined;
 @property (strong, nonatomic) CAReportCategory *reportCategory;
 @property (strong, nonatomic) NSString *reportDescription;
-@property (strong, nonatomic) NSString *reportAddress;
 @property (strong, nonatomic) NSDictionary *reportReporterInfo;
 @property (nonatomic) BOOL *reportPublic;
 

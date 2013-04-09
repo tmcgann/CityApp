@@ -9,6 +9,7 @@
 #import "CAContactEntryVC.h"
 #import "NSString+URLEncode.h"
 #import "CAWebVC.h"
+#import "CASettings.h"
 
 #define kTV_CELL_TITLE @"title"
 #define kTV_CELL_DETAIL @"detail"
@@ -21,18 +22,12 @@
 
 @implementation CAContactEntryVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Background image
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:GLOBAL_BACKGROUND_IMAGE]];
     
     // Set navbar title
     [self.navigationItem setTitle:@"Details"];

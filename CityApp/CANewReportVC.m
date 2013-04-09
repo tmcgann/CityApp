@@ -9,6 +9,8 @@
 #import "CANewReportVC.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <QuartzCore/QuartzCore.h>
+#import "CAReportEntriesVC.h"
 #import "CANewReportReportCategoryTVC.h"
 #import "CANewReportDescriptionVC.h"
 #import "CANewReportAddressVC.h"
@@ -17,15 +19,12 @@
 #import "CAReportCategory.h"
 #import "CAReportPicture.h"
 #import "UIImage+Orientation.h"
+#import "UIImage+Scale.h"
 #import "CASettings.h"
 
-//#define NEW_REPORT_INFO_CATEGORY_KEY @"reportCategory"
-//#define NEW_REPORT_INFO_DESCRIPTION_KEY @"description"
-//#define NEW_REPORT_INFO_ADDRESS_KEY @"address"
-//#define NEW_REPORT_INFO_REPORTER_KEY @"reporter"
-//#define NEW_REPORT_INFO_PUBLIC_KEY @"public"
-
 @interface CANewReportVC ()
+
+@property (strong, nonatomic) CLGeocoder *geocoder;
 
 @end
 
@@ -34,7 +33,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Set the back button title (for next screen)
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    [self.navigationItem setBackBarButtonItem:backButton];
+    
+    // Set the photo button image content mode so photos display appropriately
+    [self.takePhotoButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    self.takePhotoButton.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.takePhotoButton.layer.shadowRadius = 5.0;
+    
     [self setupNewReportInfo];
+    [self setupLocationManager];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -44,6 +54,12 @@
     
     // Refresh table view to update data in the event of any changes
     [self.reportInfoTableView reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.locationManager stopUpdatingLocation];
 }
 
 - (void)deselectSelectedRow
@@ -64,35 +80,46 @@
         CANewReportDescriptionVC *descriptionVC = segue.destinationViewController;
         descriptionVC.reportDescription = self.reportDescription;
     } else if ([segue.identifier isEqualToString:@"segueToReportAddress"]) {
-#warning TODO: Update pin location based on saved report address
-//        CANewReportAddressVC *addressVC = segue.destinationViewController;
-//        addressVC.reportAddress = self.reportAddress;
+        CANewReportAddressVC *addressVC = segue.destinationViewController;
+        addressVC.pinLocation = self.reportLocation;
     }
     // Don't have to pass any data to reporter detail b/c data is stored in NSUserDefaults
 }
 
 - (void)setupNewReportInfo
 {
-//    self.newReportInfo = [NSMutableDictionary dictionaryWithCapacity:5];
-    
     // Load any existing reporter info from user defaults
     NSDictionary *reporterInfo = [[NSUserDefaults standardUserDefaults] valueForKey:REPORTER_INFO_DICT_KEY];
     self.reportReporterInfo = reporterInfo;
-//    [self.newReportInfo setValue:reporterInfo forKey:NEW_REPORT_INFO_REPORTER_KEY];
     
-    // Automatically calculate the users current address
-    NSString *currentAddress = [self determineCurrentAddress];
-    self.reportAddress = currentAddress;
-//    [self.newReportInfo setValue:currentAddress forKey:NEW_REPORT_INFO_ADDRESS_KEY];
+    // Report addres not user defined by default
+    self.reportAddressUserDefined = NO;
     
     // New reports are public by default until modified
     self.reportPublic = YES;
-//    [self.newReportInfo setValue:YES forKey:NEW_REPORT_INFO_PUBLIC_KEY];
 }
 
-- (NSString *)determineCurrentAddress
+- (void)setupLocationManager
 {
-    return nil;
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.distanceFilter = 20;
+    self.locationManager.delegate = self;
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)updateCurrentAddress:(CLLocation *)location
+{
+    [self.geocoder reverseGeocodeLocation:location completionHandler:
+     ^(NSArray* placemarks, NSError* error){
+         if ([placemarks count] > 0)
+         {
+             CLPlacemark *placemark = [placemarks objectAtIndex:0];
+             self.reportPlacemark = placemark;
+             self.reportAddress = [placemark.addressDictionary valueForKey:@"Name"];
+             [self.reportInfoTableView reloadData];
+         }
+     }];
 }
 
 #pragma mark - Label text methods
@@ -121,9 +148,12 @@
 
 - (void)setupAddressLabel:(UILabel *)label
 {
-    if (self.reportAddress) {
+    if (self.reportAddressUserDefined) {
         label.text = self.reportAddress;
         label.textColor = [UIColor darkTextColor];
+    } else if (self.reportAddress) {
+        label.text = self.reportAddress;
+        label.textColor = [UIColor lightGrayColor];
     } else {
         label.text = @"Address";
         label.textColor = [UIColor lightGrayColor];
@@ -145,11 +175,11 @@
 {
     NSString *name;
     
-    if (![[self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] isEqualToString:@""] && ![[self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] isEqualToString:@""]) {
+    if ([self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] && [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY]) {
         name = [NSString stringWithFormat:@"%@ %@", [self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY], [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY]];
-    } else if (![[self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] isEqualToString:@""]) {
+    } else if ([self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY]) {
         name = [self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY];
-    } else if (![[self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] isEqualToString:@""]) {
+    } else if ([self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY]) {
         name = [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY];
     } else {
         name = REPORTER_INFO_DEFAULT_NAME;
@@ -162,22 +192,6 @@
 
 - (BOOL)validData
 {
-    //    BOOL validReportCategory = NO;
-    //    BOOL validDescription = NO;
-    //    BOOL validAddress = NO;
-    //
-    //    if (self.newReportCategory) {
-    //        validReportCategory = YES;
-    //    }
-    //    if (self.newReportDescription) {
-    //        validDescription = YES;
-    //    }
-    //    if (self.newReportAddress) {
-    //        validAddress = YES;
-    //    }
-    //
-    //    return (validReportCategory && validDescription && validAddress);
-    
     return (self.reportCategory && self.reportDescription && self.reportAddress && self.reportPublic);
 }
 
@@ -188,9 +202,11 @@
     // Create report entry
     CAReportEntry *reportEntry = (CAReportEntry *)[objectStore insertNewObjectForEntityName:@"CAReportEntry"];
     reportEntry.reportCategory = self.reportCategory;
-//    reportEntry.reportCategoryId = self.reportCategory.reportCategoryId;
+    reportEntry.reportCategoryId = self.reportCategory.reportCategoryId;
     reportEntry.descriptor = self.reportDescription;
     reportEntry.address = self.reportAddress;
+    reportEntry.latitude = [NSString stringWithFormat:@"%+.8f", self.reportLocation.coordinate.latitude];
+    reportEntry.longitude = [NSString stringWithFormat:@"%+.8f", self.reportLocation.coordinate.longitude];
     reportEntry.contactName = [self buildReporterName];
     reportEntry.contactEmail = [self.reportReporterInfo valueForKey:REPORTER_EMAIL_ADDRESS_KEY];
     reportEntry.contactPhone = [self.reportReporterInfo valueForKey:REPORTER_PHONE_NUMBER_KEY];
@@ -205,14 +221,15 @@
 //    [reportPictures addObject:reportPicture];
 //    reportEntry.reportPictures = [reportPictures copy];
     
-    //TEMP
-    reportEntry.reportEntryId = @"4c8e5cb2-7c37-4e94-85c9-fde1885efa80";
-    
 //    [objectStore saveContext];
     DLog(@"New Report Entry: %@", reportEntry.description);
 
-    [[CAReportEntryService shared] createEntry:reportEntry];
-//    [[CAReportEntryService shared] createEntry:self.newReportEntry withPicture:self.takePhotoButton.imageView.image];
+    if (self.photoExists) {
+        UIImage *image = self.takePhotoButton.imageView.image;
+        [[CAReportEntryService shared] createEntry:reportEntry withPicture:image];
+    } else {
+        [[CAReportEntryService shared] createEntry:reportEntry];
+    }
 }
 
 #pragma mark - IBAction Methods
@@ -226,7 +243,9 @@
 {
     if ([self validData]) {
         [self submitNewReportEntry];
-//        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^(void){
+            [self.delegate didDismissNewReportEntryModal];
+        }];
     } else {
         NSString *title = @"Missing Required Info";
         NSString *message = @"All fields are required to submit a report.";
@@ -237,7 +256,7 @@
 
 - (IBAction)takePhotoPressed:(UIButton *)sender
 {
-    [self startCameraControllerFromViewController:self usingDelegate:self];
+    [self launchImagePickerFromViewController:self usingDelegate:self];
 }
 
 - (IBAction)switchValueChanged:(UISwitch *)sender
@@ -247,18 +266,15 @@
 
 #pragma mark - Launch Camera
 
-- (BOOL)startCameraControllerFromViewController:(UIViewController*)controller
+- (void)launchImagePickerFromViewController:(UIViewController*)controller
                                   usingDelegate:(id <UIImagePickerControllerDelegate, UINavigationControllerDelegate>)delegate
 {
-    BOOL cameraAvailable = YES;
     self.imagePicker = [[UIImagePickerController alloc] init];
     
     if (([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == NO) || (delegate == nil) || (controller == nil))
     {
         self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         self.imagePicker.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        
-        cameraAvailable = NO;
     }
     else
     {
@@ -276,8 +292,6 @@
     self.imagePicker.delegate = delegate;
     
     [controller presentViewController:self.imagePicker animated:YES completion:nil];
-    
-    return cameraAvailable;
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -289,8 +303,7 @@
     NSDictionary *mediaMetadata;
     
     // Handle a still image capture
-    if (CFStringCompare ((CFStringRef) mediaType, kUTTypeImage, 0) == kCFCompareEqualTo)
-    {
+    if (CFStringCompare ((CFStringRef) mediaType, kUTTypeImage, 0) == kCFCompareEqualTo) {
         editedImage = (UIImage *) [info objectForKey:UIImagePickerControllerEditedImage];
         originalImage = (UIImage *) [info objectForKey:UIImagePickerControllerOriginalImage];
         
@@ -311,40 +324,11 @@
             [editedImage fixOrientation];
         }
         
-        // If no edited image exists, use a cropped version of the original image
-//        if (!editedImage)
-//        {
-//            CGFloat width = originalImage.size.width;
-//            CGFloat height = originalImage.size.height;
-//            
-//            // Crop photo album images as long as they are standard iPhone images with standard 4:3 or 3:4 ratio
-//            if (width > height)
-//            {
-//                // 'x' is half the distance of the difference between the width and the height
-//                CGFloat x = (width - height) / 2;
-//                
-//                // Make a new bounding rectangle including our crop
-//                CGRect newSize = CGRectMake(x, 0, height, height);
-//                
-//                editedImage = [self cropImage:originalImage toRect:newSize];
-//            }
-//            else if (height > width)
-//            {
-//                // 'y' is half the distance of the difference between the height and the width
-//                CGFloat y = (height - width) / 2;
-//                
-//                // Make a new bounding rectangle including our crop
-//                CGRect newSize = CGRectMake(0, y, width, width);
-//                
-//                editedImage = [self cropImage:originalImage toRect:newSize];
-//            }
-//            else
-//            {
-//                editedImage = originalImage;
-//            }
-//        }
+        // Scale image size
+        editedImage = [self resizeImage:editedImage];
         
-        [self.takePhotoButton setBackgroundImage:editedImage forState:UIControlStateNormal];
+        self.photoExists = YES;
+        [self.takePhotoButton setImage:editedImage forState:UIControlStateNormal];
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -366,6 +350,17 @@
     UIImage *croppedImage = [UIImage imageWithCGImage:tmp];
     
     return croppedImage;
+}
+
+- (UIImage *)resizeImage:(UIImage *)originalImage
+{
+    CGSize newSize;
+    if (originalImage.size.width > originalImage.size.height) {
+        newSize = CGSizeMake(LANDSCAPE_IMAGE_SCALED_WIDTH, LANDSCAPE_IMAGE_SCALED_HEIGHT);
+    } else {
+        newSize = CGSizeMake(PORTRAIT_IMAGE_SCALED_WIDTH, PORTRAIT_IMAGE_SCALED_HEIGHT);
+    }
+    return [originalImage scaleToSize:newSize];
 }
 
 #pragma mark - UITableViewDataSource
@@ -442,6 +437,36 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //Do nothing
+}
+
+#pragma mark - CLLocationManagerDelegate Methods
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    // If it's a relatively recent event, turn off updates to save power?
+    // If the event is recent AND accurate, turn off updates to save power?
+    self.reportLocation = [locations lastObject];
+    NSDate* eventDate = self.reportLocation.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) < 15.0) {
+        [self updateCurrentAddress:self.reportLocation];
+//        DLog(@"latitude %+.6f, longitude %+.6f\n", self.reportLocation.coordinate.latitude, self.reportLocation.coordinate.longitude);
+//        DLog(@"horizontalAccuracy: %+.6f", self.reportLocation.horizontalAccuracy);
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    DLog(@"ERROR: Location Manager failed to determine location.");
+}
+
+#pragma mark - Accessors
+
+- (CLGeocoder *)geocoder
+{
+    if (!_geocoder)
+        _geocoder = [[CLGeocoder alloc] init];
+    return _geocoder;
 }
 
 @end

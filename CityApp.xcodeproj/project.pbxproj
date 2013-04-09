@@ -57,6 +57,12 @@
 		34C4A6251708B3F600751558 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C4A6241708B3F600751558 /* MapKit.framework */; };
 		34C4A6271708B40000751558 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C4A6261708B3FF00751558 /* CoreLocation.framework */; };
 		34C4A62A170A94EA00751558 /* CAMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A629170A94EA00751558 /* CAMapAnnotation.m */; };
+		34C4A62E1712634900751558 /* Icon-(Retina).png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4A62D1712634800751558 /* Icon-(Retina).png */; };
+		34C4A6331712695E00751558 /* icon-screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4A6321712695E00751558 /* icon-screenshot.png */; };
+		34C4A646171293D400751558 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A645171293D400751558 /* UIImage+Scale.m */; };
+		34C4A64B1713685200751558 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4A6491713685100751558 /* bg@2x.png */; };
+		34C4A64C1713685200751558 /* navbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4A64A1713685100751558 /* navbar@2x.png */; };
+		34C4A64E1713BFDD00751558 /* navbar-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34C4A64D1713BFDD00751558 /* navbar-blue@2x.png */; };
 		34F97AEE16A514F900568523 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AED16A514F900568523 /* UIKit.framework */; };
 		34F97AF016A514F900568523 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AEF16A514F900568523 /* Foundation.framework */; };
 		34F97AF216A514F900568523 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F97AF116A514F900568523 /* CoreGraphics.framework */; };
@@ -65,7 +71,6 @@
 		34F97AFE16A514F900568523 /* CAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F97AFD16A514F900568523 /* CAAppDelegate.m */; };
 		34F97B0716A514FA00568523 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34F97B0516A514FA00568523 /* MainStoryboard_iPhone.storyboard */; };
 		34F9AA8916F97C69004A2EB7 /* CAReportPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AA8816F97C69004A2EB7 /* CAReportPicture.m */; };
-		34F9AAA216FD8688004A2EB7 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F9AAA116FD8688004A2EB7 /* bg@2x.png */; };
 		34F9AAA416FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F9AAA316FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png */; };
 		34F9AAA616FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 34F9AAA516FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png */; };
 		34F9AAA916FE8849004A2EB7 /* CAReportEntryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F9AAA816FE8848004A2EB7 /* CAReportEntryDetailVC.m */; };
@@ -197,6 +202,13 @@
 		34C4A6261708B3FF00751558 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		34C4A628170A94EA00751558 /* CAMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMapAnnotation.h; sourceTree = "<group>"; };
 		34C4A629170A94EA00751558 /* CAMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAMapAnnotation.m; sourceTree = "<group>"; };
+		34C4A62D1712634800751558 /* Icon-(Retina).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-(Retina).png"; sourceTree = "<group>"; };
+		34C4A6321712695E00751558 /* icon-screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-screenshot.png"; sourceTree = "<group>"; };
+		34C4A644171293D400751558 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
+		34C4A645171293D400751558 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
+		34C4A6491713685100751558 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
+		34C4A64A1713685100751558 /* navbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar@2x.png"; sourceTree = "<group>"; };
+		34C4A64D1713BFDD00751558 /* navbar-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-blue@2x.png"; sourceTree = "<group>"; };
 		34F97AE916A514F900568523 /* CityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F97AED16A514F900568523 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		34F97AEF16A514F900568523 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -210,7 +222,6 @@
 		34F97B0616A514FA00568523 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		34F9AA8716F97C69004A2EB7 /* CAReportPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportPicture.h; sourceTree = "<group>"; };
 		34F9AA8816F97C69004A2EB7 /* CAReportPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportPicture.m; sourceTree = "<group>"; };
-		34F9AAA116FD8688004A2EB7 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		34F9AAA316FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Directory-ContactEntryMap-MayorDavidLenz-Edit1.png"; sourceTree = "<group>"; };
 		34F9AAA516FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Directory-ContactEntryMap-MayorDavidLenz-Edit2.png"; sourceTree = "<group>"; };
 		34F9AAA716FE8848004A2EB7 /* CAReportEntryDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportEntryDetailVC.h; sourceTree = "<group>"; };
@@ -364,7 +375,9 @@
 		34869B6C16A87C7F009FF9EF /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				34F9AAA116FD8688004A2EB7 /* bg@2x.png */,
+				34C4A6491713685100751558 /* bg@2x.png */,
+				34C4A64A1713685100751558 /* navbar@2x.png */,
+				34C4A64D1713BFDD00751558 /* navbar-blue@2x.png */,
 				34F9AAA316FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png */,
 				34F9AAA516FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png */,
 				340E32BF16D3469800528049 /* david.jpg */,
@@ -380,6 +393,8 @@
 		34F97ADE16A514F900568523 = {
 			isa = PBXGroup;
 			children = (
+				34C4A6321712695E00751558 /* icon-screenshot.png */,
+				34C4A62D1712634800751558 /* Icon-(Retina).png */,
 				34F97AF316A514F900568523 /* CityApp */,
 				34869B6C16A87C7F009FF9EF /* Media */,
 				34F97AEC16A514F900568523 /* Frameworks */,
@@ -457,6 +472,8 @@
 				34F9AAC016FEAAE1004A2EB7 /* NSData+Base64.m */,
 				34C4A6031701627000751558 /* UIImage+Orientation.h */,
 				34C4A6041701627000751558 /* UIImage+Orientation.m */,
+				34C4A644171293D400751558 /* UIImage+Scale.h */,
+				34C4A645171293D400751558 /* UIImage+Scale.m */,
 				34F9AAB616FEA9F9004A2EB7 /* Base64.h */,
 				34F9AAB716FEA9F9004A2EB7 /* Base64.m */,
 				340E32CF16D5783200528049 /* MBProgressHUD.h */,
@@ -564,9 +581,13 @@
 				340E32B916D32BC000528049 /* power.png in Resources */,
 				340E32BE16D3329000528049 /* cloud.png in Resources */,
 				340E32C016D3469800528049 /* david.jpg in Resources */,
-				34F9AAA216FD8688004A2EB7 /* bg@2x.png in Resources */,
 				34F9AAA416FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png in Resources */,
 				34F9AAA616FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png in Resources */,
+				34C4A62E1712634900751558 /* Icon-(Retina).png in Resources */,
+				34C4A6331712695E00751558 /* icon-screenshot.png in Resources */,
+				34C4A64B1713685200751558 /* bg@2x.png in Resources */,
+				34C4A64C1713685200751558 /* navbar@2x.png in Resources */,
+				34C4A64E1713BFDD00751558 /* navbar-blue@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +637,7 @@
 				34C4A62017066A7400751558 /* CANewReportDescriptionVC.m in Sources */,
 				34C4A6231707A82400751558 /* CANewReportAddressVC.m in Sources */,
 				34C4A62A170A94EA00751558 /* CAMapAnnotation.m in Sources */,
+				34C4A646171293D400751558 /* UIImage+Scale.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
