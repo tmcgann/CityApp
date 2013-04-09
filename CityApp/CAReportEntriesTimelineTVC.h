@@ -8,6 +8,10 @@
 
 #import "CACoreDataTVC.h"
 
+
+
 @interface CAReportEntriesTimelineTVC : CACoreDataTVC
+
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end

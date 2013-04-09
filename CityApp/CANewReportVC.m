@@ -9,6 +9,8 @@
 #import "CANewReportVC.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <QuartzCore/QuartzCore.h>
+#import "CAReportEntriesVC.h"
 #import "CANewReportReportCategoryTVC.h"
 #import "CANewReportDescriptionVC.h"
 #import "CANewReportAddressVC.h"
@@ -21,6 +23,8 @@
 #import "CASettings.h"
 
 @interface CANewReportVC ()
+
+@property (strong, nonatomic) CLGeocoder *geocoder;
 
 @end
 
@@ -36,10 +40,11 @@
     
     // Set the photo button image content mode so photos display appropriately
     [self.takePhotoButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
-//    view.layer.shadowColor = [[UIColor blackColor] CGColor];
-//    view.layer.shadowRadius = 5.0
+    self.takePhotoButton.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.takePhotoButton.layer.shadowRadius = 5.0;
     
     [self setupNewReportInfo];
+    [self setupLocationManager];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -49,6 +54,12 @@
     
     // Refresh table view to update data in the event of any changes
     [self.reportInfoTableView reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.locationManager stopUpdatingLocation];
 }
 
 - (void)deselectSelectedRow
@@ -82,17 +93,35 @@
     NSDictionary *reporterInfo = [[NSUserDefaults standardUserDefaults] valueForKey:REPORTER_INFO_DICT_KEY];
     self.reportReporterInfo = reporterInfo;
     
-    // Automatically calculate the users current address
-    NSString *currentAddress = [self determineCurrentAddress];
-    self.reportAddress = currentAddress;
-    
     // New reports are public by default until modified
     self.reportPublic = YES;
 }
 
-- (NSString *)determineCurrentAddress
+- (void)setupLocationManager
 {
-    return nil;
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.distanceFilter = 20;
+    self.locationManager.delegate = self;
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)updateCurrentAddress:(CLLocation *)location
+{
+    UITableViewCell *cell = [self.reportInfoTableView dequeueReusableCellWithIdentifier:@"ReportAddressCell"];
+    UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
+    [self.geocoder reverseGeocodeLocation:location completionHandler:
+     ^(NSArray* placemarks, NSError* error){
+         if ([placemarks count] > 0)
+         {
+             CLPlacemark *placemark = [placemarks objectAtIndex:0];
+             NSString *currentAddress = [placemark.addressDictionary valueForKey:@"Name"];
+             cellLabel.text = currentAddress;
+             self.reportAddress = currentAddress;
+             [self.reportInfoTableView reloadData];
+             NSLog(@"Address Dictionary: %@", placemark.addressDictionary);
+         }
+     }];
 }
 
 #pragma mark - Label text methods
@@ -145,11 +174,11 @@
 {
     NSString *name;
     
-    if (![[self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] isEqualToString:@""] && ![[self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] isEqualToString:@""]) {
+    if ([self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] && [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY]) {
         name = [NSString stringWithFormat:@"%@ %@", [self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY], [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY]];
-    } else if (![[self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] isEqualToString:@""]) {
+    } else if ([self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY]) {
         name = [self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY];
-    } else if (![[self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] isEqualToString:@""]) {
+    } else if ([self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY]) {
         name = [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY];
     } else {
         name = REPORTER_INFO_DEFAULT_NAME;
@@ -191,9 +220,6 @@
 //    [reportPictures addObject:reportPicture];
 //    reportEntry.reportPictures = [reportPictures copy];
     
-    //TEMP
-    reportEntry.reportEntryId = @"4444bde5-3c44-4de8-bfea-89c6d1dec20b";
-    
 //    [objectStore saveContext];
     DLog(@"New Report Entry: %@", reportEntry.description);
 
@@ -216,7 +242,9 @@
 {
     if ([self validData]) {
         [self submitNewReportEntry];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^(void){
+            [self.delegate didDismissNewReportEntryModal];
+        }];
     } else {
         NSString *title = @"Missing Required Info";
         NSString *message = @"All fields are required to submit a report.";
@@ -408,6 +436,36 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //Do nothing
+}
+
+#pragma mark - CLLocationManagerDelegate Methods
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    // If it's a relatively recent event, turn off updates to save power?
+    // If the event is recent AND accurate, turn off updates to save power?
+    CLLocation* location = [locations lastObject];
+    NSDate* eventDate = location.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) < 15.0) {
+        [self updateCurrentAddress:location];
+        NSLog(@"latitude %+.6f, longitude %+.6f\n", location.coordinate.latitude, location.coordinate.longitude);
+        NSLog(@"horizontalAccuracy: %+.6f", location.horizontalAccuracy);
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    DLog(@"ERROR: Location Manager failed to determine location.");
+}
+
+#pragma mark - Accessors
+
+- (CLGeocoder *)geocoder
+{
+    if (!_geocoder)
+        _geocoder = [[CLGeocoder alloc] init];
+    return _geocoder;
 }
 
 @end

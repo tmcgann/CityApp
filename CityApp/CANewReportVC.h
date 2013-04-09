@@ -7,12 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@class CAReportCategory;
+@protocol CAReportEntriesRefreshDelegate <NSObject>
+@required
+- (void)didDismissNewReportEntryModal;
+@end
 
-@interface CANewReportVC : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@class CAReportCategory, CAReportEntriesVC;
 
+@interface CANewReportVC : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
 
+@property (weak, nonatomic) CAReportEntriesVC *delegate;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *submitButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -20,6 +26,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *reportInfoTableView;
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
 @property (nonatomic) BOOL photoExists;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CAReportCategory *reportCategory;
 @property (strong, nonatomic) NSString *reportDescription;
 @property (strong, nonatomic) NSString *reportAddress;

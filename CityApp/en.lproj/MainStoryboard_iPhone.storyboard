@@ -173,7 +173,7 @@
                     <navigationItem key="navigationItem" title="Reports" id="ffW-y3-6YX">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="yRE-23-OtB">
                             <connections>
-                                <segue destination="2hK-sO-49K" kind="modal" id="W8T-IR-Rkq"/>
+                                <segue destination="2hK-sO-49K" kind="modal" identifier="segueToNewReport" id="W8T-IR-Rkq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

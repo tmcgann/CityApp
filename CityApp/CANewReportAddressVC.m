@@ -25,7 +25,6 @@
     [super viewDidLoad];
 //    [self setupAddressToolbar];
     [self setupMapView];
-//    [self setupLocationManager];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -38,12 +37,10 @@
 {
     [super viewWillDisappear:animated];
     [self.navigationController setToolbarHidden:YES animated:NO];
-//    [self.locationManager stopUpdatingLocation];
 }
 
 - (void)setupAddressToolbar
 {
-//    self.addressTextField = [[UITextField alloc] initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)];
 //    self.addressTextField.text =
     
     UIBarButtonItem *textFieldWrapper = [[UIBarButtonItem alloc] initWithCustomView:self.addressTextField];
@@ -86,15 +83,6 @@
     [self reverseGeocodeLocation:currentLocation forAnnotation:annotation];
     [self.mapView addAnnotation:annotation];
 }
-
-//- (void)setupLocationManager
-//{
-//    self.locationManager = [[CLLocationManager alloc] init];
-//    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-//    self.locationManager.distanceFilter = 20;
-//    self.locationManager.delegate = self;
-//    [self.locationManager startUpdatingLocation];
-//}
 
 - (void)reverseGeocodeLocation:(CLLocation *)location forAnnotation:(MKPointAnnotation *)annotation
 {
@@ -183,26 +171,6 @@
     CLLocationCoordinate2D newCoordinate = ((MKPointAnnotation *)annotationView.annotation).coordinate;
     CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:newCoordinate.latitude longitude:newCoordinate.longitude];
     [self reverseGeocodeLocation:newLocation forAnnotation:annotation];
-}
-
-#pragma mark - CLLocationManagerDelegate Methods
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    // If it's a relatively recent event, turn off updates to save power?
-    // If the event is recent AND accurate, turn off updates to save power?
-    CLLocation* location = [locations lastObject];
-    NSDate* eventDate = location.timestamp;
-    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) < 15.0) {
-        NSLog(@"latitude %+.6f, longitude %+.6f\n", location.coordinate.latitude, location.coordinate.longitude);
-        NSLog(@"horizontalAccuracy: %+.6f", location.horizontalAccuracy);
-    }
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    DLog(@"ERROR: Location Manager failed to determine location.");
 }
 
 #pragma mark - Accessors

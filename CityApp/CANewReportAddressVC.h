@@ -12,9 +12,8 @@
 @interface CANewReportAddressVC : UIViewController <UIScrollViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet UITextField *addressTextField;
 @property (strong, nonatomic) NSDictionary *addressDictionary;
-@property (strong, nonatomic) UITextField *addressTextField;
 
 - (IBAction)savePressed:(UIBarButtonItem *)sender;
 

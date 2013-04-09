@@ -22,7 +22,7 @@
     [super viewDidLoad];
     
     [self setupSegmentedControl];
-    [self indexDidChangeForSegmentedControl:self.segmentedControl];
+    [self indexDidChangeForSegmentedControl:self.segmentedControl];    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -37,6 +37,14 @@
 {
     [super viewWillDisappear:animated];
     [self.navigationController setToolbarHidden:YES animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueToNewReport"]) {
+        CANewReportVC *newReportVC = segue.destinationViewController;
+        newReportVC.delegate = self;
+    }
 }
 
 - (UIViewController *)viewControllerForSegmentIndex:(NSInteger)index {
@@ -83,6 +91,25 @@
         [newVC didMoveToParentViewController:self];
         [currentVC removeFromParentViewController];
     }];
+}
+
+#pragma mark - CAReportEntriesRefreshDelegate
+
+- (void)didDismissNewReportEntryModal
+{
+    //TODO: Make this refresh the data (refetch from Core Data) of the segmented view regardless of class
+    UIViewController *currentVC = [self.childViewControllers lastObject];
+    NSError *error;
+    if ([currentVC isMemberOfClass:[CAReportEntriesTimelineTVC class]]) {
+        [((CAReportEntriesTimelineTVC *)currentVC).fetchedResultsController performFetch:&error];
+#warning TODO: Need to perform the appropriate error handling.
+    } else if ([currentVC isMemberOfClass:[CAReportEntriesMapVC class]]) {
+//        [(CAReportEntriesMapVC *)currentVC refreshData];
+        DLog(@"CAReportEntriesMapVC data would be refreshed...if it were working.");
+    } else {
+//        [(CAReportEntriesCollectionVC *)currentVC refreshData];
+        DLog(@"CAReportEntriesCollectionVC data would be refreshed...if it were working.");
+    }
 }
 
 @end

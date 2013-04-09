@@ -7,10 +7,11 @@
 //
 
 #import "CACoreDataTVC.h"
+#import "CANewReportVC.h"
 
 @class CAReportEntriesTimelineTVC, CAReportEntriesMapVC, CAReportEntriesCollectionVC;
 
-@interface CAReportEntriesVC : UIViewController
+@interface CAReportEntriesVC : UIViewController <CAReportEntriesRefreshDelegate>
 
 @property (nonatomic) UISegmentedControl *segmentedControl;
 @property (nonatomic) CAReportEntriesTimelineTVC *timelineTVC;

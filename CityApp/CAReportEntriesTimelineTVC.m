@@ -39,11 +39,21 @@
     
     // Load objects via Core Data/RestKit
     [self setupFetchedResultsController];
+    
+    // setup pull-to-refresh
+    [self setupRefreshControl];
 }
 
 - (void)setupFetchedResultsController
 {
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[[CAReportEntryService shared] allReportEntries] managedObjectContext:[CAObjectStore shared].context sectionNameKeyPath:nil cacheName:nil];
+}
+
+- (void)setupRefreshControl
+{
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.tintColor = [UIColor colorWithRed:123.0f/255.0f green:193.0f/255.0f blue:68.0f/255.0f alpha:1.0];
+    [self.refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -74,6 +84,7 @@
     UIImageView *thumbailImageView = (UIImageView *)[cell viewWithTag:CELL_PICTURE_TAG];
     thumbailImageView.image = reportPictureThumbnail;
     thumbailImageView.layer.cornerRadius = REPORT_ENTRY_THUMBNAIL_CORNER_RADIUS;
+    thumbailImageView.layer.masksToBounds = YES;
     thumbailImageView.clipsToBounds = YES;
     
     CAReportCategory *reportCategory = [self fetchReportCategoryById:reportEntry.reportCategoryId];
@@ -83,7 +94,9 @@
     
     ((UILabel *)[cell viewWithTag:CELL_DESCRIPTOR_TAG]).text = reportEntry.descriptor;
     
-    ((UILabel *)[cell viewWithTag:CELL_CREATED_TAG]).text = [NSString stringWithFormat:@"%@", reportEntry.created.description];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:GLOBAL_DATE_FORMAT];
+    ((UILabel *)[cell viewWithTag:CELL_CREATED_TAG]).text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:reportEntry.created]];
     
     return cell;
 }
@@ -104,6 +117,15 @@
     NSArray *fetchedResults = [[CAObjectStore shared].context executeFetchRequest:fetchRequest error:&error];
     CAReportCategory *reportCategory = [fetchedResults lastObject];
     return reportCategory;
+}
+
+#pragma mark - Refresh Control
+
+- (void)refreshView
+{
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
+    [self.refreshControl endRefreshing];
 }
 
 

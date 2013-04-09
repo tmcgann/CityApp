@@ -41,7 +41,9 @@
     self.descriptionLabel.text = [NSString stringWithFormat:@"%@\n\n\n", self.reportEntry.descriptor];
     self.addressLabel.text = self.reportEntry.address;
     self.reporterLabel.text = self.reportEntry.contactName;
-    self.createdLabel.text = [self.reportEntry.created description];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:GLOBAL_DATE_FORMAT];
+    self.createdLabel.text = [formatter stringFromDate:self.reportEntry.created];
 //    self.caseIdLabel.text = self.reportEntry.caseId;
 }
 
