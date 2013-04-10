@@ -7,6 +7,7 @@
 //
 
 #import "CAReportEntriesVC.h"
+#import "CAReportEntryService.h"
 #import "CAReportEntriesTimelineTVC.h"
 #import "CAReportEntriesMapVC.h"
 #import "CAReportEntriesCollectionVC.h"
@@ -100,12 +101,14 @@
     //TODO: Make this refresh the data (refetch from Core Data) of the segmented view regardless of class
     UIViewController *currentVC = [self.childViewControllers lastObject];
     NSError *error;
+    [[CAReportEntryService shared] loadStore];
     if ([currentVC isMemberOfClass:[CAReportEntriesTimelineTVC class]]) {
-        [((CAReportEntriesTimelineTVC *)currentVC).fetchedResultsController performFetch:&error];
+        CAReportEntriesTimelineTVC *reportEntriesTimeline = (CAReportEntriesTimelineTVC *)currentVC;
+        [reportEntriesTimeline.fetchedResultsController performFetch:&error];
+//        reportEntriesTimeline.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[[CAReportEntryService shared] allReportEntries] managedObjectContext:[CAObjectStore shared].context sectionNameKeyPath:nil cacheName:nil];
 #warning TODO: Need to perform the appropriate error handling.
     } else if ([currentVC isMemberOfClass:[CAReportEntriesMapVC class]]) {
-//        [(CAReportEntriesMapVC *)currentVC refreshData];
-        DLog(@"CAReportEntriesMapVC data would be refreshed...if it were working.");
+        [(CAReportEntriesMapVC *)currentVC mapReportEntries];
     } else {
 //        [(CAReportEntriesCollectionVC *)currentVC refreshData];
         DLog(@"CAReportEntriesCollectionVC data would be refreshed...if it were working.");

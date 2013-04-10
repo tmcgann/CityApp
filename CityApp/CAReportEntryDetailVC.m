@@ -52,9 +52,13 @@
 
 - (UIImage *)fetchReportPicture:(NSString *)pictureFilename
 {
-    [self.imageSync fetchImageWithoutSync:pictureFilename];
-    NSURL *pictureURL = [self.imageSync.imagesDir URLByAppendingPathComponent:pictureFilename];
-    return [UIImage imageWithContentsOfFile:pictureURL.path];
+    if (!pictureFilename || [pictureFilename isEqualToString:@""]) {
+        return nil;
+    } else {
+        [self.imageSync fetchImageWithoutSync:pictureFilename];
+        NSURL *pictureURL = [self.imageSync.imagesDir URLByAppendingPathComponent:pictureFilename];
+        return [UIImage imageWithContentsOfFile:pictureURL.path];
+    }
 }
 
 //- (void)resizeLabel:(UILabel *)label

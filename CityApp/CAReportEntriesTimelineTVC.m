@@ -38,6 +38,7 @@
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:GLOBAL_BACKGROUND_IMAGE]];
     
     // Load objects via Core Data/RestKit
+    [[CAReportEntryService shared] loadStore];
     [self setupFetchedResultsController];
     
     // setup pull-to-refresh
@@ -62,8 +63,6 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         CAReportEntryDetailVC *reportEntryDetailVC = segue.destinationViewController;
         reportEntryDetailVC.reportEntry = [self.fetchedResultsController objectAtIndexPath:indexPath];
-//        reportEntryDetailVC.reportPicture = nil;
-//        reportEntryDetailVC.reportCategory = nil;
     }
 }
 
@@ -105,7 +104,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    hud.labelText = @"Loading...";
+//    hud.dimBackground = YES;
+//    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 #pragma mark - Core Data
@@ -124,7 +126,8 @@
 - (void)refreshView
 {
     NSError *error;
-    [self.fetchedResultsController performFetch:&error];
+    [[CAReportEntryService shared] loadStore];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[[CAReportEntryService shared] allReportEntries] managedObjectContext:[CAObjectStore shared].context sectionNameKeyPath:nil cacheName:nil];
     [self.refreshControl endRefreshing];
 }
 

@@ -242,6 +242,9 @@
     } else {
         [[CAReportEntryService shared] createEntry:reportEntry];
     }
+    
+    // Destroy the report entry entity
+    [[CAObjectStore shared].context deleteObject:reportEntry];
 }
 
 #pragma mark - IBAction Methods

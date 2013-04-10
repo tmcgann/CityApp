@@ -264,8 +264,8 @@
                                     <subviews>
                                         <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rgq-d6-EIt">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="70" id="0pR-9b-0r0"/>
-                                                <constraint firstAttribute="width" constant="70" id="Xbt-5C-wiV"/>
+                                                <constraint firstAttribute="height" constant="72" id="deq-Yf-2u7"/>
+                                                <constraint firstAttribute="width" constant="72" id="qNQ-Mo-cTm"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Report Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9C-hF-gD6">
@@ -305,19 +305,19 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="8Rv-ub-U7s" firstAttribute="leading" secondItem="zne-Nh-v5t" secondAttribute="leading" type="default" id="8XQ-pw-4Uu"/>
                                     <constraint firstItem="a9C-hF-gD6" firstAttribute="top" secondItem="2KQ-OU-Fa5" secondAttribute="top" constant="11" id="GTh-qV-LUk"/>
                                     <constraint firstItem="8Rv-ub-U7s" firstAttribute="trailing" secondItem="zne-Nh-v5t" secondAttribute="trailing" type="default" id="HJn-vP-kBN"/>
                                     <constraint firstItem="zne-Nh-v5t" firstAttribute="trailing" secondItem="a9C-hF-gD6" secondAttribute="trailing" type="default" id="I5O-tP-pSo"/>
                                     <constraint firstItem="zne-Nh-v5t" firstAttribute="top" secondItem="2KQ-OU-Fa5" secondAttribute="top" constant="30" id="Iqp-sp-SMl"/>
-                                    <constraint firstItem="rgq-d6-EIt" firstAttribute="top" secondItem="2KQ-OU-Fa5" secondAttribute="top" constant="16" id="Q5L-as-2ZK"/>
-                                    <constraint firstItem="Z1p-nN-y88" firstAttribute="leading" secondItem="rgq-d6-EIt" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="S3l-Bw-oCu"/>
-                                    <constraint firstItem="8Rv-ub-U7s" firstAttribute="leading" secondItem="rgq-d6-EIt" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="XaY-eO-ARK"/>
+                                    <constraint firstItem="a9C-hF-gD6" firstAttribute="leading" secondItem="2KQ-OU-Fa5" secondAttribute="leading" constant="100" id="Ssy-Xe-Gxw"/>
                                     <constraint firstItem="Z1p-nN-y88" firstAttribute="trailing" secondItem="8Rv-ub-U7s" secondAttribute="trailing" type="default" id="fHT-a3-ncK"/>
-                                    <constraint firstItem="zne-Nh-v5t" firstAttribute="leading" secondItem="rgq-d6-EIt" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ie2-yN-PSB"/>
                                     <constraint firstItem="rgq-d6-EIt" firstAttribute="leading" secondItem="2KQ-OU-Fa5" secondAttribute="leading" constant="22" id="jLB-gT-LQD"/>
                                     <constraint firstAttribute="bottom" secondItem="Z1p-nN-y88" secondAttribute="bottom" constant="11" id="l1C-AT-zy2"/>
+                                    <constraint firstItem="Z1p-nN-y88" firstAttribute="leading" secondItem="8Rv-ub-U7s" secondAttribute="leading" type="default" id="sUo-NF-k1X"/>
                                     <constraint firstItem="8Rv-ub-U7s" firstAttribute="top" secondItem="2KQ-OU-Fa5" secondAttribute="top" constant="49" id="skD-Qy-eWC"/>
-                                    <constraint firstItem="a9C-hF-gD6" firstAttribute="leading" secondItem="rgq-d6-EIt" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="uLW-u5-esV"/>
+                                    <constraint firstItem="a9C-hF-gD6" firstAttribute="leading" secondItem="zne-Nh-v5t" secondAttribute="leading" type="default" id="v24-kS-gHU"/>
+                                    <constraint firstItem="rgq-d6-EIt" firstAttribute="top" secondItem="2KQ-OU-Fa5" secondAttribute="top" constant="15" id="z3M-Cv-qI2"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="csa-cI-FX2" kind="push" identifier="pushToReportEntryDetail" id="uUv-Xe-SSb"/>
@@ -868,6 +868,9 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="go"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="bgk-4z-wT1" id="0HX-Nr-ISd"/>
+                                            </connections>
                                         </textField>
                                     </barButtonItem>
                                 </items>
@@ -896,6 +899,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addressTextField" destination="bbH-Hu-Tod" id="DN2-mg-hiw"/>
                         <outlet property="mapView" destination="Jas-5s-elB" id="JlJ-jR-9qR"/>
                         <outlet property="view" destination="EUM-JM-G3x" id="Gx9-WV-WOV"/>
                     </connections>
