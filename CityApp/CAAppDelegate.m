@@ -41,6 +41,11 @@
         [[UIToolbar appearance] setBarStyle:UIBarStyleBlack];
     }
     
+    // Set toolbar UI (iOS 5.0+)
+    if ([[UIBarButtonItem class] respondsToSelector:@selector(appearance)]) {
+//        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:GLOBAL_NAVBAR_IMAGE] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    }
+    
     return YES;
 }
 							

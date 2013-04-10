@@ -116,10 +116,21 @@
          {
              CLPlacemark *placemark = [placemarks objectAtIndex:0];
              self.reportPlacemark = placemark;
-             self.reportAddress = [placemark.addressDictionary valueForKey:ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
+             self.reportAddress = [self determineAddress:placemark.addressDictionary];
              [self.reportInfoTableView reloadData];
          }
      }];
+}
+
+- (NSString *)determineAddress:(NSDictionary *)addressDictionary
+{
+    if ([addressDictionary valueForKey:PRIMARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS]) {
+        return [addressDictionary valueForKey:PRIMARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
+    } else if ([addressDictionary valueForKey:SECONDARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS]) {
+        return [addressDictionary valueForKey:SECONDARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
+    } else {
+        return INDETERMINABLE_ADDRESS_STRING;
+    }
 }
 
 #pragma mark - Label text methods

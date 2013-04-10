@@ -76,41 +76,14 @@
 //    [self.mapView addAnnotation:annotation];
 }
 
-//- (void)setRegionToUserLocation
-//{
-//    // Get user location and region
-//    CLLocationCoordinate2D userCoordinate = [self.mapView.userLocation coordinate];
-//    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoordinate, 300, 300);
-//    
-//    // Show the region
-//    [self.mapView setRegion:region animated:YES];
-//    
-//    // Drop the draggable pin
-//    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-//    annotation.coordinate = userCoordinate;
-//    CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:userCoordinate.latitude longitude:userCoordinate.longitude];
-//    [self reverseGeocodeLocation:userLocation forAnnotation:annotation];
-//    [self.mapView addAnnotation:annotation];
-//}
-
 - (void)reverseGeocodeLocation:(CLLocation *)location forAnnotation:(MKPointAnnotation *)annotation
 {
     [self.geocoder reverseGeocodeLocation:location completionHandler:
      ^(NSArray* placemarks, NSError* error){
          if ([placemarks count] > 0)
          {
-//             annotation.placemark = [placemarks objectAtIndex:0];
-             
-             // Add a More Info button to the annotation's view.
-//             MKPinAnnotationView*  view = (MKPinAnnotationView*)[map viewForAnnotation:annotation];
-//             if (view && (view.rightCalloutAccessoryView == nil))
-//             {
-//                 view.canShowCallout = YES;
-//                 view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//             }
-             
              self.pinPlacemark = [placemarks objectAtIndex:0];
-             annotation.title = [self.pinPlacemark.addressDictionary valueForKey:ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
+             annotation.title = [self determineAddress:self.pinPlacemark.addressDictionary];
              NSLog(@"Address Dictionary: %@", self.pinPlacemark.addressDictionary);
          }
      }];
@@ -125,6 +98,17 @@
     }];
 }
 
+- (NSString *)determineAddress:(NSDictionary *)addressDictionary
+{
+    if ([addressDictionary valueForKey:PRIMARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS]) {
+        return [addressDictionary valueForKey:PRIMARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
+    } else if ([addressDictionary valueForKey:SECONDARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS]) {
+        return [addressDictionary valueForKey:SECONDARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
+    } else {
+        return INDETERMINABLE_ADDRESS_STRING;
+    }
+}
+
 - (BOOL)validData
 {
     return [[self.pinPlacemark.addressDictionary valueForKey:@"City"] isEqualToString:CITY];
@@ -135,7 +119,7 @@
     NSArray *viewControllers = [self.navigationController viewControllers];
     NSUInteger previousViewControllerIndex = viewControllers.count - 2;
     CANewReportVC *newReportVC = (CANewReportVC *)[viewControllers objectAtIndex:previousViewControllerIndex];
-    newReportVC.reportAddress = [self.pinPlacemark.addressDictionary valueForKey:ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
+    newReportVC.reportAddress = [self determineAddress:self.pinPlacemark.addressDictionary];
     newReportVC.reportPlacemark = self.pinPlacemark;
     newReportVC.reportLocation = self.pinLocation;
     newReportVC.reportAddressUserDefined = YES;
@@ -148,6 +132,9 @@
     if ([self validData]) {
         [self updateReportEntryData];
         [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Address" message:@"Address is located outside city border." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
     }
 }
 

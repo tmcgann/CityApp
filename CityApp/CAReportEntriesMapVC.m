@@ -44,6 +44,12 @@
 {
     NSError *error;
     self.reportEntries = [[CAObjectStore shared].context executeFetchRequest:[[CAReportEntryService shared] allReportEntries] error:&error];
+    
+    if (error) {
+        DLog(@"ERROR: %@", error);
+        return;
+    }
+    
     for (CAReportEntry *reportEntry in self.reportEntries) {
         CAMapAnnotation *annotation = [[CAMapAnnotation alloc] init];
         NSError *fetchRequestError;
@@ -52,6 +58,7 @@
         annotation.subtitle = reportEntry.address;
         annotation.thumbnailData = [NSData dataFromBase64String:reportEntry.thumbnailData];
         annotation.coordinate = CLLocationCoordinate2DMake([reportEntry.latitude doubleValue], [reportEntry.longitude doubleValue]);
+        annotation.reportEntry = reportEntry;
         [self.mapView addAnnotation:annotation];
     }
 }
@@ -65,7 +72,7 @@
 - (void)setRegion
 {
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(CITY_LATITUDE, CITY_LONGITUDE);
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 4500, 4500);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 4750, 4750);
     [self.mapView setRegion:region animated:NO];
 }
 
@@ -86,7 +93,8 @@
         pinAnnotationView.draggable = NO;
         pinAnnotationView.animatesDrop = YES;
         pinAnnotationView.canShowCallout = YES;
-        pinAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        pinAnnotationView.rightCalloutAccessoryView = button;
     }
     
     // Apply to all annotation views
@@ -94,6 +102,14 @@
     pinAnnotationView.annotation = annotation;
 
     return pinAnnotationView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    CAReportEntryDetailVC *reportEntryDetailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ReportEntryDetail"];
+    reportEntryDetailVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    reportEntryDetailVC.reportEntry = ((CAMapAnnotation*)view.annotation).reportEntry;
+    [self presentViewController:reportEntryDetailVC animated:YES completion:nil];
 }
 
 #pragma mark - Accessors

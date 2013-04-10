@@ -341,7 +341,7 @@
         <!--Report Entry DetailVC-->
         <scene sceneID="uFa-Cf-5Oj">
             <objects>
-                <viewController id="csa-cI-FX2" customClass="CAReportEntryDetailVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReportEntryDetail" id="csa-cI-FX2" customClass="CAReportEntryDetailVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ufA-Sj-33W">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -381,7 +381,6 @@
                                         <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
-                                        <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="shadowOffset" width="0.0" height="1"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Address:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCw-9L-dq7">
@@ -416,7 +415,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="z5d-kk-567">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="z5d-kk-567">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="53" id="DKm-3R-NoP"/>
                                         </constraints>
@@ -424,7 +423,6 @@
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
-                                        <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="shadowOffset" width="0.0" height="1"/>
                                     </label>
                                 </subviews>
@@ -433,7 +431,6 @@
                                     <constraint firstAttribute="trailing" secondItem="h2t-nz-69K" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="43x-4w-v2V"/>
                                     <constraint firstAttribute="trailing" secondItem="McN-oE-mx9" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="7SX-fz-6GX"/>
                                     <constraint firstItem="BXp-iJ-ZOD" firstAttribute="centerX" secondItem="JMk-gZ-Jvd" secondAttribute="centerX" type="default" id="8ss-t6-dh7"/>
-                                    <constraint firstItem="z5d-kk-567" firstAttribute="leading" secondItem="XZJ-HJ-La5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="9LY-hb-Upu"/>
                                     <constraint firstItem="BXp-iJ-ZOD" firstAttribute="top" secondItem="JMk-gZ-Jvd" secondAttribute="top" constant="20" symbolic="YES" type="default" id="9MC-Zo-vVn"/>
                                     <constraint firstItem="McN-oE-mx9" firstAttribute="leading" secondItem="ADC-Ar-PQg" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="C41-cT-1rC"/>
                                     <constraint firstItem="BXp-iJ-ZOD" firstAttribute="leading" secondItem="JMk-gZ-Jvd" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Cyd-MO-EwU"/>
@@ -455,6 +452,7 @@
                                     <constraint firstItem="z5d-kk-567" firstAttribute="leading" secondItem="AY9-0c-Iqm" secondAttribute="leading" type="default" id="hGe-pe-Fqe"/>
                                     <constraint firstItem="bCw-9L-dq7" firstAttribute="top" secondItem="AY9-0c-Iqm" secondAttribute="top" type="default" id="hl7-dh-vjc"/>
                                     <constraint firstItem="h2t-nz-69K" firstAttribute="leading" secondItem="AY9-0c-Iqm" secondAttribute="leading" type="default" id="i2X-gd-ROv"/>
+                                    <constraint firstItem="z5d-kk-567" firstAttribute="leading" secondItem="XZJ-HJ-La5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="jNi-64-f7c"/>
                                     <constraint firstItem="XZJ-HJ-La5" firstAttribute="leading" secondItem="JMk-gZ-Jvd" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="keW-sk-Ezu"/>
                                     <constraint firstItem="AY9-0c-Iqm" firstAttribute="leading" secondItem="bCw-9L-dq7" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="l0a-mO-pqD"/>
                                     <constraint firstItem="nIv-Zy-gOZ" firstAttribute="leading" secondItem="JMk-gZ-Jvd" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="mT0-Ie-HE0"/>

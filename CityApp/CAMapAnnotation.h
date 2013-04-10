@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "CAReportEntry.h"
 
 @interface CAMapAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
-@property (strong, nonatomic) CLPlacemark *placemark;
+//@property (strong, nonatomic) CLPlacemark *placemark;
+@property (strong, nonatomic) CAReportEntry *reportEntry;
 @property (strong, nonatomic) NSData *thumbnailData;
 
 // Title and subtitle for use by selection UI.
