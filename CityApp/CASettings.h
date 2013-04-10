@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-// City
+// City Details
 #define CITY @"Provo"
+#define CITY_LATITUDE 40.244288
+#define CITY_LONGITUDE -111.658516
 
 // External API
 #define SERVER_URL @"http://taumu.com"
@@ -17,7 +19,7 @@
 
 // UI
 #define GLOBAL_BACKGROUND_IMAGE @"bg.png"
-#define GLOBAL_NAVBAR_IMAGE @"navbar-blue.png"
+#define GLOBAL_NAVBAR_IMAGE @"navbar.png"
 #define GLOBAL_DATE_FORMAT @"d MMMM yyyy - h:mm a"
 
 // Image Attributes
@@ -35,3 +37,6 @@
 #define REPORTER_TWITTER_HANDLE_KEY @"twitterHandle"
 #define REPORTER_PHONE_NUMBER_KEY @"phoneNumber"
 #define REPORTER_INFO_DEFAULT_NAME @"Anonymous"
+
+// MapKit values
+#define ADDRESS_DICTIONARY_KEY_FOR_ADDRESS @"Street"

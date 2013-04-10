@@ -116,7 +116,7 @@
          {
              CLPlacemark *placemark = [placemarks objectAtIndex:0];
              self.reportPlacemark = placemark;
-             self.reportAddress = [placemark.addressDictionary valueForKey:@"Name"];
+             self.reportAddress = [placemark.addressDictionary valueForKey:ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
              [self.reportInfoTableView reloadData];
          }
      }];

@@ -110,7 +110,7 @@
 //             }
              
              self.pinPlacemark = [placemarks objectAtIndex:0];
-             annotation.title = [self.pinPlacemark.addressDictionary valueForKey:@"Name"];
+             annotation.title = [self.pinPlacemark.addressDictionary valueForKey:ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
              NSLog(@"Address Dictionary: %@", self.pinPlacemark.addressDictionary);
          }
      }];
@@ -127,7 +127,6 @@
 
 - (BOOL)validData
 {
-#warning TODO: Validate data by making sure the address is in the desired city: set a city variable in the CASettings, create a custom CAMapAnnotation w/ a property to hold the placemark from 'reverseGeocodeLocation:forAnnotation:'; Use '[placemark.addressDictionary valueForKey:@"City"]' for the city name
     return [[self.pinPlacemark.addressDictionary valueForKey:@"City"] isEqualToString:CITY];
 }
 
@@ -136,7 +135,7 @@
     NSArray *viewControllers = [self.navigationController viewControllers];
     NSUInteger previousViewControllerIndex = viewControllers.count - 2;
     CANewReportVC *newReportVC = (CANewReportVC *)[viewControllers objectAtIndex:previousViewControllerIndex];
-    newReportVC.reportAddress = [self.pinPlacemark.addressDictionary valueForKey:@"Name"];
+    newReportVC.reportAddress = [self.pinPlacemark.addressDictionary valueForKey:ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
     newReportVC.reportPlacemark = self.pinPlacemark;
     newReportVC.reportLocation = self.pinLocation;
     newReportVC.reportAddressUserDefined = YES;
