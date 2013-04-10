@@ -864,7 +864,7 @@
                                 <items>
                                     <barButtonItem style="plain" id="hUu-4A-Wk9">
                                         <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type Address Here" minimumFontSize="17" clearButtonMode="whileEditing" id="bbH-Hu-Tod">
-                                            <rect key="frame" x="12" y="7" width="296" height="30"/>
+                                            <rect key="frame" x="12" y="7" width="225" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="go"/>
@@ -872,6 +872,11 @@
                                                 <outlet property="delegate" destination="bgk-4z-wT1" id="0HX-Nr-ISd"/>
                                             </connections>
                                         </textField>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="cancel" id="m2o-4G-CVw">
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="bgk-4z-wT1" id="PLk-c0-Bf7"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
@@ -900,7 +905,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addressTextField" destination="bbH-Hu-Tod" id="DN2-mg-hiw"/>
+                        <outlet property="cancelButton" destination="m2o-4G-CVw" id="GnO-aY-Tgn"/>
                         <outlet property="mapView" destination="Jas-5s-elB" id="JlJ-jR-9qR"/>
+                        <outlet property="toolbar" destination="umz-Kd-qDX" id="UkO-eo-peX"/>
                         <outlet property="view" destination="EUM-JM-G3x" id="Gx9-WV-WOV"/>
                     </connections>
                 </viewController>
@@ -1425,7 +1432,9 @@
             <relationships>
                 <relationship kind="action" name="savePressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="addressTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="CANewReportDescriptionVC" superclassName="UIViewController">
