@@ -42,6 +42,7 @@
         @"longitude" : @"longitude",
         @"modified" : @"modified",
         @"phone_udid" : @"phoneUdid",
+        @"picture_filename" : @"pictureFilename",
         @"report_category_id" : @"reportCategoryId",
         @"thumbnail_data" : @"thumbnailData"
     };

@@ -348,7 +348,7 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMk-gZ-Jvd">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="TakePhoto@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="BXp-iJ-ZOD">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="TakePhoto@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="BXp-iJ-ZOD">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="280" id="Ol9-jC-4dC"/>
                                         </constraints>
@@ -415,9 +415,9 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="z5d-kk-567">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="z5d-kk-567">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="53" id="DKm-3R-NoP"/>
+                                            <constraint firstAttribute="height" constant="53" id="eFi-nb-FBK"/>
                                         </constraints>
                                         <string key="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="13"/>
@@ -434,12 +434,12 @@
                                     <constraint firstItem="BXp-iJ-ZOD" firstAttribute="top" secondItem="JMk-gZ-Jvd" secondAttribute="top" constant="20" symbolic="YES" type="default" id="9MC-Zo-vVn"/>
                                     <constraint firstItem="McN-oE-mx9" firstAttribute="leading" secondItem="ADC-Ar-PQg" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="C41-cT-1rC"/>
                                     <constraint firstItem="BXp-iJ-ZOD" firstAttribute="leading" secondItem="JMk-gZ-Jvd" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Cyd-MO-EwU"/>
+                                    <constraint firstItem="AY9-0c-Iqm" firstAttribute="top" secondItem="z5d-kk-567" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="IGo-fM-pap"/>
                                     <constraint firstAttribute="bottom" secondItem="ADC-Ar-PQg" secondAttribute="bottom" constant="27" id="Jcr-mA-6DH"/>
                                     <constraint firstItem="bCw-9L-dq7" firstAttribute="leading" secondItem="JMk-gZ-Jvd" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Meq-M2-ZO7"/>
                                     <constraint firstItem="gzG-0a-vJa" firstAttribute="top" secondItem="nIv-Zy-gOZ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="O8U-ch-Snl"/>
                                     <constraint firstItem="ADC-Ar-PQg" firstAttribute="baseline" secondItem="McN-oE-mx9" secondAttribute="baseline" type="default" id="Psx-TT-dQl"/>
                                     <constraint firstItem="nIv-Zy-gOZ" firstAttribute="top" secondItem="bCw-9L-dq7" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="RKN-ON-Fqn"/>
-                                    <constraint firstItem="AY9-0c-Iqm" firstAttribute="top" secondItem="z5d-kk-567" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="SnC-AQ-HJ1"/>
                                     <constraint firstItem="XZJ-HJ-La5" firstAttribute="top" secondItem="BXp-iJ-ZOD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Tbj-d7-c2d"/>
                                     <constraint firstItem="bCw-9L-dq7" firstAttribute="baseline" secondItem="AY9-0c-Iqm" secondAttribute="baseline" type="default" id="UhH-zR-ggo"/>
                                     <constraint firstItem="gzG-0a-vJa" firstAttribute="leading" secondItem="JMk-gZ-Jvd" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="W4y-e1-xP6"/>
@@ -1386,6 +1386,115 @@
         <image name="Taylor.jpg" width="640" height="426"/>
         <image name="bg@2x.png" width="640" height="1156"/>
     </resources>
+    <classes>
+        <class className="CAContactCategoriesTVC" superclassName="CACoreDataTVC">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactCategoriesTVC.h"/>
+        </class>
+        <class className="CAContactEntriesVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactEntriesVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contactCategoryDescription" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="contactCategoryIcon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="CAContactEntryVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAContactEntryVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contactEntryDescriptor" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="contactEntryIcon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="contactNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CACoreDataTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CACoreDataTVC.h"/>
+        </class>
+        <class className="CAHomeVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAHomeVC.h"/>
+            <relationships>
+                <relationship kind="action" name="touchUpInsideReportsButton:" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="CANewReportAddressVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportAddressVC.h"/>
+            <relationships>
+                <relationship kind="action" name="savePressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="addressTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="CANewReportDescriptionVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportDescriptionVC.h"/>
+            <relationships>
+                <relationship kind="action" name="savePressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="characterCountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="CANewReportReportCategoryTVC" superclassName="CACoreDataTVC">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportReportCategoryTVC.h"/>
+        </class>
+        <class className="CANewReportReporterDetailTVC" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportReporterDetailTVC.h"/>
+            <relationships>
+                <relationship kind="action" name="savePressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="emailAddressField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phoneNumberField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="twitterHandleField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CANewReportVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CANewReportVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="reportInfoTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="submitButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="takePhotoButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="CAReportEntriesMapVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAReportEntriesMapVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="CAReportEntriesTimelineTVC" superclassName="CACoreDataTVC">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAReportEntriesTimelineTVC.h"/>
+        </class>
+        <class className="CAReportEntriesVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAReportEntriesVC.h"/>
+        </class>
+        <class className="CAReportEntryDetailVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CAReportEntryDetailVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addressLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="caseIdLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="createdLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pictureImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="reporterLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

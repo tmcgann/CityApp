@@ -13,6 +13,7 @@
 		3402719016ACE5B300DDFCC6 /* TakePhoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3402718F16ACE5B300DDFCC6 /* TakePhoto@2x.png */; };
 		3402719F16AD009200DDFCC6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3402719E16AD009200DDFCC6 /* MobileCoreServices.framework */; };
 		340271A516AD11D200DDFCC6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340271A416AD11D200DDFCC6 /* AssetsLibrary.framework */; };
+		34058535171541E400FDC076 /* CAReportEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 34058534171541E400FDC076 /* CAReportEntry.m */; };
 		340AAF2916E8F0880097A022 /* CAReportCategoryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 340AAF2816E8F0880097A022 /* CAReportCategoryService.m */; };
 		340AAF2F16E8F8690097A022 /* CAReportEntryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 340AAF2E16E8F8690097A022 /* CAReportEntryService.m */; };
 		340AAF3B16E90A040097A022 /* CAReportEntriesTimelineTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 340AAF3A16E90A040097A022 /* CAReportEntriesTimelineTVC.m */; };
@@ -49,7 +50,6 @@
 		3482C63616BE563A00BC6DDE /* Taylor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3482C63516BE563A00BC6DDE /* Taylor.jpg */; };
 		34C4A6051701627000751558 /* UIImage+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A6041701627000751558 /* UIImage+Orientation.m */; };
 		34C4A60E170218C500751558 /* CAReportCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A60D170218C500751558 /* CAReportCategory.m */; };
-		34C4A61417021F1500751558 /* CAReportEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A61317021F1500751558 /* CAReportEntry.m */; };
 		34C4A61A17040F5A00751558 /* CANewReportReporterDetailTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A61917040F5A00751558 /* CANewReportReporterDetailTVC.m */; };
 		34C4A61D170542E100751558 /* CANewReportReportCategoryTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A61C170542E100751558 /* CANewReportReportCategoryTVC.m */; };
 		34C4A62017066A7400751558 /* CANewReportDescriptionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C4A61F17066A7300751558 /* CANewReportDescriptionVC.m */; };
@@ -127,6 +127,8 @@
 		3402718F16ACE5B300DDFCC6 /* TakePhoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TakePhoto@2x.png"; sourceTree = "<group>"; };
 		3402719E16AD009200DDFCC6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		340271A416AD11D200DDFCC6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		34058533171541E300FDC076 /* CAReportEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportEntry.h; sourceTree = "<group>"; };
+		34058534171541E400FDC076 /* CAReportEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportEntry.m; sourceTree = "<group>"; };
 		340AAF2716E8F0880097A022 /* CAReportCategoryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportCategoryService.h; sourceTree = "<group>"; };
 		340AAF2816E8F0880097A022 /* CAReportCategoryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportCategoryService.m; sourceTree = "<group>"; };
 		340AAF2D16E8F8690097A022 /* CAReportEntryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportEntryService.h; sourceTree = "<group>"; };
@@ -188,8 +190,6 @@
 		34C4A60C170218C500751558 /* CAReportCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportCategory.h; sourceTree = "<group>"; };
 		34C4A60D170218C500751558 /* CAReportCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportCategory.m; sourceTree = "<group>"; };
 		34C4A60F17021D1500751558 /* CAServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAServices.h; sourceTree = "<group>"; };
-		34C4A61217021F1500751558 /* CAReportEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportEntry.h; sourceTree = "<group>"; };
-		34C4A61317021F1500751558 /* CAReportEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportEntry.m; sourceTree = "<group>"; };
 		34C4A61817040F5A00751558 /* CANewReportReporterDetailTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CANewReportReporterDetailTVC.h; sourceTree = "<group>"; };
 		34C4A61917040F5A00751558 /* CANewReportReporterDetailTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CANewReportReporterDetailTVC.m; sourceTree = "<group>"; };
 		34C4A61B170542E100751558 /* CANewReportReportCategoryTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CANewReportReportCategoryTVC.h; sourceTree = "<group>"; };
@@ -308,8 +308,8 @@
 		340FE6E016B24844002FD035 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				34C4A61217021F1500751558 /* CAReportEntry.h */,
-				34C4A61317021F1500751558 /* CAReportEntry.m */,
+				34058533171541E300FDC076 /* CAReportEntry.h */,
+				34058534171541E400FDC076 /* CAReportEntry.m */,
 				34C4A60C170218C500751558 /* CAReportCategory.h */,
 				34C4A60D170218C500751558 /* CAReportCategory.m */,
 				34F9AA8716F97C69004A2EB7 /* CAReportPicture.h */,
@@ -631,13 +631,13 @@
 				34F9AAC416FEBADE004A2EB7 /* CAReportPictureService.m in Sources */,
 				34C4A6051701627000751558 /* UIImage+Orientation.m in Sources */,
 				34C4A60E170218C500751558 /* CAReportCategory.m in Sources */,
-				34C4A61417021F1500751558 /* CAReportEntry.m in Sources */,
 				34C4A61A17040F5A00751558 /* CANewReportReporterDetailTVC.m in Sources */,
 				34C4A61D170542E100751558 /* CANewReportReportCategoryTVC.m in Sources */,
 				34C4A62017066A7400751558 /* CANewReportDescriptionVC.m in Sources */,
 				34C4A6231707A82400751558 /* CANewReportAddressVC.m in Sources */,
 				34C4A62A170A94EA00751558 /* CAMapAnnotation.m in Sources */,
 				34C4A646171293D400751558 /* UIImage+Scale.m in Sources */,
+				34058535171541E400FDC076 /* CAReportEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
