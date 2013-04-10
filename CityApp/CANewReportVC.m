@@ -211,6 +211,7 @@
     reportEntry.contactEmail = [self.reportReporterInfo valueForKey:REPORTER_EMAIL_ADDRESS_KEY];
     reportEntry.contactPhone = [self.reportReporterInfo valueForKey:REPORTER_PHONE_NUMBER_KEY];
     reportEntry.exposed = [NSNumber numberWithBool:self.reportPublic];
+    reportEntry.phoneUdid = [[NSUUID UUID] UUIDString];
     
     // Create report picture
 //    CAReportPicture *reportPicture = (CAReportPicture *)[objectStore insertNewObjectForEntityName:@"CAReportPicture"];

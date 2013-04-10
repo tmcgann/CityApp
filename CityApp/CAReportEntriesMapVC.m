@@ -31,13 +31,13 @@
 {
     [super viewDidLoad];
     [self setupMapView];
-    [self mapReportEntries];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self setRegion];
+    [self mapReportEntries];
 }
 
 - (void)mapReportEntries
@@ -49,10 +49,9 @@
         NSError *fetchRequestError;
         NSArray *fetchedResults = [[CAObjectStore shared].context executeFetchRequest:[[CAReportCategoryService shared] reportCategoryById:reportEntry.reportCategoryId] error:&fetchRequestError];
         annotation.title = ((CAReportCategory*)[fetchedResults lastObject]).name;
+        annotation.subtitle = reportEntry.address;
         annotation.thumbnailData = [NSData dataFromBase64String:reportEntry.thumbnailData];
         annotation.coordinate = CLLocationCoordinate2DMake([reportEntry.latitude doubleValue], [reportEntry.longitude doubleValue]);
-        CLLocation *location = [[CLLocation alloc] initWithLatitude:[reportEntry.latitude doubleValue] longitude:[reportEntry.longitude doubleValue]];
-        [self reverseGeocodeLocation:location forAnnotation:annotation];
         [self.mapView addAnnotation:annotation];
     }
 }
@@ -68,39 +67,6 @@
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(CITY_LATITUDE, CITY_LONGITUDE);
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 4500, 4500);
     [self.mapView setRegion:region animated:NO];
-}
-
-- (void)reverseGeocodeLocation:(CLLocation *)location forAnnotation:(CAMapAnnotation *)annotation
-{
-    [self.geocoder reverseGeocodeLocation:location completionHandler:
-     ^(NSArray* placemarks, NSError* error){
-         if ([placemarks count] > 0)
-         {
-             CLPlacemark *placemark = [placemarks objectAtIndex:0];
-             annotation.placemark = placemark;
-             
-             annotation.subtitle = [placemark.addressDictionary valueForKey:ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
-             
-             // Add a More Info button to the annotation's view.
-             MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[self.mapView viewForAnnotation:annotation];
-             if (annotationView) {
-                 
-                 if (annotationView.rightCalloutAccessoryView == nil) {
-                     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-                 }
-                 
-                 if (annotationView.leftCalloutAccessoryView == nil) {
-//                     UIImage *thumbnail = [UIImage imageWithData:annotation.thumbnailData scale:0.5];
-//                     UIImageView *thumbnailView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, thumbnail.size.width, thumbnail.size.height)];
-//                     annotationView.leftCalloutAccessoryView = thumbnailView;
-                     annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:annotation.thumbnailData scale:0.5]];
-                 }
-             }
-         }
-         if (error) {
-             DLog(@"ERROR: %@", error);
-         }
-     }];
 }
 
 #pragma mark - MKMapViewDelegate
@@ -120,20 +86,14 @@
         pinAnnotationView.draggable = NO;
         pinAnnotationView.animatesDrop = YES;
         pinAnnotationView.canShowCallout = YES;
-        //DLog(@"Loaded a new MKPinAnnotationView. Is this expected?");
-    } else {
-        pinAnnotationView.annotation = annotation;
+        pinAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     }
     
-    return pinAnnotationView;
-}
+    // Apply to all annotation views
+    pinAnnotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:((CAMapAnnotation*)annotation).thumbnailData scale:2.0]];
+    pinAnnotationView.annotation = annotation;
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
-{
-    CAMapAnnotation *annotation = (CAMapAnnotation *)annotationView.annotation;
-    CLLocationCoordinate2D newCoordinate = annotation.coordinate;
-    CLLocation *pinLocation = [[CLLocation alloc] initWithLatitude:newCoordinate.latitude longitude:newCoordinate.longitude];
-    [self reverseGeocodeLocation:pinLocation forAnnotation:annotation];
+    return pinAnnotationView;
 }
 
 #pragma mark - Accessors
