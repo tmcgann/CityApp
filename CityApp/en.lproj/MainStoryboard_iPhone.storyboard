@@ -174,7 +174,6 @@
                                     <constraint firstItem="JP2-FH-585" firstAttribute="trailing" secondItem="3t3-yQ-Is9" secondAttribute="trailing" type="default" id="Idu-EL-6PR"/>
                                     <constraint firstItem="PU5-HT-wr8" firstAttribute="trailing" secondItem="Tky-XF-W4M" secondAttribute="trailing" type="default" id="J53-vR-qw1"/>
                                     <constraint firstItem="XiP-ft-jGO" firstAttribute="trailing" secondItem="soo-pa-HXr" secondAttribute="trailing" type="default" id="K4f-DQ-oHp"/>
-                                    <constraint firstItem="Tky-XF-W4M" firstAttribute="centerX" secondItem="Kb7-kr-f5y" secondAttribute="centerX" type="default" id="KMO-1M-O3n"/>
                                     <constraint firstItem="Tky-XF-W4M" firstAttribute="top" secondItem="soo-pa-HXr" secondAttribute="top" type="default" id="MIF-bC-I1S"/>
                                     <constraint firstItem="3t3-yQ-Is9" firstAttribute="leading" secondItem="Kb7-kr-f5y" secondAttribute="leading" constant="35" id="Moz-Ff-fud"/>
                                     <constraint firstAttribute="trailing" secondItem="WXB-Hd-n6C" secondAttribute="trailing" constant="35" id="NBf-Nu-j4O"/>
@@ -187,6 +186,7 @@
                                     <constraint firstItem="PU5-HT-wr8" firstAttribute="leading" secondItem="Tky-XF-W4M" secondAttribute="leading" type="default" id="Uzy-Dy-ldr"/>
                                     <constraint firstItem="JP2-FH-585" firstAttribute="leading" secondItem="JMk-DE-iVZ" secondAttribute="leading" type="default" id="W3a-L9-s2S"/>
                                     <constraint firstItem="2tr-7a-J2O" firstAttribute="leading" secondItem="Tky-XF-W4M" secondAttribute="leading" type="default" id="ZRa-4O-9Yp"/>
+                                    <constraint firstItem="2tr-7a-J2O" firstAttribute="centerX" secondItem="Kb7-kr-f5y" secondAttribute="centerX" type="default" id="ZxU-bR-StO"/>
                                     <constraint firstItem="2tr-7a-J2O" firstAttribute="trailing" secondItem="Tky-XF-W4M" secondAttribute="trailing" type="default" id="aLb-Yq-04e"/>
                                     <constraint firstItem="Uth-Lt-azP" firstAttribute="centerY" secondItem="3t3-yQ-Is9" secondAttribute="centerY" type="default" id="c2m-N2-SoK"/>
                                     <constraint firstItem="2tr-7a-J2O" firstAttribute="top" secondItem="UZR-2Z-pGW" secondAttribute="top" type="default" id="gJh-vW-rpQ"/>
@@ -202,14 +202,40 @@
                                     <constraint firstItem="UZR-2Z-pGW" firstAttribute="top" secondItem="JMk-DE-iVZ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="sga-uH-Xbp"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188" translatesAutoresizingMaskIntoConstraints="NO" id="99J-Gq-Cve">
+                                <string key="text">Come out and play! Find information about Provo City parks and trails, sports, special events, and more on the Parks &amp; Recreation Department page.</string>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                <color key="textColor" red="0.36078431372549019" green="0.31372549019607843" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="soccer-ball.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Sm1-dc-Ieg">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="1Wr-TH-Xt5"/>
+                                    <constraint firstAttribute="width" constant="84" id="Hs0-iC-4dE"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.70000000000000007" contentMode="scaleAspectFill" image="HorizontalRule@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="ubq-6W-W1t">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="TIO-7b-LGb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Kb7-kr-f5y" firstAttribute="leading" secondItem="feK-dh-QXH" secondAttribute="leading" type="default" id="6oT-Ev-pgR"/>
                             <constraint firstAttribute="bottom" secondItem="Kb7-kr-f5y" secondAttribute="bottom" constant="-1" id="Bu0-y1-ed0"/>
-                            <constraint firstItem="Kb7-kr-f5y" firstAttribute="centerX" secondItem="5Kl-0m-lio" secondAttribute="centerX" type="default" id="Qyf-v2-fN2"/>
+                            <constraint firstItem="ubq-6W-W1t" firstAttribute="centerX" secondItem="5Kl-0m-lio" secondAttribute="centerX" type="default" id="MCX-N2-5Bg"/>
+                            <constraint firstItem="Sm1-dc-Ieg" firstAttribute="top" secondItem="feK-dh-QXH" secondAttribute="top" constant="20" symbolic="YES" type="default" id="UHs-u5-tlX"/>
+                            <constraint firstItem="Sm1-dc-Ieg" firstAttribute="bottom" secondItem="99J-Gq-Cve" secondAttribute="bottom" type="default" id="VMG-8Y-Cr4"/>
+                            <constraint firstItem="99J-Gq-Cve" firstAttribute="top" secondItem="feK-dh-QXH" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Vfy-iu-zM0"/>
+                            <constraint firstItem="5Kl-0m-lio" firstAttribute="top" secondItem="feK-dh-QXH" secondAttribute="top" constant="101" id="XaX-Sl-iX9"/>
+                            <constraint firstItem="Sm1-dc-Ieg" firstAttribute="leading" secondItem="feK-dh-QXH" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="YyM-bI-01T"/>
+                            <constraint firstItem="ubq-6W-W1t" firstAttribute="leading" secondItem="feK-dh-QXH" secondAttribute="leading" type="default" id="cu1-BX-mi1"/>
+                            <constraint firstItem="ubq-6W-W1t" firstAttribute="trailing" secondItem="feK-dh-QXH" secondAttribute="trailing" type="default" id="cyI-1r-Xrr"/>
                             <constraint firstItem="Kb7-kr-f5y" firstAttribute="top" secondItem="5Kl-0m-lio" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="gRh-0E-H5h"/>
-                            <constraint firstItem="5Kl-0m-lio" firstAttribute="top" secondItem="feK-dh-QXH" secondAttribute="top" constant="101" id="y1q-Xo-tZc"/>
+                            <constraint firstItem="99J-Gq-Cve" firstAttribute="leading" secondItem="Sm1-dc-Ieg" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="lVX-Kj-97b"/>
+                            <constraint firstAttribute="trailing" secondItem="99J-Gq-Cve" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="qcU-II-fCe"/>
+                            <constraint firstItem="ubq-6W-W1t" firstAttribute="top" secondItem="feK-dh-QXH" secondAttribute="top" constant="136" id="uPu-ew-QWs"/>
                             <constraint firstItem="Kb7-kr-f5y" firstAttribute="trailing" secondItem="feK-dh-QXH" secondAttribute="trailing" type="default" id="z3d-8L-6u8"/>
                         </constraints>
                     </view>
@@ -276,7 +302,7 @@
         <!--Collection View Controller-->
         <scene sceneID="wBa-Z7-A53">
             <objects>
-                <collectionViewController storyboardIdentifier="ReportEntriesCollection" autoresizesArchivedViewToFullSize="NO" id="gos-8e-IpF" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="REALReportEntriesCollection" autoresizesArchivedViewToFullSize="NO" id="gos-8e-IpF" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="XZZ-9w-Usk">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -306,6 +332,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8t-sW-Ur3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2237" y="651"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1fy-z6-IOR">
+            <objects>
+                <viewController storyboardIdentifier="ReportEntriesCollection" id="Er7-Ca-vXZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fxV-wf-dhX">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="CollectionViewPlaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="dJF-OK-zIe"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dJF-OK-zIe" firstAttribute="top" secondItem="fxV-wf-dhX" secondAttribute="top" type="default" id="BLo-XD-rag"/>
+                            <constraint firstItem="dJF-OK-zIe" firstAttribute="leading" secondItem="fxV-wf-dhX" secondAttribute="leading" type="default" id="uiY-Yc-OXb"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R1R-hV-TQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2608" y="651"/>
         </scene>
         <!--Report Entries TimelineTVC - Reports-->
         <scene sceneID="7Yu-QC-rEo">
@@ -1463,7 +1510,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CollectionViewPlaceholder.png" width="320" height="458"/>
         <image name="Directory-ContactEntryMap-MayorDavidLenz-Edit2.png" width="640" height="1008"/>
+        <image name="HorizontalRule@2x.png" width="640" height="5"/>
         <image name="TakePhoto@2x.png" width="640" height="640"/>
         <image name="Taylor.jpg" width="640" height="426"/>
         <image name="bg@2x.png" width="640" height="1156"/>
@@ -1473,6 +1522,7 @@
         <image name="compass@2x.png" width="128" height="128"/>
         <image name="document_alt_stroke@2x.png" width="96" height="128"/>
         <image name="info@2x.png" width="64" height="128"/>
+        <image name="soccer-ball.jpg" width="103" height="105"/>
     </resources>
     <classes>
         <class className="CAContactCategoriesTVC" superclassName="CACoreDataTVC">
