@@ -26,6 +26,7 @@
 // UI
 #define GLOBAL_BACKGROUND_IMAGE @"bg.png"
 #define GLOBAL_NAVBAR_IMAGE @"navbar.png"
+#define HOME_NAVBAR_IMAGE @"navbar-logo.png"
 #define GLOBAL_DATE_FORMAT @"d MMMM yyyy - h:mm a"
 
 

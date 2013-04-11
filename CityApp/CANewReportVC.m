@@ -203,7 +203,7 @@
 
 - (BOOL)validData
 {
-    return (self.reportCategory && self.reportDescription && self.reportAddress && self.reportPublic);
+    return (self.reportCategory && self.reportDescription && self.reportAddress);
 }
 
 - (void)submitNewReportEntry
