@@ -29,14 +29,22 @@
     [[CAReportCategoryService shared] loadStore];
     [[CAReportEntryService shared] loadStore];
     
-    // Set nav bar bg image (iOS 5.0+)
+    // Set navbar UI (iOS 5.0+)
     if ([[UINavigationBar class] respondsToSelector:@selector(appearance)]) {
         [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:GLOBAL_NAVBAR_IMAGE] forBarMetrics:UIBarMetricsDefault];
+        [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     }
     
-    // Set nav contoller
-    [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:GLOBAL_NAVBAR_IMAGE] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-    [[UIToolbar appearance] setBarStyle:UIBarStyleBlackOpaque];
+    // Set toolbar UI (iOS 5.0+)
+    if ([[UIToolbar class] respondsToSelector:@selector(appearance)]) {
+        [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:GLOBAL_NAVBAR_IMAGE] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+        [[UIToolbar appearance] setBarStyle:UIBarStyleBlack];
+    }
+    
+    // Set toolbar UI (iOS 5.0+)
+    if ([[UIBarButtonItem class] respondsToSelector:@selector(appearance)]) {
+//        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:GLOBAL_NAVBAR_IMAGE] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    }
     
     return YES;
 }

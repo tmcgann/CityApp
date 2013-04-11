@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) CLGeocoder *geocoder;
 @property (strong, nonatomic) MKPinAnnotationView *pinAnnotationView;
+@property (nonatomic) BOOL regionDidChangeForAddressGecode;
 
 @end
 
@@ -31,13 +32,15 @@
 {
     [super viewWillAppear:animated];
     [self setRegion];
-//    [self setRegionToUserLocation];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    // Initial pin drop
     [self.mapView addAnnotation:self.annotation];
+//    [self.mapView selectAnnotation:self.annotation animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -50,6 +53,8 @@
 {
     self.mapView.showsUserLocation = YES;
     self.mapView.userLocation.title = nil;
+    self.regionDidChangeForAddressGecode = NO;
+    self.cancelButton.enabled = NO;
 }
 
 - (void)setRegion
@@ -63,71 +68,78 @@
 
 - (void)setRegionWithCoordinate:(CLLocationCoordinate2D)coordinate animated:(BOOL)animated
 {
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 300, 300);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 400, 400);
     
     // Show the region
     [self.mapView setRegion:region animated:animated];
     
-    // Drop the pin
+    // Setup the annotation
     self.annotation = [[MKPointAnnotation alloc] init];
     self.annotation.coordinate = coordinate;
     CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
     [self reverseGeocodeLocation:location forAnnotation:self.annotation];
-//    [self.mapView addAnnotation:annotation];
 }
-
-//- (void)setRegionToUserLocation
-//{
-//    // Get user location and region
-//    CLLocationCoordinate2D userCoordinate = [self.mapView.userLocation coordinate];
-//    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoordinate, 300, 300);
-//    
-//    // Show the region
-//    [self.mapView setRegion:region animated:YES];
-//    
-//    // Drop the draggable pin
-//    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-//    annotation.coordinate = userCoordinate;
-//    CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:userCoordinate.latitude longitude:userCoordinate.longitude];
-//    [self reverseGeocodeLocation:userLocation forAnnotation:annotation];
-//    [self.mapView addAnnotation:annotation];
-//}
 
 - (void)reverseGeocodeLocation:(CLLocation *)location forAnnotation:(MKPointAnnotation *)annotation
 {
-    [self.geocoder reverseGeocodeLocation:location completionHandler:
-     ^(NSArray* placemarks, NSError* error){
+    [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray* placemarks, NSError* error) {
          if ([placemarks count] > 0)
          {
-//             annotation.placemark = [placemarks objectAtIndex:0];
-             
-             // Add a More Info button to the annotation's view.
-//             MKPinAnnotationView*  view = (MKPinAnnotationView*)[map viewForAnnotation:annotation];
-//             if (view && (view.rightCalloutAccessoryView == nil))
-//             {
-//                 view.canShowCallout = YES;
-//                 view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//             }
-             
              self.pinPlacemark = [placemarks objectAtIndex:0];
-             annotation.title = [self.pinPlacemark.addressDictionary valueForKey:@"Name"];
-             NSLog(@"Address Dictionary: %@", self.pinPlacemark.addressDictionary);
+             NSString *address = [self determineAddress:self.pinPlacemark.addressDictionary];
+             annotation.title = address;
+             self.addressTextField.text = address;
+             DLog(@"Address Dictionary: %@", self.pinPlacemark.addressDictionary);
          }
      }];
 }
 
-- (void)convertAddressToCoordinates:(NSString *)address
+- (void)gecodeAddressString:(NSString *)address
 {
-    [self.geocoder geocodeAddressString:address completionHandler:^(NSArray* placemarks, NSError* error) {
-         for (CLPlacemark* placemark in placemarks) {
-             // Process the placemark.
-         }
+    // Capitalize addres so string comparison works as expected
+    NSString *capitalizedAddress = [address capitalizedString];
+    
+    // Inject city, state info if missing to make geocode more accurate
+    if ([capitalizedAddress rangeOfString:CITY].location == NSNotFound) {
+        capitalizedAddress = [NSString stringWithFormat:@"%@ %@", capitalizedAddress, CITY];
+    }
+    if (([capitalizedAddress rangeOfString:STATE].location == NSNotFound) && ([capitalizedAddress rangeOfString:STATE_ABBREVIATION_CAPITALIZED].location == NSNotFound)) {
+        capitalizedAddress = [NSString stringWithFormat:@"%@ %@", capitalizedAddress, STATE];
+    }
+    
+    [self.geocoder geocodeAddressString:capitalizedAddress completionHandler:^(NSArray* placemarks, NSError* error) {
+        if (placemarks.count > 0) {
+            // First placemark is usually the most accurate or closest to the user's current location
+            // FIXME: A lot of this code is redundnat with setRegionWithCoordinate:; should try and refactor for more code reuse
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            [self.mapView removeAnnotation:self.annotation];
+            self.annotation.coordinate = placemark.location.coordinate;
+            self.annotation.title = [self determineAddress:placemark.addressDictionary];
+            [self.mapView setCenterCoordinate:placemark.location.coordinate animated:YES];
+            self.regionDidChangeForAddressGecode = YES;
+//            [self.mapView addAnnotation:self.annotation];
+//            [self.mapView selectAnnotation:self.annotation animated:YES];
+            
+            DLog(@"Latitude: %f", placemark.location.coordinate.latitude);
+            DLog(@"Longitude: %f", placemark.location.coordinate.longitude);
+            DLog(@"Address: %@", placemark.addressDictionary);
+        }
     }];
+}
+
+- (NSString *)determineAddress:(NSDictionary *)addressDictionary
+{
+    if ([addressDictionary valueForKey:PRIMARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS]) {
+        return [addressDictionary valueForKey:PRIMARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
+    } else if ([addressDictionary valueForKey:SECONDARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS]) {
+        return [addressDictionary valueForKey:SECONDARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
+    } else {
+        return INDETERMINABLE_ADDRESS_STRING;
+    }
 }
 
 - (BOOL)validData
 {
-#warning TODO: Validate data by making sure the address is in the desired city: set a city variable in the CASettings, create a custom CAMapAnnotation w/ a property to hold the placemark from 'reverseGeocodeLocation:forAnnotation:'; Use '[placemark.addressDictionary valueForKey:@"City"]' for the city name
     return [[self.pinPlacemark.addressDictionary valueForKey:@"City"] isEqualToString:CITY];
 }
 
@@ -136,7 +148,7 @@
     NSArray *viewControllers = [self.navigationController viewControllers];
     NSUInteger previousViewControllerIndex = viewControllers.count - 2;
     CANewReportVC *newReportVC = (CANewReportVC *)[viewControllers objectAtIndex:previousViewControllerIndex];
-    newReportVC.reportAddress = [self.pinPlacemark.addressDictionary valueForKey:@"Name"];
+    newReportVC.reportAddress = [self determineAddress:self.pinPlacemark.addressDictionary];
     newReportVC.reportPlacemark = self.pinPlacemark;
     newReportVC.reportLocation = self.pinLocation;
     newReportVC.reportAddressUserDefined = YES;
@@ -149,6 +161,9 @@
     if ([self validData]) {
         [self updateReportEntryData];
         [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Address" message:@"Address is located outside city border." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
     }
 }
 
@@ -177,12 +192,78 @@
     return self.pinAnnotationView;
 }
 
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
+    // Should only be ONE annotation EVER in this map view
+    MKPinAnnotationView *view = [views lastObject];
+    [mapView selectAnnotation:view.annotation animated:YES];
+}
+
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
 {
     self.annotation = (MKPointAnnotation *)annotationView.annotation;
     CLLocationCoordinate2D newCoordinate = self.annotation.coordinate;
     self.pinLocation = [[CLLocation alloc] initWithLatitude:newCoordinate.latitude longitude:newCoordinate.longitude];
     [self reverseGeocodeLocation:self.pinLocation forAnnotation:self.annotation];
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    if (self.regionDidChangeForAddressGecode) {
+        [mapView addAnnotation:self.annotation];
+        self.regionDidChangeForAddressGecode = NO;
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self animateTextField:textField up:YES];
+    self.cancelButton.enabled = YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self animateTextField:textField up:NO];
+    self.cancelButton.enabled = NO;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    // Hide textfield
+    [textField resignFirstResponder];
+    
+    // Remap the pin
+    if (textField.text.length > 0 && ![textField.text isEqualToString:self.annotation.title]) {
+        [self gecodeAddressString:textField.text];
+    }
+    
+    return NO; // We do not want UITextField to insert line-breaks.
+}
+
+- (void)animateTextField:(UITextField*)textField up:(BOOL)up
+{
+    const int movementDistance = 216; // tweak as needed
+    const float movementDuration = 0.25f; // tweak as needed
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations:@"anim" context:nil];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+}
+
+// Tried to add a cancel button via self.toolbar setItems, but it woul call resignFirstResponder on the textfield since it was being reset in the toolbar
+// Trying to add a UIBarButtonItem via addSubview: doesn't work either
+// To make this a little more sexy, I could try and hide the button in the toolbar and animate it's appearance and the resizing of the UITextField
+- (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender
+{
+    self.addressTextField.text = self.annotation.title;
+    [self.addressTextField resignFirstResponder];
+    DLog(@"toolbar.subviews: %@", self.toolbar.subviews);
 }
 
 #pragma mark - Accessors

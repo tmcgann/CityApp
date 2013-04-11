@@ -13,6 +13,4 @@
 
 @property (nonatomic) CAReportEntriesVC *reportEntriesSegmentsVC;
 
-- (IBAction)touchUpInsideReportsButton:(UIButton *)sender;
-
 @end

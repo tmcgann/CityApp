@@ -55,6 +55,7 @@
         <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modified" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="phoneUdid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pictureFilename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reportCategoryId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reportEntryId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnailData" optional="YES" attributeType="String" syncable="YES"/>
@@ -72,7 +73,7 @@
         <element name="CAContactEntry" positionX="-9" positionY="192" width="128" height="330"/>
         <element name="CAReportCategory" positionX="-162" positionY="189" width="128" height="165"/>
         <element name="CAReportComment" positionX="-513" positionY="405" width="128" height="45"/>
-        <element name="CAReportEntry" positionX="-333" positionY="189" width="128" height="300"/>
+        <element name="CAReportEntry" positionX="-333" positionY="189" width="128" height="315"/>
         <element name="CAReportPicture" positionX="-513" positionY="288" width="128" height="105"/>
     </elements>
 </model>

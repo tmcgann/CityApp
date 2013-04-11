@@ -23,6 +23,9 @@
 
     [self fillTextViewWithDescription];
     [self updateCharacterCount];
+    
+    // Auto focus description text view
+    [self.descriptionTextView becomeFirstResponder];
 }
 
 - (void)fillTextViewWithDescription

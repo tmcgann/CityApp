@@ -19,14 +19,14 @@
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coord {
     self = [super init];
     if (self) {
-        self.coordinate = coord;
+        _coordinate = coord;
     }
     return self;
 }
 
 - (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate
 {
-    
+    _coordinate = newCoordinate;
 }
 
 @end

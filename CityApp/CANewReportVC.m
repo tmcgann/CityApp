@@ -116,10 +116,21 @@
          {
              CLPlacemark *placemark = [placemarks objectAtIndex:0];
              self.reportPlacemark = placemark;
-             self.reportAddress = [placemark.addressDictionary valueForKey:@"Name"];
+             self.reportAddress = [self determineAddress:placemark.addressDictionary];
              [self.reportInfoTableView reloadData];
          }
      }];
+}
+
+- (NSString *)determineAddress:(NSDictionary *)addressDictionary
+{
+    if ([addressDictionary valueForKey:PRIMARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS]) {
+        return [addressDictionary valueForKey:PRIMARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
+    } else if ([addressDictionary valueForKey:SECONDARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS]) {
+        return [addressDictionary valueForKey:SECONDARY_ADDRESS_DICTIONARY_KEY_FOR_ADDRESS];
+    } else {
+        return INDETERMINABLE_ADDRESS_STRING;
+    }
 }
 
 #pragma mark - Label text methods
@@ -175,11 +186,11 @@
 {
     NSString *name;
     
-    if ([self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] && [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY]) {
+    if ([self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] && [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] && ![[self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] isEqualToString:@""] && ![[self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] isEqualToString:@""]) {
         name = [NSString stringWithFormat:@"%@ %@", [self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY], [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY]];
-    } else if ([self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY]) {
+    } else if ([self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] && ![[self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY] isEqualToString:@""]) {
         name = [self.reportReporterInfo valueForKey:REPORTER_FIRST_NAME_KEY];
-    } else if ([self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY]) {
+    } else if ([self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] && ![[self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY] isEqualToString:@""]) {
         name = [self.reportReporterInfo valueForKey:REPORTER_LAST_NAME_KEY];
     } else {
         name = REPORTER_INFO_DEFAULT_NAME;
@@ -192,7 +203,7 @@
 
 - (BOOL)validData
 {
-    return (self.reportCategory && self.reportDescription && self.reportAddress && self.reportPublic);
+    return (self.reportCategory && self.reportDescription && self.reportAddress);
 }
 
 - (void)submitNewReportEntry
@@ -211,6 +222,7 @@
     reportEntry.contactEmail = [self.reportReporterInfo valueForKey:REPORTER_EMAIL_ADDRESS_KEY];
     reportEntry.contactPhone = [self.reportReporterInfo valueForKey:REPORTER_PHONE_NUMBER_KEY];
     reportEntry.exposed = [NSNumber numberWithBool:self.reportPublic];
+    reportEntry.phoneUdid = [[NSUUID UUID] UUIDString];
     
     // Create report picture
 //    CAReportPicture *reportPicture = (CAReportPicture *)[objectStore insertNewObjectForEntityName:@"CAReportPicture"];
@@ -230,6 +242,9 @@
     } else {
         [[CAReportEntryService shared] createEntry:reportEntry];
     }
+    
+    // Destroy the report entry entity
+    [[CAObjectStore shared].context deleteObject:reportEntry];
 }
 
 #pragma mark - IBAction Methods

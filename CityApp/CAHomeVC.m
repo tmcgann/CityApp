@@ -22,7 +22,7 @@
     
     // Background image
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:GLOBAL_BACKGROUND_IMAGE]];
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:GLOBAL_NAVBAR_IMAGE] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:HOME_NAVBAR_IMAGE] forBarMetrics:UIBarMetricsDefault];
     
     // Set the back button title (for next screen)
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:nil action:nil];
@@ -33,15 +33,16 @@
     sharedSync.remoteURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", SERVER_URL, IMAGE_CONTROLLER_PATH]];
 }
 
-- (IBAction)touchUpInsideReportsButton:(UIButton *)sender
+- (void)viewWillAppear:(BOOL)animated
 {
-    [self presentReportsView];
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:HOME_NAVBAR_IMAGE] forBarMetrics:UIBarMetricsDefault];
 }
 
-- (void)presentReportsView
+- (void)viewWillDisappear:(BOOL)animated
 {
-    self.reportEntriesSegmentsVC = [[CAReportEntriesVC alloc] init];
-    [self presentViewController:self.reportEntriesSegmentsVC animated:YES completion:nil];
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:GLOBAL_NAVBAR_IMAGE] forBarMetrics:UIBarMetricsDefault];
 }
 
 @end
