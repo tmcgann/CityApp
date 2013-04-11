@@ -98,7 +98,7 @@
     }
     
     // Apply to all annotation views
-    pinAnnotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:((CAMapAnnotation*)annotation).thumbnailData scale:2.0]];
+    pinAnnotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:((CAMapAnnotation*)annotation).thumbnailData scale:2.2]];
     pinAnnotationView.annotation = annotation;
 
     return pinAnnotationView;

@@ -43,7 +43,12 @@
     
     // Set toolbar UI (iOS 5.0+)
     if ([[UIBarButtonItem class] respondsToSelector:@selector(appearance)]) {
-//        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:GLOBAL_NAVBAR_IMAGE] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:84.0f/255.0f green:67.0f/255.0f blue:66.0f/255.0f alpha:100.0f/100.0f]];
+    }
+    
+    // Set segmented control UI (iOS 5.0+)
+    if ([[UISegmentedControl class] respondsToSelector:@selector(appearance)]) {
+        [[UISegmentedControl appearance] setTintColor:[UIColor colorWithRed:84.0f/255.0f green:67.0f/255.0f blue:66.0f/255.0f alpha:100.0f/100.0f]];
     }
     
     return YES;
