@@ -133,6 +133,11 @@
 		340586DC17168CF300FDC076 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340586DB17168CF300FDC076 /* AudioToolbox.framework */; };
 		340586DE17168DA600FDC076 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 340586DD17168DA600FDC076 /* AirshipConfig.plist */; };
 		340586DF1716924100FDC076 /* libUAirshipFull-1.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 340585BF17168C1E00FDC076 /* libUAirshipFull-1.4.0.a */; };
+		340586E21716A54C00FDC076 /* snes-startup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 340586E01716A54C00FDC076 /* snes-startup.wav */; };
+		340586E31716A54C00FDC076 /* zelda-secret.wav in Resources */ = {isa = PBXBuildFile; fileRef = 340586E11716A54C00FDC076 /* zelda-secret.wav */; };
+		340586E51716A71C00FDC076 /* CollectionViewPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 340586E41716A71C00FDC076 /* CollectionViewPlaceholder.png */; };
+		340586E91716AACA00FDC076 /* soccer-ball.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 340586E81716AACA00FDC076 /* soccer-ball.jpg */; };
+		340586EB1716AD6800FDC076 /* HorizontalRule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 340586EA1716AD6800FDC076 /* HorizontalRule@2x.png */; };
 		340AAF2916E8F0880097A022 /* CAReportCategoryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 340AAF2816E8F0880097A022 /* CAReportCategoryService.m */; };
 		340AAF2F16E8F8690097A022 /* CAReportEntryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 340AAF2E16E8F8690097A022 /* CAReportEntryService.m */; };
 		340AAF3B16E90A040097A022 /* CAReportEntriesTimelineTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 340AAF3A16E90A040097A022 /* CAReportEntriesTimelineTVC.m */; };
@@ -487,6 +492,11 @@
 		340586D917168CD500FDC076 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		340586DB17168CF300FDC076 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		340586DD17168DA600FDC076 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		340586E01716A54C00FDC076 /* snes-startup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "snes-startup.wav"; sourceTree = "<group>"; };
+		340586E11716A54C00FDC076 /* zelda-secret.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "zelda-secret.wav"; sourceTree = "<group>"; };
+		340586E41716A71C00FDC076 /* CollectionViewPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CollectionViewPlaceholder.png; sourceTree = "<group>"; };
+		340586E81716AACA00FDC076 /* soccer-ball.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "soccer-ball.jpg"; sourceTree = "<group>"; };
+		340586EA1716AD6800FDC076 /* HorizontalRule@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HorizontalRule@2x.png"; sourceTree = "<group>"; };
 		340AAF2716E8F0880097A022 /* CAReportCategoryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportCategoryService.h; sourceTree = "<group>"; };
 		340AAF2816E8F0880097A022 /* CAReportCategoryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReportCategoryService.m; sourceTree = "<group>"; };
 		340AAF2D16E8F8690097A022 /* CAReportEntryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReportEntryService.h; sourceTree = "<group>"; };
@@ -1292,8 +1302,11 @@
 				34C4A6491713685100751558 /* bg@2x.png */,
 				34C4A64A1713685100751558 /* navbar@2x.png */,
 				3405853C1716586000FDC076 /* navbar-logo@2x.png */,
+				340586EA1716AD6800FDC076 /* HorizontalRule@2x.png */,
 				34F9AAA316FD9672004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit1.png */,
 				34F9AAA516FD99C3004A2EB7 /* Directory-ContactEntryMap-MayorDavidLenz-Edit2.png */,
+				340586E41716A71C00FDC076 /* CollectionViewPlaceholder.png */,
+				340586E81716AACA00FDC076 /* soccer-ball.jpg */,
 				340E32BF16D3469800528049 /* david.jpg */,
 				340E32BD16D3329000528049 /* cloud.png */,
 				340E32B816D32BC000528049 /* power.png */,
@@ -1301,6 +1314,8 @@
 				3402718F16ACE5B300DDFCC6 /* TakePhoto@2x.png */,
 				3402718416ACC8E600DDFCC6 /* Default-568h@2x.png */,
 				3405853617164E7800FDC076 /* icon.png */,
+				340586E01716A54C00FDC076 /* snes-startup.wav */,
+				340586E11716A54C00FDC076 /* zelda-secret.wav */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -1578,6 +1593,11 @@
 				340586D117168C1F00FDC076 /* UASubscriptionSettingsViewController.xib in Resources */,
 				340586D217168C1F00FDC076 /* UASubscriptionUserProductsViewController.xib in Resources */,
 				340586DE17168DA600FDC076 /* AirshipConfig.plist in Resources */,
+				340586E21716A54C00FDC076 /* snes-startup.wav in Resources */,
+				340586E31716A54C00FDC076 /* zelda-secret.wav in Resources */,
+				340586E51716A71C00FDC076 /* CollectionViewPlaceholder.png in Resources */,
+				340586E91716AACA00FDC076 /* soccer-ball.jpg in Resources */,
+				340586EB1716AD6800FDC076 /* HorizontalRule@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
