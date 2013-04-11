@@ -331,10 +331,9 @@
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Report Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9C-hF-gD6">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="dVl-bx-B26"/>
                                                 <constraint firstAttribute="width" constant="190" id="zgk-v0-6Y6"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -342,7 +341,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="5fh-X8-Ghu"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -350,14 +349,14 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="7ZG-Ah-yEm"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="Timestamp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1p-nN-y88">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="zyw-DL-wU1"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.40000000000000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -415,31 +414,37 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AY9-0c-Iqm">
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="r" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2t-nz-69K">
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="IIW-iw-Oy8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="c" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siX-XK-wzC">
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="jOx-zz-2gw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="id" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="McN-oE-mx9">
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Description:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZJ-HJ-La5">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="7LI-qD-xIU"/>
-                                            <constraint firstAttribute="width" constant="72" id="w2Z-zh-jWh"/>
+                                            <constraint firstAttribute="width" constant="77" id="njt-dB-eph"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="1"/>
@@ -448,23 +453,17 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="cDP-Ce-fkJ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reporter:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIv-Zy-gOZ">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="atd-t1-12A"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Created:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzG-0a-vJa">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="3lh-Jp-XVb"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -472,16 +471,16 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="dKo-o0-fgR"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="z5d-kk-567">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="53" id="eFi-nb-FBK"/>
+                                            <constraint firstAttribute="height" constant="76" id="0rC-0C-xRp"/>
                                         </constraints>
                                         <string key="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="1"/>
@@ -489,43 +488,42 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="siX-XK-wzC" firstAttribute="leading" secondItem="McN-oE-mx9" secondAttribute="leading" type="default" id="1at-mx-6I4"/>
+                                    <constraint firstItem="h2t-nz-69K" firstAttribute="top" secondItem="nIv-Zy-gOZ" secondAttribute="top" type="default" id="3JU-cF-oZS"/>
+                                    <constraint firstItem="siX-XK-wzC" firstAttribute="baseline" secondItem="gzG-0a-vJa" secondAttribute="baseline" type="default" id="3r5-1V-Idf"/>
+                                    <constraint firstItem="h2t-nz-69K" firstAttribute="baseline" secondItem="nIv-Zy-gOZ" secondAttribute="baseline" type="default" id="418-NF-oBz"/>
                                     <constraint firstAttribute="trailing" secondItem="h2t-nz-69K" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="43x-4w-v2V"/>
                                     <constraint firstAttribute="trailing" secondItem="McN-oE-mx9" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="7SX-fz-6GX"/>
                                     <constraint firstItem="BXp-iJ-ZOD" firstAttribute="centerX" secondItem="JMk-gZ-Jvd" secondAttribute="centerX" type="default" id="8ss-t6-dh7"/>
                                     <constraint firstItem="BXp-iJ-ZOD" firstAttribute="top" secondItem="JMk-gZ-Jvd" secondAttribute="top" constant="20" symbolic="YES" type="default" id="9MC-Zo-vVn"/>
                                     <constraint firstItem="McN-oE-mx9" firstAttribute="leading" secondItem="ADC-Ar-PQg" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="C41-cT-1rC"/>
                                     <constraint firstItem="BXp-iJ-ZOD" firstAttribute="leading" secondItem="JMk-gZ-Jvd" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Cyd-MO-EwU"/>
-                                    <constraint firstItem="AY9-0c-Iqm" firstAttribute="top" secondItem="z5d-kk-567" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="IGo-fM-pap"/>
                                     <constraint firstAttribute="bottom" secondItem="ADC-Ar-PQg" secondAttribute="bottom" constant="27" id="Jcr-mA-6DH"/>
+                                    <constraint firstItem="h2t-nz-69K" firstAttribute="top" secondItem="JMk-gZ-Jvd" secondAttribute="top" constant="408" id="KnS-El-HUy"/>
                                     <constraint firstItem="bCw-9L-dq7" firstAttribute="leading" secondItem="JMk-gZ-Jvd" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Meq-M2-ZO7"/>
-                                    <constraint firstItem="gzG-0a-vJa" firstAttribute="top" secondItem="nIv-Zy-gOZ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="O8U-ch-Snl"/>
                                     <constraint firstItem="ADC-Ar-PQg" firstAttribute="baseline" secondItem="McN-oE-mx9" secondAttribute="baseline" type="default" id="Psx-TT-dQl"/>
-                                    <constraint firstItem="nIv-Zy-gOZ" firstAttribute="top" secondItem="bCw-9L-dq7" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="RKN-ON-Fqn"/>
                                     <constraint firstItem="XZJ-HJ-La5" firstAttribute="top" secondItem="BXp-iJ-ZOD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Tbj-d7-c2d"/>
                                     <constraint firstItem="bCw-9L-dq7" firstAttribute="baseline" secondItem="AY9-0c-Iqm" secondAttribute="baseline" type="default" id="UhH-zR-ggo"/>
                                     <constraint firstItem="gzG-0a-vJa" firstAttribute="leading" secondItem="JMk-gZ-Jvd" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="W4y-e1-xP6"/>
-                                    <constraint firstItem="h2t-nz-69K" firstAttribute="leading" secondItem="siX-XK-wzC" secondAttribute="leading" type="default" id="XqR-6p-0HV"/>
+                                    <constraint firstItem="ADC-Ar-PQg" firstAttribute="top" secondItem="JMk-gZ-Jvd" secondAttribute="top" constant="456" id="W5v-0M-ASJ"/>
                                     <constraint firstAttribute="trailing" secondItem="z5d-kk-567" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ZkW-h1-D00"/>
                                     <constraint firstAttribute="trailing" secondItem="AY9-0c-Iqm" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="bNX-0W-glV"/>
+                                    <constraint firstItem="z5d-kk-567" firstAttribute="leading" secondItem="XZJ-HJ-La5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="dce-6t-6c1"/>
                                     <constraint firstItem="ADC-Ar-PQg" firstAttribute="leading" secondItem="JMk-gZ-Jvd" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eIR-mu-F0B"/>
-                                    <constraint firstItem="siX-XK-wzC" firstAttribute="leading" secondItem="gzG-0a-vJa" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="eyF-mS-e7C"/>
-                                    <constraint firstItem="h2t-nz-69K" firstAttribute="top" secondItem="bCw-9L-dq7" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="h8o-9l-Ov2"/>
-                                    <constraint firstItem="z5d-kk-567" firstAttribute="leading" secondItem="AY9-0c-Iqm" secondAttribute="leading" type="default" id="hGe-pe-Fqe"/>
+                                    <constraint firstItem="bCw-9L-dq7" firstAttribute="top" secondItem="JMk-gZ-Jvd" secondAttribute="top" constant="383" id="g5N-3p-loG"/>
                                     <constraint firstItem="bCw-9L-dq7" firstAttribute="top" secondItem="AY9-0c-Iqm" secondAttribute="top" type="default" id="hl7-dh-vjc"/>
-                                    <constraint firstItem="h2t-nz-69K" firstAttribute="leading" secondItem="AY9-0c-Iqm" secondAttribute="leading" type="default" id="i2X-gd-ROv"/>
-                                    <constraint firstItem="z5d-kk-567" firstAttribute="leading" secondItem="XZJ-HJ-La5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="jNi-64-f7c"/>
-                                    <constraint firstItem="XZJ-HJ-La5" firstAttribute="leading" secondItem="JMk-gZ-Jvd" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="keW-sk-Ezu"/>
+                                    <constraint firstItem="h2t-nz-69K" firstAttribute="leading" secondItem="gzG-0a-vJa" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="hw5-sz-x5k"/>
+                                    <constraint firstItem="siX-XK-wzC" firstAttribute="top" secondItem="JMk-gZ-Jvd" secondAttribute="top" constant="434" id="ipR-dp-xuE"/>
+                                    <constraint firstItem="z5d-kk-567" firstAttribute="leading" secondItem="bCw-9L-dq7" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="jsh-lW-nZ1"/>
                                     <constraint firstItem="AY9-0c-Iqm" firstAttribute="leading" secondItem="bCw-9L-dq7" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="l0a-mO-pqD"/>
                                     <constraint firstItem="nIv-Zy-gOZ" firstAttribute="leading" secondItem="JMk-gZ-Jvd" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="mT0-Ie-HE0"/>
-                                    <constraint firstItem="gzG-0a-vJa" firstAttribute="baseline" secondItem="siX-XK-wzC" secondAttribute="baseline" type="default" id="mW8-A9-OOZ"/>
+                                    <constraint firstItem="AY9-0c-Iqm" firstAttribute="leading" secondItem="nIv-Zy-gOZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="o6A-mj-6mg"/>
                                     <constraint firstAttribute="trailing" secondItem="siX-XK-wzC" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="o7z-IC-ohP"/>
+                                    <constraint firstItem="McN-oE-mx9" firstAttribute="top" secondItem="ADC-Ar-PQg" secondAttribute="top" type="default" id="oe3-jT-BFq"/>
                                     <constraint firstAttribute="trailing" secondItem="BXp-iJ-ZOD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="pVV-hA-xly"/>
                                     <constraint firstItem="h2t-nz-69K" firstAttribute="leading" secondItem="nIv-Zy-gOZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="rDe-ni-gOg"/>
                                     <constraint firstItem="z5d-kk-567" firstAttribute="top" secondItem="BXp-iJ-ZOD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="uMf-HZ-ngg"/>
-                                    <constraint firstItem="ADC-Ar-PQg" firstAttribute="top" secondItem="gzG-0a-vJa" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="wTM-GE-Lt5"/>
-                                    <constraint firstItem="nIv-Zy-gOZ" firstAttribute="baseline" secondItem="h2t-nz-69K" secondAttribute="baseline" type="default" id="wXR-6k-3Zv"/>
-                                    <constraint firstItem="McN-oE-mx9" firstAttribute="top" secondItem="siX-XK-wzC" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="xYL-9n-OcS"/>
-                                    <constraint firstItem="siX-XK-wzC" firstAttribute="top" secondItem="h2t-nz-69K" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ylS-Fp-tch"/>
+                                    <constraint firstItem="siX-XK-wzC" firstAttribute="leading" secondItem="gzG-0a-vJa" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="wiQ-eF-hSW"/>
+                                    <constraint firstItem="siX-XK-wzC" firstAttribute="top" secondItem="gzG-0a-vJa" secondAttribute="top" type="default" id="zIa-qc-kLW"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -609,9 +607,10 @@
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Report Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="f5p-wf-uvc">
                                                             <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="O7s-Ab-Rrk"/>
                                                                 <constraint firstAttribute="width" constant="258" id="Wk5-9r-w9f"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                     </subviews>
@@ -634,9 +633,10 @@
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="YDo-Ho-fgh">
                                                             <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="d1A-71-KmC"/>
                                                                 <constraint firstAttribute="width" constant="258" id="tyr-HU-cpI"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                     </subviews>
@@ -659,9 +659,10 @@
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="sA9-4T-xDL">
                                                             <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="xnG-g6-f37"/>
                                                                 <constraint firstAttribute="width" constant="258" id="zAy-Hr-u7f"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                     </subviews>
@@ -685,8 +686,9 @@
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Reporter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="r4M-sB-EQr">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="258" id="Cx6-lb-iOo"/>
+                                                                <constraint firstAttribute="height" constant="21" id="Iy6-V2-rYm"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                     </subviews>
@@ -710,8 +712,9 @@
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Public Report" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2R-ao-Ptv">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="183" id="DRd-1K-Ceq"/>
+                                                                <constraint firstAttribute="height" constant="21" id="ZWh-XQ-0gj"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
@@ -819,12 +822,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReportCategoryCell" id="DWf-Ys-FhE">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReportCategoryCell" textLabel="k6p-fi-qWI" style="IBUITableViewCellStyleDefault" id="DWf-Ys-FhE">
                                 <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6p-fi-qWI">
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
@@ -859,7 +869,7 @@
                                     <constraint firstAttribute="height" constant="173" id="wJb-Lc-teI"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outlet property="delegate" destination="Nse-u8-kcK" id="Ayp-rP-tuV"/>
@@ -998,7 +1008,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="KGW-uf-1ve"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="wo2-k5-Ksi" id="JxE-8Q-ZL9"/>
@@ -1024,7 +1034,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="abB-pS-Sn6"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="wo2-k5-Ksi" id="DXr-U2-zTa"/>
@@ -1050,7 +1060,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="clP-GL-8vf"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="wo2-k5-Ksi" id="dp8-t6-xnB"/>
@@ -1076,7 +1086,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="GRI-u8-NlP"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="wo2-k5-Ksi" id="i6K-w4-7I8"/>
@@ -1102,7 +1112,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="lcB-24-8Xk"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="wo2-k5-Ksi" id="a1j-gd-r5D"/>
